@@ -1,41 +1,51 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# Node modules
+node_modules/
 
-# Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+# Build output (générés lors de la compilation)
+dist/
+build/
+out/
 
-# Node
-/node_modules
-npm-debug.log
-yarn-error.log
+# TypeScript
+*.tsbuildinfo
 
-# IDEs and editors
+# Logs et fichiers temporaires
+*.log
+npm-debug.log*
+yarn-debug.log*
+.pnpm-debug.log*
+.DS_Store
+Thumbs.db
+
+# Dependency directories
+jspm_packages/
+bower_components/
+
+# Environment variables and configuration
+.env
+.env.*.local
+
+# IDE and editor config files
+.vscode/
 .idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.vcxproj
+*.vcxproj.user
+*.code-workspace
 
-# Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history/*
+# Fichiers spécifiques à Visual Studio
+.vscode/
+*.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
-# Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
+# Angular specific files (si vous ajoutez Angular plus tard)
 .angular/
 .angular-cache/
 *.angular
@@ -44,6 +54,23 @@ testem.log
 *.bak
 *.cache
 
-# System files
-.DS_Store
+# Spring Boot specific files (si vous ajoutez Spring Boot plus tard)
+target/
+bin/
+*.war
+*.jar
+
+# TypeScript et compilation
+*.tsbuildinfo
+lib/
+tsconfig.tsbuildinfo
+
+# Package lock files (optionnel, si vous préférez ne pas les suivre pour éviter les conflits)
+package-lock.json
+package.json
+yarn.lock
+
+# Fichiers locaux spécifiques à la machine
+*.DS_Store
+*.swp
 Thumbs.db
