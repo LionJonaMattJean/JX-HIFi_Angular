@@ -48,11 +48,9 @@ bower_components/
 # Angular specific files (si vous ajoutez Angular plus tard)
 .angular/
 .angular-cache/
-*.angular
-*.angular-cli.json
-.angular.json
 *.bak
 *.cache
+!angular.json
 
 # Spring Boot specific files (si vous ajoutez Spring Boot plus tard)
 target/
@@ -66,8 +64,6 @@ lib/
 tsconfig.tsbuildinfo
 
 # Package lock files (optionnel, si vous préférez ne pas les suivre pour éviter les conflits)
-package-lock.json
-package.json
 yarn.lock
 
 # Fichiers locaux spécifiques à la machine
