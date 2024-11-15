@@ -8,7 +8,6 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     RouterOutlet,
     SharedModule,
-
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
