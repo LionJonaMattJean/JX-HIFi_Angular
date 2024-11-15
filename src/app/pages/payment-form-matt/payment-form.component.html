@@ -1,1 +1,31 @@
-<p>payment-form works!</p>
+<div class="container frame">
+    <!-- Images -->
+     <!-- vérifier le path des images -- ne s'affichent pas-->
+    <div class="row mb-3 text-start">
+        <div class="col-12 col-md-4 mb-3 mb-md-0">
+            <img src="assets/images/logo/payments.jpg" alt="Image 1" style="width: 100%; max-width: 325px; min-width: 200px; height: 75px;">
+        </div>
+        <div class="col-12 col-md-4 mb-3 mb-md-0">
+            <img src="assets/images/logo/paypal.jpg" alt="Image 2" style="width: 100%; max-width: 150px; margin-left: 10px; height: 75px;">
+        </div>
+        <div class="col-12 col-md-4">
+            <img src="assets/images/logo/transecur.png" alt="Image 3" style="width: 100%; max-width: 125px; height: 100px;">
+        </div>
+    </div>
+
+    <!-- Form -->
+    <form>
+        <!-- Mode de paiement -->
+        <div class="mb-3">
+            <label for="modePaiement" class="form-label">Mode de paiement</label>
+            <select class="form-select widthPaiement" id="modePaiement" required>
+                <option value="" selected disabled>----</option>
+                <option value="visa">Visa</option>
+                <option value="mastercard">Mastercard</option>
+                <option value="interact">Interact</option>
+                <option value="paypal">PayPal</option>
+            </select>
+        </div>
+        <!-- Autres champs... -->
+    </form>
+</div>
