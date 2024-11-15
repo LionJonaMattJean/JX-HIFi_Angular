@@ -1,19 +1,18 @@
-<p>header works!</p>
-<button type="button" class="btn btn-primary btn-lg">Angulaire</button>
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-md">
     <div class="container d-flex justify-content-between align-items-center">
-        <a class="navbar-brand" href="acceuil.html">
+        <a class="navbar-brand d-none d-md-block" href="acceuil.html">
             <img src="assets/images/logo/Logo JX-HIFI.png" alt="logo jx-hifi" width="100">
         </a>
 
-        <div class="input-group w-50">
-            <input class="form-control" style="--bs-border-radius: 20px" type="text" placeholder="Find a product...">
+        <div class="searchBar input-group d-flex justify-content-center">
+            <input class="form-control" style="--bs-border-radius: 20px; border: none" type="text"
+                placeholder="Find a product...">
             <button class="btn" style="--bs-btn-bg: white; --bs-btn-border-radius: 20px" type="submit">
                 <img src="assets/images/icons/search.svg" alt="search_icon" style="height: 1.5em;">
             </button>
         </div>
 
-        <div class="d-flex gap-5">
+        <div class="d-none d-md-flex gap-5">
             <a class="btnIcon text-center" href="">
                 <img class="imgIcon" src="assets/images/icons/Shop.svg" alt="store_icon">
                 <div class="txtIcon">Stores</div>
@@ -28,4 +27,15 @@
             </a>
         </div>
     </div>
-    </nav>
+</nav>
+<div class="categoryNav container-fluid d-md-flex justify-content-center py-1 gap-4 d-none">
+    <a class="categoryShortcut" style="font-weight: bold;" href="#">Offers</a>
+    <div class="separator"></div>
+    <a class="categoryShortcut" href="#">Desktops</a>
+    <div class="separator"></div>
+    <a class="categoryShortcut" href="#">Laptops</a>
+    <div class="separator"></div>
+    <a class="categoryShortcut" href="#">Screens</a>
+    <div class="separator"></div>
+    <a class="categoryShortcut" href="#">Phones</a>
+</div>
