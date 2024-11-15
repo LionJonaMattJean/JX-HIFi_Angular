@@ -17,6 +17,16 @@
     height: 20px;
     margin: auto 5px;
 }
+.separatorOffCanvas {
+    border-top: 2px solid rgba(16, 60, 172, 1);
+    border-radius: 1px;
+    width: 75%;
+    margin: auto 5px;
+}
+
+.categoryNavOffCanvas a {
+    color: black;
+}
 
 @media (min-width: 768px) {
     .searchBar {
