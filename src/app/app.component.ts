@@ -7,8 +7,9 @@ import { SharedModule } from './shared/shared.module';
   standalone: true,
   imports: [
     RouterOutlet,
-    SharedModule
-  ],
+    SharedModule,
+
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
