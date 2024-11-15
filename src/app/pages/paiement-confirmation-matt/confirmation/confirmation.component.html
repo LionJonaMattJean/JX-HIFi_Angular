@@ -1,3 +1,6 @@
+<!--header-->
+<app-header></app-header>
+<!-- form confirmation de transaction -->
 <div class="container frame">
     <form>
       <h1>Merci pour votre confiance!</h1>
@@ -18,24 +21,10 @@
         </div>
       </div>
   
-      <div class="row mb-3" [hidden]="memeAdress">
         <div class="col-6">
           <label for="AdresseLivraison" class="form-label">Adresse de livraison</label>
           <input type="text" class="form-control" id="AdresseLivraison" readonly />
         </div>
-      </div>
-  
-      <div class="form-check">
-        <input
-          type="checkbox"
-          id="memeAdress"
-          class="form-check-input"
-          [(ngModel)]="memeAdress"
-          (change)="toggleLivraisonFields()"
-        />
-        <label for="memeAdress" class="form-check-label">Utiliser la même adresse</label>
-      </div>
-  
       <div class="mb-3">
         <label for="livraison" class="form-label">Quand...</label>
       </div>
@@ -72,4 +61,6 @@
       <button type="submit" class="btn btn-primary width">Fermer cette fenêtre</button>
     </form>
   </div>
-  
+
+<!-- footer -->
+<app-footer></app-footer>
