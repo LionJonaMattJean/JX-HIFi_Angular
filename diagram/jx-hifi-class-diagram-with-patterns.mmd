@@ -1,0 +1,243 @@
+classDiagram
+    class User {
+        -id: string
+        -email: string
+        -password: string
+        -firstName: string
+        -lastName: string
+        -phone: string
+        -address: string
+        +login(): void
+        +logout(): void
+        +updateProfile(email: string, firstName: string, lastName: string, phone: string, address: string): void
+        +changePassword(password: string): void
+    }
+
+    class Address {
+        -_address: string
+        -_city: string
+        -_province: string
+        -_postalCode: string
+        -_country: string
+        +confirmAddress(): void
+        +updateAddress(address: string, city: string, province: string, postalCode: string, country: string): void
+    }
+
+    class Card {
+        -id: string
+        -cardNumber: number
+        -experieringDate: Date
+        -paiementMethod: string
+        -cvc: number
+        -nameHolder: string
+        +validate(): void
+        +save(): void
+        +delete(): void
+        +update(id: string, cardNumber: number, experieringDate: Date, paiementMethod: string, cvc: number, nameHolder: string): void
+    }
+
+    class OrderItem {
+        -id: string
+        -product: Product
+        -quantity: number
+        -subTotal: number
+        +calculateSubTotal(): void
+    }
+
+    class Product {
+        -_id: string
+        -_name: string
+        -_description: string
+        -_sellPrice: number
+        -_costPrice: number
+        -_specialPrice: number
+        -_stock: number
+        -_category: Category
+        -_colors: string[]
+        -_specificationDetails: SpecificationDetails[]
+        -_shortSpecifications: ShortSpecification[]
+        -_reviews: Review[]
+        -_images: Image[]
+        -_onSale: boolean
+        +updateStock(newStock: number): void
+        +uddatePrice(newPrice: number): void
+        +addSpecificationDetail(specificationDetail: SpecificationDetails): void
+        +addShortSpecification(shortSpecification: ShortSpecification): void
+        +addColor(color: string): void
+        +addReview(review: Review): void
+        +addImage(image: Image): void
+        +addSpecial(percent: number): void
+        +removeSpecial(): void
+        +calculateMoyenneStarReview(): number
+        +countReview(): number
+    }
+
+    class Review {
+        -_id: string
+        -_idProduct: string
+        -_idUser: string
+        -_star: number
+        -_title: string
+        -_review: string
+    }
+
+    class Administrator {
+        +manageProducts(): void
+        +manageCategories(): void
+        +manageUsers(): void
+        +manageOrders(): void
+        +manageStores(): void
+    }
+
+    class Category {
+        -_id: string
+        -_name: string
+        -_description: string
+        -_products: Product[]
+        +addProduct(product: Product): void
+        +removeProduct(productId: string): void
+    }
+
+    class SalesAgent {
+        -_assignedCustomers: Customer[]
+        +viewCustomerOrders(customerId: string): Order[]
+        +modifyCustomerOrders(orderId: string): void
+        +manageCustomerAccount(customerId: string): void
+    }
+
+    class ShortSpecification {
+        -_id: string
+        -_title: string
+        -_description: string
+    }
+
+    class ShoppingCart {
+        -_customer: Customer
+        -_cartItems: OrderItem[]
+        -_total: number
+        +addItem(orderItem: OrderItem): void
+        +removeItem(orderItemId: string): void
+        +updateItemQuantity(orderItemId: string, newQuantity: number): void
+        +calculateTotal(): void
+        +clearCart(): void
+        +checkout(): void
+    }
+
+    class SpecificationDetails {
+        -_id: string
+        -_title: string
+        -_description: string
+    }
+
+    class Order {
+        -_id: string
+        -_customer: Customer
+        -_card: Card
+        -_orderItems: OrderItem[]
+        -_totalAmount: number
+        -_TTC: number
+        -_status: string
+        -_orderDate: Date
+        -_shippingAddress: Address
+        +calculateTotal(): number
+        +updateStatus(newStatus: string): void
+    }
+
+    class Image {
+        -_id: string
+        -_idProduct: string
+        -_url: string
+    }
+
+    class Customer {
+        -_orders: Order[]
+        +addOrder(order: Order): void
+        +viewOrderHistory(): Order[]
+        +trackOrder(orderId: string): Order
+        +cancelOrder(orderId: string): void
+        +manageAccount(): void
+    }
+    
+    %% State pattern for Order status
+    class OrderState {
+        <<interface>>
+        +handleOrderStatus()
+    }
+
+    class PlacedState {
+        +handleOrderStatus()
+    }
+    class ShippedState {
+        +handleOrderStatus()
+    }
+    class DeliveredState {
+        +handleOrderStatus()
+    }
+    class CanceledState {
+        +handleOrderStatus()
+    }
+
+    OrderState <|-- PlacedState
+    OrderState <|-- ShippedState
+    OrderState <|-- DeliveredState
+    OrderState <|-- CanceledState
+    Order "1" -- "1" OrderState:Composes
+    
+    
+    %% Observer pattern for notifying customers of order updates
+    class OrderUpdateNotifier {
+        <<interface>>
+        +attach(observer)
+        +detach(observer)
+        +notify()
+    }
+      class Observer {
+        <<interface>>
+        +update()
+    }
+    class OrderNotificationSystem {
+        +attach()
+        +detach()
+        +notify()
+    }
+
+    class CustomerObserver {
+        +update()
+    }
+
+
+
+    User <|-- Customer
+    User <|-- SalesAgent
+    User <|-- Administrator
+
+%% Aggregation relationships
+%% Customer can have multiple Orders but an Order can exist independently of the Customer
+    Customer "1" -- "*" Order : Aggregation
+
+%% A Customer has one ShoppingCart, but ShoppingCart can exist independently of the Customer
+    Customer "1" -- "1" ShoppingCart : Aggregation
+
+%% OrderItems are related to a Product, but Products exist independently of OrderItems
+    OrderItem "*" -- "1" Product : Aggregation
+
+%% Product belongs to a Category, but Category can exist independently of the Product
+    Product "*" -- "1" Category : Aggregation
+
+%% A Store can have multiple Products, but Products exist independently of Stores
+    Store "*" -- "*" Product : Aggregation
+
+%% A ShoppingCart can have multiple OrderItems, but OrderItems can exist independently of a Cart
+    ShoppingCart "1" -- "*" OrderItem : Aggregation
+
+%% Singleton pattern for ShoppingCart
+    OrderNotificationSystem <|-- OrderUpdateNotifier
+    CustomerObserver <|-- Observer
+    OrderNotificationSystem o-- CustomerObserver : Observers
+    Product "1" *-- "*" SpecificationDetails : Composes
+    Product "1" *-- "*" ShortSpecification : Composes
+    Product "1" *-- "*" Review:Composes
+    Product "1" *-- "*" Image:Composes
+
+    Order "1" --* "1" Address:Composes
+    Order "1" --* "1" Card:Composes

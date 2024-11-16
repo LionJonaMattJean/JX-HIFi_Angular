@@ -16,6 +16,13 @@ export class Address {
   public confirmAddress(): void {
     // Implement confirm address logic here
   }
+  public updateAddress(address: string, city: string, province: string, postalCode: string, country: string): void {
+    this._address = address;
+    this._city = city;
+    this._province = province;
+    this._postalCode = postalCode;
+    this._country = country;
+  }
 
   // Getters and setters
   get address(): string {
