@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { AcceuilLionComponent } from "./pages/acceuil-lion/acceuil-lion.component";
+import { User } from './models/User';
+import { listUsers } from '../mockData/mock-users';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -13,6 +16,13 @@ import { AcceuilLionComponent } from "./pages/acceuil-lion/acceuil-lion.componen
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+  
 export class AppComponent {
+  // Test de creation d'objet -----------
+  testUsers: User[] = listUsers;
 
+  ngOnInit() {
+    console.table(this.testUsers);    
+  }
+  // Test de creation d'objet -----------
 }
