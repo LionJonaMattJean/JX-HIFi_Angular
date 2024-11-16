@@ -1,28 +1,35 @@
-import {Category} from './Category';
-import {SpecificationDetails} from './SpecificationDetails';
-import {Review} from './Review';
-import {Image} from './Image';
-import {ShortSpecification} from './ShortSpecification';
+import { Category } from './Category';
+import { SpecificationDetails } from './SpecificationDetails';
+import { Review } from './Review';
+import { Image } from './Image';
+import { ShortSpecification } from './ShortSpecification';
 
 
-export class Product{
-private _id: string;
-private _name: string;
-private _description: string;
-private _sellPrice: number;
-private _costPrice: number;
-private _specialPrice: number;
-private _stock: number;
-private _category: Category;
-private _colors:string[];
-private _specificationDetails:SpecificationDetails[];
-private _shortSpecifications:ShortSpecification[];
-private _reviews:Review[];
-private _images:Image[];
-private _onSale: boolean;
+export class Product {
+  private _id: string;
+  private _name: string;
+  private _description: string;
+  private _sellPrice: number;
+  private _costPrice: number;
+  private _specialPrice: number;
+  private _stock: number;
+
+  /*todo same type as -id from Category to make SQL request easier ?? */
+  private _category: string;
+  // private _category: Category;
+
+  private _colors: string[];
+  private _specificationDetails: SpecificationDetails[];
+  private _shortSpecifications: ShortSpecification[];
+  private _reviews: Review[];
+  private _images: Image[];
+  private _onSale: boolean;
 
 
-  constructor(id: string, name: string, description: string, sellPrice: number, costPrice: number, stock: number, category: Category, colors: string[], specificationDetails: SpecificationDetails[], shortSpecifications: ShortSpecification[], reviews: Review[], images: Image[]) {
+  constructor(id: string, name: string, description: string, sellPrice: number,
+      costPrice: number, stock: number, category: string, colors: string[],
+      specificationDetails: SpecificationDetails[], shortSpecifications: ShortSpecification[],
+      reviews: Review[], images: Image[]) {
     this._id = id;
     this._name = name;
     this._description = description;
@@ -38,32 +45,32 @@ private _onSale: boolean;
     this._specialPrice = this._sellPrice;
     this._onSale = false;
   }
-  public updateStock(newStock:number){
+  public updateStock(newStock: number) {
     this._stock = newStock;
   }
-  public uddatePrice(newPrice:number){
+  public uddatePrice(newPrice: number) {
     this._sellPrice = newPrice;
   }
-  public addSpecificationDetail(specificationDetail:SpecificationDetails){
+  public addSpecificationDetail(specificationDetail: SpecificationDetails) {
     this._specificationDetails.push(specificationDetail);
   }
-  public addShortSpecification(shortSpecification:ShortSpecification){
+  public addShortSpecification(shortSpecification: ShortSpecification) {
     this._shortSpecifications.push(shortSpecification);
   }
-  public addColor(color:string){
+  public addColor(color: string) {
     this._colors.push(color);
   }
-  public addReview(review:Review){
+  public addReview(review: Review) {
     this._reviews.push(review);
   }
-  public addImage(image:Image){
+  public addImage(image: Image) {
     this._images.push(image);
   }
-  public addSpecial(percent:number){
+  public addSpecial(percent: number) {
     this._specialPrice = this._sellPrice - (this._sellPrice * percent / 100);
     this._onSale = true;
   }
-  public removeSpecial(){
+  public removeSpecial() {
     this._specialPrice = this._sellPrice;
     this._onSale = false;
   }
@@ -137,13 +144,14 @@ private _onSale: boolean;
     this._stock = value;
   }
 
-  get category(): Category {
+  get category(): string {
     return this._category;
   }
 
-  set category(value: Category) {
-    this._category = value;
-  }
+  /*todo delete since we cant change cat id from a product ??*/
+  // set category(value: Category) {
+  //   this._category = value;
+  // }
 
   get colors(): string[] {
     return this._colors;
