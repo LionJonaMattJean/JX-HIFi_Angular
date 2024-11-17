@@ -1,11 +1,16 @@
 import { Category } from './Category';
 import { SpecificationDetails } from './SpecificationDetails';
+import { ShortSpecification } from './ShortSpecification';
 import { Review } from './Review';
 import { Image } from './Image';
-import { ShortSpecification } from './ShortSpecification';
+
 
 
 export class Product {
+  /*todo same type as -id from Category to make SQL request easier ?? */
+  private _category: string;
+  // private _category: Category;
+
   private _id: string;
   private _name: string;
   private _description: string;
@@ -13,24 +18,20 @@ export class Product {
   private _costPrice: number;
   private _specialPrice: number;
   private _stock: number;
-
-  /*todo same type as -id from Category to make SQL request easier ?? */
-  private _category: string;
-  // private _category: Category;
-
   private _colors: string[];
   private _specificationDetails: SpecificationDetails[];
   private _shortSpecifications: ShortSpecification[];
-  private _reviews: Review[];
+  // private _reviews: Review[];
   private _images: Image[];
   private _onSale: boolean;
+  private static idNumber: number = 100012300000;
 
 
-  constructor(id: string, name: string, description: string, sellPrice: number,
+  constructor(name: string, description: string, sellPrice: number,
       costPrice: number, stock: number, category: string, colors: string[],
       specificationDetails: SpecificationDetails[], shortSpecifications: ShortSpecification[],
-      reviews: Review[], images: Image[]) {
-    this._id = id;
+      /*reviews?: Review[],*/ images: Image[]) {
+    this._id =  "PRO" + Product.idNumber;
     this._name = name;
     this._description = description;
     this._sellPrice = sellPrice;
@@ -40,10 +41,11 @@ export class Product {
     this._colors = colors;
     this._specificationDetails = specificationDetails;
     this._shortSpecifications = shortSpecifications;
-    this._reviews = reviews;
+    // this._reviews = reviews;
     this._images = images;
     this._specialPrice = this._sellPrice;
     this._onSale = false;
+    Product.idNumber += 537
   }
   public updateStock(newStock: number) {
     this._stock = newStock;
@@ -60,9 +62,9 @@ export class Product {
   public addColor(color: string) {
     this._colors.push(color);
   }
-  public addReview(review: Review) {
-    this._reviews.push(review);
-  }
+  // public addReview(review: Review) {
+  //   this._reviews.push(review);
+  // }
   public addImage(image: Image) {
     this._images.push(image);
   }
@@ -74,13 +76,17 @@ export class Product {
     this._specialPrice = this._sellPrice;
     this._onSale = false;
   }
+
+  /*todo Add logic for review */
   calculateMoyenneStarReview(): number {
-    const totalStars = this._reviews.reduce((sum, review) => sum + review.star, 0);
-    return this._reviews.length ? totalStars / this._reviews.length : 0;
+    // const totalStars = this._reviews.reduce((sum, review) => sum + review.star, 0);
+    // return this._reviews.length ? totalStars / this._reviews.length : 0;
+    return 4;
   }
 
   countReview(): number {
-    return this._reviews.length;
+    // return this._reviews.length;
+    return 21;
   }
 
 
@@ -177,13 +183,13 @@ export class Product {
     this._shortSpecifications = value;
   }
 
-  get reviews(): Review[] {
-    return this._reviews;
-  }
+  // get reviews(): Review[] {
+  //   return this._reviews;
+  // }
 
-  set reviews(value: Review[]) {
-    this._reviews = value;
-  }
+  // set reviews(value: Review[]) {
+  //   this._reviews = value;
+  // }
 
   get images(): Image[] {
     return this._images;

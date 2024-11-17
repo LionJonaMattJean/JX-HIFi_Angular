@@ -1,13 +1,15 @@
 export class Image{
   private _id : string;
   private _idProduct : string;
-  private _url : string;
+  private _url: string;
+  private static idNumber: number = 310100;
 
 
-  constructor(id: string, idProduct: string, url: string) {
-    this._id = id;
+  constructor(idProduct: string, url: string) {
+    this._id =  "IMG" + Image.idNumber;
     this._idProduct = idProduct;
     this._url = url;
+    Image.idNumber += 3;
   }
 
 /*getter and setter*/

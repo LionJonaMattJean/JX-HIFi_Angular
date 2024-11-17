@@ -2,9 +2,10 @@ export class ShortSpecification{
   private _id: string;
   private _title: string;
   private _description: string;
+  private static idNumber: number = 101;
 
-  constructor(id: string, title: string, description: string){
-    this._id = id;
+  constructor(title: string, description: string){
+    this._id = "QSPE" + ShortSpecification.idNumber++;
     this._title = title;
     this._description = description;
   }

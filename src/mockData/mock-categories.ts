@@ -8,3 +8,14 @@ export const listCategories: Category[] = [
     new Category("Headphone", "Classic headphones or in-ear for the best sounds."),
     new Category("Sales", "Every product in sales at right now and for a limited time.")
 ]
+
+// output with id:
+/*
+id     │ name
+CAT111 │ Desktop
+CAT222 │ Laptop
+CAT333 │ Phone
+CAT444 │ Monitor
+CAT555 │ Headphone
+CAT666 │ Sales
+*/

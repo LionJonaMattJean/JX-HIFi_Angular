@@ -1,14 +1,15 @@
-export class SpecificationDetails{
+export class SpecificationDetails {
   private _id: string;
   private _title: string;
   private _description: string;
+  private static idNumber: number = 1;
 
-    constructor(id: string, title: string, description: string){
-        this._id = id;
-        this._title = title;
-        this._description = description;
-    }
-/*setter and getter methods for the properties of the class*/
+  constructor(title: string, description: string) {
+    this._id = "SPE" + SpecificationDetails.idNumber++;
+    this._title = title;
+    this._description = description;
+  }
+  /*setter and getter methods for the properties of the class*/
   get id(): string {
     return this._id;
   }
