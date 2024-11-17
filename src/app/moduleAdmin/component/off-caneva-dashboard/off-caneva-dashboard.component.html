@@ -1,0 +1,56 @@
+<div class="offcanvas offcanvas-start d-lg-flex flex-column offnav vh-100" tabindex="-1" id="sidebar">
+  <div class="offcanvas-header d-lg-none mt-3 mb-5">
+    <h5 class="offcanvas-title">Menu</h5>
+    <button type="button" class="btn-close text-reset me-1" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="nav nav-underline flex-column">
+      <li class="nav-item mb-3">
+        <a routerLink="/admin/indexAdmin" routerLinkActive="active" class="nav-link" [class.link-body-emphasis]="!isActive('admin/indexAdmin')" >
+          <img class="icon me-2" src="/assets/svgIcon/house.svg" alt="Home"> Accueil
+        </a>
+      </li>
+      <li class="nav-item mb-3">
+        <a routerLink="/admin/catalogue"  routerLinkActive="active" class="nav-link" [class.link-body-emphasis]="!isActive('admin/catalogue')">
+          <img class="icon me-2" src="/assets/svgIcon/pc-display.svg" alt="Catalogue"> Catalogue des Produits
+        </a>
+      </li>
+      <li class="nav-item mb-3">
+        <a routerLink="/admin/categories"  routerLinkActive="active" class="nav-link" [class.link-body-emphasis]="!isActive('admin/categories')">
+          <img class="icon me-2" src="/assets/svgIcon/collection.svg" alt="Categories"> Categories
+        </a>
+      </li>
+      <li class="nav-item mb-3">
+        <a routerLink="/admin/commande"  routerLinkActive="active" class="nav-link" [class.link-body-emphasis]="!isActive('admin/commande')">
+          <img class="icon me-2" src="/assets/svgIcon/bag.svg" alt="Orders"> Liste des commandes
+        </a>
+      </li>
+      <li class="nav-item mb-3">
+        <a routerLink="/admin/registreUtilisateur"  routerLinkActive="active" class="nav-link" [class.link-body-emphasis]="!isActive('admin/registreUtilisateur')">
+          <img class="icon me-2" src="/assets/svgIcon/people.svg" alt="Users"> Registre des Utilisateurs
+        </a>
+      </li>
+      <li class="nav-item mb-3">
+        <a routerLink="/admin/magasin"  routerLinkActive="active" class="nav-link" [class.link-body-emphasis]="!isActive('/admin/magasin')">
+          <img class="icon me-2" src="/assets/svgIcon/buildings.svg" alt="Shops"> Gestion des Magasins
+        </a>
+      </li>
+    </ul>
+    <hr class=" d-lg-block mt-5 mb-3">
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a href="#" class="nav-link link-body-emphasis" data-bs-toggle="modal" data-bs-target="#modalParametre">
+          <img src="/assets/svgIcon/gear.svg" alt="paramètre" class="icon-nav me-2">
+          Paramètre
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link link-body-emphasis">
+          <img src="/assets/leave-3.svg" alt="sign-out" class="icon-nav me-2">
+          Déconnections
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+

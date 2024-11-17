@@ -8,19 +8,20 @@ import { Category } from './models/Category';
 import { listCategories } from '../mockData/mock-categories';
 import { Product } from './models/Product';
 import { listProducts } from '../mockData/mock-products';
+import {SidebarDashboardComponent} from './moduleAdmin/component/sidebar-dashboard/sidebar-dashboard.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,
     SharedModule,
-    AcceuilLionComponent
-],
+    AcceuilLionComponent,
+    RouterOutlet
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-  
+
 export class AppComponent {
   // Test de creation d'objet -----------
   // testUsers: User[] = listUsers;
