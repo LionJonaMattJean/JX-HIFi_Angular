@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
-import {AppComponent} from './app.component';
+
 import {AdminDashboardComponent} from './moduleAdmin/pages/admin-dashboard/admin-dashboard.component';
+import {MainSiteComponent} from './pages/main-site/main-site.component';
 
 export const routes: Routes = [
-  {path:'',component:AppComponent
+  {path:'',component:MainSiteComponent
 
   },
 
