@@ -1,6 +1,6 @@
 [
     {
-        "category": "CAT111",
+        "category": "CAT222",
         "id": "PRO100012300000",
         "name": "HP Envy Desktop",
         "description": "Powerful desktop for multitasking and gaming.",
@@ -121,7 +121,7 @@
         ]
     },
     {
-        "category": "CAT111",
+        "category": "CAT222",
         "id": "PRO100012300537",
         "name": "Dell XPS Desktop",
         "description": "Sleek desktop for professionals.",
@@ -233,7 +233,7 @@
         ]
     },
     {
-        "category": "CAT111",
+        "category": "CAT222",
         "id": "PRO100012301074",
         "name": "Apple iMac 24-inch",
         "description": "All-in-one desktop with Retina display.",
