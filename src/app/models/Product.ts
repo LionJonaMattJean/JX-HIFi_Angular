@@ -21,7 +21,7 @@ export class Product {
   private _colors: string[];
   private _specificationDetails: SpecificationDetails[];
   private _shortSpecifications: ShortSpecification[];
-  // private _reviews: Review[];
+  private _reviews: Review[];
   private _images: Image[];
   private _onSale: boolean;
   private static idNumber: number = 100012300000;
@@ -30,7 +30,7 @@ export class Product {
   constructor(name: string, description: string, sellPrice: number,
       costPrice: number, stock: number, category: string, colors: string[],
       specificationDetails: SpecificationDetails[], shortSpecifications: ShortSpecification[],
-      /*reviews?: Review[],*/ images: Image[]) {
+      reviews: Review[], images: Image[]) {
     this._id =  "PRO" + Product.idNumber;
     this._name = name;
     this._description = description;
@@ -41,7 +41,7 @@ export class Product {
     this._colors = colors;
     this._specificationDetails = specificationDetails;
     this._shortSpecifications = shortSpecifications;
-    // this._reviews = reviews;
+    this._reviews = reviews;
     this._images = images;
     this._specialPrice = this._sellPrice;
     this._onSale = false;

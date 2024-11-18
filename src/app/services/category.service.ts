@@ -6,6 +6,7 @@ import { Category } from '../models/Category';
 @Injectable({
   providedIn: 'root'
 })
+
 export class CategoryService {
   private dataLink: string = "src\mockData\mock_json\categories.mock.json";
 

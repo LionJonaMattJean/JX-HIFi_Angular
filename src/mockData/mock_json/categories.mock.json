@@ -1,32 +1,32 @@
 [
     {
         "id": "CAT111",
+        "name": "Sales",
+        "description": "Every product in sales right now and for a limited time."
+    },
+    {
+        "id": "CAT222",
         "name": "Desktop",
         "description": "Pre-built computer for your daily work from home or office."
     },
     {
-        "id": "CAT222",
+        "id": "CAT333",
         "name": "Laptop",
         "description": "Powerful computer for your remote life."
     },
     {
-        "id": "CAT333",
+        "id": "CAT444",
         "name": "Phone",
         "description": "Flagship from the biggest company in the world."
     },
     {
-        "id": "CAT444",
+        "id": "CAT555",
         "name": "Monitor",
         "description": "Monitor to suit all your needs. Gaming, creating, working, we have it."
     },
     {
-        "id": "CAT555",
+        "id": "CAT666",
         "name": "Headphone",
         "description": "Classic headphones or in-ear for the best sound."
-    },
-    {
-        "id": "CAT666",
-        "name": "Sales",
-        "description": "Every product in sales right now and for a limited time."
     }
 ]

@@ -5,10 +5,11 @@ export class Review{
   private _star: number;
   private _title: string;
   private _review: string;
+  private static idNumber: number = 1130000;
 
 
   constructor(id: string, idProduct: string, idUser: string, star: number, title: string, review: string) {
-    this._id = id;
+    this._id = "REV" + Review.idNumber++;
     this._idProduct = idProduct;
     this._idUser = idUser;
     this._star = star;

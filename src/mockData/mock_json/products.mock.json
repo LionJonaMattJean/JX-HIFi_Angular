@@ -1,0 +1,364 @@
+[
+    {
+        "category": "CAT111",
+        "id": "PRO100012300000",
+        "name": "HP Envy Desktop",
+        "description": "Powerful desktop for multitasking and gaming.",
+        "sellPrice": 1299,
+        "costPrice": 1150,
+        "specialPrice": 42,
+        "stock": 100,
+        "colors": [
+            "black",
+            "silver"
+        ],
+        "specificationDetails": [
+            {
+                "id": "SPE1",
+                "title": "Processor",
+                "description": "Intel Core i7-12700"
+            },
+            {
+                "id": "SPE2",
+                "title": "RAM",
+                "description": "16 GB DDR4"
+            },
+            {
+                "id": "SPE3",
+                "title": "Storage",
+                "description": "1 TB SSD"
+            },
+            {
+                "id": "SPE4",
+                "title": "Graphics",
+                "description": "NVIDIA RTX 3060"
+            },
+            {
+                "id": "SPE5",
+                "title": "Ports",
+                "description": "USB-C, HDMI, DisplayPort"
+            },
+            {
+                "id": "SPE6",
+                "title": "OS",
+                "description": "Windows 11"
+            },
+            {
+                "id": "SPE7",
+                "title": "Weight",
+                "description": "10 kg"
+            },
+            {
+                "id": "SPE8",
+                "title": "Warranty",
+                "description": "1 year"
+            }
+        ],
+        "shortSpecifications": [
+            {
+                "id": "QSPE1",
+                "title": "Processor",
+                "description": "Intel Core i7-12700"
+            },
+            {
+                "id": "QSPE2",
+                "title": "RAM",
+                "description": "16 GB DDR4"
+            },
+            {
+                "id": "QSPE3",
+                "title": "Storage",
+                "description": "1 TB SSD"
+            },
+            {
+                "id": "QSPE4",
+                "title": "Graphics",
+                "description": "NVIDIA RTX 3060"
+            }
+        ],
+        "images": [
+            {
+                "id": "IMG310100000",
+                "idProduct": "PRO100012300000",
+                "url": "https://picsum.photos/seed/desktop_1/300/300"
+            },
+            {
+                "id": "IMG310100003",
+                "idProduct": "PRO100012300000",
+                "url": "https://picsum.photos/seed/desktop_2/300/300"
+            },
+            {
+                "id": "IMG310100006",
+                "idProduct": "PRO100012300000",
+                "url": "https://picsum.photos/seed/desktop_3/300/300"
+            }
+        ],
+        "reviews": [
+            {
+                "id": "REV1130000",
+                "idProduct": "PRO100012300000",
+                "idUser": "USE1000",
+                "star": 4,
+                "title": "Do the job",
+                "review": "came quick, easy to install, look okay."
+            },
+            {
+                "id": "REV1130001",
+                "idProduct": "PRO100012300000",
+                "idUser": "USE1111",
+                "star": 5,
+                "title": "Love it",
+                "review": "The shipping was so fast, now it<s there and work so great. I recommand !"
+            },
+            {
+                "id": "REV1130002",
+                "idProduct": "PRO100012300000",
+                "idUser": "USE1407",
+                "star": 3,
+                "title": "Good but noisy",
+                "review": "Works fine but the fan is a bit noisy for my taste."
+            }
+        ]
+    },
+    {
+        "category": "CAT111",
+        "id": "PRO100012300537",
+        "name": "Dell XPS Desktop",
+        "description": "Sleek desktop for professionals.",
+        "sellPrice": 1549,
+        "costPrice": 1400,
+        "specialPrice": 18,
+        "stock": 50,
+        "colors": [
+            "white"
+        ],
+        "specificationDetails": [
+            {
+                "id": "SPE9",
+                "title": "Processor",
+                "description": "Intel Core i9-12900"
+            },
+            {
+                "id": "SPE10",
+                "title": "RAM",
+                "description": "32 GB DDR4"
+            },
+            {
+                "id": "SPE11",
+                "title": "Storage",
+                "description": "1 TB SSD + 2 TB HDD"
+            },
+            {
+                "id": "SPE12",
+                "title": "Graphics",
+                "description": "NVIDIA RTX 3070"
+            },
+            {
+                "id": "SPE13",
+                "title": "Ports",
+                "description": "USB-C, HDMI, Ethernet"
+            },
+            {
+                "id": "SPE14",
+                "title": "OS",
+                "description": "Windows 11"
+            },
+            {
+                "id": "SPE15",
+                "title": "Weight",
+                "description": "11 kg"
+            },
+            {
+                "id": "SPE16",
+                "title": "Warranty",
+                "description": "2 years"
+            }
+        ],
+        "shortSpecifications": [
+            {
+                "id": "QSPE5",
+                "title": "Processor",
+                "description": "Intel Core i9-12900"
+            },
+            {
+                "id": "QSPE6",
+                "title": "RAM",
+                "description": "32 GB DDR4"
+            },
+            {
+                "id": "QSPE7",
+                "title": "Storage",
+                "description": "1 TB SSD + 2 TB HDD"
+            },
+            {
+                "id": "QSPE8",
+                "title": "Graphics",
+                "description": "NVIDIA RTX 3070"
+            }
+        ],
+        "images": [
+            {
+                "id": "IMG310100009",
+                "idProduct": "PRO100012300537",
+                "url": "https://picsum.photos/seed/desktop_4/300/300"
+            },
+            {
+                "id": "IMG310100012",
+                "idProduct": "PRO100012300537",
+                "url": "https://picsum.photos/seed/desktop_5/300/300"
+            },
+            {
+                "id": "IMG310100015",
+                "idProduct": "PRO100012300537",
+                "url": "https://picsum.photos/seed/desktop_6/300/300"
+            }
+        ],
+        "reviews": [
+            {
+                "id": "REV1130003",
+                "idProduct": "PRO100012300537",
+                "idUser": "USE1037",
+                "star": 5,
+                "title": "Perfect machine",
+                "review": "Super fast and easy to set up. Love it for gaming and work."
+            },
+            {
+                "id": "REV1130004",
+                "idProduct": "PRO100012300537",
+                "idUser": "USE1074",
+                "star": 3,
+                "title": "Good but not great",
+                "review": "It works fine but I expected more for the price."
+            }
+        ]
+    },
+    {
+        "category": "CAT111",
+        "id": "PRO100012301074",
+        "name": "Apple iMac 24-inch",
+        "description": "All-in-one desktop with Retina display.",
+        "sellPrice": 1899,
+        "costPrice": 1700,
+        "specialPrice": 65,
+        "stock": 60,
+        "colors": [
+            "silver",
+            "blue"
+        ],
+        "specificationDetails": [
+            {
+                "id": "SPE17",
+                "title": "Processor",
+                "description": "Apple M1 chip"
+            },
+            {
+                "id": "SPE18",
+                "title": "RAM",
+                "description": "16 GB Unified"
+            },
+            {
+                "id": "SPE19",
+                "title": "Storage",
+                "description": "512 GB SSD"
+            },
+            {
+                "id": "SPE20",
+                "title": "Graphics",
+                "description": "Integrated 8-core GPU"
+            },
+            {
+                "id": "SPE21",
+                "title": "Ports",
+                "description": "USB-C, Thunderbolt"
+            },
+            {
+                "id": "SPE22",
+                "title": "OS",
+                "description": "macOS Ventura"
+            },
+            {
+                "id": "SPE23",
+                "title": "Weight",
+                "description": "5 kg"
+            },
+            {
+                "id": "SPE24",
+                "title": "Warranty",
+                "description": "1 year"
+            }
+        ],
+        "shortSpecifications": [
+            {
+                "id": "QSPE9",
+                "title": "Processor",
+                "description": "Apple M1 chip"
+            },
+            {
+                "id": "QSPE10",
+                "title": "RAM",
+                "description": "16 GB Unified"
+            },
+            {
+                "id": "QSPE11",
+                "title": "Storage",
+                "description": "512 GB SSD"
+            },
+            {
+                "id": "QSPE12",
+                "title": "Graphics",
+                "description": "Integrated 8-core GPU"
+            }
+        ],
+        "images": [
+            {
+                "id": "IMG310100018",
+                "idProduct": "PRO100012301074",
+                "url": "https://picsum.photos/seed/desktop_7/300/300"
+            },
+            {
+                "id": "IMG310100021",
+                "idProduct": "PRO100012301074",
+                "url": "https://picsum.photos/seed/desktop_8/300/300"
+            },
+            {
+                "id": "IMG310100024",
+                "idProduct": "PRO100012301074",
+                "url": "https://picsum.photos/seed/desktop_9/300/300"
+            }
+        ],
+        "reviews": [
+            {
+                "id": "REV1131005",
+                "idProduct": "PRO100012301074",
+                "idUser": "USE1148",
+                "star": 4,
+                "title": "Great performance",
+                "review": "The iMac is amazing for design work, the display is crisp and bright."
+            },
+            {
+                "id": "REV1131006",
+                "idProduct": "PRO100012301074",
+                "idUser": "USE1444",
+                "star": 5,
+                "title": "Incredible experience",
+                "review": "My new iMac is perfect! The performance is flawless, and it's incredibly quiet."
+            },
+            {
+                "id": "REV1131007",
+                "idProduct": "PRO100012301074",
+                "idUser": "USE1222",
+                "star": 3,
+                "title": "Good but pricey",
+                "review": "Great performance but a bit expensive. It works well for general use but not for intense gaming."
+            },
+            {
+                "id": "REV1131008",
+                "idProduct": "PRO100012301074",
+                "idUser": "USE1370",
+                "star": 5,
+                "title": "Worth every penny!",
+                "review": "Absolutely love my iMac. It's fast, sleek, and the display is gorgeous!"
+            }
+        ]
+    }
+]
