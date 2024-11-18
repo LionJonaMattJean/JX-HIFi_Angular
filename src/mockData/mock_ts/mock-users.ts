@@ -1,5 +1,5 @@
-import { Address } from "../app/models/Address";
-import { User } from "../app/models/User";
+import { Address } from "../../app/models/Address";
+import { User } from "../../app/models/User";
 
 export const listUsers: User[] = [
     new User("alice_s@gmail.com", "pass1", "Alice", "Smith", "1234567891",

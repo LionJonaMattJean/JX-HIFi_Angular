@@ -1,4 +1,4 @@
-import { Category } from "../app/models/Category";
+import { Category } from "../../app/models/Category";
 
 export const listCategories: Category[] = [
     new Category("Desktop", "Pre-built computer for you daily work from home of office."),

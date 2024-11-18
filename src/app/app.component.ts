@@ -3,11 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { AcceuilLionComponent } from "./pages/acceuil-lion/acceuil-lion.component";
 import { User } from './models/User';
-import { listUsers } from '../mockData/mock-users';
+import { listUsers } from '../mockData/mock_ts/mock-users';
 import { Category } from './models/Category';
-import { listCategories } from '../mockData/mock-categories';
+import { listCategories } from '../mockData/mock_ts/mock-categories';
 import { Product } from './models/Product';
-import { listProducts } from '../mockData/mock-products';
+import { listProducts } from '../mockData/mock_ts/mock-products';
 import {SidebarDashboardComponent} from './moduleAdmin/component/sidebar-dashboard/sidebar-dashboard.component';
 
 @Component({

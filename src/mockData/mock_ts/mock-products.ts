@@ -1,7 +1,7 @@
-import { Product } from '../app/models/Product';
-import { SpecificationDetails } from '../app/models/SpecificationDetails';
-import { ShortSpecification } from '../app/models/ShortSpecification';
-import { Image } from '../app/models/Image';
+import { Product } from '../../app/models/Product';
+import { SpecificationDetails } from '../../app/models/SpecificationDetails';
+import { ShortSpecification } from '../../app/models/ShortSpecification';
+import { Image } from '../../app/models/Image';
 
 // output with id:
 /*
