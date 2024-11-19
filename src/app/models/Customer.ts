@@ -1,13 +1,14 @@
 import {User} from './User';
 import {Order} from './Order';
-import {OrderItem} from './OrderItem';
+import {Address} from './Address';
+
 export class Customer extends User {
 
   private _orders:Order[];
 
 
-  constructor(id: string, email: string, password: string, firstName: string, lastName: string, phone: string, address: string, orders: Order[]) {
-    super(id, email, password, firstName, lastName, phone, address);
+  constructor(email: string, password: string, firstName: string, lastName: string, phone: string, address: Address, orders: Order[]) {
+    super(email, password, firstName, lastName, phone, address);
     this._orders = orders;
   }
 /*todo complete logic or delete not use*/
