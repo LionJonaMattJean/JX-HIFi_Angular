@@ -17,7 +17,7 @@ export const routes: Routes = [
   {
     path:'admin',
     children: [
-      { path: '', redirectTo: 'indexAdmin', pathMatch: 'full' },
+      {path: '', redirectTo: 'indexAdmin', pathMatch: 'full' },
       {path:'indexAdmin',component:AdminDashboardComponent},
       {path:'users',component:UsersDashboardComponent},
       {path:'products',component:ProductsDashboardComponent},
