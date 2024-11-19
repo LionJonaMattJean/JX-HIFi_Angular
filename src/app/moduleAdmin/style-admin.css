@@ -134,6 +134,7 @@
   height: 100%; /* Ensure the main card takes the full height of its container */
 }
 
+
 /* Media Queries for Responsive Adjustments */
 @media (max-width: 1510px) {
   .custom-navbar {
@@ -159,3 +160,4 @@
     display: none; /* Hide search bar on small screens */
   }
 }
+
