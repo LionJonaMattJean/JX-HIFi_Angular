@@ -8,17 +8,25 @@ import {ProductsDashboardComponent} from './moduleAdmin/pages/products-dashboard
 import {OrdersDashboardComponent} from './moduleAdmin/pages/orders-dashboard/orders-dashboard.component';
 import {StoreDashboardComponent} from './moduleAdmin/pages/store-dashboard/store-dashboard.component';
 import { SupportLionComponent } from './pages/support-lion/support-lion.component';
+import {AdminLayoutComponent} from './moduleAdmin/pages/layout/admin-layout/admin-layout.component';
+import {AcceuilLionComponent} from './pages/acceuil-lion/acceuil-lion.component';
 
 export const routes: Routes = [
-  {path:'',component:MainSiteComponent
+  {path:'',component:MainSiteComponent,
+    children: [
+      {path: 'home', component: AcceuilLionComponent },
+      {path: '', redirectTo: 'home', pathMatch: 'full' },
+      {path: 'support', component:SupportLionComponent},
+    ]
 
 
   },
-  {path: 'support', component:SupportLionComponent},
+
 
   //path admin dashboard
   {
     path:'admin',
+    component:AdminLayoutComponent,
     children: [
       {path: '', redirectTo: 'indexAdmin', pathMatch: 'full' },
       {path:'indexAdmin',component:AdminDashboardComponent},
