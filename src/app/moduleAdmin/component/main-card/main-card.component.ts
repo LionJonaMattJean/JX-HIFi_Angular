@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {filter} from 'rxjs';
 import {NgIf} from '@angular/common';
+import {TableDashboardComponent} from '../table-dashboard/table-dashboard.component';
 
 @Component({
   selector: 'app-main-card',
@@ -9,7 +10,8 @@ import {NgIf} from '@angular/common';
   imports: [
 
     NgIf,
-    RouterOutlet
+    TableDashboardComponent,
+
   ],
   templateUrl: './main-card.component.html',
   styleUrl: '../../style-admin.css'
