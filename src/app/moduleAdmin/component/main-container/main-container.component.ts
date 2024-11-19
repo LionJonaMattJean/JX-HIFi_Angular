@@ -4,6 +4,7 @@ import {OffCanevaDashboardComponent} from '../off-caneva-dashboard/off-caneva-da
 
 
 import {MainCardComponent} from '../main-card/main-card.component';
+import {RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-main-container',
@@ -11,7 +12,8 @@ import {MainCardComponent} from '../main-card/main-card.component';
   imports: [
     SidebarDashboardComponent,
     OffCanevaDashboardComponent,
-    MainCardComponent
+    MainCardComponent,
+    RouterOutlet
   ],
   templateUrl: './main-container.component.html',
   styleUrl: '../../style-admin.css'

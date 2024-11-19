@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import {AdminLayoutComponent} from "../layout/admin-layout/admin-layout.component";
+import {MainCardComponent} from '../../component/main-card/main-card.component';
 
 
 @Component({
   selector: 'app-orders-dashboard',
   standalone: true,
   imports: [
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    MainCardComponent
 
   ],
   templateUrl: './orders-dashboard.component.html',
