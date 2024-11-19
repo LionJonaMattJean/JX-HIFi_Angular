@@ -8,7 +8,7 @@ import { Category } from '../models/Category';
 })
 
 export class CategoryService {
-  private dataLink: string = "src\mockData\mock_json\categories.mock.json";
+  private dataLink: string = "src/mockData/mock_json/categories.mock.json";
 
   constructor(private httpRequest: HttpClient) { };
 
