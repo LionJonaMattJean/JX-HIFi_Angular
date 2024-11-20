@@ -1,0 +1,20 @@
+<ul class="pagination justify-content-center mt-5">
+  <!-- Previous button -->
+  <li *ngIf="totalPages>1" class="page-item" [class.disabled]="currentPage === 1">
+    <a class="page-link" (click)="onPageClick(currentPage - 1)" [attr.aria-disabled]="currentPage === 1">Précédent</a>
+  </li>
+
+  <!-- Page number buttons -->
+  <li *ngFor="let page of [].constructor(totalPages); let i = index"
+      class="page-item"
+      [class.active]="i + 1 === currentPage">
+    <a class="page-link" (click)="onPageClick(i + 1)">
+      {{ i + 1 }}
+    </a>
+  </li>
+
+  <!-- Next button -->
+  <li *ngIf="totalPages>1" class="page-item" [class.disabled]="currentPage === totalPages">
+    <a class="page-link" (click)="onPageClick(currentPage + 1)" [attr.aria-disabled]="currentPage === totalPages">Suivant</a>
+  </li>
+</ul>

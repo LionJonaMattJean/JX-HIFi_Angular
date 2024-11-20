@@ -8,12 +8,19 @@
       <app-table-dashboard class="table table-sm small-table table-bordered table-striped"
       *ngIf="isNotIndex"
       [displayColumns]="displayColumns"
-      [dataBinding]="data"
+      [dataBinding]="pageData"
       [columnNames]="columnNames"
       (editEvent)="onEdit($event)"
       (detailsEvent)="onDetails($event)"
       (deleteEvent)="onDelete($event)"
+
       ></app-table-dashboard>
+      <app-pagination-dashboard
+        [totalItems]="totalItems"
+        [itemsPerPage]="itemsPerPage"
+        [currentPage]="currentPage"
+        (pageChange)="onPageChange($event)">
+      </app-pagination-dashboard>
     </div>
 </div>
 </div>
