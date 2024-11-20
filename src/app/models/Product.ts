@@ -7,9 +7,9 @@ import { Image } from './Image';
 
 
 export class Product {
-  /*todo same type as -id from Category to make SQL request easier ?? */
-  private _category: string;
-  // private _category: Category;
+
+ 
+  private _category: Category;
 
   private _id: string;
   private _name: string;
@@ -28,7 +28,7 @@ export class Product {
 
 
   constructor(name: string, description: string, sellPrice: number,
-      costPrice: number, stock: number, category: string, colors: string[],
+      costPrice: number, stock: number, category: Category, colors: string[],
       specificationDetails: SpecificationDetails[], shortSpecifications: ShortSpecification[],
       reviews: Review[], images: Image[]) {
     this._id =  "PRO" + Product.idNumber;
@@ -150,14 +150,11 @@ export class Product {
     this._stock = value;
   }
 
-  get category(): string {
+  get category(): Category {
     return this._category;
   }
 
-  /*todo delete since we cant change cat id from a product ??*/
-  // set category(value: Category) {
-  //   this._category = value;
-  // }
+
 
   get colors(): string[] {
     return this._colors;

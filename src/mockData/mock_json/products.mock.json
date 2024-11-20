@@ -1,6 +1,11 @@
 [
     {
-        "category": "CAT222",
+        "category": {
+          "id": "CAT222",
+          "name": "Desktop",
+          "description": "Pre-built computer for your daily work from home or office."
+        }
+        ,
         "id": "PRO100012300000",
         "name": "HP Envy Desktop",
         "description": "Powerful desktop for multitasking and gaming.",
@@ -46,7 +51,11 @@
         ]
     },
     {
-        "category": "CAT222",
+        "category": {
+          "id": "CAT222",
+          "name": "Desktop",
+          "description": "Pre-built computer for your daily work from home or office."
+        },
         "id": "PRO100012300537",
         "name": "Dell XPS Desktop",
         "description": "Sleek desktop for professionals.",
@@ -72,7 +81,7 @@
             { "id": "QSPE8", "title": "Graphics", "description": "NVIDIA RTX 3070" }
         ],
         "images": [
-            { "id": "IMG310109", "idProduct": "PRO100012300537", 
+            { "id": "IMG310109", "idProduct": "PRO100012300537",
                 "url": "https://picsum.photos/seed/desktop_4/300/300" },
             { "id": "IMG310112", "idProduct": "PRO100012300537",
                 "url": "https://picsum.photos/seed/desktop_5/300/300" },
@@ -84,12 +93,16 @@
                 "star": 5, "title": "Perfect machine",
                 "review": "Super fast and easy to set up. Love it for gaming and work." },
             { "id": "REV1130004", "idProduct": "PRO100012300537", "idUser": "USE1074",
-                "star": 3, "title": "Good but not great", 
+                "star": 3, "title": "Good but not great",
                 "review": "It works fine but I expected more for the price." }
         ]
     },
     {
-        "category": "CAT222",
+        "category": {
+          "id": "CAT222",
+          "name": "Desktop",
+          "description": "Pre-built computer for your daily work from home or office."
+        },
         "id": "PRO100012301074",
         "name": "Apple iMac 24-inch",
         "description": "All-in-one desktop with Retina display.",
@@ -150,7 +163,11 @@
         ]
     },
     {
-        "category": "CAT333",
+        "category": {
+          "id": "CAT333",
+          "name": "Laptop",
+          "description": "Powerful computer for your remote life."
+        },
         "id": "PRO100012301611",
         "name": "MacBook Pro 16-inch",
         "description": "High-performance laptop for professionals.",
@@ -181,17 +198,21 @@
             { "id": "IMG310133", "idProduct": "PRO100012301611", "url": "https://picsum.photos/seed/laptop_3/300/300" }
         ],
         "reviews": [
-            { "id": "REV1130009", "idProduct": "PRO100012301611", "idUser": "USE1518", 
-                "star": 5, "title": "Amazing performance", 
+            { "id": "REV1130009", "idProduct": "PRO100012301611", "idUser": "USE1518",
+                "star": 5, "title": "Amazing performance",
                 "review": "The MacBook Pro exceeded my expectations. Super fast and reliable." },
-            { "id": "REV1130010", "idProduct": "PRO100012301611", "idUser": "USE1296", 
-                "star": 4, "title": "Great for professionals", 
+            { "id": "REV1130010", "idProduct": "PRO100012301611", "idUser": "USE1296",
+                "star": 4, "title": "Great for professionals",
                 "review": "Works perfectly, but the price is steep." }
-        
+
         ]
     },
     {
-        "category": "CAT333",
+        "category": {
+          "id": "CAT333",
+          "name": "Laptop",
+          "description": "Powerful computer for your remote life."
+        },
         "id": "PRO100012302148",
         "name": "Dell XPS 13 Plus",
         "description": "Sleek and compact laptop for everyday use.",
@@ -231,7 +252,11 @@
         ]
     },
     {
-        "category": "CAT333",
+        "category": {
+          "id": "CAT333",
+          "name": "Laptop",
+          "description": "Powerful computer for your remote life."
+        },
         "id": "PRO100012302685",
         "name": "ASUS ROG Zephyrus G14",
         "description": "Gaming laptop with powerful specs.",
@@ -271,7 +296,11 @@
         ]
     },
     {
-        "category": "CAT444",
+        "category":  {
+          "id": "CAT444",
+          "name": "Phone",
+          "description": "Flagship from the biggest company in the world."
+        },
         "id": "PRO100012303222",
         "name": "iPhone 14 Pro",
         "description": "Flagship smartphone with advanced camera and features.",
@@ -311,7 +340,11 @@
         ]
     },
     {
-        "category": "CAT444",
+        "category":  {
+          "id": "CAT444",
+          "name": "Phone",
+          "description": "Flagship from the biggest company in the world."
+        },
         "id": "PRO100012306510",
         "name": "iPhone 15 Pro",
         "description": "Latest Apple iPhone with powerful A17 chip, Pro camera system, and dynamic island.",
@@ -360,7 +393,11 @@
         ]
     },
     {
-        "category": "CAT444",
+        "category":  {
+          "id": "CAT444",
+          "name": "Phone",
+          "description": "Flagship from the biggest company in the world."
+        },
         "id": "PRO100012306800",
         "name": "Samsung Galaxy S23 Ultra",
         "description": "Samsung's flagship smartphone with advanced camera and performance.",
@@ -400,7 +437,11 @@
         ]
     },
     {
-        "category": "CAT555",
+        "category":  {
+          "id": "CAT555",
+          "name": "Monitor",
+          "description": "Monitor to suit all your needs. Gaming, creating, working, we have it."
+        },
         "id": "PRO100012304125",
         "name": "Dell UltraSharp U2723QE",
         "description": "27-inch 4K monitor with precise color accuracy.",
@@ -443,7 +484,11 @@
         ]
     },
     {
-        "category": "CAT555",
+        "category":  {
+          "id": "CAT555",
+          "name": "Monitor",
+          "description": "Monitor to suit all your needs. Gaming, creating, working, we have it."
+        },
         "id": "PRO100012304875",
         "name": "Samsung Odyssey G7",
         "description": "32-inch curved gaming monitor with high refresh rate.",
@@ -483,7 +528,11 @@
         ]
     },
     {
-        "category": "CAT555",
+        "category":  {
+          "id": "CAT555",
+          "name": "Monitor",
+          "description": "Monitor to suit all your needs. Gaming, creating, working, we have it."
+        },
         "id": "PRO100012305021",
         "name": "LG 34WN80C-B",
         "description": "34-inch ultrawide monitor for productivity and content creation.",
@@ -524,7 +573,11 @@
     },
 
     {
-        "category": "CAT666",
+        "category": {
+          "id": "CAT666",
+          "name": "Headphone",
+          "description": "Classic headphones or in-ear for the best sound."
+        },
         "id": "PRO100012305536",
         "name": "Sony WH-1000XM5",
         "description": "Premium noise-canceling wireless headphones.",
@@ -573,7 +626,11 @@
         ]
     },
     {
-        "category": "CAT666",
+        "category":{
+          "id": "CAT666",
+          "name": "Headphone",
+          "description": "Classic headphones or in-ear for the best sound."
+        },
         "id": "PRO100012306021",
         "name": "Bose QuietComfort 45",
         "description": "Comfortable noise-canceling headphones with superior sound.",
@@ -623,7 +680,11 @@
     },
 
     {
-        "category": "CAT666",
+        "category": {
+          "id": "CAT666",
+          "name": "Headphone",
+          "description": "Classic headphones or in-ear for the best sound."
+        },
         "id": "PRO100012306431",
         "name": "Sennheiser Momentum 4",
         "description": "High-quality wireless headphones with great sound.",

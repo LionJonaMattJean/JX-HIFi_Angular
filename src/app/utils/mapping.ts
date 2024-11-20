@@ -5,6 +5,9 @@ import { ShortSpecification } from '../models/ShortSpecification';
 import { Review } from '../models/Review';
 import { Image } from '../models/Image';
 
+
+
+
 // Function to map JSON data to Category objects
 export function mapJsonToCategories(jsonData: any[]): Category[] {
   return jsonData.map(item => new Category(item.name, item.description));
@@ -17,14 +20,17 @@ export function mapJsonToProducts(jsonData: any[]): Product[] {
     const shortSpecifications = item.shortSpecifications.map((spec: any) => new ShortSpecification(spec.title, spec.description));
     const reviews = item.reviews.map((review: any) => new Review(review.id, review.idProduct, review.idUser, review.star, review.title, review.review));
     const images = item.images.map((image: any) => new Image(image.idProduct, image.url));
-
+    const category = new Category(item.category.name, item.category.description);
+    category.id=item.category.id;
     return new Product(
+
       item.name,
       item.description,
       item.sellPrice,
       item.costPrice,
       item.stock,
-      item.category,
+      category,
+
       item.colors,
       specificationDetails,
       shortSpecifications,
