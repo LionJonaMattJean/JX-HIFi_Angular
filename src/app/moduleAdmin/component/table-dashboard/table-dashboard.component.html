@@ -1,17 +1,20 @@
 <table class="table table-sm small-table table-bordered table-striped">
   <thead>
   <tr>
-    <th *ngFor="let column of displayedColumns">{{column}}</th>
+    <th *ngFor="let column of displayColumns">{{columnNames[column]||column}}</th>
     <th>Actions</th>
   </tr>
   </thead>
   <tbody id="table-body">
   <tr *ngFor="let row of dataBinding">
-    <td *ngFor="let column of displayedColumns">{{row[column]}}</td>
+    <td *ngFor="let column of displayColumns">{{row[column]}}</td>
     <td>
-      <a  class="text-primary action-link " onclick="onEditClick(row)">Modifier</a>&emsp;
-      <a  class="text-primary action-link" onclick="onDetailsClick(row)">Details</a>  &emsp;
-      <a  class="text-primary action-link" onclick="onDeleteClick(row)">Supprimer</a>
+      <app-action-link-dashboard
+      [id]="row.id"
+      (modifyEvent)="editEvent.emit($event)"
+      (detailsEvent)="detailsEvent.emit($event)"
+      (deleteEvent)="deleteEvent.emit($event)"
+      ></app-action-link-dashboard>
     </td>
   </tr>
   </tbody>

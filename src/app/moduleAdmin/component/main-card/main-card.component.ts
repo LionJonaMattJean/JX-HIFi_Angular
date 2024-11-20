@@ -3,6 +3,7 @@ import {NavigationEnd, Router} from '@angular/router';
 import {filter} from 'rxjs';
 import {NgIf} from '@angular/common';
 import {TableDashboardComponent} from '../table-dashboard/table-dashboard.component';
+import {ProductsService} from '../../../services/products.service';
 
 @Component({
   selector: 'app-main-card',
@@ -20,7 +21,10 @@ export class MainCardComponent implements OnInit{
   headerText: string = "Tableau de bord";
   ajout: string="Ajouter";
   isNotIndex: boolean=false;
-  constructor(private router:Router) { }
+  displayColumns!: string[];
+  columnNames: { [key: string]: string } = {};
+  data!: any[];
+  constructor(private router:Router,private productsService:ProductsService) { }
 
   ngOnInit() {
     this.router.events.pipe(
@@ -49,6 +53,14 @@ export class MainCardComponent implements OnInit{
         this.headerText = "Gestion des produits";
         this.isNotIndex = true;
         this.ajout="Ajouter un produit";
+        this.displayColumns=['id','name','sellPrice','category'];
+        this.columnNames={
+          id:'ID',
+          name:'Nom',
+          sellPrice:'Prix de vente',
+          category:'Catégorie'
+        }
+        this.productsService.getProducts().subscribe(data=>this.data=data);
         break;
       case 'categories':
         this.headerText = "Gestion des catégories";
@@ -68,4 +80,16 @@ export class MainCardComponent implements OnInit{
     }
   }
 
+  onEdit(row:any) {
+    console.log('Modifier:', row);
+  }
+
+  onDetails(row: any) {
+    console.log('Détails:', row);
+  }
+
+  onDelete(row: any) {
+    console.log('Supprimer:', row.id);
+    this.data = this.data.filter(d => d.id !== row.id);
+  }
 }

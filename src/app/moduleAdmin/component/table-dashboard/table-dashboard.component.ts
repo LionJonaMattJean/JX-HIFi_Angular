@@ -1,11 +1,13 @@
 import {Component, EventEmitter, Input, Output, output} from '@angular/core';
 import {NgForOf} from '@angular/common';
+import {ActionLinkDashboardComponent} from '../action-link-dashboard/action-link-dashboard.component';
 
 @Component({
   selector: 'app-table-dashboard',
   standalone: true,
   imports: [
-    NgForOf
+    NgForOf,
+    ActionLinkDashboardComponent
   ],
   templateUrl: './table-dashboard.component.html',
   styleUrl: '../../style-admin.css'
@@ -13,23 +15,28 @@ import {NgForOf} from '@angular/common';
 export class TableDashboardComponent {
 @Input() dataBinding: any[]=[];
 @Input() displayColumns: string[]=[];
+@Input() id!:string;
+@Input() columnNames: { [key: string]: string } = {};
 
-@Output() editEvent=new EventEmitter<any>();
-@Output() deleteEvent=new EventEmitter<any>();
-@Output() viewEvent=new EventEmitter<any>();
+@Output() editEvent=new EventEmitter<string>();
+@Output() deleteEvent=new EventEmitter<string>();
+@Output() detailsEvent=new EventEmitter<string>();
 
 
   constructor() { }
 
-  onEditClick(row: any){
+  onEdit(id: string) {
+    const row = this.dataBinding.find((item) => item.id === id);
     this.editEvent.emit(row);
   }
 
-  onDeleteClick(row: any){
-    this.deleteEvent.emit(row);
+  onDetails(id: string) {
+    const row = this.dataBinding.find((item) => item.id === id);
+    this.detailsEvent.emit(row);
   }
 
-  onDetailsClick(row: any){
-    this.viewEvent.emit(row);
+  onDelete(id: string) {
+    const row = this.dataBinding.find((item) => item.id === id);
+    this.deleteEvent.emit(row);
   }
 }
