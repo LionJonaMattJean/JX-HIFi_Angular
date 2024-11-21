@@ -21,7 +21,7 @@ export function mapJsonToProducts(jsonData: any[]): Product[] {
     const reviews = item.reviews.map((review: any) => new Review(review.id, review.idProduct, review.idUser, review.star, review.title, review.review));
     const images = item.images.map((image: any) => new Image(image.idProduct, image.url));
     const category = new Category(item.category.name, item.category.description);
-    category.id=item.category.id;
+    category.id = item.category.id;
     return new Product(
 
       item.name,

@@ -1,16 +1,14 @@
 import { Component } from '@angular/core';
-import {AcceuilLionComponent} from '../acceuil-lion/acceuil-lion.component';
-import {FooterComponent} from '../../shared/footer-lion/footer.component';
-import {HeaderComponent} from '../../shared/header-jean/header.component';
+import { AcceuilLionComponent } from '../acceuil-lion/acceuil-lion.component';
 import { RouterOutlet } from '@angular/router';
+import { SharedModule } from '../../shared/shared.module';
 
 @Component({
   selector: 'app-main-site',
   standalone: true,
   imports: [
     AcceuilLionComponent,
-    FooterComponent,
-    HeaderComponent,
+    SharedModule,
     RouterOutlet
   ],
   templateUrl: './main-site.component.html',
