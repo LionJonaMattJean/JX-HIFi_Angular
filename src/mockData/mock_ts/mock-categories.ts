@@ -1,4 +1,4 @@
-import { Category } from "../../app/models/Category";
+/*import { Category } from "../../app/models/Category";
 
 export const listCategories: Category[] = [
     new Category("Desktop", "Pre-built computer for you daily work from home of office."),
@@ -8,7 +8,7 @@ export const listCategories: Category[] = [
     new Category("Headphone", "Classic headphones or in-ear for the best sounds."),
     new Category("Sales", "Every product in sales at right now and for a limited time.")
 ]
-
+*
 // output with id:
 /*
 id     │ name

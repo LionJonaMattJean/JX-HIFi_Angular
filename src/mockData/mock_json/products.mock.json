@@ -48,7 +48,8 @@
             { "id": "REV1130002", "idProduct": "PRO100012300000", "idUser": "USE1407",
                 "star": 3, "title": "Good but noisy",
                 "review": "Works fine but the fan is a bit noisy for my taste." }
-        ]
+        ],
+      "onSale": false
     },
     {
         "category": {
@@ -95,7 +96,8 @@
             { "id": "REV1130004", "idProduct": "PRO100012300537", "idUser": "USE1074",
                 "star": 3, "title": "Good but not great",
                 "review": "It works fine but I expected more for the price." }
-        ]
+        ],
+      "onSale": false
     },
     {
         "category": {
@@ -160,7 +162,8 @@
             { "id": "REV1130045", "idProduct": "PRO100012301074", "idUser": "USE1259",
                 "star": 5, "title": "Powerful and elegant",
                 "review": "The M1 chip handles everything with ease. It's a joy to use, and the color options are fun too!" }
-        ]
+        ],
+      "onSale": false
     },
     {
         "category": {
@@ -205,7 +208,8 @@
                 "star": 4, "title": "Great for professionals",
                 "review": "Works perfectly, but the price is steep." }
 
-        ]
+        ],
+      "onSale": false
     },
     {
         "category": {
@@ -249,7 +253,8 @@
             { "id": "REV1130012", "idProduct": "PRO100012302148", "idUser": "USE1037",
                 "star": 5, "title": "Perfect for professionals",
                 "review": "This laptop has everything I need for work, especially its portability and stunning display."}
-        ]
+        ],
+      "onSale": false
     },
     {
         "category": {
@@ -293,7 +298,8 @@
             { "id": "REV1130014", "idProduct": "PRO100012302685", "idUser": "USE1111",
                 "star": 4, "title": "Solid performance",
                 "review": "This laptop is powerful and compact but could have better battery life for non-gaming tasks." }
-        ]
+        ],
+      "onSale": false
     },
     {
         "category":  {
@@ -337,7 +343,8 @@
             { "id": "REV1130016", "idProduct": "PRO100012303222", "idUser": "USE1185",
                 "star": 3, "title": "Decent but overpriced",
                 "review": "While the features are good, I expected more for the price compared to competitors." }
-        ]
+        ],
+      "onSale": false
     },
     {
         "category":  {
@@ -390,7 +397,8 @@
             { "id": "REV1130042", "idProduct": "PRO100012306510", "idUser": "USE1111",
                 "star": 5, "title": "The best iPhone ever",
                 "review": "Dynamic Island is so useful, and the build quality is excellent. Totally worth upgrading from older models." }
-        ]
+        ],
+      "onSale": false
     },
     {
         "category":  {
@@ -434,7 +442,8 @@
             { "id": "REV1130020", "idProduct": "PRO100012306800", "idUser": "USE1333",
                 "star": 5, "title": "A complete package",
                 "review": "Excellent camera, battery life, and design. Samsung nailed it with this flagship." }
-        ]
+        ],
+      "onSale": false
     },
     {
         "category":  {
@@ -481,7 +490,8 @@
             { "id": "REV1130039", "idProduct": "PRO100012304125", "idUser": "USE1481",
                 "star": 4, "title": "Excellent monitor",
                 "review": "The Dell UltraSharp U2723QE is perfect for professional use. However, the price is a bit high compared to competitors." }
-        ]
+        ],
+      "onSale": false
     },
     {
         "category":  {
@@ -525,7 +535,8 @@
             { "id": "REV1130024", "idProduct": "PRO100012304875", "idUser": "USE1481",
                 "star": 4, "title": "Stunning visuals",
                 "review": "The monitor delivers sharp visuals, but I found the setup process slightly complex." }
-        ]
+        ],
+      "onSale": false
     },
     {
         "category":  {
@@ -569,7 +580,8 @@
             { "id": "REV1130026", "idProduct": "PRO100012305021", "idUser": "USE1000",
                 "star": 4, "title": "Good for the price",
                 "review": "This monitor is great for work but lacks higher refresh rates for gaming." }
-        ]
+        ],
+      "onSale": false
     },
 
     {
@@ -623,7 +635,8 @@
             { "id": "REV1130038", "idProduct": "PRO100012305536", "idUser": "USE1444",
                 "star": 5, "title": "Great for calls and music",
                 "review": "I use them for work and leisure, and they deliver great sound quality for both. Highly recommended!" }
-        ]
+        ],
+      "onSale": false
     },
     {
         "category":{
@@ -676,7 +689,8 @@
             { "id": "REV1130035", "idProduct": "PRO100012306021", "idUser": "USE1333",
                 "star": 4, "title": "Reliable performance",
                 "review": "Great battery life and comfort for long hours of work. The design is sleek and professional." }
-        ]
+        ],
+      "onSale": false
     },
 
     {
@@ -721,6 +735,7 @@
             { "id": "REV1130032", "idProduct": "PRO100012306431", "idUser": "USE1222",
                 "star": 4, "title": "Great sound",
                 "review": "The audio quality is excellent, but the headphones feel a bit bulky." }
-        ]
+        ],
+      "onSale": false
     }
 ]
