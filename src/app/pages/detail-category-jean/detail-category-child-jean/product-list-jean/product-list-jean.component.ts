@@ -1,8 +1,6 @@
-import { Component, inject, Input } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { Product } from '../../../../models/Product';
-import { ProductsService } from '../../../../services/products.service';
-import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-product-list-jean',
