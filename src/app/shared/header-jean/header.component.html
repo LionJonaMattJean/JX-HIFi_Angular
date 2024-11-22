@@ -37,7 +37,7 @@
 </nav>
 <div class="categoryNav container-fluid d-md-flex justify-content-center py-1 gap-4 d-none">
     <div *ngFor="let cat of listCategory; let i = index" class="d-flex gap-4">
-        <a class="categoryShortcut" [routerLink]="['products']" 
+        <a class="categoryShortcut" [routerLink]="['products/', cat.id]" 
         [innerHTML]="cat.id === 'CAT111' ? '<b>' + cat.name + '</b>' : cat.name"></a>
         <div *ngIf="i < listCategory.length - 1" class="separator"></div>
     </div>

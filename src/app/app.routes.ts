@@ -11,6 +11,7 @@ import { SupportLionComponent } from './pages/support-lion/support-lion.componen
 import { AdminLayoutComponent } from './moduleAdmin/pages/layout/admin-layout/admin-layout.component';
 import { AcceuilLionComponent } from './pages/acceuil-lion/acceuil-lion.component';
 import { CatProductDisplayComponent } from './pages/detail-category-jean/cat-product-display/cat-product-display.component';
+import { DetailProductParentJeanComponent } from './pages/detail-product-jean/detail-product-parent-jean/detail-product-parent-jean.component';
 
 export const routes: Routes = [
   {
@@ -19,7 +20,8 @@ export const routes: Routes = [
       { path: 'home', component: AcceuilLionComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'support', component: SupportLionComponent },
-      { path: 'products', component: CatProductDisplayComponent },
+      { path: 'products/:categoryId', component: CatProductDisplayComponent },
+      { path: 'detail_product/:productId', component: DetailProductParentJeanComponent},
     ]
   },
 

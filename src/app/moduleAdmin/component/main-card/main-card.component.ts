@@ -97,7 +97,7 @@ export class MainCardComponent implements OnInit{
       sellPrice: 'Prix de vente',
       category: 'Catégorie'
     };
-    this.productsService.getProducts().subscribe(data =>{
+    this.productsService.getAllProduct().subscribe(data =>{
       this.data = data;
       this.totalItems=data.length
       this.loadDataForPage();

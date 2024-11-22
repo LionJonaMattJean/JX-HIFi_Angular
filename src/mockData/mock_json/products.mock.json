@@ -377,9 +377,9 @@
             { "id": "QSPE32", "title": "Storage Options", "description": "128GB, 256GB, 512GB" }
         ],
         "images": [
-            { "id": "IMG310163", "idProduct": "PRO100012306510", "url": "https://picsum.photos/seed/phone_1/300/300" },
-            { "id": "IMG310166", "idProduct": "PRO100012306510", "url": "https://picsum.photos/seed/phone_2/300/300" },
-            { "id": "IMG310169", "idProduct": "PRO100012306510", "url": "https://picsum.photos/seed/phone_3/300/300" }
+            { "id": "IMG310163", "idProduct": "PRO100012306510", "url": "https://picsum.photos/seed/phone_4/300/300" },
+            { "id": "IMG310166", "idProduct": "PRO100012306510", "url": "https://picsum.photos/seed/phone_5/300/300" },
+            { "id": "IMG310169", "idProduct": "PRO100012306510", "url": "https://picsum.photos/seed/phone_6/300/300" }
         ],
         "reviews": [
             { "id": "REV1130017", "idProduct": "PRO100012306510", "idUser": "USE1222",
@@ -431,9 +431,9 @@
             { "id": "QSPE36", "title": "Storage Options", "description": "256GB, 512GB, 1TB" }
         ],
         "images": [
-            { "id": "IMG310172", "idProduct": "PRO100012306800", "url": "https://picsum.photos/seed/phone_4/300/300" },
-            { "id": "IMG310175", "idProduct": "PRO100012306800", "url": "https://picsum.photos/seed/phone_5/300/300" },
-            { "id": "IMG310178", "idProduct": "PRO100012306800", "url": "https://picsum.photos/seed/phone_6/300/300" }
+            { "id": "IMG310172", "idProduct": "PRO100012306800", "url": "https://picsum.photos/seed/phone_7/300/300" },
+            { "id": "IMG310175", "idProduct": "PRO100012306800", "url": "https://picsum.photos/seed/phone_8/300/300" },
+            { "id": "IMG310178", "idProduct": "PRO100012306800", "url": "https://picsum.photos/seed/phone_9/300/300" }
         ],
         "reviews": [
             { "id": "REV1130019", "idProduct": "PRO100012306800", "idUser": "USE1296",

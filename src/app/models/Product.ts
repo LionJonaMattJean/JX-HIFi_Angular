@@ -4,11 +4,8 @@ import { ShortSpecification } from './ShortSpecification';
 import { Review } from './Review';
 import { Image } from './Image';
 
-
-
 export interface Product {
-
-
+  // todo add brand attribut please :D
   category: Category;
   id: string;
   name: string;
@@ -20,9 +17,7 @@ export interface Product {
   colors: string[];
   specificationDetails: SpecificationDetails[];
   shortSpecifications: ShortSpecification[];
-  images:Image[];
+  images: Image[];
   reviews: Review[];
-
   onSale: boolean;
-
 }
