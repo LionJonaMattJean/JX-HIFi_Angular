@@ -7,6 +7,7 @@
         }
         ,
         "id": "PRO100012300000",
+        "brand": "HP",
         "name": "HP Envy Desktop",
         "description": "Powerful desktop for multitasking and gaming.",
         "sellPrice": 1299,
@@ -58,6 +59,7 @@
           "description": "Pre-built computer for your daily work from home or office."
         },
         "id": "PRO100012300537",
+        "brand": "Dell",
         "name": "Dell XPS Desktop",
         "description": "Sleek desktop for professionals.",
         "sellPrice": 1549,
@@ -106,6 +108,7 @@
           "description": "Pre-built computer for your daily work from home or office."
         },
         "id": "PRO100012301074",
+        "brand": "Apple",
         "name": "Apple iMac 24-inch",
         "description": "All-in-one desktop with Retina display.",
         "sellPrice": 1899,
@@ -173,6 +176,7 @@
         },
         "id": "PRO100012301611",
         "name": "MacBook Pro 16-inch",
+        "brand": "Apple",
         "description": "High-performance laptop for professionals.",
         "sellPrice": 2499,
         "costPrice": 2300,
@@ -218,7 +222,9 @@
           "description": "Powerful computer for your remote life."
         },
         "id": "PRO100012302148",
+        "brand": "Dell",
         "name": "Dell XPS 13 Plus",
+
         "description": "Sleek and compact laptop for everyday use.",
         "sellPrice": 1399,
         "costPrice": 1250,
@@ -263,6 +269,7 @@
           "description": "Powerful computer for your remote life."
         },
         "id": "PRO100012302685",
+        "brand": "ASUS",
         "name": "ASUS ROG Zephyrus G14",
         "description": "Gaming laptop with powerful specs.",
         "sellPrice": 1599,
@@ -308,6 +315,7 @@
           "description": "Flagship from the biggest company in the world."
         },
         "id": "PRO100012303222",
+        "brand": "Apple",
         "name": "iPhone 14 Pro",
         "description": "Flagship smartphone with advanced camera and features.",
         "sellPrice": 999,
@@ -353,6 +361,7 @@
           "description": "Flagship from the biggest company in the world."
         },
         "id": "PRO100012306510",
+        "brand": "Apple",
         "name": "iPhone 15 Pro",
         "description": "Latest Apple iPhone with powerful A17 chip, Pro camera system, and dynamic island.",
         "sellPrice": 1099,
@@ -407,6 +416,7 @@
           "description": "Flagship from the biggest company in the world."
         },
         "id": "PRO100012306800",
+        "brand": "Samsung",
         "name": "Samsung Galaxy S23 Ultra",
         "description": "Samsung's flagship smartphone with advanced camera and performance.",
         "sellPrice": 1199,
@@ -452,6 +462,7 @@
           "description": "Monitor to suit all your needs. Gaming, creating, working, we have it."
         },
         "id": "PRO100012304125",
+        "brand": "Dell",
         "name": "Dell UltraSharp U2723QE",
         "description": "27-inch 4K monitor with precise color accuracy.",
         "sellPrice": 799,
@@ -500,6 +511,7 @@
           "description": "Monitor to suit all your needs. Gaming, creating, working, we have it."
         },
         "id": "PRO100012304875",
+        "brand": "Samsung",
         "name": "Samsung Odyssey G7",
         "description": "32-inch curved gaming monitor with high refresh rate.",
         "sellPrice": 699,
@@ -545,6 +557,7 @@
           "description": "Monitor to suit all your needs. Gaming, creating, working, we have it."
         },
         "id": "PRO100012305021",
+        "brand": "LG",
         "name": "LG 34WN80C-B",
         "description": "34-inch ultrawide monitor for productivity and content creation.",
         "sellPrice": 499,
@@ -591,6 +604,7 @@
           "description": "Classic headphones or in-ear for the best sound."
         },
         "id": "PRO100012305536",
+        "brand": "Sony",
         "name": "Sony WH-1000XM5",
         "description": "Premium noise-canceling wireless headphones.",
         "sellPrice": 349,
@@ -645,6 +659,7 @@
           "description": "Classic headphones or in-ear for the best sound."
         },
         "id": "PRO100012306021",
+        "brand": "Bose",
         "name": "Bose QuietComfort 45",
         "description": "Comfortable noise-canceling headphones with superior sound.",
         "sellPrice": 329,
@@ -700,6 +715,7 @@
           "description": "Classic headphones or in-ear for the best sound."
         },
         "id": "PRO100012306431",
+        "brand": "Sennheiser",
         "name": "Sennheiser Momentum 4",
         "description": "High-quality wireless headphones with great sound.",
         "sellPrice": 379,

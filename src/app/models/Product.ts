@@ -5,9 +5,10 @@ import { Review } from './Review';
 import { Image } from './Image';
 
 export interface Product {
-  // todo add brand attribut please :D
+
   category: Category;
   id: string;
+  brand: string;
   name: string;
   description: string;
   sellPrice: number;
