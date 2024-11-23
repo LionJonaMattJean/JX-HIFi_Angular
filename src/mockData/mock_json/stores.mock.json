@@ -1,0 +1,15 @@
+[
+    {
+        "idStore": "ALPHA1",
+        "addresse" : "221-B Baker Street"
+    },
+    {
+        "idStore": "BRAVO2",
+        "addresse" : "994 Saints Row Road"
+    },
+    {
+        "idStore": "CHARLIE3",
+        "addresse" : "4475 Industrial Avenue"
+    }
+
+]
