@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import { NavigationEnd, Router} from '@angular/router';
+import {NavigationEnd, Router, RouterLink} from '@angular/router';
 import {filter} from 'rxjs';
 import {NgIf} from '@angular/common';
 import {TableDashboardComponent} from '../table-dashboard/table-dashboard.component';
 import {ProductsService} from '../../../services/products.service';
 import {CategoryService} from '../../../services/category.service';
 import {PaginationDashboardComponent} from '../pagination-dashboard/pagination-dashboard.component';
+
 
 @Component({
   selector: 'app-main-card',
@@ -15,6 +16,8 @@ import {PaginationDashboardComponent} from '../pagination-dashboard/pagination-d
     NgIf,
     TableDashboardComponent,
     PaginationDashboardComponent,
+    RouterLink,
+
 
   ],
   templateUrl: './main-card.component.html',
@@ -32,7 +35,11 @@ export class MainCardComponent implements OnInit{
   currentPage: number = 1;
   totalPages: number=0;
   pageData!: any[];
-  constructor(private router:Router,private productsService:ProductsService,private categoriesService:CategoryService) { }
+  entityType!: string;
+  urlAjout!: string;
+
+
+  constructor(private router:Router,public productsService:ProductsService,private categoriesService:CategoryService) { }
 
   ngOnInit() {
     this.router.events.pipe(
@@ -45,7 +52,7 @@ export class MainCardComponent implements OnInit{
   }
 
   updateHeaderText(){
-    const currentRoute =this.router.url.split('/').pop();
+    const currentRoute =this.router.url.split('/')[2];
     this.resetDefaults();
     switch (currentRoute) {
       case 'indexAdmin':
@@ -88,9 +95,11 @@ export class MainCardComponent implements OnInit{
 
   setupProducts() {
     this.headerText = "Gestion des produits";
+    this.urlAjout = '/admin/products/ajout';
     this.isNotIndex = true;
     this.ajout = "Ajouter un produit";
     this.displayColumns = ['id', 'name', 'sellPrice', 'category'];
+    this.entityType="products";
     this.columnNames = {
       id: 'ID',
       name: 'Nom',
@@ -152,16 +161,5 @@ export class MainCardComponent implements OnInit{
     const end=start+this.itemsPerPage;
     this.pageData=this.data.slice(start,end);
   }
-  onEdit(row:any) {
-    console.log('Modifier:', row);
-  }
 
-  onDetails(row: any) {
-    console.log('Détails:', row);
-  }
-
-  onDelete(row: any) {
-    console.log('Supprimer:', row);
-    this.data = this.data.filter(d => d.id !== row);
-  }
 }

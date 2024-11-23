@@ -133,7 +133,11 @@
   width: 100%; /* Ensure the main card takes the full width of its container */
   height: 100%; /* Ensure the main card takes the full height of its container */
 }
+.img-details {
+  width: 50%;
+  height: 50%;
 
+}
 
 /* Media Queries for Responsive Adjustments */
 @media (max-width: 1510px) {

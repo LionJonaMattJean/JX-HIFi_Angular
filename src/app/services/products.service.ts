@@ -42,7 +42,7 @@ export class ProductsService {
   }
 
   getProductById(id: string): Observable<Product | undefined> {
-    const product = mockData.find(p => p.id === id);
+   const product:Product|undefined = mockData.find(p => p.id === id);
     return of(product);
   }
 
