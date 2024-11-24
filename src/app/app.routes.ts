@@ -36,6 +36,7 @@ import {StoreDetailComponent} from './moduleAdmin/pages/StoreSection/store-detai
 import {StoreModifyComponent} from './moduleAdmin/pages/StoreSection/store-modify/store-modify.component';
 import {StoreDeleteComponent} from './moduleAdmin/pages/StoreSection/store-delete/store-delete.component';
 import {StoreAjoutComponent} from './moduleAdmin/pages/StoreSection/store-ajout/store-ajout.component';
+import {ParameterComponent} from './moduleAdmin/pages/parameter/parameter.component';
 
 export const routes: Routes = [
   {
@@ -83,6 +84,7 @@ export const routes: Routes = [
       { path: 'stores/modify/:id', component: StoreModifyComponent },
       { path: 'stores/delete/:id', component: StoreDeleteComponent },
       { path: 'stores/ajout', component: StoreAjoutComponent },
+      { path: 'parameter',component: ParameterComponent}
     ]
   }
 ];
