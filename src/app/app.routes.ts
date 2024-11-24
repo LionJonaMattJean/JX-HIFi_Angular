@@ -28,6 +28,10 @@ import {
 import {
   CategoriesAjoutComponent
 } from './moduleAdmin/pages/CategorySection/categories-ajout/categories-ajout.component';
+import {UserDetailComponent} from './moduleAdmin/pages/UserSection/user-detail/user-detail.component';
+import {UserModifyComponent} from './moduleAdmin/pages/UserSection/user-modify/user-modify.component';
+import {UserDeleteComponent} from './moduleAdmin/pages/UserSection/user-delete/user-delete.component';
+import {UserAjoutComponent} from './moduleAdmin/pages/UserSection/user-ajout/user-ajout.component';
 
 export const routes: Routes = [
   {
@@ -49,17 +53,25 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'indexAdmin', pathMatch: 'full' },
       { path: 'indexAdmin', component: AdminDashboardComponent },
+
       { path: 'users', component: UsersDashboardComponent },
+      { path: 'users/details/:id', component: UserDetailComponent },
+      { path: 'users/modify/:id', component: UserModifyComponent },
+      { path: 'users/delete/:id', component: UserDeleteComponent },
+      { path: 'users/ajout', component: UserAjoutComponent},
+
       { path: 'products', component: ProductsDashboardComponent },
       { path: 'products/details/:id', component: ProduitsDetailComponent },
       { path: 'products/modify/:id', component: ProductModifyComponent },
       { path: 'products/delete/:id', component: ProductDeleteComponent },
       { path: 'products/ajout', component: ProduitAjoutComponent },
+
       { path: 'categories', component: CategoriesDashboardComponent },
       { path: 'categories/details/:id', component: CategoriesDetailComponent },
       { path: 'categories/modify/:id', component: CategoriesModifyComponent},
       { path: 'categories/delete/:id', component: CategoriesDeleteComponent},
       { path: 'categories/ajout', component: CategoriesAjoutComponent},
+
 
       { path: 'orders', component: OrdersDashboardComponent },
       { path: 'stores', component: StoreDashboardComponent }

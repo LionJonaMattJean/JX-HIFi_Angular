@@ -14,6 +14,7 @@
     "country": "Canada"
   },
   "role": "customer",
+  "isDeleted": false,
   "orders":[{
 
   "id": "order001",
@@ -117,7 +118,9 @@
       "postalCode": "M4B 1B4",
       "country": "Canada"
     },
-    "orders": []
+    "orders": [],
+    "isDeleted": false,
+    "role": "customer"
   },
   {
     "id": "USE1074",
@@ -133,7 +136,9 @@
       "postalCode": "V5K 3Z4",
       "country": "Canada"
     },
-    "orders": []
+    "orders": [],
+    "isDeleted": false,
+    "role": "customer"
   }
 
 ]

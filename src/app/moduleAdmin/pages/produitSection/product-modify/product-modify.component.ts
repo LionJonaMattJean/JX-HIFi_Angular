@@ -72,4 +72,8 @@ export class ProductModifyComponent implements OnInit {
   addColor() {
     this.produit?.colors.push('');
   }
+
+  modifyProduit() {
+
+  }
 }

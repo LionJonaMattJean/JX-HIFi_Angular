@@ -80,4 +80,8 @@ export class ProduitAjoutComponent implements OnInit {
   addColor() {
     this.produit?.colors.push('');
   }
+
+  addProduit() {
+
+  }
 }

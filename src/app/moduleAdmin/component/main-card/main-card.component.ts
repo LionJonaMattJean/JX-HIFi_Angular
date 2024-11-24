@@ -38,7 +38,10 @@ export class MainCardComponent implements OnInit{
   pageData!: any[];
   entityType!: string;
   urlAjout!: string;
-
+  toggle!: string;
+  isUser!: boolean;
+  isOrder!: boolean;
+  showDeactivated: boolean = false;
 
   constructor(private router:Router,
               public productsService:ProductsService,
@@ -92,6 +95,9 @@ export class MainCardComponent implements OnInit{
     this.currentPage = 1;
     this.urlAjout="";
     this.entityType="";
+    this.toggle="";
+    this.isUser=false;
+    this.isOrder=false;
   }
 
   setupAdmin(){
@@ -149,6 +155,9 @@ export class MainCardComponent implements OnInit{
   setupUsers() {
     this.headerText = "Gestion des utilisateurs";
     this.isNotIndex = true;
+    this.isUser=true;
+    this.toggle=" Voir Utilisateurs désactivés";
+    this.entityType="users";
     this.ajout = "Ajouter un utilisateur";
     this.urlAjout = '/admin/users/ajout';
     this.displayColumns = ['id','role' ,'firstName', 'lastName','address','email','phone'];
@@ -161,13 +170,7 @@ export class MainCardComponent implements OnInit{
       email: 'Email',
       phone: 'Téléphone'
     };
-    this.usersService.getUsers().subscribe(data =>{
-      this.data=data;
-      this.totalItems=data.length;
-      this.loadDataForPage();
-      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
-
-    });
+    this.loadAllUser();
   }
 
   setupStores() {
@@ -188,4 +191,26 @@ export class MainCardComponent implements OnInit{
     this.pageData=this.data.slice(start,end);
   }
 
+  viewDeactivatedUser() {
+    this.showDeactivated = !this.showDeactivated;
+    if(this.showDeactivated){
+      this.data=this.data.filter((data)=>data.isDeleted);
+      this.toggle="Voir Utilisateurs actifs";
+    }else {
+      this.loadAllUser();
+      this.toggle="Voir Utilisateur désactivés";
+    }
+
+    this.totalItems=this.data.length;
+    this.loadDataForPage();
+  }
+  loadAllUser() {
+    this.usersService.getUsers().subscribe(data =>{
+      this.data=data;
+      this.totalItems=data.length;
+      this.loadDataForPage();
+      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+
+    });
+  }
 }

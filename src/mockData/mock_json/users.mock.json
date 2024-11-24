@@ -13,7 +13,8 @@
             "postalCode": "H1A 2B3",
             "country": "Canada"
         },
-      "role": "customer"
+      "role": "customer",
+      "isDeleted": false
     },
     {
         "id": "USE1037",
@@ -29,7 +30,8 @@
             "postalCode": "M4B 1B4",
             "country": "Canada"
         },
-      "role": "customer"
+      "role": "customer",
+      "isDeleted": false
     },
     {
         "id": "USE1074",
@@ -45,7 +47,8 @@
             "postalCode": "V5K 3Z4",
             "country": "Canada"
         },
-      "role": "customer"
+      "role": "customer",
+      "isDeleted": false
     },
     {
         "id": "USE1111",
@@ -61,7 +64,8 @@
             "postalCode": "T2P 5C4",
             "country": "Canada"
         },
-      "role": "customer"
+      "role": "customer",
+      "isDeleted": false
     },
     {
         "id": "USE1148",
@@ -77,7 +81,8 @@
             "postalCode": "H2X 1Y7",
             "country": "Canada"
         },
-      "role": "customer"
+      "role": "customer",
+      "isDeleted": false
     },
     {
         "id": "USE1185",
@@ -93,7 +98,8 @@
             "postalCode": "M5A 4E2",
             "country": "Canada"
         },
-      "role": "customer"
+      "role": "customer",
+      "isDeleted": false
     },
     {
         "id": "USE1222",
@@ -109,7 +115,8 @@
             "postalCode": "V6B 5T1",
             "country": "Canada"
         },
-      "role": "customer"
+      "role": "customer",
+      "isDeleted": false
     },
     {
         "id": "USE1259",
@@ -125,7 +132,8 @@
             "postalCode": "K1A 0B1",
             "country": "Canada"
         },
-      "role": "customer"
+      "role": "customer",
+      "isDeleted": false
     },
     {
         "id": "USE1296",
@@ -141,7 +149,8 @@
             "postalCode": "G1A 1C5",
             "country": "Canada"
         },
-      "role": "customer"
+      "role": "customer",
+      "isDeleted": false
     },
     {
         "id": "USE1333",
@@ -157,7 +166,8 @@
             "postalCode": "H3A 2R7",
             "country": "Canada"
         },
-      "role": "customer"
+      "role": "customer",
+      "isDeleted": false
     },
     {
         "id": "USE1370",
@@ -173,7 +183,8 @@
             "postalCode": "M5J 2N2",
             "country": "Canada"
         },
-      "role": "customer"
+      "role": "customer",
+      "isDeleted": false
     },
     {
         "id": "USE1407",
@@ -189,7 +200,8 @@
             "postalCode": "V6J 4A3",
             "country": "Canada"
         },
-      "role": "customer"
+      "role": "customer",
+      "isDeleted": false
     },
     {
         "id": "USE1444",
@@ -205,10 +217,12 @@
             "postalCode": "T3A 5R6",
             "country": "Canada"
         },
-      "role": "customer"
+      "role": "customer",
+      "isDeleted": false
     },
     {
         "id": "USE1481",
+
         "email": "nina_y@gmail.com",
         "password": "pass14",
         "firstName": "Nina",
@@ -221,7 +235,8 @@
             "postalCode": "H3B 2V9",
             "country": "Canada"
         },
-      "role": "customer"
+      "role": "saleagent",
+      "isDeleted": false
     },
     {
         "id": "USE1518",
@@ -237,6 +252,7 @@
             "postalCode": "M4C 1Z2",
             "country": "Canada"
         },
-      "role": "administrator"
+      "role": "administrator",
+      "isDeleted": false
     }
 ]

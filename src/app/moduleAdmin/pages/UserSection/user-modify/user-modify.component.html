@@ -1,0 +1,37 @@
+<div class=" main-content-wrapper">
+  <div *ngIf="user" class=" p-4 row flex-lg-row align-items-center g-5 py-5">
+    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">{{user.firstName}} {{user.lastName}}</h1>
+
+    <div class="col-lg-6">
+      <form>
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Nom</label>
+          <input type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName" name="lastName">
+        </div>
+        <div class="mb-3">
+          <label for="firstName" class="form-label">Prénom</label>
+          <input type="text" class="form-control" id="firstName" [(ngModel)]="user.firstName" name="firstName">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" class="form-control" id="email" [(ngModel)]="user.email" name="email">
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Téléphone</label>
+          <input type="text" class="form-control" id="phone" [(ngModel)]="user.phone" name="phone">
+        </div>
+        <div *ngFor="let detail of addressDetail" class="mb-3">
+          <label for="{{detail.label}}" class="form-label">{{detail.label}}</label>
+          <input type="text" class="form-control" id="address" [(ngModel)]="detail.value" name="{{detail.label}}">
+        </div>
+
+      </form>
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start mx-5 mt-5">
+        <button routerLink="/admin/users" type="button" class="btn btn-primary btn-lg px-4 me-md-2">Retour</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

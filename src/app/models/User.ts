@@ -10,5 +10,6 @@ export interface User {
   phone: string;
   address: Address;
   role: string;
+  isDeleted: boolean;
 
 }

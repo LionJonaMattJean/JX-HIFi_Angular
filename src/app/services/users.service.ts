@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Observable, of} from 'rxjs';
+import {map, Observable, of} from 'rxjs';
 import { User } from '../models/User';
 import {Address} from '../models/Address';
 import mockdata from '../../mockData/mock_json/users.mock.json'
@@ -22,6 +22,12 @@ export class UsersService {
   getUsers(): Observable<User[]> {
    // return this.httpRequest.get<User[]>(this.dataLink);
     return of(mockdata)
+  }
+
+  getUserById(id: string): Observable<User> {
+    return this.getUsers().pipe(
+      map(users => users.find(user => user.id === id)!)
+    );
   }
   login(): void {
     // Implement login logic here
