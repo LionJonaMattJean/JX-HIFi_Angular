@@ -86,21 +86,21 @@
 
                 <div class="tab-pane fade" id="contact-us" role="tabpanel" aria-labelledby="list-contact-list">
                     <!--Begin Contact Us form-->
-                    <form id="formContact"  class="row g-3">
+                    <form [formGroup]="applyForm" (submit)="submitForm()" id="formContact" class="row g-3">
 
                         <div class="row">
                             <div class="col-12 col-md-6">
                                 <div class="mb-3"> <!--FIRST NAME-->
-                                    <label for="firstName" class="form-label">First Name</label>
-                                    <input type="" class="form-control" id="firstName" aria-describedby="">
+                                    <label for="firstName" class="form-label"><strong>First Name</strong> </label>
+                                    <input formControlName="firstName" type="text"  class="form-control" id="firstName" aria-describedby="">
                                 </div>
                             </div>
 
 
                             <div class="col-12 col-md-6">
                                 <div class="mb-3"> <!--PACKAGE NUMBER-->
-                                    <label for="packageNumber" class="form-label">Package Number (optional)</label>
-                                    <input type="" class="form-control" id="packageNumber">
+                                    <label for="packageNumber" class="form-label"><strong>Package Number (optional)</strong></label>
+                                    <input formControlName="package" type="text"   class="form-control" id="packageNumber">
                                 </div>
 
                             </div>
@@ -109,8 +109,8 @@
                         <div class="row">
                             <div class="col-12 col-md-6">
                                 <div class="mb-3"> <!--LAST NAME-->
-                                    <label for="lastName" class="form-label">Last Name</label>
-                                    <input type="email" class="form-control" id="lastName"
+                                    <label for="lastName" class="form-label"><strong>Last Name</strong></label>
+                                    <input type="text" formControlName="lastName"  class="form-control" id="lastName"
                                         aria-describedby="lastname">
 
                                 </div>
@@ -119,8 +119,8 @@
 
                             <div class="col-12 col-md-6">
                                 <div class="mb-3"> <!--EMAIL-->
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email">
+                                    <label for="email" class="form-label"><strong>Email</strong></label>
+                                    <input formControlName="email" type="email"   class="form-control" id="email">
                                     <div class="form-text">We'll never share your email with anyone else.</div>
                                 </div>
 
@@ -130,14 +130,14 @@
                         <div class="row-message">
                             <div class="col-12 col-md-6">
                                 <div class="mb-3"> <!--MESSAGE-->
-                                    <label for="message" class="form-label">Message</label>
-                                    <textarea rows="8" placeholder="Write your comments here : " class="form-control"
+                                    <label for="message" class="form-label"><strong>Message</strong></label>
+                                    <textarea rows="8" formControlName="message"  placeholder="Write your comments here : " class="form-control"
                                         id="message"></textarea>
                                 </div>
                             </div>
                         </div>
 
-                        <button type="button" style="width: 200px;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalMessage">
+                        <button id="sendButton" type="submit" style="width: 200px;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalMessage">
                             Send
                         </button>
                         
@@ -150,6 +150,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
+                                        <div id="testM"></div>
                                         Your message has been sent and we will review it as soon as we can. We hope to get back to you in a timely manner
                                         to fullfil your needs. Thank you and have a good day.
                                     </div>
