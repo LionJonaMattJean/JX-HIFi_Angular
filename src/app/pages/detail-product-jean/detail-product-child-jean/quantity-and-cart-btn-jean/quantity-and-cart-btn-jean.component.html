@@ -1,4 +1,4 @@
-<div class="d-flex align-items-center justify-content-around my-3">
+<div class="d-flex align-items-center justify-content-around my-3" *ngIf="stockInventory !== 0">
     <div class="d-flex quantity my-4">
         <img class="btnQty lessQty" src="assets/images/icons/dash-circle.svg" alt="less" (click)="removeQty()">
         <input type="number" [(ngModel)]="txtQty" class="txtQty text-center fw-bold form-control mx-2"
@@ -6,4 +6,8 @@
         <img class="btnQty plusQty" src="assets/images/icons/plus-circle-fill.svg" alt="plus" (click)="addQty()">
     </div>
     <button class="btnAdd btn" (click)="addToCart()">Add to Cart</button>
+</div>
+<div class="d-flex flex-column align-items-center justify-content-around my-3" *ngIf="stockInventory === 0">
+    <h2>Victim of his success</h2>
+    <small>did you see the price ?</small>
 </div>

@@ -14,3 +14,8 @@
     background-color: rgba(16, 60, 172, 1);
     border-radius: 30px;
 }
+
+h2, small {
+    color: rgba(16, 60, 172, 1);
+    cursor: default;
+}

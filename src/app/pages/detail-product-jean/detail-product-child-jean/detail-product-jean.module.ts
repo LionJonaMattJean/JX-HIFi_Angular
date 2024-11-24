@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { TabDetailJeanComponent } from './tab-detail-jean/tab-detail-jean.component';
 import { QuickDescriptionProductJeanComponent } from './quick-description-product-jean/quick-description-product-jean.component';
 import { QuantityAndCartBtnJeanComponent } from './quantity-and-cart-btn-jean/quantity-and-cart-btn-jean.component';
-import { PictureSectionJeanComponent } from './picture-section-jean/picture-section-jean.component';
 
 @NgModule({
   declarations: [],
@@ -11,14 +10,12 @@ import { PictureSectionJeanComponent } from './picture-section-jean/picture-sect
     CommonModule,
     TabDetailJeanComponent,
     QuickDescriptionProductJeanComponent,
-    QuantityAndCartBtnJeanComponent,
-    PictureSectionJeanComponent
+    QuantityAndCartBtnJeanComponent
   ],
   exports: [
     TabDetailJeanComponent,
     QuickDescriptionProductJeanComponent,
-    QuantityAndCartBtnJeanComponent,
-    PictureSectionJeanComponent
+    QuantityAndCartBtnJeanComponent
   ]
 })
   

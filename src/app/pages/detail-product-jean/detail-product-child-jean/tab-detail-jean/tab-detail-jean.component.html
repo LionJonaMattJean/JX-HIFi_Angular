@@ -10,17 +10,21 @@
 </nav>
 <div class="tab-content" id="nav-tabContent">
     <div class="descSection tab-pane show active" id="description" role="tabpanel">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam risus urna, imperdiet id
-            ullamcorper eu, venenatis at nunc. Suspendisse tincidunt condimentum urna nec blandit. Proin
-            a facilisis nunc, hendrerit accumsan quam. Nam sodales molestie lacus, non pharetra massa.
-            Pellentesque nibh nulla, porta sed leo nec, lobortis interdum metus. Nullam suscipit purus
-            nec dui interdum, nec vehicula nisi imperdiet. Maecenas pulvinar faucibus vulputate. Quisque
-            at ultricies mauris. Nullam magna ex, maximus vitae tortor non, accumsan gravida nibh.</p>
+        <p>{{product?.description}}</p>
     </div>
     <div class="tab-pane" id="specifications" role="tabpanel">
         <div class="specsSection">
             <table class="table specsTable">
                 <tbody>
+                    <!-- todo gerer les tableau de spec a 3 colones -->
+                    <!-- <div *ngFor="let spec of product?.specificationDetails">
+                        <tr>
+                            <th>{{spec.title}}</th>
+                        </tr>
+                        <tr>
+                            <td>{{spec.description}}</td>
+                        </tr>
+                    </div> -->
                     <tr>
                         <th>Size [Inch]</th>
                         <th>Resolution</th>
@@ -66,6 +70,12 @@
         </div>
     </div>
     <div class="reviewSection tab-pane" id="reviews" role="tabpanel">
-        <p>Maybe one day...</p>
+        <ul>
+            <li *ngFor="let review of product?.reviews">
+                <p><span class="stars text-warning h4">{{reviewRating(review)}}</span>from {{review.idUser}}</p>
+                <h4>{{review.title}}</h4>
+                <p>{{review.review}}</p>
+            </li>
+        </ul>
     </div>
 </div>

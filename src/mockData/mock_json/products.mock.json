@@ -422,7 +422,7 @@
         "sellPrice": 1199,
         "costPrice": 1100,
         "specialPrice": 72,
-        "stock": 50,
+        "stock": 0,
         "colors": ["black", "silver"],
         "specificationDetails": [
             { "id": "SPE65", "title": "Screen Size", "description": "6.8 inches" },
@@ -453,7 +453,7 @@
                 "star": 5, "title": "A complete package",
                 "review": "Excellent camera, battery life, and design. Samsung nailed it with this flagship." }
         ],
-      "onSale": false
+      "onSale": true
     },
     {
         "category":  {

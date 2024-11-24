@@ -1,40 +1,45 @@
-<div class="productPresentation col-lg-5 order-3">
-    <h2 class="fw-bold">Monitor Lenovo 17” HDMI 2.0 USB-A 40Hz</h2>
-    <p><span class="stars text-warning h3">&#9733;&#9733;&#9733;&#9734;&#9734;</span> (21 avis)</p>
-    <h1 class="txtPrice">$145,99 <del class="text-muted h6">$160</del></h1>
-    <div>
-        <table class="quickSpecs ms-5 my-3">
-            <tbody>
-                <tr>
-                    <th>Brand</th>
-                    <td>lenovo</td>
-                </tr>
-                <tr>
-                    <th>Size</th>
-                    <td>14.91 x 10.19 x 3.74 po (H x W x D)</td>
-                </tr>
-                <tr>
-                    <th>Resolution</th>
-                    <td>1280 x 720</td>
-                </tr>
-                <tr>
-                    <th>Variant</th>
-                    <td>
-                        <div class="btn-group variantOptions" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
-                                checked>
-                            <label class="btn " for="btnradio1">Black</label>
-
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                            <label class="btn " for="btnradio2">White</label>
-
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                            <label class="btn " for="btnradio3">Silver</label>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+<div class="row flex-lg-row">
+    <div class="col-lg-1 order-lg-1 order-2">
+        <div class="pictureCollection d-flex flex-lg-column gap-3">
+            <img *ngFor="let img of product?.images" [src]="img.url" [alt]="img.id" (click)="changeMainPicture($event)">
+        </div>
     </div>
-    <app-quantity-and-cart-btn-jean></app-quantity-and-cart-btn-jean>
+    <div class="col-lg-6 order-lg-2 order-1 mb-3">
+        <div class="mainPicture">
+            <img [src]="mainImgSource" [alt]="mainImgAlt">
+        </div>
+    </div>
+
+    <div class="productPresentation col-lg-5 order-3">
+        <h2 class="fw-bold">{{product?.name}}</h2>
+        <!-- todo ajouter un lien sur les review pour amenr direct au tab review en bas de page -->
+        <p><span class="stars text-warning h3">{{globalProductStars}}</span> ({{product?.reviews?.length}} avis)</p>
+        <h1 class="txtPrice"> {{ product?.onSale ? '$' + product?.specialPrice : '$' + product?.sellPrice }}
+            <del class="text-muted h6" *ngIf="product?.onSale">${{product?.sellPrice}}</del>
+        </h1>
+        <div>
+            <table class="quickSpecs ms-5 my-3">
+                <tbody>
+                    <tr *ngFor="let qckSpec of product?.shortSpecifications">
+                        <th>{{qckSpec.title}}</th>
+                        <td>{{qckSpec.description}}</td>
+                    </tr>
+                    <tr>
+                        <th>Colors</th>
+                        <td>
+                            <div class="btn-group variantOptions" role="group"
+                                aria-label="Basic radio toggle button group">
+                                <div *ngFor="let color of product?.colors">
+                                    <input type="radio" class="btn-check" name="btnradio" [id]="color"
+                                        autocomplete="off" checked>
+                                    <label class="btn " [for]="color">{{color}}</label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <app-quantity-and-cart-btn-jean [stockInventory]="product?.stock"></app-quantity-and-cart-btn-jean>
+    </div>
 </div>

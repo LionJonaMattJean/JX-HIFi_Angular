@@ -42,7 +42,7 @@ export class ProductsService {
   }
 
   getProductById(id: string): Observable<Product | undefined> {
-   const product:Product|undefined = mockData.find(p => p.id === id);
+    const product: Product | undefined = mockData.find(p => p.id === id);
     return of(product);
   }
 
@@ -77,12 +77,16 @@ export class ProductsService {
    }*/
 
   /*todo Add logic for review */
-  calculateMoyenneStarReview(): number {
-    // const totalStars = this._reviews.reduce((sum, review) => sum + review.star, 0);
-    // return this._reviews.length ? totalStars / this._reviews.length : 0;
-    return 4;
+  calculateMoyenneStarReview(productId: string): number {
+    const product: Product | undefined = mockData.find(p => p.id === productId);
+    if (product && product.reviews && product.reviews.length > 0) {
+      const totalStars = product.reviews.reduce((sumStars, review) => sumStars + review.star, 0);
+      return totalStars / product.reviews.length;
+    }
+    return 0;
   }
 
+  // todo : est-ce qu'on ce sert de cette fonction ? Si non a supprimer
   countReview(): number {
     // return this._reviews.length;
     return 21;
