@@ -23,7 +23,7 @@ export class CategoryService {
    // return this.httpRequest.get<Category[]>(this.dataLink);
     return of(mockData)
   }
-  getCategory(id: string): Observable<Category> {
+  getCategoryById(id: string): Observable<Category> {
     return this.getCategories().pipe(
       map((categories: Category[]) => {
         const category = categories.find(category => category.id === id);

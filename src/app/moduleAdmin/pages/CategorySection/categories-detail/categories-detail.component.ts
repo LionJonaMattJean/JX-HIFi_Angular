@@ -24,7 +24,7 @@ export class CategoriesDetailComponent implements OnInit {
 
   ngOnInit(): void {
   this.id=String(this.route.snapshot.paramMap.get('id'));
-  this.categoryService.getCategory(this.id).subscribe((data:Category)=>{
+  this.categoryService.getCategoryById(this.id).subscribe((data:Category)=>{
     this.category=data;
     this.categoryDetail=[
     {label:'ID',value:this.category?.id},

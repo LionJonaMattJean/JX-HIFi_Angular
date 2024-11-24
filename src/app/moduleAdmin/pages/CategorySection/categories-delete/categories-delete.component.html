@@ -1,1 +1,23 @@
-<p>categories-delete works!</p>
+<div class="main-content-wrapper text-center">
+  <div class="p-4 row flex-lg-row align-items-center g-5 py-5">
+    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">{{category?.name}}</h1>
+    <div class="col-lg-6 mx-auto">
+
+      <div class="body">
+        Voulez vous supprimer la catégorie: {{category?.name}} . Attention l'action est permanante
+      </div>
+      <div>
+        <div class="container mt-5">
+          <div [ngClass]="{'active': isDelete,'visually-hidden':!isDelete}" class="alert alert-success " role="alert">
+            La suppression a ete effectuer avec succès
+          </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center mx-5 mt-5">
+          <button type="button" class="btn btn-secondary" routerLink="/admin/categories">Fermer</button>
+          <button type="button" class="btn btn-danger" (click)="deleteCategory()">Supprimer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
