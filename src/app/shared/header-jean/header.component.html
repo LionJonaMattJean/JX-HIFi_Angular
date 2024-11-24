@@ -55,6 +55,7 @@
     </a>
 </div>
 
+<!--START OF OFFCANVAS DIV-->
 <div class="categoryNavOffCanvas offcanvas offcanvas-start CategoryHeaderOffcanvas" tabindex="-1"
     aria-labelledby="CategoryHeaderOffcanvasLabel">
 
@@ -63,21 +64,7 @@
             aria-label="Close"></button>
     </div>
 
-    <!--
-    <div class=" text-center d-flex flex-column my-3 p-2 align-items-center gap-4">
-        <a style="font-weight: bold;" href="#">Offers</a>
-        <div class="separatorOffCanvas"></div>
-        <a>Desktops</a>
-        <div class="separatorOffCanvas"></div>
-        <a href="#">Laptops</a>
-        <div class="separatorOffCanvas"></div>
-        <a href="#">Monitors</a>
-        <div class="separatorOffCanvas"></div>
-        <a href="#">Phones</a>
-        <div class="separatorOffCanvas"></div>
-        <a href="#">Headphones</a>
-    </div>-->
-
+    <!--OFFCANVAS AUTO GENERATION OF CATEGORIES AND [ROUTERLINK]-->
     <div class=" text-center d-flex flex-column my-3 p-2 align-items-center gap-4">
         <div *ngFor="let i of listCategory" class="col-6">
             <a [routerLink]="['/products/', i.id]" data-bs-dismiss="offcanvas">
@@ -87,13 +74,16 @@
         </div>
     </div>
 
+    <!--FOOTER VERSION OFFCANVAS-->
     <div class="text-center d-flex flex-column mt-5 p-2 align-items-center gap-4">
 
-        <a href="#!" class="text-reset">About Us</a>
-        <a href="#!" class="text-reset">Contact Us</a>
-
-        <img src="assets/images/logo/Logo JX-HIFI.png" alt="logo jx-hifi" width="100">
-
+        <!--Il nous restera a implementer le about us une fois la page fait-->
+        <a href="#!" class="text-reset" data-bs-dismiss="offcanvas">About Us</a>
+        <a routerLink="/support" class="text-reset" data-bs-dismiss="offcanvas">Contact Us</a>
+        <a routerLink="/home" data-bs-dismiss="offcanvas">
+            <img src="assets/images/logo/Logo JX-HIFI.png" alt="logo jx-hifi" width="100">
+        </a>
+        
         <div>
             <h5>
                 This is our project, it's a really cool badasss mofo project

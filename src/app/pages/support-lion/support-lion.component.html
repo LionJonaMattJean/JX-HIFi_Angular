@@ -85,7 +85,7 @@
 
                 <div class="tab-pane fade" id="contact-us" role="tabpanel" aria-labelledby="list-contact-list">
                     <!--Begin Contact Us form-->
-                    <form class="contact-form">
+                    <form id="formContact" class="contact-form">
                         <div class="row">
                             <div class="col-6">
                                 <div class="mb-3"> <!--FIRST NAME-->
@@ -97,8 +97,8 @@
 
                             <div class="col-6">
                                 <div class="mb-3"> <!--PACKAGE NUMBER-->
-                                    <label for="" class="form-label">Package Number (optional)</label>
-                                    <input type="" class="form-control" id="">
+                                    <label for="packageNumber" class="form-label">Package Number (optional)</label>
+                                    <input type="" class="form-control" id="packageNumber">
                                 </div>
 
                             </div>
@@ -107,9 +107,9 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="mb-3"> <!--LAST NAME-->
-                                    <label for="firstName" class="form-label">Last Name</label>
-                                    <input type="email" class="form-control" id="firstName"
-                                        aria-describedby="emailHelp">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="email" class="form-control" id="lastName"
+                                        aria-describedby="lastname">
 
                                 </div>
                             </div>
@@ -117,8 +117,8 @@
 
                             <div class="col-6">
                                 <div class="mb-3"> <!--EMAIL-->
-                                    <label for="" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email">
                                     <div class="form-text">We'll never share your email with anyone else.</div>
                                 </div>
 
@@ -127,15 +127,39 @@
 
                         <div class="row-message">
                             <div class="col-12">
-                                <div class="mb-3">
-                                    <label for="firstName" class="form-label">Message</label>
+                                <div class="mb-3"> <!--MESSAGE-->
+                                    <label for="message" class="form-label">Message</label>
                                     <textarea rows="8" placeholder="Write your comments here : " class="form-control"
-                                        id="exampleFormControlTextarea1"></textarea>
+                                        id="message"></textarea>
                                 </div>
                             </div>
-
-                            <div class="btn btn-primary send">Send</div>
                         </div>
+
+                        <button type="button" style="width: 200px;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalMessage">
+                            Send
+                        </button>
+                        
+                        <!-- MODAL TO INFORM USER OF MESSAGE SENT-->
+                        <div class="modal fade" id="modalMessage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Message Sent</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Your message has been sent and we will review it as soon as we can. We hope to get back to you in a timely manner
+                                        to fullfil your needs. Thank you and have a good day.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
 
                     </form>
                 </div> <!--End Contact us Form-->
