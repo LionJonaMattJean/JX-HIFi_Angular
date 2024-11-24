@@ -10,7 +10,7 @@
 
 <div class="container">
     <div class="row gy-5"><!--Beginning of column 1-->
-        <div class="col-sm-2" style="border-radius: 15px;">
+        <div class="col-12 col-sm col-md col-lg-2" style="border-radius: 15px;">
             <div class="list-group" id="list-tab" role="tablist">
                 <a class="list-group-item list-group-item-action active" id="list-faq-list" data-bs-toggle="list"
                     href="#faq-section" role="tab" aria-controls="faq">FAQ</a>
@@ -22,6 +22,7 @@
                     href="#shipping-policy" role="tab" aria-controls="shipping">Shipping Policy</a>
             </div>
         </div> <!--End of column 1-->
+
 
         <div class="col-10"> <!--Begin col 2-->
             <div class="tab-content" id="nav-tabContent">
@@ -85,9 +86,10 @@
 
                 <div class="tab-pane fade" id="contact-us" role="tabpanel" aria-labelledby="list-contact-list">
                     <!--Begin Contact Us form-->
-                    <form id="formContact" class="contact-form">
+                    <form id="formContact"  class="row g-3">
+
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6">
                                 <div class="mb-3"> <!--FIRST NAME-->
                                     <label for="firstName" class="form-label">First Name</label>
                                     <input type="" class="form-control" id="firstName" aria-describedby="">
@@ -95,7 +97,7 @@
                             </div>
 
 
-                            <div class="col-6">
+                            <div class="col-12 col-md-6">
                                 <div class="mb-3"> <!--PACKAGE NUMBER-->
                                     <label for="packageNumber" class="form-label">Package Number (optional)</label>
                                     <input type="" class="form-control" id="packageNumber">
@@ -105,7 +107,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6">
                                 <div class="mb-3"> <!--LAST NAME-->
                                     <label for="lastName" class="form-label">Last Name</label>
                                     <input type="email" class="form-control" id="lastName"
@@ -115,7 +117,7 @@
                             </div>
 
 
-                            <div class="col-6">
+                            <div class="col-12 col-md-6">
                                 <div class="mb-3"> <!--EMAIL-->
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email" class="form-control" id="email">
@@ -126,7 +128,7 @@
                         </div>
 
                         <div class="row-message">
-                            <div class="col-12">
+                            <div class="col-12 col-md-6">
                                 <div class="mb-3"> <!--MESSAGE-->
                                     <label for="message" class="form-label">Message</label>
                                     <textarea rows="8" placeholder="Write your comments here : " class="form-control"
@@ -141,7 +143,7 @@
                         
                         <!-- MODAL TO INFORM USER OF MESSAGE SENT-->
                         <div class="modal fade" id="modalMessage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Message Sent</h1>
@@ -157,10 +159,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
                     </form>
                 </div> <!--End Contact us Form-->
 
