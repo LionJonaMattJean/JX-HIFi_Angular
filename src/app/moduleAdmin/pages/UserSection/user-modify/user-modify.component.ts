@@ -38,4 +38,8 @@ export class UserModifyComponent implements OnInit {
       ]
     });
   }
+
+  modifyUser() {
+
+  }
 }

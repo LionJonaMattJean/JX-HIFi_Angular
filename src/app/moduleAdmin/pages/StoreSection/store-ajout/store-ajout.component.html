@@ -1,0 +1,36 @@
+<div class=" main-content-wrapper">
+  <div *ngIf="store" class=" p-4 row flex-lg-row align-items-center g-5 py-5">
+    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Création de Magasin</h1>
+
+    <div class="col-lg-6">
+      <form>
+        <div class="mb-3">
+          <label for="storeName" class="form-label">Nom</label>
+          <input type="text" class="form-control" id="storeName" [(ngModel)]="store.name" name="lastName">
+        </div>
+        <div *ngFor="let detail of addressDetail" class="mb-3">
+          <label for="{{detail.label}}" class="form-label">{{detail.label}}</label>
+          <input type="text" class="form-control" id="address" [(ngModel)]="detail.value" name="{{detail.label}}">
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Téléphone</label>
+          <input type="text" class="form-control" id="phone" [(ngModel)]="store.telephone" name="phone">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" class="form-control" id="email" [(ngModel)]="store.email" name="email">
+        </div>
+        <div class="mb-3">
+          <label for="manager" class="form-label">Téléphone</label>
+          <input type="text" class="form-control" id="manager" [(ngModel)]="store.manager" name="manager">
+        </div>
+
+      </form>
+
+      <div class="d-grid gap-2 d-md-flex justify-content-start mt-5">
+        <button routerLink="/admin/stores" type="button" class="btn btn-secondary btn-lg px-4 me-md-2">Retour</button>
+        <button type="button" class="btn btn-success btn-lg px-4 me-md-2" (click)="addStore()">Ajouter</button>
+      </div>
+    </div>
+  </div>
+</div>

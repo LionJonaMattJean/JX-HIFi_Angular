@@ -1,6 +1,7 @@
 [
     {
         "id": "STO1",
+        "name": "JX Hi-Fi Store 1",
         "address" :{
             "address": "1234 Main Street",
             "city": "Los Angeles",
@@ -10,10 +11,11 @@
         },
         "telephone": "123-456-7890",
         "email": "Store1@jx-hifi.com",
-        "manager": "John Doe"
+        "manager": "Pickle Rick"
     },
     {
         "id": "STO2",
+        "name": "JX Hi-Fi Store 2",
         "address" : {
             "address": "5678 Elm Street",
             "city": "Los Angeles",
@@ -27,6 +29,7 @@
     },
     {
         "id": "STO3",
+        "name": "JX Hi-Fi Store 3",
         "address" : {
             "address": "9101 Oak Street",
             "city": "Los Angeles",

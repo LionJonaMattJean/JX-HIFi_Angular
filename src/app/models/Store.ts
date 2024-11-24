@@ -1,9 +1,9 @@
 
 import {Address} from './Address';
 
-
-export interface store{
+export interface Store{
     id: string;
+    name: string;
     address: Address;
     telephone: string;
     email: string;

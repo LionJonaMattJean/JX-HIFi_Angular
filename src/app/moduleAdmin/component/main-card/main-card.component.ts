@@ -7,6 +7,7 @@ import {ProductsService} from '../../../services/products.service';
 import {CategoryService} from '../../../services/category.service';
 import {PaginationDashboardComponent} from '../pagination-dashboard/pagination-dashboard.component';
 import {UsersService} from '../../../services/users.service';
+import {StoresService} from '../../../services/stores.service';
 
 
 @Component({
@@ -46,7 +47,8 @@ export class MainCardComponent implements OnInit{
   constructor(private router:Router,
               public productsService:ProductsService,
               private categoriesService:CategoryService,
-              private usersService:UsersService) { }
+              private usersService:UsersService,
+              private storesService:StoresService) { }
 
   ngOnInit() {
     this.router.events.pipe(
@@ -118,12 +120,7 @@ export class MainCardComponent implements OnInit{
       sellPrice: 'Prix de vente',
       category: 'Catégorie'
     };
-    this.productsService.getAllProduct().subscribe(data =>{
-      this.data = data;
-      this.totalItems=data.length
-      this.loadDataForPage();
-      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
-    });
+    this.loadAllProduct();
   }
 
   setupCategories() {
@@ -138,18 +135,16 @@ export class MainCardComponent implements OnInit{
       name:'Nom',
       description:'Description'
     }
-    this.categoriesService.getCategories().subscribe(data=>
-    {
-      this.data = data;
-      this.totalItems=data.length
-      this.loadDataForPage();
-      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
-    });
+    this.loadAllCategory();
   }
 
   setupOrders() { this.headerText = "Gestion des commandes";
     this.isNotIndex = true;
     this.ajout="Ajouter une commande";
+    this.entityType="orders";
+    this.urlAjout = '/admin/orders/ajout';
+    //todo: display columns and display column names
+    this.loadAllOrder();
   }
 
   setupUsers() {
@@ -177,6 +172,17 @@ export class MainCardComponent implements OnInit{
     this.headerText = "Gestion des Magasins";
     this.isNotIndex = true;
     this.ajout="Ajouter un magasin";
+    this.entityType="stores";
+    this.urlAjout = '/admin/stores/ajout';
+    this.displayColumns=['id','address','telephone','email','manager'];
+    this.columnNames={
+      id:'ID',
+      address:'Adresse',
+      telephone:'Téléphone',
+      email:'Email',
+      manager:'Manager'
+    }
+    this.loadAllStore();
   }
 
   onPageChange(page: number) {
@@ -204,6 +210,23 @@ export class MainCardComponent implements OnInit{
     this.totalItems=this.data.length;
     this.loadDataForPage();
   }
+  loadAllCategory() {
+    this.categoriesService.getCategories().subscribe(data=>
+    {
+      this.data = data;
+      this.totalItems=data.length
+      this.loadDataForPage();
+      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+    });
+  }
+  loadAllProduct() {
+    this.productsService.getAllProduct().subscribe(data =>{
+      this.data = data;
+      this.totalItems=data.length
+      this.loadDataForPage();
+      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+    });
+  }
   loadAllUser() {
     this.usersService.getUsers().subscribe(data =>{
       this.data=data;
@@ -212,5 +235,16 @@ export class MainCardComponent implements OnInit{
       this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
 
     });
+  }
+  loadAllOrder() {
+    //todo: load all orders
+  }
+  loadAllStore() {
+    this.storesService.getAllStores().subscribe(data =>{
+      this.data=data;
+      this.totalItems=data.length;
+      this.loadDataForPage();
+      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+    })
   }
 }

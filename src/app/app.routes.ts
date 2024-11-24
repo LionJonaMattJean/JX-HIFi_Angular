@@ -32,6 +32,10 @@ import {UserDetailComponent} from './moduleAdmin/pages/UserSection/user-detail/u
 import {UserModifyComponent} from './moduleAdmin/pages/UserSection/user-modify/user-modify.component';
 import {UserDeleteComponent} from './moduleAdmin/pages/UserSection/user-delete/user-delete.component';
 import {UserAjoutComponent} from './moduleAdmin/pages/UserSection/user-ajout/user-ajout.component';
+import {StoreDetailComponent} from './moduleAdmin/pages/StoreSection/store-detail/store-detail.component';
+import {StoreModifyComponent} from './moduleAdmin/pages/StoreSection/store-modify/store-modify.component';
+import {StoreDeleteComponent} from './moduleAdmin/pages/StoreSection/store-delete/store-delete.component';
+import {StoreAjoutComponent} from './moduleAdmin/pages/StoreSection/store-ajout/store-ajout.component';
 
 export const routes: Routes = [
   {
@@ -74,7 +78,11 @@ export const routes: Routes = [
 
 
       { path: 'orders', component: OrdersDashboardComponent },
-      { path: 'stores', component: StoreDashboardComponent }
+      { path: 'stores', component: StoreDashboardComponent },
+      { path: 'stores/details/:id', component: StoreDetailComponent },
+      { path: 'stores/modify/:id', component: StoreModifyComponent },
+      { path: 'stores/delete/:id', component: StoreDeleteComponent },
+      { path: 'stores/ajout', component: StoreAjoutComponent },
     ]
   }
 ];
