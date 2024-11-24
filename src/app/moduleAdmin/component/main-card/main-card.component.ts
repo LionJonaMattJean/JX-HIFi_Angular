@@ -86,6 +86,8 @@ export class MainCardComponent implements OnInit{
     this.pageData = [];
     this.totalItems = 0;
     this.currentPage = 1;
+    this.urlAjout="";
+    this.entityType="";
   }
 
   setupAdmin(){
@@ -116,6 +118,8 @@ export class MainCardComponent implements OnInit{
 
   setupCategories() {
     this.headerText = "Gestion des catégories";
+    this.urlAjout = '/admin/categories/ajout';
+    this.entityType="categories";
     this.isNotIndex = true;
     this.ajout="Ajouter une catégorie";
     this.displayColumns=['id','name','description'];

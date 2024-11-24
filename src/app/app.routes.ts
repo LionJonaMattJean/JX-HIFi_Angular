@@ -16,6 +16,18 @@ import {ProduitsDetailComponent} from './moduleAdmin/pages/produitSection/produi
 import {ProductModifyComponent} from './moduleAdmin/pages/produitSection/product-modify/product-modify.component';
 import {ProduitAjoutComponent} from './moduleAdmin/pages/produitSection/produit-ajout/produit-ajout.component';
 import {ProductDeleteComponent} from './moduleAdmin/pages/produitSection/product-delete/product-delete.component';
+import {
+  CategoriesDetailComponent
+} from './moduleAdmin/pages/CategorySection/categories-detail/categories-detail.component';
+import {
+  CategoriesModifyComponent
+} from './moduleAdmin/pages/CategorySection/categories-modify/categories-modify.component';
+import {
+  CategoriesDeleteComponent
+} from './moduleAdmin/pages/CategorySection/categories-delete/categories-delete.component';
+import {
+  CategoriesAjoutComponent
+} from './moduleAdmin/pages/CategorySection/categories-ajout/categories-ajout.component';
 
 export const routes: Routes = [
   {
@@ -44,6 +56,11 @@ export const routes: Routes = [
       { path: 'products/delete/:id', component: ProductDeleteComponent },
       { path: 'products/ajout', component: ProduitAjoutComponent },
       { path: 'categories', component: CategoriesDashboardComponent },
+      { path: 'categories/details/:id', component: CategoriesDetailComponent },
+      { path: 'categories/modify/:id', component: CategoriesModifyComponent},
+      { path: 'categories/delete/:id', component: CategoriesDeleteComponent},
+      { path: 'categories/ajout', component: CategoriesAjoutComponent},
+
       { path: 'orders', component: OrdersDashboardComponent },
       { path: 'stores', component: StoreDashboardComponent }
     ]
