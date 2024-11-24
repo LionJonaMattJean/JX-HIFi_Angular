@@ -34,7 +34,7 @@ export class AcceuilCarteCategorieService {
       image: '/assets/images/categories/monitor.jfif'
     },
     {
-      id: '666',
+      id: 'CAT666',
       nom: 'Headphones',
       image: '/assets/images/categories/headphones.jpg'
     }
