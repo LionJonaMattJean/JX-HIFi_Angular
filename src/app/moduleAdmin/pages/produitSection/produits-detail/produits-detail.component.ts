@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductsService} from '../../../services/products.service';
+import {ProductsService} from '../../../../services/products.service';
 import {ActivatedRoute, RouterLink} from '@angular/router';
-import {Product} from '../../../models/Product';
+import {Product} from '../../../../models/Product';
 
 import {NgForOf, NgIf} from '@angular/common';
 
@@ -14,7 +14,7 @@ import {NgForOf, NgIf} from '@angular/common';
     RouterLink
   ],
   templateUrl: './produits-detail.component.html',
-  styleUrl: '../../style-admin.css'
+  styleUrl: '../../../style-admin.css'
 })
 export class ProduitsDetailComponent implements OnInit {
 

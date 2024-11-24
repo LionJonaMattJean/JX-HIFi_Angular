@@ -1,52 +1,60 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForOf, NgIf} from "@angular/common";
-import {ActivatedRoute, RouterLink} from "@angular/router";
-import {Product} from '../../../models/Product';
-import {ProductsService} from '../../../services/products.service';
+import {Product} from '../../../../models/Product';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {Category} from '../../../models/Category';
-import {CategoryService} from '../../../services/category.service';
+import {NgForOf} from '@angular/common';
+import {RouterLink} from '@angular/router';
+import {CategoryService} from '../../../../services/category.service';
+import {Category} from '../../../../models/Category';
+
 
 @Component({
-  selector: 'app-product-modify',
+  selector: 'app-produit-ajout',
   standalone: true,
   imports: [
+    FormsModule,
     NgForOf,
-    NgIf,
-    RouterLink,
     ReactiveFormsModule,
-    FormsModule
+    RouterLink
   ],
-  templateUrl: './product-modify.component.html',
-  styleUrl: './product-modify.component.css'
+  templateUrl: './produit-ajout.component.html',
+  styleUrl: './produit-ajout.component.css'
 })
-export class ProductModifyComponent implements OnInit {
-
-  id: string = "";
-  produit?: Product;
+export class ProduitAjoutComponent implements OnInit {
+  produit!:Product;
   categories?: Category[];
-
-
-  constructor(private produitsService: ProductsService,private categoryService:CategoryService,private route: ActivatedRoute) {
+  constructor(private categoryService:CategoryService) {
+    this.produit = {
+      id: '',
+      name: '',
+      description: '',
+      sellPrice: 0,
+      costPrice: 0,
+      specialPrice: 0,
+      stock: 0,
+      onSale: false,
+      category: {id:'',name:'',description:''},
+      shortSpecifications: [],
+      specificationDetails: [],
+      images: [],
+      colors: [],
+      reviews: [],
+      brand: ''
+    }
   }
-
   ngOnInit(): void {
-    this.id = String(this.route.snapshot.paramMap.get('id'));
-    this.produitsService.getProductById(this.id).subscribe(product => {
-      this.produit = product;
-    });
     this.categoryService.getCategories().subscribe(categories => {
       this.categories = categories;
     });
-
   }
+
+
 
   removeSpecificationDetail(i: number) {
     this.produit?.specificationDetails.splice(i, 1);
   }
 
   addSpecificationDetail() {
-      this.produit?.specificationDetails.push({ id:'', title: '', description: '' });
+    this.produit?.specificationDetails.push({ id:'', title: '', description: '' });
   }
 
   removeSpecificationShort(i: number) {

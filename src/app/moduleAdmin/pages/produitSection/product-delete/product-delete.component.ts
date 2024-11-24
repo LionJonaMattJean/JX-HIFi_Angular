@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {NgClass} from '@angular/common';
 import {ActivatedRoute, RouterLink} from '@angular/router';
-import {Product} from '../../../models/Product';
-import {ProductsService} from '../../../services/products.service';
+import {Product} from '../../../../models/Product';
+import {ProductsService} from '../../../../services/products.service';
 
 
 @Component({

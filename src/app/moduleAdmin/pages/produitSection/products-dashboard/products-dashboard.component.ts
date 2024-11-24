@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MainCardComponent} from '../../component/main-card/main-card.component';
+import {MainCardComponent} from '../../../component/main-card/main-card.component';
 import {RouterOutlet} from '@angular/router';
 
 

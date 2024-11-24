@@ -2,9 +2,9 @@ import { Routes } from '@angular/router';
 
 import { AdminDashboardComponent } from './moduleAdmin/pages/admin-dashboard/admin-dashboard.component';
 import { MainSiteComponent } from './pages/main-site/main-site.component';
-import { CategoriesDashboardComponent } from './moduleAdmin/pages/categories-dashboard/categories-dashboard.component';
+import { CategoriesDashboardComponent } from './moduleAdmin/pages/CategorySection/categories-dashboard/categories-dashboard.component';
 import { UsersDashboardComponent } from './moduleAdmin/pages/users-dashboard/users-dashboard.component';
-import { ProductsDashboardComponent } from './moduleAdmin/pages/products-dashboard/products-dashboard.component';
+import { ProductsDashboardComponent } from './moduleAdmin/pages/produitSection/products-dashboard/products-dashboard.component';
 import { OrdersDashboardComponent } from './moduleAdmin/pages/orders-dashboard/orders-dashboard.component';
 import { StoreDashboardComponent } from './moduleAdmin/pages/store-dashboard/store-dashboard.component';
 import { SupportLionComponent } from './pages/support-lion/support-lion.component';
@@ -12,10 +12,10 @@ import { AdminLayoutComponent } from './moduleAdmin/pages/layout/admin-layout/ad
 import { AcceuilLionComponent } from './pages/acceuil-lion/acceuil-lion.component';
 import { CatProductDisplayComponent } from './pages/detail-category-jean/cat-product-display/cat-product-display.component';
 import { DetailProductParentJeanComponent } from './pages/detail-product-jean/detail-product-parent-jean/detail-product-parent-jean.component';
-import {ProduitsDetailComponent} from './moduleAdmin/pages/produits-detail/produits-detail.component';
-import {ProductModifyComponent} from './moduleAdmin/pages/product-modify/product-modify.component';
-import {ProduitAjoutComponent} from './moduleAdmin/pages/produit-ajout/produit-ajout.component';
-import {ProductDeleteComponent} from './moduleAdmin/pages/product-delete/product-delete.component';
+import {ProduitsDetailComponent} from './moduleAdmin/pages/produitSection/produits-detail/produits-detail.component';
+import {ProductModifyComponent} from './moduleAdmin/pages/produitSection/product-modify/product-modify.component';
+import {ProduitAjoutComponent} from './moduleAdmin/pages/produitSection/produit-ajout/produit-ajout.component';
+import {ProductDeleteComponent} from './moduleAdmin/pages/produitSection/product-delete/product-delete.component';
 
 export const routes: Routes = [
   {
