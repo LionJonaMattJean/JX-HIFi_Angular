@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './product-filter-jean.component.css'
 })
 export class ProductFilterJeanComponent {
-
+  //todo implement toute la mecanique de des filtres pour modifier l'affichage des produits
 }
