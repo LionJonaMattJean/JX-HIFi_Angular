@@ -1,4 +1,11 @@
+
+import {Address} from './Address';
+
+
 export interface store{
-    idStore: string;
-    addresse: string;
+    id: string;
+    address: Address;
+    telephone: string;
+    email: string;
+    manager:string;
 }
