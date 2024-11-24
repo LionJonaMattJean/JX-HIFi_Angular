@@ -12,6 +12,10 @@ import { AdminLayoutComponent } from './moduleAdmin/pages/layout/admin-layout/ad
 import { AcceuilLionComponent } from './pages/acceuil-lion/acceuil-lion.component';
 import { CatProductDisplayComponent } from './pages/detail-category-jean/cat-product-display/cat-product-display.component';
 import { DetailProductParentJeanComponent } from './pages/detail-product-jean/detail-product-parent-jean/detail-product-parent-jean.component';
+import {ProduitsDetailComponent} from './moduleAdmin/pages/produits-detail/produits-detail.component';
+import {ProductModifyComponent} from './moduleAdmin/pages/product-modify/product-modify.component';
+import {ProduitAjoutComponent} from './moduleAdmin/pages/produit-ajout/produit-ajout.component';
+import {ProductDeleteComponent} from './moduleAdmin/pages/product-delete/product-delete.component';
 
 export const routes: Routes = [
   {
@@ -35,6 +39,10 @@ export const routes: Routes = [
       { path: 'indexAdmin', component: AdminDashboardComponent },
       { path: 'users', component: UsersDashboardComponent },
       { path: 'products', component: ProductsDashboardComponent },
+      { path: 'products/details/:id', component: ProduitsDetailComponent },
+      { path: 'products/modify/:id', component: ProductModifyComponent },
+      { path: 'products/delete/:id', component: ProductDeleteComponent },
+      { path: 'products/ajout', component: ProduitAjoutComponent },
       { path: 'categories', component: CategoriesDashboardComponent },
       { path: 'orders', component: OrdersDashboardComponent },
       { path: 'stores', component: StoreDashboardComponent }

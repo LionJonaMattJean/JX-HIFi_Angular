@@ -13,9 +13,7 @@
     <td>
       <app-action-link-dashboard
       [id]="row.id"
-      (modifyEvent)="editEvent.emit($event)"
-      (detailsEvent)="detailsEvent.emit($event)"
-      (deleteEvent)="deleteEvent.emit($event)"
+      [entityType]="entityType"
       ></app-action-link-dashboard>
     </td>
   </tr>
