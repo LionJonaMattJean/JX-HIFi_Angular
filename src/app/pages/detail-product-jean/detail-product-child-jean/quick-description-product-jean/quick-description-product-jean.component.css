@@ -1,0 +1,17 @@
+.txtPrice {
+    color: rgba(16, 60, 172, 1);
+}
+
+.quickSpecs td {
+    padding-left: 4%;
+    padding-bottom: 0.5rem;
+    width: 80%;
+}
+
+.quickSpecs {
+    font-size: large;
+}
+
+.variantOptions {
+    color: rgba(16, 60, 172, 1);
+}

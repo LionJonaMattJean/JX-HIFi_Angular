@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ProductListJeanComponent } from './product-list-jean/product-list-jean.component';
 import { ProductFilterJeanComponent } from './product-filter-jean/product-filter-jean.component';
 
-
-
 @NgModule({
   declarations: [],
   imports: [
@@ -17,4 +15,5 @@ import { ProductFilterJeanComponent } from './product-filter-jean/product-filter
     ProductFilterJeanComponent
   ]
 })
+  
 export class DetailCategoryJeanModule { }

@@ -1,13 +1,4 @@
-/* Style du offCanvas */
-.filterOffCanvansContainer {
-    background-color: rgba(143, 166, 224, 0.2);
-    border-radius: 25px;
-}
 
-.filterOffCanvansContainer h5 {
-    padding-left: 16%;
-    margin-top: 10%;
-}
 
 
 /* css pour le selecteur de prix */

@@ -1,1 +1,71 @@
-<p>tab-detail-jean works!</p>
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
+            data-bs-target="#description" type="button" role="tab">Description</button>
+        <button class="nav-link" id="specifications-tab" data-bs-toggle="tab"
+            data-bs-target="#specifications" type="button" role="tab">Specifications</button>
+        <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
+            type="button" role="tab">Reviews</button>
+    </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    <div class="descSection tab-pane show active" id="description" role="tabpanel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam risus urna, imperdiet id
+            ullamcorper eu, venenatis at nunc. Suspendisse tincidunt condimentum urna nec blandit. Proin
+            a facilisis nunc, hendrerit accumsan quam. Nam sodales molestie lacus, non pharetra massa.
+            Pellentesque nibh nulla, porta sed leo nec, lobortis interdum metus. Nullam suscipit purus
+            nec dui interdum, nec vehicula nisi imperdiet. Maecenas pulvinar faucibus vulputate. Quisque
+            at ultricies mauris. Nullam magna ex, maximus vitae tortor non, accumsan gravida nibh.</p>
+    </div>
+    <div class="tab-pane" id="specifications" role="tabpanel">
+        <div class="specsSection">
+            <table class="table specsTable">
+                <tbody>
+                    <tr>
+                        <th>Size [Inch]</th>
+                        <th>Resolution</th>
+                        <th>Connection</th>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>1280 x 720</td>
+                        <td>HDMI (x1) USB Type-A (x2)</td>
+                    </tr>
+                    <tr>
+                        <th>Panel Type</th>
+                        <th>Aspect Ratio</th>
+                        <th>AC Imput</th>
+                    </tr>
+                    <tr>
+                        <td>IPS</td>
+                        <td>16:9</td>
+                        <td>100 - 240V (50/60Hz)</td>
+                    </tr>
+                    <tr>
+                        <th>Color Gamut (typ)</th>
+                        <th>Brightness (Typ.) [cd/m2]</th>
+                        <th>AMD FreeSync</th>
+                    </tr>
+                    <tr>
+                        <td>NTSC 72% (CIE1931)</td>
+                        <td>250</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <th>Refresh Rate (Max.) [Hz]</th>
+                        <th>Response Time</th>
+                        <th>Wall Mountable [mm]</th>
+                    </tr>
+                    <tr>
+                        <td>75</td>
+                        <td>5ms (GtG at Faster)</td>
+                        <td>75 x 75</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="reviewSection tab-pane" id="reviews" role="tabpanel">
+        <p>Maybe one day...</p>
+    </div>
+</div>
