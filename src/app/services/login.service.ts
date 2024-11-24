@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 export class LoginService {
 
   constructor() { }
+
+  logIntoAccount(email: string, pass:string){
+    console.log(email + "\n" + pass);
+  }
 }
