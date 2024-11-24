@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Observable, of} from 'rxjs';
 import { User } from '../models/User';
 import {Address} from '../models/Address';
-
+import mockdata from '../../mockData/mock_json/users.mock.json'
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +20,8 @@ export class UsersService {
   };
 
   getUsers(): Observable<User[]> {
-    return this.httpRequest.get<User[]>(this.dataLink);
+   // return this.httpRequest.get<User[]>(this.dataLink);
+    return of(mockdata)
   }
   login(): void {
     // Implement login logic here

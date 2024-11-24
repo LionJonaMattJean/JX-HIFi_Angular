@@ -12,7 +12,8 @@
             "province": "QC",
             "postalCode": "H1A 2B3",
             "country": "Canada"
-        }
+        },
+      "role": "customer"
     },
     {
         "id": "USE1037",
@@ -27,7 +28,8 @@
             "province": "ON",
             "postalCode": "M4B 1B4",
             "country": "Canada"
-        }
+        },
+      "role": "customer"
     },
     {
         "id": "USE1074",
@@ -42,7 +44,8 @@
             "province": "BC",
             "postalCode": "V5K 3Z4",
             "country": "Canada"
-        }
+        },
+      "role": "customer"
     },
     {
         "id": "USE1111",
@@ -57,7 +60,8 @@
             "province": "AB",
             "postalCode": "T2P 5C4",
             "country": "Canada"
-        }
+        },
+      "role": "customer"
     },
     {
         "id": "USE1148",
@@ -72,7 +76,8 @@
             "province": "QC",
             "postalCode": "H2X 1Y7",
             "country": "Canada"
-        }
+        },
+      "role": "customer"
     },
     {
         "id": "USE1185",
@@ -87,7 +92,8 @@
             "province": "ON",
             "postalCode": "M5A 4E2",
             "country": "Canada"
-        }
+        },
+      "role": "customer"
     },
     {
         "id": "USE1222",
@@ -102,7 +108,8 @@
             "province": "BC",
             "postalCode": "V6B 5T1",
             "country": "Canada"
-        }
+        },
+      "role": "customer"
     },
     {
         "id": "USE1259",
@@ -117,7 +124,8 @@
             "province": "ON",
             "postalCode": "K1A 0B1",
             "country": "Canada"
-        }
+        },
+      "role": "customer"
     },
     {
         "id": "USE1296",
@@ -132,7 +140,8 @@
             "province": "QC",
             "postalCode": "G1A 1C5",
             "country": "Canada"
-        }
+        },
+      "role": "customer"
     },
     {
         "id": "USE1333",
@@ -147,7 +156,8 @@
             "province": "QC",
             "postalCode": "H3A 2R7",
             "country": "Canada"
-        }
+        },
+      "role": "customer"
     },
     {
         "id": "USE1370",
@@ -162,7 +172,8 @@
             "province": "ON",
             "postalCode": "M5J 2N2",
             "country": "Canada"
-        }
+        },
+      "role": "customer"
     },
     {
         "id": "USE1407",
@@ -177,7 +188,8 @@
             "province": "BC",
             "postalCode": "V6J 4A3",
             "country": "Canada"
-        }
+        },
+      "role": "customer"
     },
     {
         "id": "USE1444",
@@ -192,7 +204,8 @@
             "province": "AB",
             "postalCode": "T3A 5R6",
             "country": "Canada"
-        }
+        },
+      "role": "customer"
     },
     {
         "id": "USE1481",
@@ -207,7 +220,8 @@
             "province": "QC",
             "postalCode": "H3B 2V9",
             "country": "Canada"
-        }
+        },
+      "role": "customer"
     },
     {
         "id": "USE1518",
@@ -222,6 +236,7 @@
             "province": "ON",
             "postalCode": "M4C 1Z2",
             "country": "Canada"
-        }
+        },
+      "role": "administrator"
     }
 ]

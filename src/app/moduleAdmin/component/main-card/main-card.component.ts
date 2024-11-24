@@ -6,6 +6,7 @@ import {TableDashboardComponent} from '../table-dashboard/table-dashboard.compon
 import {ProductsService} from '../../../services/products.service';
 import {CategoryService} from '../../../services/category.service';
 import {PaginationDashboardComponent} from '../pagination-dashboard/pagination-dashboard.component';
+import {UsersService} from '../../../services/users.service';
 
 
 @Component({
@@ -39,7 +40,10 @@ export class MainCardComponent implements OnInit{
   urlAjout!: string;
 
 
-  constructor(private router:Router,public productsService:ProductsService,private categoriesService:CategoryService) { }
+  constructor(private router:Router,
+              public productsService:ProductsService,
+              private categoriesService:CategoryService,
+              private usersService:UsersService) { }
 
   ngOnInit() {
     this.router.events.pipe(
@@ -130,9 +134,9 @@ export class MainCardComponent implements OnInit{
     }
     this.categoriesService.getCategories().subscribe(data=>
     {
-      this.loadDataForPage();
-      this.pageData = data;
+      this.data = data;
       this.totalItems=data.length
+      this.loadDataForPage();
       this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
     });
   }
@@ -146,6 +150,24 @@ export class MainCardComponent implements OnInit{
     this.headerText = "Gestion des utilisateurs";
     this.isNotIndex = true;
     this.ajout = "Ajouter un utilisateur";
+    this.urlAjout = '/admin/users/ajout';
+    this.displayColumns = ['id','role' ,'firstName', 'lastName','address','email','phone'];
+    this.columnNames = {
+      id: 'ID',
+      role: 'Rôle',
+      firstName: 'Prénom',
+      lastName: 'Nom',
+      address: 'Adresse',
+      email: 'Email',
+      phone: 'Téléphone'
+    };
+    this.usersService.getUsers().subscribe(data =>{
+      this.data=data;
+      this.totalItems=data.length;
+      this.loadDataForPage();
+      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+
+    });
   }
 
   setupStores() {

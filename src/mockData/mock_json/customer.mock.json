@@ -13,6 +13,7 @@
     "postalCode": "H1A 2B3",
     "country": "Canada"
   },
+  "role": "customer",
   "orders":[{
 
   "id": "order001",

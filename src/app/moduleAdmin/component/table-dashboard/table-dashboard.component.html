@@ -8,7 +8,7 @@
   <tbody id="table-body">
   <tr *ngFor="let row of dataBinding">
     <td *ngFor="let column of displayColumns">
-      {{column==='category'?row.category.id:row[column]}}
+      {{getColumnValue(row, column)}}
     </td>
     <td>
       <app-action-link-dashboard
