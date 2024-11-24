@@ -28,8 +28,8 @@
 .separatorOffCanvas {
     border-top: 2px solid rgba(16, 60, 172, 1);
     border-radius: 1px;
-    width: 75%;
-    margin: auto 5px;
+    width: 100%;
+ 
 }
 
 .categoryNavOffCanvas a {

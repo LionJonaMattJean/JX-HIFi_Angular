@@ -63,10 +63,11 @@
             aria-label="Close"></button>
     </div>
 
+    <!--
     <div class=" text-center d-flex flex-column my-3 p-2 align-items-center gap-4">
         <a style="font-weight: bold;" href="#">Offers</a>
         <div class="separatorOffCanvas"></div>
-        <a href="#">Desktops</a>
+        <a>Desktops</a>
         <div class="separatorOffCanvas"></div>
         <a href="#">Laptops</a>
         <div class="separatorOffCanvas"></div>
@@ -75,6 +76,15 @@
         <a href="#">Phones</a>
         <div class="separatorOffCanvas"></div>
         <a href="#">Headphones</a>
+    </div>-->
+
+    <div class=" text-center d-flex flex-column my-3 p-2 align-items-center gap-4">
+        <div *ngFor="let i of listCategory" class="col-6">
+            <a [routerLink]="['/products/', i.id]" data-bs-dismiss="offcanvas">
+                <strong>{{i.name}}</strong>
+            </a>
+            <div class="separatorOffCanvas"></div>
+        </div>
     </div>
 
     <div class="text-center d-flex flex-column mt-5 p-2 align-items-center gap-4">
