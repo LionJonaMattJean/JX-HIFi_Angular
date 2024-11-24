@@ -1,15 +1,42 @@
 [
     {
-        "idStore": "ALPHA1",
-        "addresse" : "221-B Baker Street"
+        "id": "STO1",
+        "address" :{
+            "address": "1234 Main Street",
+            "city": "Los Angeles",
+            "province": "CA",
+            "postalCode": "90001",
+            "country": "USA"
+        },
+        "telephone": "123-456-7890",
+        "email": "Store1@jx-hifi.com",
+        "manager": "John Doe"
     },
     {
-        "idStore": "BRAVO2",
-        "addresse" : "994 Saints Row Road"
+        "id": "STO2",
+        "address" : {
+            "address": "5678 Elm Street",
+            "city": "Los Angeles",
+            "province": "CA",
+            "postalCode": "90002",
+            "country": "USA"
+        },
+        "telephone": "123-555-6677",
+        "email": "Store2@jx-hifi.com",
+        "manager": "Mr. Hankey"
     },
     {
-        "idStore": "CHARLIE3",
-        "addresse" : "4475 Industrial Avenue"
+        "id": "STO3",
+        "address" : {
+            "address": "9101 Oak Street",
+            "city": "Los Angeles",
+            "province": "CA",
+            "postalCode": "90003",
+            "country": "USA"
+        },
+        "telephone": "123-666-8542",
+        "email": "Store3@jx-hifi.com",
+        "manager": "Jackie Chan"
     }
 
 ]
