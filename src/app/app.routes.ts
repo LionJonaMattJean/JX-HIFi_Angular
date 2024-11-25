@@ -37,6 +37,7 @@ import {StoreModifyComponent} from './moduleAdmin/pages/StoreSection/store-modif
 import {StoreDeleteComponent} from './moduleAdmin/pages/StoreSection/store-delete/store-delete.component';
 import {StoreAjoutComponent} from './moduleAdmin/pages/StoreSection/store-ajout/store-ajout.component';
 import {ParameterComponent} from './moduleAdmin/pages/parameter/parameter.component';
+import { FindStoreComponent } from './pages/findStore-lion/find-store/find-store.component';
 
 export const routes: Routes = [
   {
@@ -47,6 +48,7 @@ export const routes: Routes = [
       { path: 'support', component: SupportLionComponent },
       { path: 'products/:categoryId', component: CatProductDisplayComponent },
       { path: 'detail_product/:productId', component: DetailProductParentJeanComponent},
+      {path: 'stores', component: FindStoreComponent}
     ]
   },
 
