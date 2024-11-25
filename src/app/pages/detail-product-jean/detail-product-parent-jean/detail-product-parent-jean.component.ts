@@ -17,9 +17,9 @@ export class DetailProductParentJeanComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
   produitService = inject(ProductsService)
   product: Product | undefined;
-  
+
   constructor() {
     const productId = this.route.snapshot.params['productId'];
     this.produitService.getProductById(productId).subscribe(p => this.product = p);
-}
+  }
 }
