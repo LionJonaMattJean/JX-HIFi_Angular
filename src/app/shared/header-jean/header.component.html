@@ -20,7 +20,7 @@
         </div>
         <!--Buttons top-right of page-->
         <div class="d-none d-md-flex gap-5">
-            <a routerLink="/stores" class="btnIcon text-center" href="">
+            <a routerLink="/stores" class="btnIcon text-center">
                 <img class="imgIcon" src="assets/images/icons/Shop.svg" alt="store_icon">
                 <div class="txtIcon">Stores</div>
             </a>
@@ -65,12 +65,12 @@
     </div>
 
     <!--OFFCANVAS AUTO GENERATION OF CATEGORIES AND [ROUTERLINK]-->
-    <div class=" text-center d-flex flex-column my-3 p-2 align-items-center gap-4">
-        <div *ngFor="let i of listCategory" class="col-6">
-            <a [routerLink]="['/products/', i.id]" data-bs-dismiss="offcanvas">
-                <strong>{{i.name}}</strong>
-            </a>
-            <div class="separatorOffCanvas"></div>
+    <div class=" text-center d-flex flex-column my-3 p-2 align-items-center">
+        <div *ngFor="let cat of listCategory; let i = index" class="col-6">
+            <a class="categoryShortcut" [routerLink]="['products/', cat.id]" 
+            [innerHTML]="cat.id === 'CAT111' ? '<b>' + cat.name + '</b>' : cat.name"
+            data-bs-dismiss="offcanvas"></a>
+            <div *ngIf="i < listCategory.length - 1" class="my-3 separatorOffCanvas"></div>
         </div>
     </div>
 
@@ -92,7 +92,6 @@
             <h6>
                 © 2024 Bisoux, Caresses et Popcorns aux chocolat !
             </h6>
-
         </div>
     </div>
 </div>

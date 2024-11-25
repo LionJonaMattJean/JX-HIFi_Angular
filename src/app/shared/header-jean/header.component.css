@@ -9,14 +9,17 @@
 .categoryShortcut,
 .btnIcon {
     color: white;
+}
+
+.btnIcon {
     width:75px;
-    margin: 0;
+    height:75px;
+    padding-top: 2%;
 }
 
 .btnIcon:hover{
     box-shadow: 0 0 10px 5px rgba(72, 144, 232, 1);
     border-radius: 10px;
-    
 }
 
 .separator {
@@ -36,8 +39,6 @@
 .separatorOffCanvas {
     border-top: 2px solid rgba(16, 60, 172, 1);
     border-radius: 1px;
-    width: 100%;
- 
 }
 
 .categoryNavOffCanvas a {
