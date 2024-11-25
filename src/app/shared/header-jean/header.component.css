@@ -9,6 +9,14 @@
 .categoryShortcut,
 .btnIcon {
     color: white;
+    width:75px;
+    margin: 0;
+}
+
+.btnIcon:hover{
+    box-shadow: 0 0 10px 5px rgba(72, 144, 232, 1);
+    border-radius: 10px;
+    
 }
 
 .separator {
@@ -37,4 +45,5 @@
 }
 .categoryNavOffCanvas {
     background-color: rgb(178, 200, 255);
+    overflow-y: scroll;
 }
