@@ -9,6 +9,7 @@ import {OrderService} from '../../../../services/order.service';
 import {OrderItem} from '../../../../models/OrderItem';
 import {Product} from '../../../../models/Product';
 import {ProductsService} from '../../../../services/products.service';
+import {debounceTime, switchMap} from 'rxjs';
 
 @Component({
   selector: 'app-order-modify',
@@ -25,13 +26,12 @@ import {ProductsService} from '../../../../services/products.service';
 })
 export class OrderModifyComponent implements OnInit{
   order!: Order;
-  searchControl=new FormControl('');
   id!: string;
   user!:User;
   orderModified:boolean=false;
   productList!:Product[];
-  filteredProducts:Product[]=[];
-
+  filteredProducts:Product[] = [];
+  activeIndex: number | null = null;
   constructor(private orderService: OrderService,
               private userService: UsersService,
               private route:ActivatedRoute,
@@ -49,23 +49,16 @@ export class OrderModifyComponent implements OnInit{
       this.productList=productList;
     })
   }
-  onSearch() {
-    const searchValue=this.searchControl.value?.toLowerCase()||"";
-    this.filteredProducts = this.productList.filter(
-      (product) =>
-        product.name.toLowerCase().includes(searchValue.toLowerCase()) ||
-        product.id.toLowerCase().includes(searchValue.toLowerCase())
+  filterProducts(query: string,index:number) {
+    this.activeIndex = index;
+    this.filteredProducts = this.productList.filter(product =>
+      product.name.toLowerCase().includes(query.toLowerCase()) || product.id.toString().includes(query)
     );
   }
-  selectProduct(product:Product) {
-    this.order.orderItems.push({
-      id: product.id,
-      product: product,
-      quantity: 1,
-      subTotal:product.onSale?product.specialPrice:product.sellPrice
-    });
-    this.searchControl.setValue('');
-    this.onSearch();
+
+  selectProduct(orderItem: any, selectedProduct: any) {
+    orderItem.product = { ...selectedProduct }; // Copy product details
+    this.filteredProducts = []; // Clear the dropdown
   }
   removeProduct(i:number) {
     this.order.orderItems.splice(i,1);

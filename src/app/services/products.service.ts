@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import {catchError, map, Observable, of} from 'rxjs';
 import { Product } from '../models/Product';
 import mockData from '../../mockData/mock_json/products.mock.json';
 
@@ -26,7 +26,23 @@ export class ProductsService {
   // getCategories(): Observable<Product[]> {
   //   return this.httpRequest.get<Product[]>(this.dataLink);
   // }
+  searchProducts(query:string): Observable<Product[]> {
+    if (!query.trim()) {
+      return of([]); // Return empty array if the query is empty
+    }
 
+    return this.getAllProduct().pipe(
+      map((products) =>
+        products.filter((product) =>
+          product.name.toLowerCase().includes(query.toLowerCase())
+        )
+      ),
+      catchError((error) => {
+        console.error('Error fetching mock products:', error);
+        return of([]); // Return empty array in case of an error
+      })
+    );
+  }
   getAllProduct(): Observable<Product[]> {
     return of(mockData)
   }
