@@ -1,6 +1,8 @@
 import { NgIf } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Product } from '../../../../models/Product';
+import { OrderItemService } from '../../../../services/order-item.service';
 
 @Component({
   selector: 'app-quantity-and-cart-btn-jean',
@@ -13,7 +15,17 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './quantity-and-cart-btn-jean.component.css'
 })
 export class QuantityAndCartBtnJeanComponent {
-  @Input() stockInventory: number | undefined;
+  @Input() product: Product | undefined;
+  orderItem_service: OrderItemService = inject(OrderItemService);
+
+  addToCart() {
+    if (this.product) {
+      this.orderItem_service.createOrderItem(this.product, this.txtQty);
+    }
+    else {
+      alert("Undefined product !")
+    }
+  }
 
   onQtyManualyChanged() {
     if (this.txtQty < 1 || this.txtQty > 5) {
@@ -21,7 +33,7 @@ export class QuantityAndCartBtnJeanComponent {
       this.txtQty = 1;
     }
   }
-  txtQty: number = 1; // todo gerer l'entrer d'input manuel
+  txtQty: number = 1;
   removeQty() {
     if (this.txtQty > 1 && this.txtQty <= 5) {
       this.txtQty--;
@@ -32,8 +44,7 @@ export class QuantityAndCartBtnJeanComponent {
       this.txtQty++;
     }
   }
-  addToCart() {
-    throw new Error('Method not implemented.');
-  }
+
+  
 
 }

@@ -38,10 +38,12 @@ import {OrderDetailComponent} from './moduleAdmin/pages/OrderSection/order-detai
 import {OrderModifyComponent} from './moduleAdmin/pages/OrderSection/order-modify/order-modify.component';
 import {OrderDeleteComponent} from './moduleAdmin/pages/OrderSection/order-delete/order-delete.component';
 import {OrderAjoutComponent} from './moduleAdmin/pages/OrderSection/order-ajout/order-ajout.component';
+import { PanierComponent } from './pages/panier/panier.component';
 
 
 
 export const routes: Routes = [
+  //path main site
   {
     path: '', component: MainSiteComponent,
     children: [
@@ -50,7 +52,8 @@ export const routes: Routes = [
       { path: 'support', component: SupportLionComponent },
       { path: 'products/:categoryId', component: CatProductDisplayComponent },
       { path: 'detail_product/:productId', component: DetailProductParentJeanComponent},
-      {path: 'stores', component: FindStoreComponent}
+      {path: 'stores', component: FindStoreComponent},
+      {path: 'cart', component:PanierComponent}
     ]
   },
 

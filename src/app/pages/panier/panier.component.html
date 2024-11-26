@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <h1 class="display-4">Shopping Cart</h1>
+        <div class="col-2">
+            <button class="btn btn-secondary">Deselect all items</button>
+        </div>
+
+    </div>
+
+    <div class="row">
+            <div class="col-8">
+                <app-item-in-cart></app-item-in-cart>
+                <!--THIS IS THE NGFOR FOR THE ITEMS-->
+            </div>
+            
+            <div class="col-4">
+                <app-sub-total></app-sub-total>
+                <!--THIS SHOULD BE THE AUTO GENERATION OF THE SUBTOTAL-->
+            </div>
+    </div>
+
+
+    <div class="row">
+        <app-coupon-code></app-coupon-code>
+        <!--HERE THERE SHOULD BE THE ROW WITH THE SUBTOTAL COMPONENT-->
+    </div>
+</div>
