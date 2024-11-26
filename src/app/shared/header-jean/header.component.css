@@ -11,6 +11,11 @@
     color: white;
 }
 
+.categoryShortcut:hover{
+    font-weight: bold;
+
+}
+
 .btnIcon {
     width:75px;
     height:75px;

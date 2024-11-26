@@ -1,56 +1,17 @@
 .container{
     height: 100vh;
+    margin:0;
+    padding:0;
+
 }
-.item-container{
+
+
+
+.store-map{
     width: 100%;
-    height: 100%;
-    padding-top: 25px;
-    border:thick;
-    margin-top:20px;
-    background-color: #a3bbf9;
-    border-radius: 10px;
-}
-
-h3{
-    margin-top: 15px;
-    font-weight: bold;
-}
-
-.storeItem{
-    margin: 0 0 2em 0;
-    list-style-type: none;
-    padding: 0;
-    width: 350px;
-}
-
-
-
-.storeItem button{
-    flex: 1;
-    flex-direction: column;
-    cursor: pointer;
-    position: relative;
-    left: 0;
-    background-color: #a3bbf9;
-    margin: .5em;
-    padding: 10px;
-    border-radius: 4px;
-    display: flex;
-    align-items:start;
-    height: auto;
-    width: 100%;
-    border:none;
-    
-}
-
-h6{
-    font-weight: bold;
-    font-size: 20px;
-}
-.storeItem button:hover{
-    background-color: #316bfe;
-    cursor: pointer;
-    transform:translate(8px)
-
+    height: 250px;
+    object-fit:cover;
+    filter: brightness(0.8);
+    opacity: 0.8;
 
 }
