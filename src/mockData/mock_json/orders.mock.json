@@ -1,5 +1,7 @@
-{
+[{
   "id": "order001",
+  "idCustomer": "USE1000",
+  "email":"alice_s@gmail.com",
   "card": {
     "id": "CAR123",
     "cardNumber": 4111111111111111,
@@ -66,10 +68,10 @@
       "subTotal": 758.0
     }
   ],
-  "totalAmount": 175.0,
+  "totalAmount": 864.12,
   "TPS": 8.75,
   "TaxeState": 5.25,
-  "TTC": 189.0,
+  "TTC": 106.12,
   "status": "Pending",
   "orderDate": {
     "day": 1,
@@ -85,3 +87,4 @@
   }
 
 }
+]

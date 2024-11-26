@@ -8,6 +8,7 @@ import {CategoryService} from '../../../services/category.service';
 import {PaginationDashboardComponent} from '../pagination-dashboard/pagination-dashboard.component';
 import {UsersService} from '../../../services/users.service';
 import {StoresService} from '../../../services/stores.service';
+import {OrderService} from '../../../services/order.service';
 
 
 @Component({
@@ -48,7 +49,8 @@ export class MainCardComponent implements OnInit{
               public productsService:ProductsService,
               private categoriesService:CategoryService,
               private usersService:UsersService,
-              private storesService:StoresService) { }
+              private storesService:StoresService,
+              private orderService:OrderService) { }
 
   ngOnInit() {
     this.router.events.pipe(
@@ -143,7 +145,17 @@ export class MainCardComponent implements OnInit{
     this.ajout="Ajouter une commande";
     this.entityType="orders";
     this.urlAjout = '/admin/orders/ajout';
-    //todo: display columns and display column names
+    this.displayColumns=['id','orderDate','totalItems','totalAmount','status','idCustomer','email'];
+    this.columnNames={
+      id:'ID',
+      orderDate:'Date de commande',
+      totalItems:'Nombre de produits',
+      totalAmount:'Total',
+      status:'Statut',
+      idCustomer:'ID Client',
+      email:'Email'
+    };
+
     this.loadAllOrder();
   }
 
@@ -237,7 +249,12 @@ export class MainCardComponent implements OnInit{
     });
   }
   loadAllOrder() {
-    //todo: load all orders
+  this.orderService.getOrders().subscribe(data=>{
+    this.data=data;
+    this.totalItems=data.length;
+    this.loadDataForPage();
+    this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+  })
   }
   loadAllStore() {
     this.storesService.getAllStores().subscribe(data =>{

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {map, Observable, of} from 'rxjs';
 import {Order} from '../models/Order';
 import mockData from '../../mockData/mock_json/orders.mock.json';
 @Injectable({
@@ -19,7 +19,12 @@ export class OrderService {
   updateStatus(newStatus: string): void {
     //  this.status = newStatus;
   }
-  getOrders(): Observable<Order> {
+  getOrders(): Observable<Order[]> {
     return of(mockData);
+  }
+  getOrderById(id: string): Observable<Order> {
+    return this.getOrders().pipe(
+      map(orders=>orders.find(order=>order.id===id)!)
+    );
   }
 }

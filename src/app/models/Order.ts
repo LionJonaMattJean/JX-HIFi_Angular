@@ -6,7 +6,7 @@ import {Dates} from './dates';
 
 export interface Order{
   id: string;
-
+  idCustomer: string;
   card: Card;
   orderItems: OrderItem[];
   totalAmount: number;

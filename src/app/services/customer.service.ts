@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Order} from '../models/Order';
 import {Customer} from '../models/Customer';
 
-import {Observable, of} from 'rxjs';
+import {map, Observable, of} from 'rxjs';
 import mockdata from '../../mockData/mock_json/customer.mock.json';
 
 @Injectable({
@@ -14,6 +14,11 @@ export class CustomerService {
 
   getCustomers():Observable<Customer[]>{
     return of(mockdata);
+  }
+  getCustomerById(id: string): Observable<Customer> {
+    return  this.getCustomers().pipe(
+      map(customers => customers.find(customer => customer.id === id)!)
+    );
   }
    addOrder(order: Order): void {
 

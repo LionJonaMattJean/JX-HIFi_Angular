@@ -48,6 +48,29 @@ export class TableDashboardComponent {
           break;
       }
       return name;
+    }else if(column==='status'){
+      const choix = row.status;
+      let name: string='';
+      switch (choix) {
+        case 'Pending' :
+          name = 'En attente';
+          break;
+        case'Processing':
+          name = 'En cours de traitement';
+          break;
+        case 'Completed':
+          name = 'Terminé';
+          break;
+        case 'Canceled':
+          name = 'Annulé';
+          break;
+      }
+      return name;
+    }else if(column==='orderDate'){
+      const date = row.orderDate;
+      return [date.day,date.month,date.year].join('/');
+    }else if(column==='totalItems'){
+      return row.orderItems.length;
     }
      else {
       return row[column];

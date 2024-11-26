@@ -38,6 +38,10 @@ import {StoreDeleteComponent} from './moduleAdmin/pages/StoreSection/store-delet
 import {StoreAjoutComponent} from './moduleAdmin/pages/StoreSection/store-ajout/store-ajout.component';
 import {ParameterComponent} from './moduleAdmin/pages/parameter/parameter.component';
 import { FindStoreComponent } from './pages/findStore-lion/find-store/find-store.component';
+import {OrderDetailComponent} from './moduleAdmin/pages/OrderSection/order-detail/order-detail.component';
+import {OrderModifyComponent} from './moduleAdmin/pages/OrderSection/order-modify/order-modify.component';
+import {OrderDeleteComponent} from './moduleAdmin/pages/OrderSection/order-delete/order-delete.component';
+import {OrderAjoutComponent} from './moduleAdmin/pages/OrderSection/order-ajout/order-ajout.component';
 
 export const routes: Routes = [
   {
@@ -81,6 +85,11 @@ export const routes: Routes = [
 
 
       { path: 'orders', component: OrdersDashboardComponent },
+      { path: 'orders/details/:id', component: OrderDetailComponent},
+      { path: 'orders/modify/:id', component: OrderModifyComponent},
+      { path: 'orders/delete/:id', component: OrderDeleteComponent},
+      { path: 'orders/ajout', component: OrderAjoutComponent},
+
       { path: 'stores', component: StoreDashboardComponent },
       { path: 'stores/details/:id', component: StoreDetailComponent },
       { path: 'stores/modify/:id', component: StoreModifyComponent },

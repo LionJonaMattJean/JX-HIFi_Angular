@@ -18,6 +18,8 @@
   "orders":[{
 
   "id": "order001",
+    "idCustomer":"USE1000",
+    "email": "alice_s@gmail.com",
   "card": {
     "id": "CAR123",
     "cardNumber": 4111111111111111,
@@ -140,5 +142,4 @@
     "isDeleted": false,
     "role": "customer"
   }
-
 ]
