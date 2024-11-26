@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {NgForOf, NgIf} from '@angular/common';
 import {Order} from '../../../../models/Order';
@@ -17,18 +17,20 @@ import {ProductsService} from '../../../../services/products.service';
     FormsModule,
     RouterLink,
     NgIf,
-    NgForOf
+    NgForOf,
+    ReactiveFormsModule
   ],
   templateUrl: './order-modify.component.html',
   styleUrl: './order-modify.component.css'
 })
 export class OrderModifyComponent implements OnInit{
   order!: Order;
+  searchControl=new FormControl('');
   id!: string;
   user!:User;
   orderModified:boolean=false;
   productList!:Product[];
-  filteredList:Product[]=[];
+  filteredProducts:Product[]=[];
 
   constructor(private orderService: OrderService,
               private userService: UsersService,
@@ -47,7 +49,24 @@ export class OrderModifyComponent implements OnInit{
       this.productList=productList;
     })
   }
-
+  onSearch() {
+    const searchValue=this.searchControl.value?.toLowerCase()||"";
+    this.filteredProducts = this.productList.filter(
+      (product) =>
+        product.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+        product.id.toLowerCase().includes(searchValue.toLowerCase())
+    );
+  }
+  selectProduct(product:Product) {
+    this.order.orderItems.push({
+      id: product.id,
+      product: product,
+      quantity: 1,
+      subTotal:product.onSale?product.specialPrice:product.sellPrice
+    });
+    this.searchControl.setValue('');
+    this.onSearch();
+  }
   removeProduct(i:number) {
     this.order.orderItems.splice(i,1);
   }
@@ -77,6 +96,7 @@ export class OrderModifyComponent implements OnInit{
       subTotal: 0
     };
     this.order.orderItems.push(newOrderItem);
+
   }
 
   modifyOrder() {
