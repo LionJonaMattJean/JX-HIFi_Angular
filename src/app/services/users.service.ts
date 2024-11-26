@@ -29,6 +29,11 @@ export class UsersService {
       map(users => users.find(user => user.id === id)!)
     );
   }
+  getUserByEmail(email: string): Observable<User> {
+   return this.getUsers().pipe(
+     map(users=>users.find((user=>user.email===email))!)
+   )
+  }
   login(): void {
     // Implement login logic here
   }

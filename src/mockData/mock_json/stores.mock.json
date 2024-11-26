@@ -18,8 +18,8 @@
         "name": "JX Hi-Fi Store 2",
         "address" : {
             "address": "5678 Elm Street",
-            "city": "Los Angeles",
-            "province": "CA",
+            "city": "Detroit",
+            "province": "MC",
             "postalCode": "90002",
             "country": "USA"
         },
@@ -32,8 +32,8 @@
         "name": "JX Hi-Fi Store 3",
         "address" : {
             "address": "9101 Oak Street",
-            "city": "Los Angeles",
-            "province": "CA",
+            "city": "Dallas",
+            "province": "TX",
             "postalCode": "90003",
             "country": "USA"
         },

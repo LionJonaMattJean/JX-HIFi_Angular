@@ -1,7 +1,9 @@
 <section class="listing">
     <a [routerLink]="['/products/', acceuilCarteInput.id]">
         <h3 class="listing-heading">{{acceuilCarteInput.nom}}</h3>
-        <img class="listing-photo" [src]="acceuilCarteInput.image" alt="">
+            <div class="row d-flex justify-content-center">
+                 <img class="listing-photo" [src]="acceuilCarteInput.image" alt="">
+            </div>
     </a>
 </section>
 

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {NgForOf, NgIf} from '@angular/common';
 import {Order} from '../../../../models/Order';
@@ -10,6 +10,7 @@ import {OrderItem} from '../../../../models/OrderItem';
 import {Product} from '../../../../models/Product';
 import {ProductsService} from '../../../../services/products.service';
 
+
 @Component({
   selector: 'app-order-modify',
   standalone: true,
@@ -17,7 +18,8 @@ import {ProductsService} from '../../../../services/products.service';
     FormsModule,
     RouterLink,
     NgIf,
-    NgForOf
+    NgForOf,
+    ReactiveFormsModule
   ],
   templateUrl: './order-modify.component.html',
   styleUrl: './order-modify.component.css'
@@ -28,8 +30,8 @@ export class OrderModifyComponent implements OnInit{
   user!:User;
   orderModified:boolean=false;
   productList!:Product[];
-  filteredList:Product[]=[];
-
+  filteredProducts:Product[] = [];
+  activeIndex: number | null = null;
   constructor(private orderService: OrderService,
               private userService: UsersService,
               private route:ActivatedRoute,
@@ -47,7 +49,17 @@ export class OrderModifyComponent implements OnInit{
       this.productList=productList;
     })
   }
+  filterProducts(query: string,index:number) {
+    this.activeIndex = index;
+    this.filteredProducts = this.productList.filter(product =>
+      product.name.toLowerCase().includes(query.toLowerCase()) || product.id.toString().includes(query)
+    );
+  }
 
+  selectProduct(orderItem: any, selectedProduct: any) {
+    orderItem.product = { ...selectedProduct }; // Copy product details
+    this.filteredProducts = []; // Clear the dropdown
+  }
   removeProduct(i:number) {
     this.order.orderItems.splice(i,1);
   }
@@ -77,6 +89,7 @@ export class OrderModifyComponent implements OnInit{
       subTotal: 0
     };
     this.order.orderItems.push(newOrderItem);
+
   }
 
   modifyOrder() {

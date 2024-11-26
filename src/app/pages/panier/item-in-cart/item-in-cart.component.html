@@ -1,0 +1,44 @@
+<!--utiliser un NgFor et NgIf pour creer des rows d'item dans la colone-->
+<div class="row">
+    <div class="col">
+        <div class="row-card">
+            <div class="col" id="check">
+                <input type="checkbox">
+            </div>
+            <div class="card mb-4" style="width:100%; height: auto">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="./images/panier/candle.jpg" width="200" class="img-fluid rounded-start" alt="...">
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Candle</h5>
+                            <p class="card-text">Beautifully scented candle to lighten the mood.</p>
+                            <div class="row">
+                                <div class="col">
+                                    <select class="form-select" aria-label="Qty: 1">
+                                        <option>0 (Delete)</option>
+                                        <option selected>1</option>
+                                        <!--Probablement utiliser un NgFor pour une generation automatiser de 1-10-->
+                                    </select>
+                                </div>
+
+
+                                <div class="col">
+                                    <a href="#">Delete</a>
+                                    <a href="#">Share</a>
+                                </div>
+
+                                <div class="col" style="margin: 0">
+                                    <label><strong>$31.56</strong></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!---->

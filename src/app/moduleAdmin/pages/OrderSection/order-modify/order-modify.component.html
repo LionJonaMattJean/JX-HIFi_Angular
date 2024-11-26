@@ -54,10 +54,20 @@
               <th>Action</th>
             </tr>
             </thead>
-            <tbody>
+           <tbody>
             <tr *ngFor="let product of order.orderItems; let i = index">
               <td>
-                <input type="text" class="form-control" [(ngModel)]="product.product.name" name="produit-{{i}}" required>
+                <input type="text"
+                       placeholder="Enter product name or ID"
+                       [(ngModel)]="product.product.name"
+                       name="produit-{{i}}" required
+                       (input)="filterProducts(product.product.name,i)"
+                >
+                <ul class="autocomplete-dropdown" *ngIf="filteredProducts.length > 0&&activeIndex === i">
+                  <li *ngFor="let p of filteredProducts" (click)="selectProduct(product, p)">
+                    {{ p.name }} (ID: {{ p.id }})
+                  </li>
+                </ul>
               </td>
               <td>
                 <input type="number" class="form-control" [(ngModel)]="product.quantity" name="quantité-{{i}}" min="1" required>
