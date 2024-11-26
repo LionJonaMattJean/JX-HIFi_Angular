@@ -1,7 +1,7 @@
 <div class="main-content-wrapper">
-  <div *ngIf="order" class=" p-4 row flex-lg-row align-items-center g-5 py-5">
+  <div *ngIf="order&&user" class=" p-4 row flex-lg-row align-items-center g-5 py-5">
 
-    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3" >Modifier Commande</h1>
+    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3" >Ajout Commande</h1>
     <div class="col-lg-6">
 
 
@@ -10,9 +10,12 @@
 
           <div class=" mb-3">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email" required>
+            <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email"#email="ngModel" required>
             <div class="mt-3">
-              <button type="button" (click)="findUser()" class="btn btn-primary" >Rechercher Client</button>
+              <button type="button" (click)="triggerFindUser(email.value)" class="btn btn-primary"  >Rechercher Client</button>
+            </div>
+            <div class="mb-3 mt-3 alert alert-info" *ngIf="!userFound">
+              Client non trouvé
             </div>
           </div>
         <div class="mb-3">
@@ -61,7 +64,17 @@
           <tbody>
           <tr *ngFor="let product of order.orderItems; let i = index">
             <td>
-              <input type="text" placeholder="Enter product name or ID" class="form-control" [(ngModel)]="product.product.name" name="produit-{{i}}" required>
+              <input type="text"
+                     placeholder="Enter product name or ID"
+                     class="form-control"
+                     [(ngModel)]="product.product.name"
+                     name="produit-{{i}}" required
+                     (input)="filterProducts(product.product.name,i)">
+              <ul class="autocomplete-dropdown" *ngIf="filteredProducts.length > 0&&activeIndex === i">
+                <li *ngFor="let p of filteredProducts" (click)="selectProduct(product, p)">
+                  {{ p.name }} (ID: {{ p.id }})
+                </li>
+              </ul>
             </td>
             <td>
               <input type="number" class="form-control" [(ngModel)]="product.quantity" name="quantité-{{i}}" min="1" required>

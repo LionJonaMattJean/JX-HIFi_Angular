@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {OrderItem} from '../../../../models/OrderItem';
 import {Order} from '../../../../models/Order';
 import {User} from '../../../../models/User';
+import {ProductsService} from '../../../../services/products.service';
+import {Product} from '../../../../models/Product';
+import {UsersService} from '../../../../services/users.service';
 
 
 @Component({
@@ -22,10 +25,19 @@ import {User} from '../../../../models/User';
 })
 export class OrderAjoutComponent {
   orderAdd: boolean = false;
+  emailFound!: boolean ;
   order: Order;
   user: User
+  productList!:Product[];
 
-constructor() {
+  filteredProducts:Product[] = [];
+  activeIndex: number | null = null;
+  userFound: boolean=false;
+  findUserClicked: boolean=false;
+  userForm: FormGroup;
+
+
+constructor(private productService: ProductsService,private usersService:UsersService) {
   this.order={
     id: "",
     idCustomer: "",
@@ -69,6 +81,16 @@ constructor() {
       country: ""
     }
   };
+  this.productService.getAllProduct().subscribe(productList=>{
+    this.productList=productList;
+  })
+  this.userForm = new FormGroup({
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email,
+    ]),
+  })
+  this.resetUser();
 }
   removeProduct(i:number) {
     this.order.orderItems.splice(i,1);
@@ -106,7 +128,51 @@ constructor() {
 
   }
 
-  findUser() {
+  triggerFindUser(email:string) {
 
+    if (email) {
+      this.usersService.getUserByEmail(email).subscribe(user => {
+        this.user = user;
+        this.userFound = true;
+        this.findUserClicked = false;
+      },
+        (error) => {
+          this.emailFound = false;
+          console.error('User not found', error);
+        })
+    }else {
+      this.emailFound = false;
+    }
+  }
+
+  filterProducts(query: string,index:number) {
+    this.activeIndex = index;
+    this.filteredProducts = this.productList.filter(product =>
+      product.name.toLowerCase().includes(query.toLowerCase()) || product.id.toString().includes(query)
+    );
+  }
+  selectProduct(orderItem: any, selectedProduct: any) {
+    orderItem.product = { ...selectedProduct }; // Copy product details
+    this.filteredProducts = []; // Clear the dropdown
+  }
+
+  private resetUser() {
+    this.user = {
+      id: "",
+      email: "",
+      password: "",
+      firstName: "",
+      lastName: "",
+      phone: "",
+      role: "",
+      isDeleted: false,
+      address: {
+        address: "",
+        city: "",
+        postalCode: "",
+        province: "",
+        country: ""
+      }
+    };
   }
 }
