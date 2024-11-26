@@ -8,7 +8,7 @@ import { Customer } from '../models/Customer';
 })
 export class ShoppingCartService {
   private static instance: ShoppingCartService;
-  private static shopppingCart: ShoppingCart;
+  public static shopppingCart: ShoppingCart;
 
   constructor() {
     ShoppingCartService.shopppingCart = {
