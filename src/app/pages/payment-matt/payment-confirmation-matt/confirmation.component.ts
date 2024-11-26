@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { OnInit } from '@angular/core';
 import { OrderService } from '../../../services/order.service';
+import { ShoppingCartService } from '../../../services/shopping-cart.service';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class ConfirmationComponent implements OnInit {
     this.useShippingAddress = useShippingAddress;
   }
   /*
-    ajustement dans la logique pour aller chercher les items d'un order pour afficher dans le tableau
+    ajustement dans la logique pour aller chercher les items du shopping cart pour afficher dans le tableau
 
   afficherPanier() {
     const tbody = document.querySelector('#panier-table-body') as HTMLElement;
