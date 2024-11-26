@@ -1,1 +1,28 @@
-<p>find-store works!</p>
+<div class="container">
+    <div class="row">
+            <div class="col-4">
+                <div class="stores-list">
+                    <h3>List of Stores </h3>
+                    <ul class="storeItem">
+                        <li *ngFor="let i of storeList">
+                            <button type="button" [class.selected] = "i === selectedStore" (click)="onSelect(i)">
+                                <h6>{{i.address.address}}</h6>
+                                <label>{{i.address.postalCode}}</label>
+                                <label>{{i.address.city}}</label>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="item-container">
+                    <app-store-carte [magasin]="selectedStore"></app-store-carte>
+                </div>
+            </div>
+
+            <div class="col-6">
+
+            </div>
+    </div>
+</div>
