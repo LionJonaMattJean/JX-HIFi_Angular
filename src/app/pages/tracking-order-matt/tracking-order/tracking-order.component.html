@@ -1,48 +1,201 @@
-<div class="container frame">
-    <form>
-        <h1>Merci pour votre confirance!</h1>
-        <div class="mb-3">
-            <label for="NumConfirmation" class="form-label ">Si vous désirer obtenir des
-                 mises-à-jour concernant votre livraison, veuillez entrer les informations
-                  suivantes:</label>
-        </div>
-        <div class="mb-3">
-            <label for="suivi" class="form-label ">Entrez votre numéro de confirmation:</label>
-            <input type="text" class="form-control width" id="NumConfirmation" required>
-        </div>
-        <div class="mb-3">
-            <label for="suivi" class="form-label">(Le numéro de commande vous a été remis
-                                                 lors de la confirmation de paiement.)</label>
-        </div>
-        <div class="row mb-3">
-            <div class="col-6">
-                <label for="suivi" class="form-label">Entrer votre courriel:</label>
-                <input type="text" class="form-control" id="Courriel" required>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-6">
-                <label class="form-label">Un courriel vous sera acheminé
-                                             à chaques étapes clées.</label>
-            </div>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Veuillez noter que nous ne sommes pas responsable
-                 dans le cas où la livraison dépasse les délais prévus si vous habitez dans
-                  une région éloignée ou que le service de livraison dans votre localité ne
-                   fait pas parti de notre réseau de distribution.</label>
-        </div>
-        <div class="mb-3">
-            <label  class="form-label">Important de noter que votre courriel ne sera pas
-                 utiliser à des fins de publicité et que vous allez recevoir uniquement
-                  des courriels pour suivre l'évolution de votre commande.</label>
-        </div> 
-        <div class="mb-3">
-            <label class="form-label">Merci encore de votre confiance en JX-HiFi!</label>
-            <img src="/assets/images/logo/Logo JX-HIFI.png" alt="Image 3" style="width: 100%; max-width: 125px; height: 100px;">
-            
-        </div>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.spliter {
+    display: block;
+    margin: 20px 0;
+    text-align: center;
+}
 
-        <button type="submit" class="btn btn-primary width">Confirmer le suivi</button>
-    </form>
+input{
+    height: 40px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    font-size: 16px; 
+}
+
+
+.background {
+    background-color: #c4e0fd;
+    border-radius: 15px; 
+    padding: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 800px;
+}
+
+
+.container {
+    background-color: #c4e0fd;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.labels {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    
+}
+
+.form-design button {
+    background-color: #6c757d; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    float:right;
+}
+
+.form-design button:hover {
+    background-color: #5a6268;
+}
+
+
+.row img {
+    display: block;
+    margin: 0 auto;
+}
+
+.wide-input{
+    width:100%;
+    max-width: 400px;
+    height: 40px;
+    padding:8px;
+    box-sizing: border-box;
+}
+
+.narrow-input{
+    width:calc(50%-8px);
+    height: 40px;
+    max-width:200px;
+    padding:8px;
+    box-sizing: border-box;
+    display: flex;
+    gap:10px;
+}
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+.form-check input {
+    margin: 0;  
+}
+
+.form-check label {
+    font-size: 16px; 
+}
+
+#modePaiement {
+    height: 40px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    padding: 8px;
+    box-sizing: border-box;
+    width: 27%; 
+}
+
+input:placeholder-shown {
+    background-color: #c7c6c6;
+}
+
+.p-text{
+    font-size: smaller;
+}
+
+form img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+</style>
+
+<div class="background">
+    <div class="container">
+        <form class="form-design">
+            <h1>Merci pour votre confiance!</h1>
+            <div>
+                <p>Si vous désirer obtenir des
+                    mises-à-jour concernant votre livraison, veuillez entrer les informations
+                    suivantes:</p>
+            </div>
+            <table>
+                <tr>
+                    <td>
+                        <label for="suivi" class="form-label ">Entrez votre numéro de confirmation:</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control width" id="NumConfirmation"
+                        class="narrow-input" required>
+                    </td>
+                </tr>
+            </table>
+            <h5 for="suivi">(Le numéro de commande vous a été remis
+                            lors de la confirmation de paiement.)</h5>
+            <table>
+                <tr>
+                    <td>
+                        <label for="suivi">Entrer votre courriel:</label>
+                    </td>    
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" id="Courriel" class="wide-input" required>
+                    </td>
+                </tr>
+
+            </table>
+            <div>
+                <div>
+                    <p class="p-text">Un courriel vous sera acheminé
+                                                à chaques étapes clées de la livraison.</p>
+                </div>
+            </div>
+            <table>
+                <tr>
+                    <td>
+                        <p class="p-text">Veuillez noter que nous ne sommes pas responsable
+                            dans le cas où la livraison dépasse les délais prévus si vous habitez dans
+                            une région éloignée ou que le service de livraison dans votre localité ne
+                            fait pas parti de notre réseau de distribution.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img class="form img" src="assets/images/logo/Logo JX-HIFI.png">                   
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p  class="p-text">Important de noter que votre courriel ne sera pas
+                            utiliser à des fins de publicité et que vous allez recevoir uniquement
+                            des courriels pour suivre l'évolution de votre commande.</p>
+                    </td>
+                </tr>
+                </table>
+            <table>
+                <tr>
+                    <td>
+                        <label class="form-label">Merci encore de votre confiance en JX-HiFi!</label>
+                    </td>
+                </tr>
+                
+            </table>
+            <button type="submit" class="btn btn-primary width">Confirmer le suivi</button>
+        </form>
+    </div>
 </div>
