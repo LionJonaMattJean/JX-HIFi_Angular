@@ -14,9 +14,13 @@ import { FormsModule } from '@angular/forms';
 })
 export class FindStoreComponent implements OnInit {
   storeList: Store[] = [];
+  filteredStoreList: Store[] = [];
   storeServ: StoresService = inject(StoresService);
 
-  constructor(){}
+  constructor(){
+
+    this.filteredStoreList = this.storeList;
+  }
 
   ngOnInit(): void{
     this.getMagasins();
@@ -25,9 +29,19 @@ export class FindStoreComponent implements OnInit {
   getMagasins():void{
     this.storeServ.getAllStores().subscribe(s =>{
       this.storeList = s
+      this.filteredStoreList = s;
       //console.log(s);
     } );
-    
+  }
+
+  filterResults(ville:string){
+    if(!ville){
+      this.filteredStoreList = this.storeList;
+      return;
+    }
+    this.filteredStoreList = this.storeList.filter(
+      store => store?.address.city.toLowerCase().includes(ville.toLowerCase())
+    )
   }
 
 }
