@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { OrderItem } from '../../../models/OrderItem';
 
 @Component({
   selector: 'app-item-in-cart',
@@ -8,5 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './item-in-cart.component.css'
 })
 export class ItemInCartComponent {
+  @Input() item!:OrderItem;
 
 }
