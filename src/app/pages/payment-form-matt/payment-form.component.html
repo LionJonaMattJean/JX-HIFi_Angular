@@ -1,23 +1,21 @@
-<div class="container frame">
-    <!-- Images -->
-     <!-- vérifier le path des images -- ne s'affichent pas-->
-    <div class="row mb-3 text-start">
-        <div class="col-12 col-md-4 mb-3 mb-md-0">
-            <img src="assets/images/logo/payments.jpg" alt="Image 1" style="width: 100%; max-width: 325px; min-width: 200px; height: 75px;">
-        </div>
-        <div class="col-12 col-md-4 mb-3 mb-md-0">
-            <img src="assets/images/logo/paypal.jpg" alt="Image 2" style="width: 100%; max-width: 150px; margin-left: 10px; height: 75px;">
-        </div>
-        <div class="col-12 col-md-4">
-            <img src="assets/images/logo/transecur.png" alt="Image 3" style="width: 100%; max-width: 125px; height: 100px;">
-        </div>
-    </div>
-
+<div class="background">
+    <div class="container">
     <!-- Form -->
-    <form>
+    <form class="form-design">
+        <div class="row mb-3 text-start">
+            <div class="col-12 col-md-4 mb-3 mb-md-0">
+                <img src="assets/images/logo/payments.jpg" alt="Image 1" style="width: 100%; max-width: 325px; min-width: 200px; height: 75px;">
+            </div>
+            <div class="col-12 col-md-4 mb-3 mb-md-0">
+                <img src="assets/images/logo/paypal.jpg" alt="Image 2" style="width: 100%; max-width: 150px; margin-left: 10px; height: 75px;">
+            </div>
+            <div class="col-12 col-md-4">
+                <img src="assets/images/logo/transecur.png" alt="Image 3" style="width: 100%; max-width: 125px; height: 100px;">
+            </div>
+        </div>
         <!-- Mode de paiement -->
         <div class="mb-3">
-            <label for="modePaiement" class="form-label">Mode de paiement</label>
+            <label for="modePaiement" class="labels">Mode de paiement</label>
             <select class="form-select widthPaiement" id="modePaiement" required>
                 <option value="" selected disabled>----</option>
                 <option value="visa">Visa</option>
@@ -26,6 +24,123 @@
                 <option value="paypal">PayPal</option>
             </select>
         </div>
-        <!-- Autres champs... -->
+        <div>
+            <!-- Formulaire Informations -->
+            <table>
+                <tr>
+                    <td>
+                        <label class="labels" for="numéroCarte">Numéro de la carte</label>
+                    </td>                    
+                </tr>
+                <td>
+                    <input type="text" id="numéroCarte" name="numéroCarte" class="wide-input" required>
+                </td>
+                <tr>
+                    <td>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td style="width: 50%;">
+                                    <label class="labels" for="date">Date d'expiration</label>
+                                    <input type="text" id="date" name="date" class="narrow-input" required>
+                                </td>
+                                <td style="width: 50%;">
+                                    <td>
+                                        <label class="labels" for="cvc">CVC</label>
+                                        <input type="text" id="cvc" name="cvc" class="narrow-input" required>
+                                    </td>
+                                </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="labels" for="detenteur" >Nom du détenteur de la carte</label>
+                    </td>
+
+                </tr>
+                <td>
+                    <input type="text" id="detenteur" name="detenteur" class="wide-input" required>
+                </td>
+                <tr>
+                    <td>
+                        <label class="labels" for="adresse">Adresse</label>
+                    </td>
+                </tr>
+                <td>
+                    <input type="text" id="adresse" name="adresse" class="wide-input" required>
+                </td>
+                <tr>
+                    <td>
+                        <label class="labels" for="ville">Ville</label>
+                    </td>
+                </tr>
+                <td>
+                    <input type="text" id="ville" name="ville" class="wide-input" required>
+                </td>
+                <tr>
+                    <td>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td style="width: 50%;">
+                                    <label class="labels" for="province">Province</label>
+                                    <input type="text" id="province" name="province" class="narrow-input" required>
+                                </td>
+                                <td style="width: 50%;">
+                                    <td>
+                                        <label class="labels" for="pays">Pays</label>
+                                        <input type="text" id="pays" name="pays" class="narrow-input" required>
+                                    </td>
+                                </tr>                            
+                        </table>
+
+                    </td>
+                </tr>
+            </table>
+            <label class="spliter">------------------------------------------------------------------------------------------------------------------------------------</label>
+            <!-- section si adresse de livraison diffère de l'adresse du formulaire en haut-->
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="sameAddressCheckbox"
+                    (change)="ToggoleTableLivraison()" [(ngModel)]="sameAddress" />
+                <label class="form-check-label" for="sameAddressCheckbox"> Même Adresse de livraison</label>
+            </div>
+        <table [class.hidden]="sameAddress" id="notcheckform">
+            <tr>
+                <td>
+                    <label class="labels" for="adresse">Adresse</label>
+                </td>
+            </tr>
+            <td>
+                <input type="text" id="adresselivraison" name="adresselivraison" class="wide-input" required>
+            </td>
+            <tr>
+                <td>
+                    <label class="labels" for="ville">Ville</label>
+                </td>
+            </tr>
+            <td>
+                <input type="text" id="villelivraison" name="villelivraison" class="wide-input" required>
+            </td>
+            <tr>
+                <td>
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="width: 50%;">
+                                <label class="labels" for="province">Province</label>
+                                <input type="text" id="provincelivraison" name="provincelivraison" class="narrow-input" required>
+                            </td>
+                            <td style="width: 50%;">
+                                <td>
+                                    <label class="labels" for="pays">Pays</label>
+                                    <input type="text" id="payslivraison" name="payslivraison" class="narrow-input" required>
+                                </td>
+                            </tr>                            
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <!-- Bouton de confirmation -->
+            <button class="labels">Confirmer transaction</button>
+        </div>
     </form>
+    </div>
 </div>
