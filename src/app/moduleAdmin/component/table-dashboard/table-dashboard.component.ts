@@ -92,4 +92,5 @@ export class TableDashboardComponent {
     const row = this.dataBinding.find((item) => item.id === id);
     this.deleteEvent.emit(row);
   }
+
 }
