@@ -109,3 +109,13 @@ input{
 input:placeholder-shown {
     background-color: #c7c6c6;
 }
+
+.p-text{
+    font-size: smaller;
+}
+
+form img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
