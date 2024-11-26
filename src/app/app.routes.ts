@@ -44,6 +44,7 @@ import {OrderDeleteComponent} from './moduleAdmin/pages/OrderSection/order-delet
 import {OrderAjoutComponent} from './moduleAdmin/pages/OrderSection/order-ajout/order-ajout.component';
 
 export const routes: Routes = [
+  //path main site
   {
     path: '', component: MainSiteComponent,
     children: [
