@@ -92,7 +92,7 @@ export class ProductsService {
      this._onSale = false;
    }*/
 
-  /*todo Add logic for review */
+  
   calculateMoyenneStarReview(productId: string): number {
     const product: Product | undefined = mockData.find(p => p.id === productId);
     if (product && product.reviews && product.reviews.length > 0) {
@@ -100,11 +100,5 @@ export class ProductsService {
       return totalStars / product.reviews.length;
     }
     return 0;
-  }
-
-  // todo : est-ce qu'on ce sert de cette fonction ? Si non a supprimer
-  countReview(): number {
-    // return this._reviews.length;
-    return 21;
   }
 }

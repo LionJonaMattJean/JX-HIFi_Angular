@@ -1,9 +1,8 @@
-import {Product} from './Product';
+import { Product } from './Product';
 
-export interface OrderItem{
-  id:string;
-  product:Product;
-  quantity:number;
-  subTotal:number;
-
+export interface OrderItem {
+  id: string;
+  product: Product;
+  quantity: number;
+  subTotal: number;
 }
