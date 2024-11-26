@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {NgForOf, NgIf} from '@angular/common';
 import {Order} from '../../../../models/Order';
@@ -9,7 +9,7 @@ import {OrderService} from '../../../../services/order.service';
 import {OrderItem} from '../../../../models/OrderItem';
 import {Product} from '../../../../models/Product';
 import {ProductsService} from '../../../../services/products.service';
-import {debounceTime, switchMap} from 'rxjs';
+
 
 @Component({
   selector: 'app-order-modify',
