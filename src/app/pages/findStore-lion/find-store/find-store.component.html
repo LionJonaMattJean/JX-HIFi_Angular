@@ -10,17 +10,17 @@
     <div class="row g-0 d-flex justify-content-center">
         <div class="col-4">
             <div class="input-group mb-3">
-                <input placeholder="Search here" class="form-control" type="text">
-                <button class="btn btn-primary">FIND</button>
+                <input #filter placeholder="Search by city" class="form-control" type="text">
+                <button class="btn btn-primary" (click)="filterResults(filter.value)">FIND</button>
             </div> 
         </div>
     </div>
 
     <section class="storeCard">
         <app-store-carte
-        *ngFor="let i of storeList"
-        [magasinInput] = "i"
-        ></app-store-carte>
+            *ngFor="let i of filteredStoreList"
+            [magasinInput] = "i">
+        </app-store-carte>
     </section>
 
     
