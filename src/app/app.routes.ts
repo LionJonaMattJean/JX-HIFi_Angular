@@ -54,20 +54,17 @@ export const routes: Routes = [
       { path: 'support', component: SupportLionComponent },
       { path: 'products/:categoryId', component: CatProductDisplayComponent },
       { path: 'detail_product/:productId', component: DetailProductParentJeanComponent},
-      {path: 'stores', component: FindStoreComponent},
-      {path: 'cart', component:PanierComponent}
+      { path: 'stores', component: FindStoreComponent},
+      
+      //path shopping cart / checkout
+      { path: 'cart', component:PanierComponent,
+        children:[
+          {path:'cart/confirmationTransaction', component:ConfirmationComponent},
+          {path:'cart/infoConfirmation', component:InfoConfirmationComponent},
+        ]
+      }
     ]
   },
-
-  //path shopping cart checkout
-  {
-    path:'panier', component:PanierComponent,
-    children:[
-      {path:'panier/confirmationTransaction', component:ConfirmationComponent},
-      {path:'panier/infoConfirmation', component:InfoConfirmationComponent},
-    ]
-  },
-
 
   //path admin dashboard
   {
