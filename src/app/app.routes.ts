@@ -41,6 +41,7 @@ import {OrderAjoutComponent} from './moduleAdmin/pages/OrderSection/order-ajout/
 import { PanierComponent } from './pages/panier/panier.component';
 import { ConfirmationComponent } from './pages/payment-matt/confirmation/payment-confirmation-matt/confirmation.component';
 import { InfoConfirmationComponent } from './pages/payment-matt/confirmation/info-confirmation/info-confirmation.component';
+import { PaymentFormComponent } from './pages/payment-matt/info-card-payment/payment-form-matt/payment-form.component';
 
 
 
@@ -55,17 +56,14 @@ export const routes: Routes = [
       { path: 'products/:categoryId', component: CatProductDisplayComponent },
       { path: 'detail_product/:productId', component: DetailProductParentJeanComponent},
       { path: 'stores', component: FindStoreComponent},
-      
-      //path shopping cart / checkout
       { path: 'cart', component:PanierComponent,
+        //path shopping cart / checkout
         children:[
-          {path:'cart/confirmationTransaction', component:ConfirmationComponent},
-          {path:'cart/infoConfirmation', component:InfoConfirmationComponent},
-        ]
-      }
-    ]
-  },
-
+          { path: 'cart/confirmationTransaction', component:PaymentFormComponent},
+          { path: 'cart/confirmationTransaction/infoConfirmation', component:ConfirmationComponent}, 
+        ]},
+    ]},     
+      
   //path admin dashboard
   {
     path: 'admin',
