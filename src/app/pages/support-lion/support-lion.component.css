@@ -3,7 +3,12 @@
     height: 300px;
     object-fit: cover;
     filter: brightness(0.9);
-    margin-top: 15px;
+    padding:0;
+
+}
+.container-fluid{
+    filter: brightness(1.1);
+    padding:0;
 }
 
 .list-group-item {

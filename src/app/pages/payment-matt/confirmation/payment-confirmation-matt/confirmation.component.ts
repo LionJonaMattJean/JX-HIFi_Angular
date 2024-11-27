@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { OnInit } from '@angular/core';
-import { OrderService } from '../../services/order.service';
+import { OrderService } from '../../../../services/order.service';
+import { ShoppingCartService } from '../../../../services/shopping-cart.service';
+import { InfoConfirmationComponent } from "../info-confirmation/info-confirmation.component";
+import { CoutTotalConfirmationComponent } from "../cout-total-confirmation/cout-total-confirmation.component";
+import { CartConfirmationComponent } from "../cart-confirmation/cart-confirmation.component";
 
 
 @Component({
   selector: 'app-confirmation',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, InfoConfirmationComponent, CoutTotalConfirmationComponent, CartConfirmationComponent],
   templateUrl: './confirmation.component.html',
   styleUrl: './confirmation.component.css'
 })
@@ -30,7 +34,7 @@ export class ConfirmationComponent implements OnInit {
     this.useShippingAddress = useShippingAddress;
   }
   /*
-    ajustement dans la logique pour aller chercher les items d'un order pour afficher dans le tableau
+    ajustement dans la logique pour aller chercher les items du shopping cart pour afficher dans le tableau
 
   afficherPanier() {
     const tbody = document.querySelector('#panier-table-body') as HTMLElement;

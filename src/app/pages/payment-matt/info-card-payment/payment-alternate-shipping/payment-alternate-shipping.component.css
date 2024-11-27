@@ -8,14 +8,19 @@ body {
     align-items: center;
     min-height: 100vh;
 }
+.spliter {
+    display: block;
+    margin: 20px 0;
+    text-align: center;
+}
 
 input{
-    height: 40px;
-    width: auto; 
+    height: 40px; 
     border: 1px solid #ccc; 
     border-radius: 5px; 
     font-size: 16px; 
 }
+
 
 .background {
     background-color: #c4e0fd;
@@ -25,6 +30,7 @@ input{
     width: 90%;
     max-width: 800px;
 }
+
 
 .container {
     background-color: #c4e0fd;
@@ -36,6 +42,7 @@ input{
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
+    
 }
 
 .form-design button {
@@ -45,12 +52,13 @@ input{
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    
+    float:right;
 }
 
 .form-design button:hover {
     background-color: #5a6268;
 }
+
 
 .row img {
     display: block;
@@ -60,45 +68,44 @@ input{
 .wide-input{
     width:100%;
     max-width: 400px;
-    height: 30px;
+    height: 40px;
     padding:8px;
     box-sizing: border-box;
 }
 
-input:placeholder-shown {
-    background-color: #bcbaba;
-}
-
-h3{
-  text-align: center;
-}
-.spliter {
-    display: block;
-    margin: 20px 0;
-    text-align: center;
-}
-
-.table-cost{
-  text-align: right;
-  margin-left: 120px;
-  width: 100%;
-}
-.wide-input-more{
-  width: 390px;
-}
-
 .narrow-input{
-    width:calc(25%-8px);
+    width:calc(50%-8px);
     height: 40px;
-    max-width:100px;
+    max-width:200px;
     padding:8px;
     box-sizing: border-box;
     display: flex;
     gap:10px;
 }
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
 
-.button-close{
-  font-weight: bold;
-  display: block;
-  margin: 20px auto;
+.form-check input {
+    margin: 0;  
+}
+
+.form-check label {
+    font-size: 16px; 
+}
+
+#modePaiement {
+    height: 40px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    padding: 8px;
+    box-sizing: border-box;
+    width: 27%; 
+}
+
+input:placeholder-shown {
+    background-color: #c7c6c6;
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sub-total',
@@ -9,4 +10,9 @@ import { Component } from '@angular/core';
 })
 export class SubTotalComponent {
 
+  constructor(private router: Router) {}
+  
+  navigateToPaymentForm(): void {
+    this.router.navigate(['/payment-form']);
+  }
 }
