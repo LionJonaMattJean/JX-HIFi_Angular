@@ -7,7 +7,7 @@ import { Review } from '../../../../models/Review';
   selector: 'app-tab-detail-jean',
   standalone: true,
   imports: [
-    NgFor, NgIf
+    NgFor
   ],
   templateUrl: './tab-detail-jean.component.html',
   styleUrl: './tab-detail-jean.component.css'

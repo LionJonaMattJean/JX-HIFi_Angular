@@ -31,33 +31,9 @@
         <div class="mb-4">
             <h5>Brand</h5>
             <div class="filterChoice">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="brand1">
-                    <label class="form-check-label" for="brand1">Samsung</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="brand2">
-                    <label class="form-check-label" for="brand2">HP</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="brand3">
-                    <label class="form-check-label" for="brand3">Dell</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="brand4">
-                    <label class="form-check-label" for="brand4">Tompson</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="brand5">
-                    <label class="form-check-label" for="brand5">BenQ</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="brand6" checked>
-                    <label class="form-check-label" for="brand6">Lenovo</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="brand7">
-                    <label class="form-check-label" for="brand7">Asus</label>
+                <div class="form-check" *ngFor="let brand of brands">
+                    <input class="form-check-input" type="checkbox" id="{{brand}}">
+                    <label class="form-check-label" for="{{brand}}">{{brand}}</label>
                 </div>
             </div>
         </div>
@@ -68,25 +44,28 @@
             <div class="priceTxtBox d-flex">
                 <div class="minBox w-50 pe-1 me-1">
                     <div class="input-group">
-                        <input type="text" name="txtMinVal" class="inputField txtMinVal" onchange="setMinInput()">
+                        <input type="number" class="inputField txtMinVal" [(ngModel)]="minTxtPrice"
+                            (change)="onMinPriceChange()" />
                         <span class="currency d-flex align-items-center text-center">$</span>
                     </div>
                 </div>
                 <div class="maxBox w-50 pe-1 me-1">
                     <div class="input-group">
-                        <input type="text" name="txtMaxVal" class="inputField txtMaxVal" onchange="setMaxInput()" />
+                        <input type="number" class="inputField txtMaxVal" [(ngModel)]="maxTxtPrice"
+                            (change)="onMaxPriceChange()" />
                         <span class="currency d-flex align-items-center text-center">$</span>
                     </div>
                 </div>
             </div>
 
             <div class="priceSliders">
-                <span class="sliderTrack"></span>
-                <input type="range" class="slideMinVal" name="slideMinVal" min="0" max="1000" value="200"
-                    oninput="slideMin()">
-                <input type="range" class="slideMaxVal" name="slideMaxVal" min="0" max="1000" value="460"
-                    oninput="slideMax()">
+                <span class="sliderTrack" [ngStyle]="trackStyle"></span>
+                <input type="range" class="slideMinVal" [min]="minSlider" [max]="maxSlider" [(ngModel)]="minTxtPrice"
+                    (input)="onMinPriceChange()" />
+                <input type="range" class="slideMaxVal" [min]="minSlider" [max]="maxSlider" [(ngModel)]="maxTxtPrice"
+                    (input)="onMaxPriceChange()" />
             </div>
         </div>
+
     </div>
 </div>

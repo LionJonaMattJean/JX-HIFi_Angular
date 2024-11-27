@@ -7,7 +7,7 @@
         </div>
         <div class="offcanvas-body filterOffCanvansContainer m-5 d-flex flex-column justify-content-center">
 
-            <app-product-filter-jean></app-product-filter-jean>
+            <app-product-filter-jean [products]="productsOfCategory"></app-product-filter-jean>
             
         </div>
     </div>
@@ -15,7 +15,7 @@
     <div class="row py-4">
         <div class="col-xl-3 activeFilter filterSidebar d-none d-xl-block align-items-center">
 
-            <app-product-filter-jean></app-product-filter-jean>
+            <app-product-filter-jean [products]="productsOfCategory"></app-product-filter-jean>
 
         </div>
         <div class="col-xl-9">
