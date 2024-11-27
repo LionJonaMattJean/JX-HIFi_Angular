@@ -39,6 +39,8 @@ import {OrderModifyComponent} from './moduleAdmin/pages/OrderSection/order-modif
 import {OrderDeleteComponent} from './moduleAdmin/pages/OrderSection/order-delete/order-delete.component';
 import {OrderAjoutComponent} from './moduleAdmin/pages/OrderSection/order-ajout/order-ajout.component';
 import { PanierComponent } from './pages/panier/panier.component';
+import { ConfirmationComponent } from './pages/payment-matt/confirmation/payment-confirmation-matt/confirmation.component';
+import { InfoConfirmationComponent } from './pages/payment-matt/confirmation/info-confirmation/info-confirmation.component';
 
 
 
@@ -54,6 +56,15 @@ export const routes: Routes = [
       { path: 'detail_product/:productId', component: DetailProductParentJeanComponent},
       {path: 'stores', component: FindStoreComponent},
       {path: 'cart', component:PanierComponent}
+    ]
+  },
+
+  //path shopping cart checkout
+  {
+    path:'panier', component:PanierComponent,
+    children:[
+      {path:'panier/confirmationTransaction', component:ConfirmationComponent},
+      {path:'panier/infoConfirmation', component:InfoConfirmationComponent},
     ]
   },
 
