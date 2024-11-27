@@ -4,12 +4,12 @@ import { ImagesPaymentComponent } from "../images-payment/images-payment.compone
 import { PaymentChoicesComponent } from "../payment-choices/payment-choices.component";
 import { PaymentFormulaireComponent } from "../payment-formulaire/payment-formulaire.component";
 import { PaymentAlternateShippingComponent } from "../payment-alternate-shipping/payment-alternate-shipping.component";
-
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-payment-form',
   standalone: true,
-  imports: [FormsModule, ImagesPaymentComponent, PaymentChoicesComponent, PaymentFormulaireComponent, PaymentAlternateShippingComponent],
+  imports: [FormsModule,RouterLink, ImagesPaymentComponent, PaymentChoicesComponent, PaymentFormulaireComponent, PaymentAlternateShippingComponent],
   templateUrl: './payment-form.component.html',
   styleUrl: './payment-form.component.css'
 })

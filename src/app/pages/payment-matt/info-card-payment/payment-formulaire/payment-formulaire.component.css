@@ -74,7 +74,7 @@ input{
 }
 
 .narrow-input{
-    width:calc(50%-8px);
+    width: 200px;
     height: 40px;
     max-width:200px;
     padding:8px;

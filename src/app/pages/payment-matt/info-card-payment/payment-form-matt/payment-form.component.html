@@ -1,3 +1,4 @@
+
 <div class="background">
     <div class="container">
         <form class="form-design">
@@ -6,13 +7,16 @@
 
             <div>
                 <app-payment-formulaire></app-payment-formulaire>
-                <label class="spliter">------------------------------------------------------------------------------------------------------------------------------------</label>
+                <label class="spliter">---------------------------------------------------------------------------------------------------------------</label>
                 <!-- section si adresse de livraison diffère de l'adresse du formulaire en haut-->
                 <app-payment-alternate-shipping></app-payment-alternate-shipping>
                 
                 <!-- Bouton de confirmation -->
-                <button class="labels">Confirmer transaction</button>
+                 <a>
+                    <button type="button" class="labels" [routerLink] ="['/confirmation']">Confirmer transaction</button>
+                 </a>
             </div>
         </form>
     </div>
 </div>
+

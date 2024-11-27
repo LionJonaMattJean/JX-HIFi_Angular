@@ -56,13 +56,9 @@ export const routes: Routes = [
       { path: 'detail_product/:productId', component: DetailProductParentJeanComponent},
       { path: 'stores', component: FindStoreComponent},
       //path shopping cart --> checkout
-      { path: 'cart', component:PanierComponent,
-        children: [
-        { path: 'formTransaction', component:PaymentFormComponent, 
-          children:[
-            { path: 'infoConfirmation', component:ConfirmationComponent},
-          ]},
-      ]},        
+      { path: 'cart', component:PanierComponent},
+      { path: 'formTransaction', component:PaymentFormComponent},
+      { path: 'infoConfirmation', component:ConfirmationComponent},      
     ]},     
       
   //path admin dashboard
