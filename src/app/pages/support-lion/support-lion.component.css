@@ -60,3 +60,7 @@ html, body{
 .send {
     width: 250px;
 }
+
+.tab-content{
+    padding-bottom: 150px;
+}
