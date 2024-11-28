@@ -1,3 +1,10 @@
+html, body{
+    height: auto;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+}
+
 .support-image {
     width: 100%;
     height: 300px;
@@ -6,9 +13,17 @@
     padding:0;
 
 }
+
 .container-fluid{
     filter: brightness(1.1);
     padding:0;
+    margin:0;
+}
+
+.container{
+    height: auto;
+    min-height: 100vh;
+
 }
 
 .list-group-item {
@@ -30,9 +45,12 @@
 }
 
 .row-message {
-    height: 320px
+    height: 320px;
+    height: auto;
+        /* Allows it to expand with content */
 }
 
 .send {
     width: 250px;
 }
+

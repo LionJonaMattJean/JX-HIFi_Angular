@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ShoppingCart } from '../../models/ShoppingCart';
 import { ItemInCartComponent } from "./item-in-cart/item-in-cart.component";
 import { SubTotalComponent } from "./sub-total/sub-total.component";
 import { CouponCodeComponent } from "./coupon-code/coupon-code.component";
+import { ShoppingCartService } from '../../services/shopping-cart.service';
+import { OrderItem } from '../../models/OrderItem';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -13,6 +15,11 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './panier.component.css'
 })
 export class PanierComponent {
-  
+ cartServ:ShoppingCartService = inject(ShoppingCartService);
+ orderitem:OrderItem[] = [];
+
+  onInit():void{
+    this.orderitem = ShoppingCartService.shopppingCart.cartItems;
+  }
 
 }
