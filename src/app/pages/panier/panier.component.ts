@@ -18,7 +18,7 @@ import { coupons } from '../../models/Coupons';
 export class PanierComponent {
  cartServ:ShoppingCartService = inject(ShoppingCartService);
  orderitem:OrderItem[] = [];
- coupon: coupons|undefined
+ coupon: coupons|undefined //maybe the coupon here is unnecessary
 
   onInit():void{
     this.orderitem = ShoppingCartService.shopppingCart.cartItems;

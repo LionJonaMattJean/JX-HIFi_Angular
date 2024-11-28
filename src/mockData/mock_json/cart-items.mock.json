@@ -1,0 +1,20 @@
+[
+    {
+        "id": "PRO100012306431",
+        "product": "Headphone",
+        "quantity": "1",
+        "subTotal": 379 
+    },
+    {
+        "id": "PRO100012300537",
+        "product": "Desktop",
+        "quantity": "1",
+        "subTotal": 1549 
+    },
+    {
+        "id": "PRO100012303222",
+        "product": "Phone",
+        "quantity": "1",
+        "subTotal": 999 
+    }
+]
