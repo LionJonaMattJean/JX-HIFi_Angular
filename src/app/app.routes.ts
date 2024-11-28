@@ -41,6 +41,7 @@ import {OrderAjoutComponent} from './moduleAdmin/pages/OrderSection/order-ajout/
 import { PanierComponent } from './pages/panier/panier.component';
 import { ConfirmationComponent } from './pages/payment-matt/confirmation/payment-confirmation-matt/confirmation.component';
 import { PaymentFormComponent } from './pages/payment-matt/info-card-payment/payment-form-matt/payment-form.component';
+import { LoginLionComponent } from './pages/login-lion/login-lion.component';
 
 
 
@@ -58,7 +59,8 @@ export const routes: Routes = [
       //path shopping cart --> checkout
       { path: 'cart', component:PanierComponent},
       { path: 'formTransaction', component:PaymentFormComponent},
-      { path: 'infoConfirmation', component:ConfirmationComponent},      
+      { path: 'infoConfirmation', component:ConfirmationComponent},
+      {path: 'login', component: LoginLionComponent}      
     ]},     
       
   //path admin dashboard
