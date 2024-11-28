@@ -22,10 +22,22 @@
     padding-top: 2%;
 }
 
-.btnIcon:hover{
-    box-shadow: 0 0 10px 5px rgba(72, 144, 232, 1);
-    border-radius: 10px;
+.btnIcon svg{
+    fill: white;
 }
+
+.btnIcon:hover svg,
+.btnIcon:hover .txtIcon{
+    fill:rgb(0, 153, 255);
+    color:rgb(0, 153, 255);
+}
+
+.btnIcon:hover .txtIcon{
+    color:rgb(0, 153, 255);
+}
+
+
+
 
 .separator {
     border-left: 2px solid rgba(16, 60, 172, 1);

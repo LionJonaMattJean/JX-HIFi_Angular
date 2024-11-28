@@ -2,15 +2,18 @@ html, body{
     height: auto;
     margin: 0;
     padding: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
+
 }
+
+
 
 .support-image {
     width: 100%;
+    max-width: 100%;
     height: 300px;
     object-fit: cover;
     filter: brightness(0.9);
-    padding:0;
 
 }
 
@@ -18,13 +21,17 @@ html, body{
     filter: brightness(1.1);
     padding:0;
     margin:0;
+    overflow-x: hidden;
 }
 
 .container{
     height: auto;
     min-height: 100vh;
-
 }
+
+
+
+
 
 .list-group-item {
     background-color: #A3BDFF;
@@ -53,4 +60,3 @@ html, body{
 .send {
     width: 250px;
 }
-
