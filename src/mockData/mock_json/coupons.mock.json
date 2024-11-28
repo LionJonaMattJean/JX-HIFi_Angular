@@ -1,0 +1,15 @@
+[
+    {
+        "code": "AJAX10",
+        "percentage":0.1
+    },
+    {
+        "code": "DENO25",
+        "percentage": 0.25
+    },
+    {
+        "code":"BLACKFRIDAY",
+        "percentage":0.5
+    }
+
+]
