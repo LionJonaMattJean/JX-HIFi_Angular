@@ -10,4 +10,8 @@ import { RouterModule } from '@angular/router';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
+
+  scrollUp():void{
+    window.scroll(0,0);
+  }
 }
