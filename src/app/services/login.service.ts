@@ -10,4 +10,8 @@ export class LoginService {
   logIntoAccount(email: string, pass:string){
     console.log(email + "\n" + pass);
   }
+
+  createAccount(name:string, email:string, pass:string){
+    console.log(name + "\n" + email + "\n" + pass)
+  }
 }
