@@ -1,3 +1,21 @@
-.container{
-    height:100vh
+.container {
+    padding: 20px;
+    border-style: groove;
+    border-radius: 10px;
+    max-width:550px;
+    height: auto;
+    margin:auto;
+
 }
+.form-group {
+    margin-bottom: 1rem;
+}
+
+#log {
+    width: 90%;
+}
+
+#create {
+    width: 200px;
+}
+
