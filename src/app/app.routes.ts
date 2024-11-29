@@ -43,6 +43,7 @@ import { ConfirmationComponent } from './pages/payment-matt/confirmation/payment
 import { PaymentFormComponent } from './pages/payment-matt/info-card-payment/payment-form-matt/payment-form.component';
 import { LoginLionComponent } from './pages/login-lion/login-lion.component';
 import { CreateAccountComponent } from './pages/create-account/create-account.component';
+import { AccountDetailsComponent } from './pages/account-details/account-details.component';
 
 
 
@@ -62,7 +63,8 @@ export const routes: Routes = [
       { path: 'formTransaction', component:PaymentFormComponent},
       { path: 'infoConfirmation', component:ConfirmationComponent},
       {path: 'login', component: LoginLionComponent},
-      {path: 'create-account', component: CreateAccountComponent}      
+      {path: 'create-account', component: CreateAccountComponent},
+      {path: 'account-details', component: AccountDetailsComponent}      
     ]},     
       
   //path admin dashboard

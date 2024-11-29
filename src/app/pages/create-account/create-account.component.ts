@@ -23,6 +23,7 @@ export class CreateAccountComponent {
   })
 
   createAccount(){
+    //if both passwords match, then we create account
     if(this.createForm.value.createPassword == this.createForm.value.confirmPassword)
     {
       this.loginService.createAccount(
@@ -32,6 +33,7 @@ export class CreateAccountComponent {
       )
     }
     else{
+      //maybe use modals later on for alerts to be a little cleaner?
       alert("Error: your passwords don't match, please try again");
       return;
     }
