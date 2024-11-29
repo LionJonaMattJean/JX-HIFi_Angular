@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AccountSidebarComponent } from './account-sidebar/account-sidebar.component';
+import { DisplayInfoComponent } from './display-info/display-info.component';
 
 @Component({
   selector: 'app-account-details',
