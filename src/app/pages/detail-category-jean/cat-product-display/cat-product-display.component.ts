@@ -23,11 +23,18 @@ import { NgFor, NgIf } from '@angular/common';
   templateUrl: './cat-product-display.component.html',
   styleUrl: './cat-product-display.component.css'
 })
+  
 export class CatProductDisplayComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
   produitService = inject(ProductsService)
   productsOfCategory: Product[] = [];
+  filteredProduct: Product[] = [];
   categoryId: string = "";
+  activeFilter = {
+    brands: [] as string[],
+    colors: [] as string[],
+    maxPrice: null as number | null,
+  }
 
   constructor() {
     // surveille tout changement d'url pour modifier l'affichage en fonction de la categorie
@@ -41,14 +48,27 @@ export class CatProductDisplayComponent {
     if (this.categoryId === 'CAT111') {
       this.produitService.getAllProductOnSale().subscribe(p => {
         this.productsOfCategory = p;
+        this.filteredProduct = p;
         // console.log(p); // affichage test
       })
     }
     else {
       this.produitService.getAllProductByCategory(this.categoryId).subscribe(p => {
         this.productsOfCategory = p;
+        this.filteredProduct = p;
         // console.log(p); // affichage test
       })
     }
+  }
+
+  applyFilter(filter: any) {
+    this.filteredProduct = this.productsOfCategory.filter(product => {
+      const matchesBrand = !filter.brands.length || filter.brands.includes(product.brand);
+      const matchesColor = !filter.colors.length || product.colors.some(color => filter.colors.includes(color));
+      const matchesPrice = product.sellPrice <= filter.maxPrice;
+  
+      return matchesBrand && matchesColor && matchesPrice;
+    });
+    console.log(this.filteredProduct);
   }
 }

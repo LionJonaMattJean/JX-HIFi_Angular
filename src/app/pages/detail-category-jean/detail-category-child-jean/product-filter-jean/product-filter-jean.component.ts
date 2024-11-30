@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Product } from '../../../../models/Product';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -15,18 +15,27 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductFilterJeanComponent implements OnInit {
   @Input() products: Product[] = [];
+  @Output() filterChange = new EventEmitter<any>();
+
   prices: number[] = [];
   brands: string[] = [];
+  colors: string[] = [];
+
+  selectedBrands: Set<string> = new Set();
+  selectedColors: Set<string> = new Set();
 
   minSlider: number = 0;
   maxSlider: number = 0;
   minTxtPrice: number = 0;
   maxTxtPrice: number = 0;
-  minGap: number = 10;
-  trackStyle: any = {};
 
   ngOnInit() {
-    this.brands = this.products.map(product => product.brand);
+    this.setFilter();
+  }
+
+  private setFilter() {
+    this.brands = Array.from(new Set(this.products.map(product => product.brand)));
+    this.colors = Array.from(new Set(this.products.flatMap(product => product.colors || [])));
 
     this.setPriceFilter();
   }
@@ -37,39 +46,45 @@ export class ProductFilterJeanComponent implements OnInit {
     this.maxTxtPrice = this.prices[this.prices.length - 1];
     this.minSlider = this.minTxtPrice;
     this.maxSlider = this.maxTxtPrice;
-
-    this.updateTrackStyle();
   }
 
-  onMinPriceChange() {
-    if (this.minTxtPrice + this.minGap > this.maxTxtPrice) {
-      this.minTxtPrice = this.maxTxtPrice - this.minGap;
-    }
+  //converti l'event trigger en HTMLInput pour recuperer la valeur du checked
+  onBrandChange(event: Event, brand: string) {
+    const isChecked = (event.currentTarget as HTMLInputElement).checked;
 
-    if (this.minTxtPrice < this.minSlider) {
-      this.minTxtPrice = this.minSlider;
-    }
-    this.updateTrackStyle();
+    this.onBrandChecked(brand, isChecked);
+
+    console.log("onBrandChange triggered")
+  }
+  onBrandChecked(brand: string, checked: boolean) {
+    checked ? this.selectedBrands.add(brand) : this.selectedBrands.delete(brand);
+    console.log(this.selectedBrands)
+  }
+
+  //converti l'event trigger en HTMLInput pour recuperer la valeur du checked
+  onColorChange(event: Event, color: string) {
+    const isChecked = (event.currentTarget as HTMLInputElement).checked;
+
+    this.onColorChecked(color, isChecked);
+
+    console.log("onColorChange triggered")
+  }
+  onColorChecked(color: string, checked: boolean) {
+    checked ? this.selectedColors.add(color) : this.selectedColors.delete(color);
+    console.log(this.selectedColors)
   }
 
   onMaxPriceChange() {
-    if (this.maxTxtPrice - this.minGap < this.minTxtPrice) {
-      this.maxTxtPrice = this.minTxtPrice + this.minGap;
-    }
-
-    if (this.maxTxtPrice > this.maxSlider) {
+    if (this.maxTxtPrice > this.maxSlider)
       this.maxTxtPrice = this.maxSlider;
-    }
-
-    this.updateTrackStyle();
   }
 
-  updateTrackStyle() {
-    const leftPercent = ((this.minTxtPrice - this.minSlider) / (this.maxSlider - this.minSlider)) * 100;
-    const rightPercent = 100 - ((this.maxTxtPrice - this.minSlider) / (this.maxSlider - this.minSlider)) * 100;
-    this.trackStyle = {
-      left: `${leftPercent}%`,
-      right: `${rightPercent}%`
-    };
+  applyNewFilter() {
+    this.filterChange.emit({
+      brands: Array.from(this.selectedBrands),
+      colors: Array.from(this.selectedColors),
+      maxPrice: this.maxTxtPrice
+    })
+    console.log("btn applyNewFilter triggered")
   }
 }

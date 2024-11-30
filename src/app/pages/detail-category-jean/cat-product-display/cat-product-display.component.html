@@ -15,7 +15,7 @@
     <div class="row py-4">
         <div class="col-xl-3 activeFilter filterSidebar d-none d-xl-block align-items-center">
 
-            <app-product-filter-jean [products]="productsOfCategory"></app-product-filter-jean>
+            <app-product-filter-jean [products]="productsOfCategory" (filterChange)="applyFilter($event)"></app-product-filter-jean>
 
         </div>
         <div class="col-xl-9">
@@ -28,7 +28,7 @@
 
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 py-2">
 
-                <app-product-list-jean *ngFor="let product of productsOfCategory"
+                <app-product-list-jean *ngFor="let product of filteredProduct"
                     [selectedProduct]="product"></app-product-list-jean>
 
             </div>
