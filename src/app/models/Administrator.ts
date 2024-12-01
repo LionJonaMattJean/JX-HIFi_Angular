@@ -1,7 +1,7 @@
-import {User} from './User';
-import {Address} from './Address';
+import { User } from './User';
+import { Address } from './Address';
 
-export interface Administrator extends User{
+export interface Administrator extends User {
   id: string;
   email: string;
   password: string;
@@ -9,7 +9,4 @@ export interface Administrator extends User{
   lastName: string;
   phone: string;
   address: Address;
-
-
-
 }

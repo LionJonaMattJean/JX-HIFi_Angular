@@ -1,4 +1,4 @@
-export interface ContactUs{
+export interface ContactUs {
     firstName: string
     lastName: string;
     packageNumber: string

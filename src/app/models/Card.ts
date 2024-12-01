@@ -1,4 +1,4 @@
-import {Dates} from './dates';
+import { Dates } from './dates';
 
 export interface Card {
     id: string;

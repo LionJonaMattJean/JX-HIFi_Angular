@@ -1,10 +1,9 @@
+import { OrderItem } from './OrderItem';
+import { Address } from './Address';
+import { Card } from './Card';
+import { Dates } from './dates';
 
-import {OrderItem} from './OrderItem';
-import {Address} from './Address';
-import {Card} from './Card';
-import {Dates} from './dates';
-
-export interface Order{
+export interface Order {
   id: string;
   idCustomer: string;
   card: Card;
@@ -16,5 +15,4 @@ export interface Order{
   status: string;
   orderDate: Dates;
   shippingAddress: Address;
-
 }

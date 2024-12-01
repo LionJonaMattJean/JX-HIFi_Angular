@@ -1,7 +1,7 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Product } from '../../../../models/Product';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FilterService } from '../../../../services/filter.service';
 
 @Component({
   selector: 'app-product-filter-jean',
@@ -14,77 +14,63 @@ import { CommonModule } from '@angular/common';
   styleUrl: './product-filter-jean.component.css'
 })
 export class ProductFilterJeanComponent implements OnInit {
-  @Input() products: Product[] = [];
-  @Output() filterChange = new EventEmitter<any>();
+  filterService: FilterService = inject(FilterService);
 
-  prices: number[] = [];
-  brands: string[] = [];
-  colors: string[] = [];
+  @Input() brands: string[] = [];
+  @Input() colors: string[] = [];
+  @Input() minPrice: number = 0;
+  @Input() maxPrice: number = 0;
 
   selectedBrands: Set<string> = new Set();
   selectedColors: Set<string> = new Set();
-
-  minSlider: number = 0;
-  maxSlider: number = 0;
-  minTxtPrice: number = 0;
-  maxTxtPrice: number = 0;
+  selectedMinPrice: number = 0;
+  selectedMaxPrice: number = 0;
 
   ngOnInit() {
-    this.setFilter();
+    // Initialiser les filtres sélectionnés avec l'état actuel
+    const filters = this.filterService.getFilters();
+    this.selectedBrands = new Set(filters.brands);
+    this.selectedColors = new Set(filters.colors);
+    this.selectedMinPrice = filters.minPrice ?? this.minPrice;
+    this.selectedMaxPrice = filters.maxPrice ?? this.maxPrice;
+
+    // Écouter les mises à jour des filtres dans le service
+    this.filterService.filters$.subscribe(filters => {
+      this.selectedBrands = new Set(filters.brands);
+      this.selectedColors = new Set(filters.colors);
+      this.selectedMinPrice = filters.minPrice ?? this.minPrice;
+      this.selectedMaxPrice = filters.maxPrice ?? this.maxPrice;
+    });
   }
 
-  private setFilter() {
-    this.brands = Array.from(new Set(this.products.map(product => product.brand)));
-    this.colors = Array.from(new Set(this.products.flatMap(product => product.colors || [])));
-
-    this.setPriceFilter();
-  }
-
-  private setPriceFilter() {
-    this.prices = this.products.map(product => product.sellPrice).sort((a, b) => a - b);
-    this.minTxtPrice = this.prices[0];
-    this.maxTxtPrice = this.prices[this.prices.length - 1];
-    this.minSlider = this.minTxtPrice;
-    this.maxSlider = this.maxTxtPrice;
-  }
-
-  //converti l'event trigger en HTMLInput pour recuperer la valeur du checked
-  onBrandChange(event: Event, brand: string) {
+  onBrandChecked(event: Event, brand: string) {
+    //converti l'event trigger en HTMLInput pour recuperer la valeur du checked
     const isChecked = (event.currentTarget as HTMLInputElement).checked;
+    isChecked ? this.selectedBrands.add(brand) : this.selectedBrands.delete(brand);
 
-    this.onBrandChecked(brand, isChecked);
-
-    console.log("onBrandChange triggered")
-  }
-  onBrandChecked(brand: string, checked: boolean) {
-    checked ? this.selectedBrands.add(brand) : this.selectedBrands.delete(brand);
-    console.log(this.selectedBrands)
+    this.updateFilters();
   }
 
-  //converti l'event trigger en HTMLInput pour recuperer la valeur du checked
-  onColorChange(event: Event, color: string) {
+  onColorChecked(event: Event, color: string) {
     const isChecked = (event.currentTarget as HTMLInputElement).checked;
+    isChecked ? this.selectedColors.add(color) : this.selectedColors.delete(color);
 
-    this.onColorChecked(color, isChecked);
-
-    console.log("onColorChange triggered")
-  }
-  onColorChecked(color: string, checked: boolean) {
-    checked ? this.selectedColors.add(color) : this.selectedColors.delete(color);
-    console.log(this.selectedColors)
+    this.updateFilters();
   }
 
-  onMaxPriceChange() {
-    if (this.maxTxtPrice > this.maxSlider)
-      this.maxTxtPrice = this.maxSlider;
+  onMaxPriceChange(): void {
+    if (this.selectedMaxPrice !== null && this.selectedMaxPrice > this.maxPrice) {
+      this.selectedMaxPrice = this.maxPrice;
+    }
+    this.updateFilters();
   }
 
-  applyNewFilter() {
-    this.filterChange.emit({
+  updateFilters(): void {
+    this.filterService.updateFilters({
       brands: Array.from(this.selectedBrands),
       colors: Array.from(this.selectedColors),
-      maxPrice: this.maxTxtPrice
-    })
-    console.log("btn applyNewFilter triggered")
+      minPrice: this.selectedMinPrice,
+      maxPrice: this.selectedMaxPrice
+    });
   }
 }

@@ -1,4 +1,4 @@
-export interface AcceuilCarteCategorie{
+export interface AcceuilCarteCategorie {
     id: string;
     nom: string;
     image: string;
