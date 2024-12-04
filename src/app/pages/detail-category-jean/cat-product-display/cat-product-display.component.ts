@@ -56,7 +56,6 @@ export class CatProductDisplayComponent implements OnInit {
     });
   }
 
-
   setProductList(): void {
     const callback = (products: Product[]) => {
       this.productsOfCategory = products;
@@ -80,8 +79,15 @@ export class CatProductDisplayComponent implements OnInit {
       });
     };
 
-    if (this.categoryId === 'CAT111') {
+    // if (this.categoryId === 'CAT111') {
+    //   this.produitService.getAllProductOnSale().subscribe(callback);
+    // } else {
+    //   this.produitService.getAllProductByCategory(this.categoryId).subscribe(callback);
+    // }
+    if (this.categoryId === 'CAT111') { // si c'est la categorie des produit en promotion
       this.produitService.getAllProductOnSale().subscribe(callback);
+    } else if (!this.categoryId.startsWith('CAT')) {  // si c'est une recherche qui vien du searchBar
+      this.produitService.getAllProductByKeyword(this.categoryId).subscribe(callback);
     } else {
       this.produitService.getAllProductByCategory(this.categoryId).subscribe(callback);
     }

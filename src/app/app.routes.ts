@@ -52,6 +52,7 @@ export const routes: Routes = [
       { path: 'home', component: AcceuilLionComponent, title: "JX-HIFi" },
       { path: 'support', component: SupportLionComponent },
       { path: 'products/:categoryId', component: CatProductDisplayComponent },
+      { path: 'search/:categoryId', component: CatProductDisplayComponent },
       { path: 'detail_product/:productId', component: DetailProductParentJeanComponent },
       { path: 'stores', component: FindStoreComponent },
 

@@ -43,6 +43,7 @@ export class ProductsService {
       })
     );
   }
+
   getAllProduct(): Observable<Product[]> {
     return of(mockData)
   }
@@ -50,6 +51,31 @@ export class ProductsService {
   getAllProductByCategory(idCat: string): Observable<Product[]> {
     const list_productOfCategory = mockData.filter(p => p.category.id === idCat);
     return of(list_productOfCategory)
+  }
+
+  getAllProductByKeyword(keyword: string) {
+    const keywordToLower = keyword.toLocaleLowerCase();
+
+    const list_productFromCustomSearch = mockData.filter(product =>
+
+      product.name.toLocaleLowerCase().includes(keywordToLower) ||
+      product.description.toLocaleLowerCase().includes(keywordToLower) ||
+      product.brand.toLocaleLowerCase().includes(keywordToLower) ||
+      product.category.name.toLocaleLowerCase().includes(keywordToLower) ||
+      product.category.description.toLocaleLowerCase().includes(keywordToLower) ||
+
+      product.specificationDetails.some(spec =>
+        spec.title.toLocaleLowerCase().includes(keywordToLower) ||
+        spec.description.toLocaleLowerCase().includes(keywordToLower)
+      ) ||
+
+      product.reviews.some(review =>
+        review.title.toLocaleLowerCase().includes(keywordToLower) ||
+        review.review.toLocaleLowerCase().includes(keywordToLower)
+      )
+    );
+
+    return of(list_productFromCustomSearch)
   }
 
   getAllProductOnSale(): Observable<Product[]> {

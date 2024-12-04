@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {catchError, map, Observable, of, throwError} from 'rxjs';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { Category } from '../models/Category';
-
 import mockData from '../../mockData/mock_json/categories.mock.json';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,16 +13,17 @@ export class CategoryService {
   private static idNumber: number;
 
   constructor(private httpRequest: HttpClient,) {
-   this.getCategories().subscribe(categories =>{
-     const temp=categories[categories.length-1].id;
-     CategoryService.idNumber=parseInt(temp.substring(3),10)+111;
-   });
+    this.getCategories().subscribe(categories => {
+      const temp = categories[categories.length - 1].id;
+      CategoryService.idNumber = parseInt(temp.substring(3), 10) + 111;
+    });
   };
 
   getCategories(): Observable<Category[]> {
-   // return this.httpRequest.get<Category[]>(this.dataLink);
+    // return this.httpRequest.get<Category[]>(this.dataLink);
     return of(mockData)
   }
+  
   getCategoryById(id: string): Observable<Category> {
     return this.getCategories().pipe(
       map((categories: Category[]) => {
@@ -38,10 +39,11 @@ export class CategoryService {
       })
     );
   }
+
   generateId(): string {
-      const id="CAT" + CategoryService.idNumber
-      CategoryService.idNumber+=111;
-      return id;
+    const id = "CAT" + CategoryService.idNumber
+    CategoryService.idNumber += 111;
+    return id;
   }
 
 }
