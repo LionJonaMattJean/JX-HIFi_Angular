@@ -1,11 +1,10 @@
+import { Address } from './Address';
 
-import {Address} from './Address';
-
-export interface Store{
+export interface Store {
     id: string;
     name: string;
     address: Address;
     telephone: string;
     email: string;
-    manager:string;
+    manager: string;
 }

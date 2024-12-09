@@ -1,7 +1,5 @@
-export interface Image{
-  id : string;
-  idProduct : string;
+export interface Image {
+  id: string;
+  idProduct: string;
   url: string;
-
-
 }

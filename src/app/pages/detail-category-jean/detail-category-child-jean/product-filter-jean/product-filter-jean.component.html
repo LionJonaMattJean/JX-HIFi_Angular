@@ -1,71 +1,42 @@
 <div class="card w-100">
     <div class="card-body sidebarContainer">
-        <!-- Size Filter -->
-        <div class="mb-4">
-            <h5>Size</h5>
-            <div class="filterChoice">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="size1">
-                    <label class="form-check-label" for="size1"> &lt; 14" </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="size2">
-                    <label class="form-check-label" for="size2">15" to 20"</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="size3">
-                    <label class="form-check-label" for="size3">21" to 29"</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="size4">
-                    <label class="form-check-label" for="size4"> 30" to 35" </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="size5">
-                    <label class="form-check-label" for="size5"> &gt; 36"</label>
-                </div>
-            </div>
-        </div>
-
         <!-- Brand Filter -->
         <div class="mb-4">
             <h5>Brand</h5>
             <div class="filterChoice">
                 <div class="form-check" *ngFor="let brand of brands">
-                    <input class="form-check-input" type="checkbox" id="{{brand}}">
+                    <input class="form-check-input" type="checkbox" id="{{brand}}" [checked]="selectedBrands.has(brand)"
+                        (change)="onBrandChecked($event, brand)">
                     <label class="form-check-label" for="{{brand}}">{{brand}}</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Size Filter -->
+        <div class="mb-4">
+            <h5>Color</h5>
+            <div class="filterChoice">
+                <div class="form-check" *ngFor="let color of colors">
+                    <input class="form-check-input" type="checkbox" id="{{color}}" [checked]="selectedColors.has(color)"
+                        (change)="onColorChecked($event, color)">
+                    <label class="form-check-label" for="{{color}}">{{color}}</label>
                 </div>
             </div>
         </div>
 
         <!-- Price Filter -->
         <div class="mb-4">
-            <h5>Price</h5>
-            <div class="priceTxtBox d-flex">
-                <div class="minBox w-50 pe-1 me-1">
-                    <div class="input-group">
-                        <input type="number" class="inputField txtMinVal" [(ngModel)]="minTxtPrice"
-                            (change)="onMinPriceChange()" />
-                        <span class="currency d-flex align-items-center text-center">$</span>
-                    </div>
-                </div>
-                <div class="maxBox w-50 pe-1 me-1">
-                    <div class="input-group">
-                        <input type="number" class="inputField txtMaxVal" [(ngModel)]="maxTxtPrice"
-                            (change)="onMaxPriceChange()" />
-                        <span class="currency d-flex align-items-center text-center">$</span>
-                    </div>
-                </div>
+            <h5>Maximum Price</h5>
+            <div class="input-group">
+                <span class="input-group-text fw-bold">$</span>
+                <input type="number" class="form-control w-75 txtMaxVal" [(ngModel)]="selectedMaxPrice"
+                    (change)="onMaxPriceChange()" [min]="minPrice" [max]="maxPrice" />
             </div>
 
             <div class="priceSliders">
-                <span class="sliderTrack" [ngStyle]="trackStyle"></span>
-                <input type="range" class="slideMinVal" [min]="minSlider" [max]="maxSlider" [(ngModel)]="minTxtPrice"
-                    (input)="onMinPriceChange()" />
-                <input type="range" class="slideMaxVal" [min]="minSlider" [max]="maxSlider" [(ngModel)]="maxTxtPrice"
-                    (input)="onMaxPriceChange()" />
+                <input type="range" class="slideMaxVal" [(ngModel)]="selectedMaxPrice" (input)="onMaxPriceChange()"
+                    [min]="minPrice" [max]="maxPrice" />
             </div>
         </div>
-
     </div>
 </div>

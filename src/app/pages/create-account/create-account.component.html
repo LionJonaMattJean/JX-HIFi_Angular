@@ -1,0 +1,44 @@
+<br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="row text-center">
+                    <h1>Sign up</h1>
+                </div>
+                <form [formGroup]="createForm" (submit)="createAccount()" class="row g-3" >
+                    <div class="row-12">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Name</label>
+                            <input required formControlName="enterName" type="text" class="form-control" id="txtname" aria-describedby="nameHelp">
+                        </div>
+                    </div>
+
+                    <div class="row-12">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input required formControlName="enterEmail" type="email" class="form-control" id="txtemail" aria-describedby="emailHelp">
+                        </div>
+                    </div>
+                    
+                    <div class="row-12">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input required formControlName="createPassword" type="password" class="form-control" id="txtPass">
+                        </div>
+                    </div>
+
+                    <div class="row-12">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Confirm Password</label>
+                            <input required formControlName="confirmPassword" type="password" class="form-control" id="confirmPass">
+                        </div>
+                    </div>
+                   
+                    <div class="row-12 text-center">
+                        <button type="submit" id="log" class="btn btn-primary">Sign Up</button>
+                    </div>
+                </form>
+                <br>
+            </div>
+        </div>
+    </div>

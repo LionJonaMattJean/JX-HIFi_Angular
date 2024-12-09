@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Product } from '../../../../models/Product';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FilterService } from '../../../../services/filter.service';
 
 @Component({
   selector: 'app-product-filter-jean',
@@ -14,62 +14,63 @@ import { CommonModule } from '@angular/common';
   styleUrl: './product-filter-jean.component.css'
 })
 export class ProductFilterJeanComponent implements OnInit {
-  @Input() products: Product[] = [];
-  prices: number[] = [];
-  brands: string[] = [];
+  filterService: FilterService = inject(FilterService);
 
-  minSlider: number = 0;
-  maxSlider: number = 0;
-  minTxtPrice: number = 0;
-  maxTxtPrice: number = 0;
-  minGap: number = 10;
-  trackStyle: any = {};
+  @Input() brands: string[] = [];
+  @Input() colors: string[] = [];
+  @Input() minPrice: number = 0;
+  @Input() maxPrice: number = 0;
+
+  selectedBrands: Set<string> = new Set();
+  selectedColors: Set<string> = new Set();
+  selectedMinPrice: number = 0;
+  selectedMaxPrice: number = 0;
 
   ngOnInit() {
-    this.brands = this.products.map(product => product.brand);
+    // Initialiser les filtres sélectionnés avec l'état actuel
+    const filters = this.filterService.getFilters();
+    this.selectedBrands = new Set(filters.brands);
+    this.selectedColors = new Set(filters.colors);
+    this.selectedMinPrice = filters.minPrice ?? this.minPrice;
+    this.selectedMaxPrice = filters.maxPrice ?? this.maxPrice;
 
-    this.setPriceFilter();
+    // Écouter les mises à jour des filtres dans le service
+    this.filterService.filters$.subscribe(filters => {
+      this.selectedBrands = new Set(filters.brands);
+      this.selectedColors = new Set(filters.colors);
+      this.selectedMinPrice = filters.minPrice ?? this.minPrice;
+      this.selectedMaxPrice = filters.maxPrice ?? this.maxPrice;
+    });
   }
 
-  private setPriceFilter() {
-    this.prices = this.products.map(product => product.sellPrice).sort((a, b) => a - b);
-    this.minTxtPrice = this.prices[0];
-    this.maxTxtPrice = this.prices[this.prices.length - 1];
-    this.minSlider = this.minTxtPrice;
-    this.maxSlider = this.maxTxtPrice;
+  onBrandChecked(event: Event, brand: string) {
+    //converti l'event trigger en HTMLInput pour recuperer la valeur du checked
+    const isChecked = (event.currentTarget as HTMLInputElement).checked;
+    isChecked ? this.selectedBrands.add(brand) : this.selectedBrands.delete(brand);
 
-    this.updateTrackStyle();
+    this.updateFilters();
   }
 
-  onMinPriceChange() {
-    if (this.minTxtPrice + this.minGap > this.maxTxtPrice) {
-      this.minTxtPrice = this.maxTxtPrice - this.minGap;
-    }
+  onColorChecked(event: Event, color: string) {
+    const isChecked = (event.currentTarget as HTMLInputElement).checked;
+    isChecked ? this.selectedColors.add(color) : this.selectedColors.delete(color);
 
-    if (this.minTxtPrice < this.minSlider) {
-      this.minTxtPrice = this.minSlider;
-    }
-    this.updateTrackStyle();
+    this.updateFilters();
   }
 
-  onMaxPriceChange() {
-    if (this.maxTxtPrice - this.minGap < this.minTxtPrice) {
-      this.maxTxtPrice = this.minTxtPrice + this.minGap;
+  onMaxPriceChange(): void {
+    if (this.selectedMaxPrice !== null && this.selectedMaxPrice > this.maxPrice) {
+      this.selectedMaxPrice = this.maxPrice;
     }
-
-    if (this.maxTxtPrice > this.maxSlider) {
-      this.maxTxtPrice = this.maxSlider;
-    }
-
-    this.updateTrackStyle();
+    this.updateFilters();
   }
 
-  updateTrackStyle() {
-    const leftPercent = ((this.minTxtPrice - this.minSlider) / (this.maxSlider - this.minSlider)) * 100;
-    const rightPercent = 100 - ((this.maxTxtPrice - this.minSlider) / (this.maxSlider - this.minSlider)) * 100;
-    this.trackStyle = {
-      left: `${leftPercent}%`,
-      right: `${rightPercent}%`
-    };
+  updateFilters(): void {
+    this.filterService.updateFilters({
+      brands: Array.from(this.selectedBrands),
+      colors: Array.from(this.selectedColors),
+      minPrice: this.selectedMinPrice,
+      maxPrice: this.selectedMaxPrice
+    });
   }
 }

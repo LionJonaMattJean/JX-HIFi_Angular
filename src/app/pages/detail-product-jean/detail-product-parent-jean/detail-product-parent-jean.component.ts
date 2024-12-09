@@ -20,6 +20,7 @@ export class DetailProductParentJeanComponent {
 
   constructor() {
     const productId = this.route.snapshot.params['productId'];
+
     this.produitService.getProductById(productId).subscribe(p => this.product = p);
   }
 }

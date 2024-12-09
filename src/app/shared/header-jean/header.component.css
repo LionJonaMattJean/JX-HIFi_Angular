@@ -17,8 +17,6 @@
 }
 
 .btnIcon {
-    width:75px;
-    height:75px;
     padding-top: 2%;
 }
 
@@ -29,10 +27,6 @@
 .btnIcon:hover svg,
 .btnIcon:hover .txtIcon{
     fill:rgb(0, 153, 255);
-    color:rgb(0, 153, 255);
-}
-
-.btnIcon:hover .txtIcon{
     color:rgb(0, 153, 255);
 }
 
@@ -59,10 +53,6 @@
 /*--------------------------------------------------*/
 
 
-
-
-
-
 .separator {
     border-left: 2px solid rgba(16, 60, 172, 1);
     border-radius: 1px;
@@ -87,5 +77,5 @@
 }
 .categoryNavOffCanvas {
     background-color: rgb(178, 200, 255);
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 }
