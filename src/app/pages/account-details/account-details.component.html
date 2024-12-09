@@ -1,5 +1,13 @@
 <div class="container">
-    <app-account-sidebar></app-account-sidebar>
-    <!--DisplayInformation-->
-
+    <div class="row">
+        <div class="col-4">
+            <app-account-sidebar></app-account-sidebar>
+        </div>
+        
+        <div class="col-8 justify-content-center">
+            <div class="content">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
 </div>

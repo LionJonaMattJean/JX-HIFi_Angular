@@ -40,6 +40,7 @@ import { PaymentFormComponent } from './pages/payment-matt/info-card-payment/pay
 import { LoginLionComponent } from './pages/login-lion/login-lion.component';
 import { CreateAccountComponent } from './pages/create-account/create-account.component';
 import { AccountDetailsComponent } from './pages/account-details/account-details.component';
+import { PersonalInfoComponent } from './pages/account-details/personal-info/personal-info.component';
 
 
 
@@ -62,12 +63,18 @@ export const routes: Routes = [
       { path: 'infoConfirmation', component: ConfirmationComponent },
       { path: 'login', component: LoginLionComponent },
       { path: 'create-account', component: CreateAccountComponent },
-      { path: 'account-details', component: AccountDetailsComponent },
+      { path: 'account-details', component: AccountDetailsComponent,
+        children:[
+        {path: 'personalInfo', component: PersonalInfoComponent},
+        ],
+       },
+
 
       // Gestion d'url inconnu
       // { path: '**', component: PageNotFoundComponent, title: "Error 404" }
-    ]
+    ],
   },
+
 
   //path admin dashboard
   {
