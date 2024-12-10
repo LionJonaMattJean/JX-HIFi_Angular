@@ -25,17 +25,11 @@ export class OrdersComponent implements OnInit{
   constructor(private customerService:CustomerService, private route:ActivatedRoute, private orderService:OrderService) {}
 
  ngOnInit(): void {
-    this.id=String(this.route.snapshot.paramMap.get('id'));
-      this.customerService.getCustomerById(this.id).subscribe(user=>{
-     this.orderList=user.orders;
+    //this.id=String(this.route.snapshot.paramMap.get('id'));
+    this.customerService.getCustomerById('USE1000').subscribe(user=>{
+    this.orderList=user.orders;
    })
-
-
-      // Fetch orders and filter by the user's ID
-      this.orderService.getOrders().subscribe((orders: Order[]) => {
-        this.orderList = orders.filter(order => order.idCustomer === this.user?.id);
-      });
-    };
+  };
 
 }
 

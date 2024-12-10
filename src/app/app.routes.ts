@@ -66,8 +66,10 @@ export const routes: Routes = [
       { path: 'create-account', component: CreateAccountComponent },
       { path: 'account-details', component: AccountDetailsComponent,
         children:[
+        { path: '', redirectTo: 'personalInfo', pathMatch: 'full' }, //re-diriger aux info personnel lors du onloaded de la page
         {path: 'personalInfo', component: PersonalInfoComponent},
-        {path: 'orders', component: OrdersComponent}
+        {path: 'orders', component: OrdersComponent},
+      
         ],
        },
 
