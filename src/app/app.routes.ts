@@ -42,7 +42,6 @@ import { CreateAccountComponent } from './pages/create-account/create-account.co
 import { AccountDetailsComponent } from './pages/account-details/account-details.component';
 import { PersonalInfoComponent } from './pages/account-details/personal-info/personal-info.component';
 import { OrdersComponent } from './pages/account-details/orders/orders.component';
-import { PaymentInfoComponent } from './pages/account-details/payment-info/payment-info.component';
 
 
 
@@ -70,7 +69,6 @@ export const routes: Routes = [
         { path: '', redirectTo: 'personalInfo', pathMatch: 'full' }, //re-diriger aux info personnel lors du onloaded de la page
         {path: 'personalInfo', component: PersonalInfoComponent},
         {path: 'orders', component: OrdersComponent},
-        {path: 'paymentInfo', component: PaymentInfoComponent},
         ],
        },
 
