@@ -18,16 +18,26 @@ import { OrderService } from '../../../services/order.service';
 
 export class OrdersComponent {  
   orderList: Order[] = [];
+  user?:User;
 
   constructor(private usersService:UsersService, private route:ActivatedRoute, private orderService:OrderService) {}
 
 
-  ngOnInit(){
-    
-   
+ngOnInit(): void {
+  const id = this.route.snapshot.paramMap.get('id');
+  if (id) {
+    this.usersService.getUserById(id).subscribe(user => {
+      this.user = user;
 
-
+      // Fetch orders and filter by the user's ID
+      this.orderService.getOrders().subscribe((orders: Order[]) => {
+        this.orderList = orders.filter(order => order.idCustomer === this.user?.id);
+      });
+    });
+  } else {
+    console.error('User ID is null');
   }
+}
 
 
 

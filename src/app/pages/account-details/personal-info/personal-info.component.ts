@@ -20,7 +20,7 @@ export class PersonalInfoComponent {
 
    ngOnInit(){
    // this.id=String(this.route.snapshot.paramMap.get('idAdmin'));
-    this.id="USE1518";
+    this.id="USE1000";
     this.usersService.getUserById(this.id).subscribe(user=>{
       this.user=user;
       this.addressDetail=[
