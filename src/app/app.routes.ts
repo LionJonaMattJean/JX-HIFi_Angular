@@ -41,6 +41,7 @@ import { LoginLionComponent } from './pages/login-lion/login-lion.component';
 import { CreateAccountComponent } from './pages/create-account/create-account.component';
 import { AccountDetailsComponent } from './pages/account-details/account-details.component';
 import { PersonalInfoComponent } from './pages/account-details/personal-info/personal-info.component';
+import { OrdersComponent } from './pages/account-details/orders/orders.component';
 
 
 
@@ -66,6 +67,7 @@ export const routes: Routes = [
       { path: 'account-details', component: AccountDetailsComponent,
         children:[
         {path: 'personalInfo', component: PersonalInfoComponent},
+        {path: 'orders', component: OrdersComponent}
         ],
        },
 
