@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {NgForOf, NgIf} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
@@ -6,6 +6,7 @@ import {UsersService} from '../../../services/users.service';
 import { User } from '../../../models/User';
 import { Order } from '../../../models/Order';
 import { OrderService } from '../../../services/order.service';
+import {CustomerService} from '../../../services/customer.service';
 
 
 @Component({
@@ -16,29 +17,26 @@ import { OrderService } from '../../../services/order.service';
   styleUrl: './orders.component.css'
 })
 
-export class OrdersComponent {  
+export class OrdersComponent implements OnInit{
   orderList: Order[] = [];
   user?:User;
+  id?:string;
 
-  constructor(private usersService:UsersService, private route:ActivatedRoute, private orderService:OrderService) {}
+  constructor(private customerService:CustomerService, private route:ActivatedRoute, private orderService:OrderService) {}
 
+ ngOnInit(): void {
+    this.id=String(this.route.snapshot.paramMap.get('id'));
+      this.customerService.getCustomerById(this.id).subscribe(user=>{
+     this.orderList=user.orders;
+   })
 
-ngOnInit(): void {
-  const id = this.route.snapshot.paramMap.get('id');
-  if (id) {
-    this.usersService.getUserById(id).subscribe(user => {
-      this.user = user;
 
       // Fetch orders and filter by the user's ID
       this.orderService.getOrders().subscribe((orders: Order[]) => {
         this.orderList = orders.filter(order => order.idCustomer === this.user?.id);
       });
-    });
-  } else {
-    console.error('User ID is null');
-  }
-}
-
-
+    };
 
 }
+
+
