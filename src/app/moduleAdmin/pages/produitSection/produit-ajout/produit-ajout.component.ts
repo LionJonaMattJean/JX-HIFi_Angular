@@ -138,16 +138,19 @@ export class ProduitAjoutComponent implements OnInit {
 
 
   onSubmit() {
+    if (this.productForm.invalid) {
+      this.alertMessage = "Formulaire Invalide, veuillez remplir tous les champs.";
+      this.alertType = 'alert-warning';
+      return;
+    }
+
     const formValue = this.productForm.value;
     const selectedCategoryId = formValue.category;
-
-
-
     const payload={
       ...formValue,
       categoryId: selectedCategoryId
     }
-    console.log(payload);
+
     this.productService.createProduct(payload).subscribe({
       next: (data: Product) => {
         console.log('Product created successfully:', data);
@@ -160,6 +163,20 @@ export class ProduitAjoutComponent implements OnInit {
         this.alertType = 'alert-danger';
       }
     });
+    this.productForm.reset();
+    const colorsArray = this.productForm.get('colors') as FormArray;
+    const imagesArray = this.productForm.get('images') as FormArray;
+    const shortSpecificationsArray = this.productForm.get('shortSpecifications') as FormArray;
+    const specificationDetailsArray = this.productForm.get('specificationDetails') as FormArray;
+    colorsArray.clear();
+    imagesArray.clear();
+    shortSpecificationsArray.clear();
+    specificationDetailsArray.clear();
+    this.addColor();
+    this.addImage();
+    this.addSpecificationShort();
+    this.addSpecificationDetail();
+
   }
   closeAlert(): void {
     this.alertMessage = null;
