@@ -1,0 +1,14 @@
+[
+  {
+    "id": "CAR123",
+    "cardNumber": 4111111111111111,
+    "experieringDate": {
+      "day": 0,
+      "month": 12,
+      "year": 2023
+    },
+    "paiementMethod": "Visa",
+    "cvc": 123,
+    "nameHolder": "John Doe"
+  }
+]

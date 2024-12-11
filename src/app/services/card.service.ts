@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Card } from '../models/Card';
+import { map, Observable, of } from 'rxjs';
+import mockdata from '../../mockData/mock_json/card.mock.json'
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +11,16 @@ export class CardService {
   constructor() { }
    validate(): void {
     // Add validation logic here
+  }
+
+  getCards():Observable<Card[]>{
+    return of(mockdata);
+  }
+
+  getCardById(id:string):Observable<Card>{
+    return this.getCards().pipe(
+    map(card => card.find(card => card.id === id)!)
+   )
   }
 
    save(): void {
