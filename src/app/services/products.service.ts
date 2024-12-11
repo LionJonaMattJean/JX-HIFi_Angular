@@ -37,8 +37,10 @@ export class ProductsService {
 
   getAllProductByCategory(idCat: string): Observable<Product[]> {
     return this.httpRequest.get<Product[]>(this.url+"/products/category/"+idCat);
-   /* const list_productOfCategory = mockData.filter(p => p.category.id === idCat);
-    return of(list_productOfCategory)*/
+
+  }
+  createProduct(product: Product): Observable<Product> {
+    return this.httpRequest.post<Product>(this.url+"/products/create", product);
   }
 
   getAllProductByKeyword(keyword: string) {
