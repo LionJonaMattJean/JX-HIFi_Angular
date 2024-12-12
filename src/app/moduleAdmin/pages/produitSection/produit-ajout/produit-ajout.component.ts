@@ -28,7 +28,6 @@ export class ProduitAjoutComponent implements OnInit {
   productForm!: FormGroup;
   alertMessage: string ="";
   alertType: string = 'alert-success';
-  alertTitle: string="";
 
 
 

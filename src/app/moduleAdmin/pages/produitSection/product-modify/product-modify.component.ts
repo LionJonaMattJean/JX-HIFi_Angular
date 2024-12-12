@@ -193,6 +193,7 @@ export class ProductModifyComponent implements OnInit {
 
   onSubmit() {
     if (this.productForm.invalid) {
+      this.productForm.markAllAsTouched();
       this.alertMessage = "Formulaire Invalide, veuillez remplir tous les champs.";
       this.alertType = 'alert-warning';
       return;

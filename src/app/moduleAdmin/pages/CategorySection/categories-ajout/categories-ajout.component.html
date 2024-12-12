@@ -7,18 +7,37 @@
 
         <div class="mb-3">
           <label for="name" class="form-label">Nom</label>
-          <input type="text" class="form-control" id="name" [(ngModel)]="category.name" name="name">
+          <input type="text" class="form-control" id="name"  formControlName="name"
+                  [class.is-invalid]="categoryForm.get('name')?.invalid &&categoryForm.get('name')?.touched"
+                 [class.is-valid]="categoryForm.get('name')?.valid &&categoryForm.get('name')?.touched"
+          >
+        </div>
+        <div *ngIf="categoryForm.get('name')?.invalid &&categoryForm.get('name')?.touched" class="invalid-feedback">
+          Le nom de catégorie est obligatoire et dois contenir 3 caratères minimum.
         </div>
         <div class="mb-3">
-          <label for="description" class="form-label">Prix de vente</label>
-          <textarea type="text" class="form-control" id="description" [(ngModel)]="category.description" name="description"></textarea>
+          <label for="description" class="form-label">Description</label>
+          <textarea type="text" class="form-control" id="description"  formControlName="description"
+               [class.is-invalid]="categoryForm.get('description')?.invalid &&categoryForm.get('description')?.touched"
+                 [class.is-valid]="categoryForm.get('description')?.valid &&categoryForm.get('description')?.touched"
+          ></textarea>
+          <div *ngIf="categoryForm.get('description')?.invalid &&categoryForm.get('description')?.touched" class="invalid-feedback">
+            la description est obligatoire et dois contenir 5 caratères minimum.
+          </div>
+        </div>
+        <div class="alert-wrapper col-lg-8  mx-auto mt-5">
+          <!-- Alert -->
+          <div *ngIf="alertMessage" [class]="'alert ' + alertType + ' d-flex justify-content-between align-items-center'" role="alert">
+            {{ alertMessage }}
+            <button type="button" class="btn-close" aria-label="Close" (click)="closeAlert()"></button>
+          </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-start mt-5">
+          <button routerLink="/admin/categories" type="button" class="btn btn-secondary btn-lg px-4 me-md-2">Retour</button>
+          <button type="submit" class="btn btn-success btn-lg px-4 me-md-2">Ajouter</button>
         </div>
       </form>
 
-      <div class="d-grid gap-2 d-md-flex justify-content-start mt-5">
-        <button routerLink="/admin/categories" type="button" class="btn btn-secondary btn-lg px-4 me-md-2">Retour</button>
-        <button type="button" class="btn btn-success btn-lg px-4 me-md-2" (click)="ajoutCategory()">Ajouter</button>
-      </div>
     </div>
   </div>
 </div>

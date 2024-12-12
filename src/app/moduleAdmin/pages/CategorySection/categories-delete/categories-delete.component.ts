@@ -28,8 +28,8 @@ export class CategoriesDeleteComponent implements OnInit{
   }
 
   deleteCategory() {
-    //this.categoryService.deleteCategory(this.id).subscribe(() => {
+    this.categoryService.deleteCategory(this.id).subscribe(() => {
     this.isDelete = true;
-    //});
+    });
   }
 }

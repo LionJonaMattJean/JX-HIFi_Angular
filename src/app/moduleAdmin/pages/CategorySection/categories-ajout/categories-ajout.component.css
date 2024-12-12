@@ -7,3 +7,37 @@
 .needs-validation:valid {
   border: 1px solid green;
 }
+/* Styles for invalid fields */
+.needs-validation .is-invalid {
+  border: 1px solid red; /* Highlight invalid fields in red */
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); /* Optional: Add a red glow */
+}
+
+.needs-validation .is-invalid:focus {
+  outline: none;
+  border-color: red;
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+}
+
+/* Styles for valid fields */
+.needs-validation .is-valid {
+  border: 1px solid green; /* Highlight valid fields in green */
+  box-shadow: 0 0 5px rgba(0, 255, 0, 0.5); /* Optional: Add a green glow */
+}
+
+.needs-validation .is-valid:focus {
+  outline: none;
+  border-color: green;
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+}
+
+/* Optional: Styling for feedback messages */
+.invalid-feedback {
+  display: block; /* Ensure feedback visibility */
+  color: red; /* Style error messages in red */
+}
+
+.valid-feedback {
+  display: block; /* Optional for valid feedback messages */
+  color: green;
+}

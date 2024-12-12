@@ -9,7 +9,7 @@ import { Observable} from 'rxjs';
 })
 
 export class CategoryService {
-  private static idNumber: number;
+
   private url:string="http://localhost:8080";
   constructor(private httpRequest: HttpClient,) {
   };
@@ -23,7 +23,13 @@ export class CategoryService {
    return this.httpRequest.get<Category>(this.url+"/categories/"+id);
   }
   createNewCategory(category: Category): Observable<Category> {
-    return this.httpRequest.post<Category>(this.url+"/categories", category);
+    return this.httpRequest.post<Category>(this.url+"/categories/create", category);
   }
 
+  deleteCategory(id: string) {
+    return this.httpRequest.delete(this.url+"/categories/delete/"+id);
+  }
+  updateCategory(category: Category) {
+    return this.httpRequest.put(this.url+"/categories/modify", category);
+  }
 }
