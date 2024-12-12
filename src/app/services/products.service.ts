@@ -42,6 +42,10 @@ export class ProductsService {
   createProduct(product: Product): Observable<Product> {
     return this.httpRequest.post<Product>(this.url+"/products/create", product);
   }
+  updateProduct(payload: any,id:string):Observable<Product> {
+    return this.httpRequest.put<Product>(this.url+"/products/modify/"+id, payload);
+
+  }
 
   getAllProductByKeyword(keyword: string) {
     const keywordToLower = keyword.toLocaleLowerCase();
@@ -69,8 +73,7 @@ export class ProductsService {
   }
 
   getAllProductOnSale(): Observable<Product[]> {
-   // const list_productOnSale = mockData.filter(p => p.onSale);
-   // return of(list_productOnSale)
+
     return this.httpRequest.get<Product[]>(this.url+"/products/onSale");
   }
 
@@ -86,4 +89,6 @@ export class ProductsService {
     }
     return 0;
   }
+
+
 }

@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NavigationEnd, Router, RouterLink} from '@angular/router';
-import {filter} from 'rxjs';
+import {filter, Subject, takeUntil} from 'rxjs';
 import {NgIf} from '@angular/common';
 import {TableDashboardComponent} from '../table-dashboard/table-dashboard.component';
 import {ProductsService} from '../../../services/products.service';
@@ -26,7 +26,7 @@ import {OrderService} from '../../../services/order.service';
   templateUrl: './main-card.component.html',
   styleUrl: '../../style-admin.css'
 })
-export class MainCardComponent implements OnInit{
+export class MainCardComponent implements OnInit,OnDestroy{
   headerText: string = "Tableau de bord";
   ajout: string="Ajouter";
   isNotIndex: boolean=false;
@@ -45,6 +45,11 @@ export class MainCardComponent implements OnInit{
   isOrder!: boolean;
   showDeactivated: boolean = false;
 
+  isLoading: boolean = false;
+  loadingMessage: string = "Chargement des données...";
+
+  private destroy$ = new Subject<void>();
+
   constructor(private router:Router,
               public productsService:ProductsService,
               private categoriesService:CategoryService,
@@ -59,7 +64,20 @@ export class MainCardComponent implements OnInit{
       this.updateHeaderText();
     });
     this.updateHeaderText();
+    this.loadDataForCurrentRoute();
+  }
+  ngOnDestroy() {
+    // Cancel all subscriptions
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
+  private startLoading() {
+    this.isLoading = true;
+  }
+
+  private stopLoading() {
+    this.isLoading = false;
   }
 
   updateHeaderText(){
@@ -222,46 +240,129 @@ export class MainCardComponent implements OnInit{
     this.totalItems=this.data.length;
     this.loadDataForPage();
   }
-  loadAllCategory() {
-    this.categoriesService.getCategories().subscribe(data=>
-    {
-      this.data = data;
-      this.totalItems=data.length
-      this.loadDataForPage();
-      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
-    });
-  }
-  loadAllProduct() {
-    this.productsService.getAllProduct().subscribe(data =>{
-      this.data = data;
-      this.totalItems=data.length
-      this.loadDataForPage();
-      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
-    });
-  }
-  loadAllUser() {
-    this.usersService.getUsers().subscribe(data =>{
-      this.data=data;
-      this.totalItems=data.length;
-      this.loadDataForPage();
-      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
 
-    });
+  loadAllCategory() {
+    this.startLoading();
+    this.categoriesService.getCategories()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (data) => {
+          this.data = data;
+          this.totalItems = data.length;
+          this.loadDataForPage();
+          this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+          this.stopLoading();
+        },
+        error: (error) => {
+          console.error('Error loading categories', error);
+          this.stopLoading();
+          // Optional: Set an error message
+          this.loadingMessage = "Erreur de chargement des données";
+        }
+      });
   }
+
+  loadAllProduct() {
+    this.startLoading();
+    this.productsService.getAllProduct()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (data) => {
+          this.data = data;
+          this.totalItems = data.length;
+          this.loadDataForPage();
+          this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+          this.stopLoading();
+        },
+        error: (error) => {
+          console.error('Error loading products', error);
+          this.stopLoading();
+          this.loadingMessage = "Erreur de chargement des données";
+        }
+      });
+  }
+
+  loadAllUser() {
+    this.startLoading();
+    this.usersService.getUsers()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (data) => {
+          this.data = data;
+          this.totalItems = data.length;
+          this.loadDataForPage();
+          this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+          this.stopLoading();
+        },
+        error: (error) => {
+          console.error('Error loading users', error);
+          this.stopLoading();
+          this.loadingMessage = "Erreur de chargement des données";
+        }
+      });
+  }
+
   loadAllOrder() {
-  this.orderService.getOrders().subscribe(data=>{
-    this.data=data;
-    this.totalItems=data.length;
-    this.loadDataForPage();
-    this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
-  })
+    this.startLoading();
+    this.orderService.getOrders()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (data) => {
+          this.data = data;
+          this.totalItems = data.length;
+          this.loadDataForPage();
+          this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+          this.stopLoading();
+        },
+        error: (error) => {
+          console.error('Error loading orders', error);
+          this.stopLoading();
+          this.loadingMessage = "Erreur de chargement des données";
+        }
+      });
   }
+
   loadAllStore() {
-    this.storesService.getAllStores().subscribe(data =>{
-      this.data=data;
-      this.totalItems=data.length;
-      this.loadDataForPage();
-      this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
-    })
+    this.startLoading();
+    this.storesService.getAllStores()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (data) => {
+          this.data = data;
+          this.totalItems = data.length;
+          this.loadDataForPage();
+          this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+          this.stopLoading();
+        },
+        error: (error) => {
+          console.error('Error loading stores', error);
+          this.stopLoading();
+          this.loadingMessage = "Erreur de chargement des données";
+        }
+      });
+  }
+
+  private loadDataForCurrentRoute() {
+    const currentRoute = this.router.url.split('/')[2];
+    switch (currentRoute) {
+      case 'products':
+        this.loadAllProduct();
+        break;
+      case 'categories':
+        this.loadAllCategory();
+        break;
+      case 'users':
+        this.loadAllUser();
+        break;
+      case 'orders':
+        this.loadAllOrder();
+        break;
+      case 'stores':
+        this.loadAllStore();
+        break;
+      default:
+
+        break;
+    }
   }
 }
