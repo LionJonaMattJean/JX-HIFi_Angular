@@ -132,12 +132,14 @@ export class MainCardComponent implements OnInit,OnDestroy{
     this.urlAjout = '/admin/products/ajout';
     this.isNotIndex = true;
     this.ajout = "Ajouter un produit";
-    this.displayColumns = ['id', 'name', 'sellPrice', 'category'];
+    this.displayColumns = ['id', 'name', 'sellPrice','stock','brand', 'category'];
     this.entityType="products";
     this.columnNames = {
       id: 'ID',
       name: 'Nom',
       sellPrice: 'Prix de vente',
+      stock: 'Inventaire',
+      brand: 'Marque',
       category: 'Catégorie'
     };
     this.loadAllProduct();
@@ -264,7 +266,7 @@ export class MainCardComponent implements OnInit,OnDestroy{
 
   loadAllProduct() {
     this.startLoading();
-    this.productsService.getAllProduct()
+    this.productsService.getAllProductTable()
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data) => {

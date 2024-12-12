@@ -34,7 +34,12 @@ export class ProductsService {
   getAllProduct(): Observable<Product[]> {
     return this.httpRequest.get<Product[]>(this.url+"/products");
   }
-
+  getAllProductTable(): Observable<Product[]> {
+    return this.httpRequest.get<Product[]>(this.url+"/table/products");
+  }
+  getAllProductByBrand(idBrand: string): Observable<Product[]> {
+    return this.httpRequest.get<Product[]>(this.url+"/products/brand/"+idBrand);
+  }
   getAllProductByCategory(idCat: string): Observable<Product[]> {
     return this.httpRequest.get<Product[]>(this.url+"/products/category/"+idCat);
 
@@ -45,6 +50,9 @@ export class ProductsService {
   updateProduct(payload: any,id:string):Observable<Product> {
     return this.httpRequest.put<Product>(this.url+"/products/modify/"+id, payload);
 
+  }
+  deleteProduct(id:string):Observable<Product> {
+    return this.httpRequest.delete<Product>(this.url+"/products/delete/"+id);
   }
 
   getAllProductByKeyword(keyword: string) {

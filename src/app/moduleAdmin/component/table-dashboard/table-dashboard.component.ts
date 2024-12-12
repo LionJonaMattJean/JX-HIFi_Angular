@@ -25,37 +25,56 @@ export class TableDashboardComponent {
 
 
 
-  constructor() { }
-  getColumnValue(row: any, column: string): any {
-    if (column === 'category') {
-      return row.category.id;
-    } else if (column === 'address') {
-      const address:String[]= [row.address.address,row.address.postalCode,row.address.province];
-      return address.join(" , ")
+  constructor() {
 
-    }else if(column==='role'){
+  }
+  /**
+   * Safely retrieves the value of a column for the provided row.
+   *
+   * @param row The data row
+   * @param column The column name
+   * @returns The value of the column, or a fallback/empty value if undefined
+   */
+  getColumnValue(row: any, column: string): any {
+    console.log(this.dataBinding);
+    if (!row) {
+      return ''; // Handle cases where the row itself is undefined or null
+    }
+    console.log(row.sellPrice);
+    if (column === 'category') {
+      return row.categoryId|| 'N/A'; // Safely navigate 'category' and provide fallback
+    } else if (column === 'address') {
+      const address: string[] = [
+        row.address?.address,
+        row.address?.postalCode,
+        row.address?.province,
+      ].filter((addr) => addr); // Ignore undefined parts of the address
+      return address.join(' , ');
+    } else if (column === 'role') {
       const choix = row.role;
-      let name: string='';
+      let name: string = '';
       switch (choix) {
-        case 'administrator' :
+        case 'administrator':
           name = 'Administrateur';
           break;
-        case'customer':
+        case 'customer':
           name = 'Client';
           break;
         case 'saleagent':
           name = 'Agent de vente';
           break;
+        default:
+          name = choix || 'N/A'; // Provide fallback
       }
       return name;
-    }else if(column==='status'){
+    } else if (column === 'status') {
       const choix = row.status;
-      let name: string='';
+      let name: string = '';
       switch (choix) {
-        case 'Pending' :
+        case 'Pending':
           name = 'En attente';
           break;
-        case'Processing':
+        case 'Processing':
           name = 'En cours de traitement';
           break;
         case 'Completed':
@@ -64,33 +83,51 @@ export class TableDashboardComponent {
         case 'Canceled':
           name = 'Annulé';
           break;
+        default:
+          name = choix || 'N/A'; // Provide fallback
       }
       return name;
-    }else if(column==='orderDate'){
+    } else if (column === 'orderDate') {
       const date = row.orderDate;
-      return [date.day,date.month,date.year].join('/');
-    }else if(column==='totalItems'){
-      return row.orderItems.length;
-    }
-     else {
-      return row[column];
+      if (!date) return 'N/A'; // Handle cases where date is undefined
+      return [date.day, date.month, date.year].filter((d) => d).join('/');
+    } else if (column === 'totalItems') {
+      return row.orderItems?.length || 0; // Ensure fallback for undefined 'orderItems'
+    } else {
+      console.log(row);
+      return row[column] || 'N/A'; // Fallback for any generic case
     }
   }
+
+  /**
+   * Emits the edit event for the row with the given ID.
+   *
+   * @param id The ID of the row
+   */
   onEdit(id: string) {
-    const row = this.dataBinding.find((item) => item.id === id);
+    const row = this.dataBinding.find((item) => item?.id === id);
     this.editEvent.emit(row);
-
   }
 
+  /**
+   * Emits the details event for the row with the given ID.
+   *
+   * @param id The ID of the row
+   */
   onDetails(id: string) {
-    const row = this.dataBinding.find((item) => item.id === id);
+    const row = this.dataBinding.find((item) => item?.id === id);
     this.detailsEvent.emit(row);
-
   }
 
+  /**
+   * Emits the delete event for the row with the given ID.
+   *
+   * @param id The ID of the row
+   */
   onDelete(id: string) {
-    const row = this.dataBinding.find((item) => item.id === id);
+    const row = this.dataBinding.find((item) => item?.id === id);
     this.deleteEvent.emit(row);
   }
+
 
 }

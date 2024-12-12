@@ -28,9 +28,9 @@ export class ProductDeleteComponent {
   }
 
   deleteProduct(){
-    //this.produitsService.deleteProduct(this.id).subscribe(() => {
+    this.produitsService.deleteProduct(this.id).subscribe(() => {
       this.isDelete = true;
-    //});
+    });
   }
 
 }
