@@ -1,0 +1,6 @@
+/* Style des card de produit */
+.card {
+    --bs-card-border-width: 0px;
+    --bs-card-border-radius: 4px;
+    background-color: rgba(143, 166, 224, 0.6);
+}

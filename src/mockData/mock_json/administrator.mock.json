@@ -1,0 +1,17 @@
+{
+  "id": "USE1518",
+  "email": "oscar_h@yahoo.ca",
+  "password": "pass15",
+  "firstName": "Oscar",
+  "lastName": "Hernandez",
+  "phone": "1534567895",
+  "address": {
+    "address": "150 Aspen Dr",
+    "city": "Toronto",
+    "province": "ON",
+    "postalCode": "M4C 1Z2",
+    "country": "Canada"
+  },
+  "role": "administrator",
+  "isDeleted": false
+}

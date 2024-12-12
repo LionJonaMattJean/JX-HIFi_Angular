@@ -1,0 +1,41 @@
+<div class="form-check">
+    <input type="checkbox" class="form-check-input" id="sameAddressCheckbox"
+        (change)="ToggoleTableLivraison()" [(ngModel)]="sameAddress" />
+    <label class="form-check-label" for="sameAddressCheckbox"> Même Adresse de livraison</label>
+</div>
+
+<table [class.hidden]="sameAddress" id="notcheckform">
+    <tr>
+        <td>
+            <label class="labels" for="adresse">Adresse</label>
+        </td>
+    </tr>
+    <td>
+        <input type="text" id="adresselivraison" name="adresselivraison" class="wide-input" required>
+    </td>
+    <tr>
+        <td>
+            <label class="labels" for="ville">Ville</label>
+        </td>
+    </tr>
+    <td>
+        <input type="text" id="villelivraison" name="villelivraison" class="wide-input" required>
+    </td>
+    <tr>
+        <td>
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 50%;">
+                        <label class="labels" for="province">Province</label>
+                        <input type="text" id="provincelivraison" name="provincelivraison" class="narrow-input" required>
+                    </td>
+                    <td style="width: 50%;">
+                        <td>
+                            <label class="labels" for="pays">Pays</label>
+                            <input type="text" id="payslivraison" name="payslivraison" class="narrow-input" required>
+                        </td>
+                    </tr>                            
+            </table>
+        </td>
+    </tr>
+</table>

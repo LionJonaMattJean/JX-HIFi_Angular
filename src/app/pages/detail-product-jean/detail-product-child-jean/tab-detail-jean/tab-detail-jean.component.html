@@ -1,0 +1,34 @@
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description"
+            type="button" role="tab">Description</button>
+        <button class="nav-link" id="specifications-tab" data-bs-toggle="tab" data-bs-target="#specifications"
+            type="button" role="tab">Specifications</button>
+        <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button"
+            role="tab">Reviews</button>
+    </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    <div class="descSection tab-pane show active" id="description" role="tabpanel">
+        <p>{{product?.description}}</p>
+    </div>
+    <div class="tab-pane" id="specifications" role="tabpanel">
+        <div class="specsSection">
+            <div class="row">
+                <div class="col-4" *ngFor="let spec of product?.specificationDetails">
+                    <h5 class="fw-bold mb-0">{{spec.title}}</h5>
+                    <p class="fw-light"> {{spec.description}} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="reviewSection tab-pane" id="reviews" role="tabpanel">
+        <ul>
+            <li *ngFor="let review of product?.reviews">
+                <p><span class="stars text-warning h4">{{reviewRating(review)}}</span>from {{review.idUser}}</p>
+                <h4>{{review.title}}</h4>
+                <p>{{review.review}}</p>
+            </li>
+        </ul>
+    </div>
+</div>

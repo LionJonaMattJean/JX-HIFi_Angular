@@ -1,0 +1,36 @@
+.container-fluid{
+    width: 300px;
+    margin:0;
+    padding:0;
+    height:100vh;
+}
+
+
+li{
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+    border-radius: 8px;
+}
+li:hover{
+    transform: scale(1.1);
+    background-color: rgba(0, 123, 255, 0.1);
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+li:hover svg {
+    fill: #007bff;
+    transform: rotate(15deg);
+    transition: transform 0.8s ease, fill 0.0s ease;
+}
+
+
+.active {
+    border-radius: 8px;
+    border-left: 4px solid #007bff;
+    padding-left: 8px;
+    transform: scale(1.1);
+    background-color: rgba(0, 123, 255, 0.1);
+
+}

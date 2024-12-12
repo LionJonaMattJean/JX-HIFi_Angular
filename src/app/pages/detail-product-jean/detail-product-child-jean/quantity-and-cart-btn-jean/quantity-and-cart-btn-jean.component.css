@@ -1,0 +1,21 @@
+.btnQty {
+    width: 40px;
+    cursor: pointer;
+}
+
+.txtQty {
+    border: none;
+    font-size: 2rem;
+}
+
+.btnAdd {
+    font-size: 2rem;
+    color: white;
+    background-color: rgba(16, 60, 172, 1);
+    border-radius: 30px;
+}
+
+h2, small {
+    color: rgba(16, 60, 172, 1);
+    cursor: default;
+}

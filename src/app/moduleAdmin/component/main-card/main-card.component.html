@@ -1,0 +1,35 @@
+<div class=" main-content-wrapper">
+  <div class="content-header">
+    <h1>{{headerText}}</h1>
+  </div>
+  <div class="card p-4">
+    <button *ngIf="isNotIndex" type="button" routerLink="{{urlAjout}}" class="btn btn-primary mb-3 mt-2 ms-auto btn-add">{{ajout}}</button>
+    <button *ngIf="isUser" class="btn btn-outline-info mb-5 mt-2 ms-auto btn-add" (click)="viewDeactivatedUser()">{{toggle}}</button>
+    <div *ngIf="isLoading" class="text-center my-4">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Chargement...</span>
+      </div>
+      <p class="mt-2">{{loadingMessage}}</p>
+    </div>
+    <div class="container-fluid my-4" *ngIf="!isLoading" >
+      <app-table-dashboard class="table table-sm small-table table-bordered table-striped"
+      *ngIf="isNotIndex"
+      [displayColumns]="displayColumns"
+      [dataBinding]="pageData"
+      [columnNames]="columnNames"
+      [entityType]="entityType"
+
+      ></app-table-dashboard>
+
+      <app-pagination-dashboard
+        [totalItems]="totalItems"
+        [itemsPerPage]="itemsPerPage"
+        [currentPage]="currentPage"
+        (pageChange)="onPageChange($event)">
+      </app-pagination-dashboard>
+    </div>
+
+</div>
+</div>
+
+

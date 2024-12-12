@@ -1,0 +1,39 @@
+.txtPrice {
+    color: rgba(16, 60, 172, 1);
+}
+
+.quickSpecs td {
+    padding-left: 4%;
+    padding-bottom: 0.5rem;
+    width: 80%;
+}
+
+.quickSpecs {
+    font-size: large;
+}
+
+.variantOptions {
+    color: rgba(16, 60, 172, 1);
+}
+
+/* Responsive image */
+@media (max-width: 992px) {
+    .pictureCollection {
+        overflow-x: auto;
+        padding: 10px 0;
+    }
+
+    .pictureCollection img {
+        flex: 0 0 auto;
+        width: 100px;
+        margin-right: 10px;
+    }
+}
+
+.pictureCollection {
+    cursor: pointer;
+}
+
+.mainPicture img {
+    width: 100%;
+}

@@ -1,0 +1,11 @@
+<div>
+    <a [routerLink]="['/detail_product/', selectedProduct?.id]">
+        <div class="card">
+            <img [src]="selectedProduct?.images?.at(0)?.url" class="card-img-top" alt="{{selectedProduct?.images?.at(0)?.id}}">
+            <div class="card-body">
+                <h6 class="card-title">{{selectedProduct?.name}}</h6>
+                <p class="card-text fw-bold text-end">{{selectedProduct?.sellPrice}}$</p>
+            </div>
+        </div>
+    </a>
+</div>

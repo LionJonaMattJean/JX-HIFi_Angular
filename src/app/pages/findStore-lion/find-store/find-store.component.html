@@ -1,0 +1,26 @@
+<div class="container-fluid p-0 m-0">
+    <div class="row g-0">
+        <img src="assets/images/findStore/findStoreMap.jpg" class="store-map">
+    </div>
+
+    <div id="divH" class="row g-0 d-flex justify-content-center">
+        <h1 id="find">Find a store</h1>
+    </div>
+
+    <div class="row g-0 d-flex justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="input-group mb-3">
+                <input #filter placeholder="Search by city" class="form-control" type="text">
+                <button class="btn btn-primary" (click)="filterResults(filter.value)">FIND</button>
+            </div> 
+        </div>
+    </div>
+
+    <section class="storeCard">
+        <app-store-carte 
+            *ngFor="let i of filteredStoreList" 
+            [magasinInput]="i">
+        </app-store-carte>
+    </section>
+    
+</div>

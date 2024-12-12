@@ -1,31 +1,25 @@
-<p>login-lion works!</p>
-<div class="row">
-    <div class="col-2">
-        <img src="/images/logo/Logo JX-HIFI.jpg">
-    </div>
-</div>
-
-
-
-
+<br>
+<!--Check with the mock list of users as well-->
+<!--Check if the ngIf is what is needed to validate the entry for a User-->
 <div class="login">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10 ">
-                <form>
+                <form [formGroup]="logForm" (submit)="submitLogIn()">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Enter email">
+                        <input formControlName="logEmail" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            >
                     </div>
                     <br>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <input formControlName="logPassword" type="password" class="form-control" id="exampleInputPassword1" >
                     </div>
                     <br>
                     <button type="submit" id="log" class="btn btn-primary">Submit</button>
                 </form>
+
                 <a href="forgotPassword">Forgot password?</a>
 
                 <br><br><br>
@@ -35,8 +29,6 @@
                         Create an account
                     </button>
                 </form>
-
-
             </div>
         </div>
     </div>

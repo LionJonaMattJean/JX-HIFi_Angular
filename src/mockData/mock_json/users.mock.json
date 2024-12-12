@@ -1,0 +1,258 @@
+[
+    {
+        "id": "USE1000",
+        "email": "alice_s@gmail.com",
+        "password": "pass1",
+        "firstName": "Alice",
+        "lastName": "Smith",
+        "phone": "1234567891",
+        "address": {
+            "address": "10 Main St",
+            "city": "Montreal",
+            "province": "QC",
+            "postalCode": "H1A 2B3",
+            "country": "Canada"
+        },
+      "role": "customer",
+      "isDeleted": false
+    },
+    {
+        "id": "USE1037",
+        "email": "bob_j@gmail.com",
+        "password": "pass2",
+        "firstName": "Bob",
+        "lastName": "Johnson",
+        "phone": "2234567892",
+        "address": {
+            "address": "20 Elm St",
+            "city": "Toronto",
+            "province": "ON",
+            "postalCode": "M4B 1B4",
+            "country": "Canada"
+        },
+      "role": "customer",
+      "isDeleted": false
+    },
+    {
+        "id": "USE1074",
+        "email": "charlie_b@outlook.ca",
+        "password": "pass3",
+        "firstName": "Charlie",
+        "lastName": "Brown",
+        "phone": "3234567893",
+        "address": {
+            "address": "30 Maple Ave",
+            "city": "Vancouver",
+            "province": "BC",
+            "postalCode": "V5K 3Z4",
+            "country": "Canada"
+        },
+      "role": "customer",
+      "isDeleted": false
+    },
+    {
+        "id": "USE1111",
+        "email": "david_t@gmail.com",
+        "password": "pass4",
+        "firstName": "David",
+        "lastName": "Taylor",
+        "phone": "4234567894",
+        "address": {
+            "address": "40 Oak Blvd",
+            "city": "Calgary",
+            "province": "AB",
+            "postalCode": "T2P 5C4",
+            "country": "Canada"
+        },
+      "role": "customer",
+      "isDeleted": false
+    },
+    {
+        "id": "USE1148",
+        "email": "eva_d@outlook.ca",
+        "password": "pass5",
+        "firstName": "Eva",
+        "lastName": "Davis",
+        "phone": "5234567895",
+        "address": {
+            "address": "50 Birch Rd",
+            "city": "Montreal",
+            "province": "QC",
+            "postalCode": "H2X 1Y7",
+            "country": "Canada"
+        },
+      "role": "customer",
+      "isDeleted": false
+    },
+    {
+        "id": "USE1185",
+        "email": "frank_g@outlook.ca",
+        "password": "pass6",
+        "firstName": "Frank",
+        "lastName": "Garcia",
+        "phone": "6234567896",
+        "address": {
+            "address": "60 Cedar Ln",
+            "city": "Toronto",
+            "province": "ON",
+            "postalCode": "M5A 4E2",
+            "country": "Canada"
+        },
+      "role": "customer",
+      "isDeleted": false
+    },
+    {
+        "id": "USE1222",
+        "email": "grace_m@gmail.com",
+        "password": "pass7",
+        "firstName": "Grace",
+        "lastName": "Martinez",
+        "phone": "7234567897",
+        "address": {
+            "address": "70 Pine Ct",
+            "city": "Vancouver",
+            "province": "BC",
+            "postalCode": "V6B 5T1",
+            "country": "Canada"
+        },
+      "role": "customer",
+      "isDeleted": false
+    },
+    {
+        "id": "USE1259",
+        "email": "hannah_w@gmail.com",
+        "password": "pass8",
+        "firstName": "Hannah",
+        "lastName": "Wilson",
+        "phone": "8234567898",
+        "address": {
+            "address": "80 Walnut Dr",
+            "city": "Ottawa",
+            "province": "ON",
+            "postalCode": "K1A 0B1",
+            "country": "Canada"
+        },
+      "role": "customer",
+      "isDeleted": false
+    },
+    {
+        "id": "USE1296",
+        "email": "isaac_l@gmail.com",
+        "password": "pass9",
+        "firstName": "Isaac",
+        "lastName": "Lopez",
+        "phone": "9234567899",
+        "address": {
+            "address": "90 Poplar St",
+            "city": "Quebec City",
+            "province": "QC",
+            "postalCode": "G1A 1C5",
+            "country": "Canada"
+        },
+      "role": "customer",
+      "isDeleted": false
+    },
+    {
+        "id": "USE1333",
+        "email": "julia_c@outlook.ca",
+        "password": "pass10",
+        "firstName": "Julia",
+        "lastName": "Clark",
+        "phone": "1034567890",
+        "address": {
+            "address": "100 Cherry Pl",
+            "city": "Montreal",
+            "province": "QC",
+            "postalCode": "H3A 2R7",
+            "country": "Canada"
+        },
+      "role": "customer",
+      "isDeleted": false
+    },
+    {
+        "id": "USE1370",
+        "email": "kyle_l@yahoo.ca",
+        "password": "pass11",
+        "firstName": "Kyle",
+        "lastName": "Lewis",
+        "phone": "1134567891",
+        "address": {
+            "address": "110 Palm Way",
+            "city": "Toronto",
+            "province": "ON",
+            "postalCode": "M5J 2N2",
+            "country": "Canada"
+        },
+      "role": "customer",
+      "isDeleted": false
+    },
+    {
+        "id": "USE1407",
+        "email": "laura_w@outlook.ca",
+        "password": "pass12",
+        "firstName": "Laura",
+        "lastName": "Walker",
+        "phone": "1234567892",
+        "address": {
+            "address": "120 Fir St",
+            "city": "Vancouver",
+            "province": "BC",
+            "postalCode": "V6J 4A3",
+            "country": "Canada"
+        },
+      "role": "customer",
+      "isDeleted": false
+    },
+    {
+        "id": "USE1444",
+        "email": "michael_a@outlook.ca",
+        "password": "pass13",
+        "firstName": "Michael",
+        "lastName": "Allen",
+        "phone": "1334567893",
+        "address": {
+            "address": "130 Spruce Blvd",
+            "city": "Calgary",
+            "province": "AB",
+            "postalCode": "T3A 5R6",
+            "country": "Canada"
+        },
+      "role": "customer",
+      "isDeleted": false
+    },
+    {
+        "id": "USE1481",
+
+        "email": "nina_y@gmail.com",
+        "password": "pass14",
+        "firstName": "Nina",
+        "lastName": "Young",
+        "phone": "1434567894",
+        "address": {
+            "address": "140 Chestnut Rd",
+            "city": "Montreal",
+            "province": "QC",
+            "postalCode": "H3B 2V9",
+            "country": "Canada"
+        },
+      "role": "saleagent",
+      "isDeleted": false
+    },
+    {
+        "id": "USE1518",
+        "email": "oscar_h@yahoo.ca",
+        "password": "pass15",
+        "firstName": "Oscar",
+        "lastName": "Hernandez",
+        "phone": "1534567895",
+        "address": {
+            "address": "150 Aspen Dr",
+            "city": "Toronto",
+            "province": "ON",
+            "postalCode": "M4C 1Z2",
+            "country": "Canada"
+        },
+      "role": "administrator",
+      "isDeleted": false
+    }
+]

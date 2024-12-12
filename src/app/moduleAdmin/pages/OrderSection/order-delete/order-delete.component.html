@@ -1,0 +1,37 @@
+<div class="main-content-wrapper text-center">
+  <div class="p-4 row flex-lg-row align-items-center g-5 py-5">
+    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Commande:{{order.id}}</h1>
+    <div class="col-lg-6 mx-auto">
+
+      <div >
+        Voulez vous supprimer le produit: <span><br>
+        <ul class="mt-3 mb-3" *ngIf="order">
+          <li>Nom: <strong>{{user.lastName}} {{user.firstName}}</strong></li>
+          <li>Email: <strong>{{user.email}}</strong></li>
+          <li>Téléphone:<strong> {{user.phone}}</strong> </li>
+          <li>Adresse:<strong> {{order.shippingAddress.address}}</strong></li>
+          <li>Code Postal:<strong> {{order.shippingAddress.postalCode}}</strong></li>
+          <li>Total:<strong> {{order.totalAmount}}$</strong> </li>
+          <li>Total Article:<strong> {{order.orderItems.length}} articles</strong> </li>
+
+        </ul>
+      </span>  Attention l'action est permanante
+      </div>
+      <div >
+        <div class="container mt-5">
+          <div [ngClass]="{'active': isDelete,'visually-hidden':!isDelete}" class="alert alert-success " role="alert">
+            La suppression a ete effectuer avec succès
+          </div>
+          <div [ngClass]="{'active': isDeactivate,'visually-hidden':!isDeactivate}" class="alert alert-success " role="alert">
+            L'utilisateur a ete désactivé avec succès
+          </div>
+        </div>
+        <div class="d-grid gap-4 d-md-flex justify-content-md-center mx-5 mt-5">
+          <button type="button" class="btn btn-secondary" routerLink="/admin/orders">Retour</button>
+          <button type="button" class="btn btn-warning" (click)="deactivateOrders()" >Déactivé</button>
+          <button type="button" class="btn btn-danger" (click)="deleteOrder()" >Supprimer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+.listing {
+    background: var(--accent-color);
+    border-radius: 5px;
+    padding-bottom: 30px;
+    background-color: rgb(172, 175, 178);
+    font-weight: bold;
+}
+
+.listing:hover{
+    cursor: pointer;
+    background-color: rgb(55, 95, 255);
+    color:white;
+    transform: translateY(-10px);
+    
+}
+
+.listing-heading {
+    color: var(--primary-color);
+    padding: 10px 20px 0 20px;
+}
+
+.listing-heading::before{
+    content: url("/assets/images/icons/location-pin.svg")
+}
+label{
+    margin-left:50px;
+}
+

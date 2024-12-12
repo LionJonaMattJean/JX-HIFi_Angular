@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   font-family: 'Inter', sans-serif;
+
 }
 
 .navbar {
@@ -33,17 +34,17 @@
 }
 
 .icon-nav {
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
 }
 
 .sidenav {
   padding-left: 1rem;
-  width: 250px;
+  width: auto;
   height: calc(100vh - 125px);
   background: white;
-
+  margin-right: 5rem;
   top: 125px;
   left: 0;
   min-height: calc(100vh - 120px);
@@ -121,21 +122,36 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .chart-container{
   position: relative;
   height:275px;
   max-width: 100%;
   overflow: hidden
 }
+.app-main-card {
+  width: 100%; /* Ensure the main card takes the full width of its container */
+  height: 100%; /* Ensure the main card takes the full height of its container */
+}
+.img-details {
+  width: 50%;
+  height: 50%;
+
+}
 
 /* Media Queries for Responsive Adjustments */
 @media (max-width: 1510px) {
-  .custom-navbar {
-    display: none !important; /* Hide navbar on screens <= 1520px */
-  }
-  .sidebar-toggle {
-    display: inline-block !important; /* Show toggle button */
-  }
+.icon-nav {
+  width: 20px;
+  height: 20px; /* Smaller icons for medium screens */
+}
+ .icon{
+    width: 20px;
+    height: 20px; /* Smaller icons for medium screens */
+ }
+ a{
+   font-size: 0.85em; /* Decrease font size for small screens */
+ }
 }
 
 @media (max-width: 1024px) {
@@ -145,6 +161,7 @@
 }
 
 @media (max-width: 992px) {
+  .custom-navbar{display: none !important;}
   .navbar-actions img {
     width: 24px;
     height: 24px; /* Smaller icons for small screens */
@@ -152,4 +169,8 @@
   .form-search {
     display: none; /* Hide search bar on small screens */
   }
+  .sidebar-toggle {
+    display: inline-block !important;
+  }
 }
+

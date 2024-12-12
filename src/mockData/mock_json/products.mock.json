@@ -1,0 +1,757 @@
+[
+    {
+        "category": {
+          "id": "CAT222",
+          "name": "Desktop",
+          "description": "Pre-built computer for your daily work from home or office."
+        }
+        ,
+        "id": "PRO100012300000",
+        "brand": "HP",
+        "name": "HP Envy Desktop",
+        "description": "Powerful desktop for multitasking and gaming.",
+        "sellPrice": 1299,
+        "costPrice": 1150,
+        "specialPrice": 42,
+        "stock": 100,
+        "colors": [ "black", "silver" ],
+        "specificationDetails": [
+            { "id": "SPE1", "title": "Processor", "description": "Intel Core i7-12700" },
+            { "id": "SPE2", "title": "RAM", "description": "16 GB DDR4" },
+            { "id": "SPE3", "title": "Storage", "description": "1 TB SSD"},
+            { "id": "SPE4", "title": "Graphics", "description": "NVIDIA RTX 3060"},
+            { "id": "SPE5", "title": "Ports", "description": "USB-C, HDMI, DisplayPort"},
+            { "id": "SPE6", "title": "OS", "description": "Windows 11"},
+            { "id": "SPE7", "title": "Weight", "description": "10 kg"},
+            { "id": "SPE8", "title": "Warranty", "description": "1 year" }
+        ],
+        "shortSpecifications": [
+            { "id": "QSPE1", "title": "Processor","description": "Intel Core i7-12700"},
+            { "id": "QSPE2", "title": "RAM","description": "16 GB DDR4"},
+            { "id": "QSPE3", "title": "Storage","description": "1 TB SSD"},
+            { "id": "QSPE4", "title": "Graphics","description": "NVIDIA RTX 3060" }
+        ],
+        "images": [
+            { "id": "IMG310100", "idProduct": "PRO100012300000",
+                "url": "https://picsum.photos/seed/desktop_1/300/300" },
+            { "id": "IMG310103", "idProduct": "PRO100012300000",
+                "url": "https://picsum.photos/seed/desktop_2/300/300" },
+            { "id": "IMG310106", "idProduct": "PRO100012300000",
+                "url": "https://picsum.photos/seed/desktop_3/300/300" }
+        ],
+        "reviews": [
+            { "id": "REV1130000", "idProduct": "PRO100012300000", "idUser": "USE1000",
+                "star": 4, "title": "Do the job",
+                "review": "came quick, easy to install, look okay." },
+            { "id": "REV1130001", "idProduct": "PRO100012300000", "idUser": "USE1111",
+                "star": 5, "title": "Love it",
+                "review": "The shipping was so fast, now it<s there and work so great. I recommand !" },
+            { "id": "REV1130002", "idProduct": "PRO100012300000", "idUser": "USE1407",
+                "star": 3, "title": "Good but noisy",
+                "review": "Works fine but the fan is a bit noisy for my taste." }
+        ],
+      "onSale": false
+    },
+    {
+        "category": {
+          "id": "CAT222",
+          "name": "Desktop",
+          "description": "Pre-built computer for your daily work from home or office."
+        },
+        "id": "PRO100012300537",
+        "brand": "Dell",
+        "name": "Dell XPS Desktop",
+        "description": "Sleek desktop for professionals.",
+        "sellPrice": 1549,
+        "costPrice": 1400,
+        "specialPrice": 18,
+        "stock": 50,
+        "colors": [ "white" ],
+        "specificationDetails": [
+            {"id": "SPE9", "title": "Processor", "description": "Intel Core i9-12900" },
+            { "id": "SPE10", "title": "RAM", "description": "32 GB DDR4" },
+            { "id": "SPE11", "title": "Storage", "description": "1 TB SSD + 2 TB HDD" },
+            { "id": "SPE12", "title": "Graphics", "description": "NVIDIA RTX 3070" },
+            { "id": "SPE13", "title": "Ports", "description": "USB-C, HDMI, Ethernet" },
+            { "id": "SPE14", "title": "OS", "description": "Windows 11" },
+            { "id": "SPE15", "title": "Weight", "description": "11 kg" },
+            { "id": "SPE16", "title": "Warranty", "description": "2 years" }
+        ],
+        "shortSpecifications": [
+            { "id": "QSPE5", "title": "Processor", "description": "Intel Core i9-12900" },
+            { "id": "QSPE6", "title": "RAM", "description": "32 GB DDR4" },
+            { "id": "QSPE7", "title": "Storage", "description": "1 TB SSD + 2 TB HDD" },
+            { "id": "QSPE8", "title": "Graphics", "description": "NVIDIA RTX 3070" }
+        ],
+        "images": [
+            { "id": "IMG310109", "idProduct": "PRO100012300537",
+                "url": "https://picsum.photos/seed/desktop_4/300/300" },
+            { "id": "IMG310112", "idProduct": "PRO100012300537",
+                "url": "https://picsum.photos/seed/desktop_5/300/300" },
+            { "id": "IMG310115", "idProduct": "PRO100012300537",
+                "url": "https://picsum.photos/seed/desktop_6/300/300" }
+        ],
+        "reviews": [
+            { "id": "REV1130003", "idProduct": "PRO100012300537", "idUser": "USE1333",
+                "star": 5, "title": "Perfect machine",
+                "review": "Super fast and easy to set up. Love it for gaming and work." },
+            { "id": "REV1130004", "idProduct": "PRO100012300537", "idUser": "USE1074",
+                "star": 3, "title": "Good but not great",
+                "review": "It works fine but I expected more for the price." }
+        ],
+      "onSale": false
+    },
+    {
+        "category": {
+          "id": "CAT222",
+          "name": "Desktop",
+          "description": "Pre-built computer for your daily work from home or office."
+        },
+        "id": "PRO100012301074",
+        "brand": "Apple",
+        "name": "Apple iMac 24-inch",
+        "description": "All-in-one desktop with Retina display.",
+        "sellPrice": 1899,
+        "costPrice": 1700,
+        "specialPrice": 65,
+        "stock": 60,
+        "colors": [ "silver", "blue" ],
+        "specificationDetails": [
+            { "id": "SPE17", "title": "Processor", "description": "Apple M1 chip" },
+            { "id": "SPE18", "title": "RAM", "description": "16 GB Unified" },
+            { "id": "SPE19", "title": "Storage", "description": "512 GB SSD" },
+            { "id": "SPE20", "title": "Graphics", "description": "Integrated 8-core GPU" },
+            { "id": "SPE21", "title": "Ports", "description": "USB-C, Thunderbolt" },
+            { "id": "SPE22", "title": "OS", "description": "macOS Ventura" },
+            { "id": "SPE23", "title": "Weight", "description": "5 kg" },
+            { "id": "SPE24", "title": "Warranty", "description": "1 year" }
+        ],
+        "shortSpecifications": [
+            { "id": "QSPE9", "title": "Processor", "description": "Apple M1 chip" },
+            { "id": "QSPE10", "title": "RAM", "description": "16 GB Unified" },
+            { "id": "QSPE11", "title": "Storage", "description": "512 GB SSD" },
+            { "id": "QSPE12", "title": "Graphics", "description": "Integrated 8-core GPU" }
+        ],
+        "images": [
+            { "id": "IMG310118", "idProduct": "PRO100012301074",
+                "url": "https://picsum.photos/seed/desktop_7/300/300" },
+            { "id": "IMG310121", "idProduct": "PRO100012301074",
+                "url": "https://picsum.photos/seed/desktop_8/300/300" },
+            { "id": "IMG310124", "idProduct": "PRO100012301074",
+                "url": "https://picsum.photos/seed/desktop_9/300/300" }
+        ],
+        "reviews": [
+            { "id": "REV1131005", "idProduct": "PRO100012301074", "idUser": "USE1148",
+                "star": 4, "title": "Great performance",
+                "review": "The iMac is amazing for design work, the display is crisp and bright." },
+            { "id": "REV1131006", "idProduct": "PRO100012301074", "idUser": "USE1444",
+                "star": 5, "title": "Incredible experience",
+                "review": "My new iMac is perfect! The performance is flawless, and it's incredibly quiet." },
+            { "id": "REV1131007", "idProduct": "PRO100012301074", "idUser": "USE1222",
+                "star": 3, "title": "Good but pricey",
+                "review": "Great performance but a bit expensive. It works well for general use but not for intense gaming." },
+            { "id": "REV1131008", "idProduct": "PRO100012301074", "idUser": "USE1370",
+                "star": 5, "title": "Worth every penny!",
+                "review": "Absolutely love my iMac. It's fast, sleek, and the display is gorgeous!" },
+            { "id": "REV1130043", "idProduct": "PRO100012301074", "idUser": "USE1185",
+                "star": 5, "title": "Perfect for creatives",
+                "review": "The Apple iMac 24-inch is stunning. The 4.5K Retina display is perfect for photo and video editing, and it's so quiet." },
+            { "id": "REV1130044", "idProduct": "PRO100012301074", "idUser": "USE1222",
+                "star": 4, "title": "Beautiful design",
+                "review": "The iMac's design is gorgeous, but I wish it had more ports. Performance is great for everyday tasks." },
+            { "id": "REV1130046", "idProduct": "PRO100012301074", "idUser": "USE1407",
+                "star": 1, "title": "Disappointed and overpriced",
+                "review": "The Apple iMac 24-inch is all about looks and lacks functionality. The limited ports are frustrating, and the performance doesn't justify the high price. I regret buying it." },
+            { "id": "REV1130045", "idProduct": "PRO100012301074", "idUser": "USE1259",
+                "star": 5, "title": "Powerful and elegant",
+                "review": "The M1 chip handles everything with ease. It's a joy to use, and the color options are fun too!" }
+        ],
+      "onSale": false
+    },
+    {
+        "category": {
+          "id": "CAT333",
+          "name": "Laptop",
+          "description": "Powerful computer for your remote life."
+        },
+        "id": "PRO100012301611",
+        "name": "MacBook Pro 16-inch",
+        "brand": "Apple",
+        "description": "High-performance laptop for professionals.",
+        "sellPrice": 2499,
+        "costPrice": 2300,
+        "specialPrice": 37,
+        "stock": 50,
+        "colors": ["silver"],
+        "specificationDetails": [
+            { "id": "SPE25", "title": "Processor", "description": "Apple M2 Max" },
+            { "id": "SPE26", "title": "RAM", "description": "32 GB Unified" },
+            { "id": "SPE27", "title": "Storage", "description": "1 TB SSD" },
+            { "id": "SPE28", "title": "Display", "description": "16-inch Retina XDR" },
+            { "id": "SPE29", "title": "Ports", "description": "USB-C, Thunderbolt, HDMI" },
+            { "id": "SPE30", "title": "OS", "description": "macOS Ventura" },
+            { "id": "SPE31", "title": "Battery", "description": "100 Wh" },
+            { "id": "SPE32", "title": "Weight", "description": "2.1 kg" }
+        ],
+        "shortSpecifications": [
+            { "id": "QSPE13", "title": "Processor", "description": "Apple M2 Max" },
+            { "id": "QSPE14", "title": "RAM", "description": "32 GB Unified" },
+            { "id": "QSPE15", "title": "Storage", "description": "1 TB SSD" },
+            { "id": "QSPE16", "title": "Display", "description": "16-inch Retina XDR" }
+        ],
+        "images": [
+            { "id": "IMG310127", "idProduct": "PRO100012301611", "url": "https://picsum.photos/seed/laptop_1/300/300" },
+            { "id": "IMG310130", "idProduct": "PRO100012301611", "url": "https://picsum.photos/seed/laptop_2/300/300" },
+            { "id": "IMG310133", "idProduct": "PRO100012301611", "url": "https://picsum.photos/seed/laptop_3/300/300" }
+        ],
+        "reviews": [
+            { "id": "REV1130009", "idProduct": "PRO100012301611", "idUser": "USE1518",
+                "star": 5, "title": "Amazing performance",
+                "review": "The MacBook Pro exceeded my expectations. Super fast and reliable." },
+            { "id": "REV1130010", "idProduct": "PRO100012301611", "idUser": "USE1296",
+                "star": 4, "title": "Great for professionals",
+                "review": "Works perfectly, but the price is steep." }
+
+        ],
+      "onSale": false
+    },
+    {
+        "category": {
+          "id": "CAT333",
+          "name": "Laptop",
+          "description": "Powerful computer for your remote life."
+        },
+        "id": "PRO100012302148",
+        "brand": "Dell",
+        "name": "Dell XPS 13 Plus",
+
+        "description": "Sleek and compact laptop for everyday use.",
+        "sellPrice": 1399,
+        "costPrice": 1250,
+        "specialPrice": 23,
+        "stock": 23,
+        "colors": ["black"],
+        "specificationDetails": [
+            { "id": "SPE33", "title": "Processor", "description": "Intel Core i7-12700U" },
+            { "id": "SPE34", "title": "RAM", "description": "16 GB DDR4" },
+            { "id": "SPE35", "title": "Storage", "description": "512 GB SSD" },
+            { "id": "SPE36", "title": "Display", "description": "13.4-inch OLED" },
+            { "id": "SPE37", "title": "Ports", "description": "USB-C, Thunderbolt" },
+            { "id": "SPE38", "title": "OS", "description": "Windows 11" },
+            { "id": "SPE39", "title": "Battery", "description": "52 Wh" },
+            { "id": "SPE40", "title": "Weight", "description": "1.2 kg" }
+        ],
+        "shortSpecifications": [
+            { "id": "QSPE17", "title": "Processor", "description": "Intel Core i7-12700U" },
+            { "id": "QSPE18", "title": "RAM", "description": "16 GB DDR4" },
+            { "id": "QSPE19", "title": "Storage", "description": "512 GB SSD" },
+            { "id": "QSPE20", "title": "Display", "description": "13.4-inch OLED" }
+        ],
+        "images": [
+            { "id": "IMG310136", "idProduct": "PRO100012302148", "url": "https://picsum.photos/seed/laptop_4/300/300" },
+            { "id": "IMG310139", "idProduct": "PRO100012302148", "url": "https://picsum.photos/seed/laptop_5/300/300" },
+            { "id": "IMG310142", "idProduct": "PRO100012302148", "url": "https://picsum.photos/seed/laptop_6/300/300" }
+        ],
+        "reviews": [
+            { "id": "REV1130011", "idProduct": "PRO100012302148", "idUser": "USE1000",
+                "star": 4, "title": "Good performance, sleek design",
+                "review": "The Dell XPS 13 Plus is compact and performs well for daily tasks. However, the keyboard takes some time to get used to."},
+            { "id": "REV1130012", "idProduct": "PRO100012302148", "idUser": "USE1037",
+                "star": 5, "title": "Perfect for professionals",
+                "review": "This laptop has everything I need for work, especially its portability and stunning display."}
+        ],
+      "onSale": false
+    },
+    {
+        "category": {
+          "id": "CAT333",
+          "name": "Laptop",
+          "description": "Powerful computer for your remote life."
+        },
+        "id": "PRO100012302685",
+        "brand": "ASUS",
+        "name": "ASUS ROG Zephyrus G14",
+        "description": "Gaming laptop with powerful specs.",
+        "sellPrice": 1599,
+        "costPrice": 1400,
+        "specialPrice": 50,
+        "stock": 50,
+        "colors": ["white", "black"],
+        "specificationDetails": [
+            { "id": "SPE41", "title": "Processor", "description": "AMD Ryzen 9 6900HS" },
+            { "id": "SPE42", "title": "RAM", "description": "16 GB DDR5" },
+            { "id": "SPE43", "title": "Storage", "description": "1 TB SSD" },
+            { "id": "SPE44", "title": "Graphics", "description": "NVIDIA RTX 3060" },
+            { "id": "SPE45", "title": "Display", "description": "14-inch QHD" },
+            { "id": "SPE46", "title": "Ports", "description": "USB-C, HDMI, DisplayPort" },
+            { "id": "SPE47", "title": "Battery", "description": "76 Wh" },
+            { "id": "SPE48", "title": "Weight", "description": "1.7 kg" }
+        ],
+        "shortSpecifications": [
+            { "id": "QSPE21", "title": "Processor", "description": "AMD Ryzen 9 6900HS" },
+            { "id": "QSPE22", "title": "RAM", "description": "16 GB DDR5" },
+            { "id": "QSPE23", "title": "Graphics", "description": "NVIDIA RTX 3060" },
+            { "id": "QSPE24", "title": "Display", "description": "14-inch QHD" }
+        ],
+        "images": [
+            { "id": "IMG310145", "idProduct": "PRO100012302685", "url": "https://picsum.photos/seed/laptop_7/300/300" },
+            { "id": "IMG310148", "idProduct": "PRO100012302685", "url": "https://picsum.photos/seed/laptop_8/300/300" },
+            { "id": "IMG310151", "idProduct": "PRO100012302685", "url": "https://picsum.photos/seed/laptop_9/300/300" }
+        ],
+        "reviews": [
+            { "id": "REV1130013", "idProduct": "PRO100012302685", "idUser": "USE1074",
+                "star": 5, "title": "Great for gaming",
+                "review": "The ASUS ROG Zephyrus G14 is an excellent gaming laptop. It handles all modern games effortlessly with great cooling." },
+            { "id": "REV1130014", "idProduct": "PRO100012302685", "idUser": "USE1111",
+                "star": 4, "title": "Solid performance",
+                "review": "This laptop is powerful and compact but could have better battery life for non-gaming tasks." }
+        ],
+      "onSale": false
+    },
+    {
+        "category":  {
+          "id": "CAT444",
+          "name": "Phone",
+          "description": "Flagship from the biggest company in the world."
+        },
+        "id": "PRO100012303222",
+        "brand": "Apple",
+        "name": "iPhone 14 Pro",
+        "description": "Flagship smartphone with advanced camera and features.",
+        "sellPrice": 999,
+        "costPrice": 900,
+        "specialPrice": 74,
+        "stock": 50,
+        "colors": ["black", "silver"],
+        "specificationDetails": [
+            { "id": "SPE49", "title": "Processor", "description": "A16 Bionic" },
+            { "id": "SPE50", "title": "Display", "description": "6.1-inch Super Retina XDR" },
+            { "id": "SPE51", "title": "Storage", "description": "128 GB" },
+            { "id": "SPE52", "title": "Camera", "description": "48 MP main, 12 MP ultra-wide" },
+            { "id": "SPE53", "title": "Battery", "description": "3,200 mAh" },
+            { "id": "SPE54", "title": "OS", "description": "iOS 16" },
+            { "id": "SPE55", "title": "Weight", "description": "206 g" },
+            { "id": "SPE56", "title": "Waterproof", "description": "IP68" }
+        ],
+        "shortSpecifications": [
+            { "id": "QSPE25", "title": "Processor", "description": "A16 Bionic" },
+            { "id": "QSPE26", "title": "Display", "description": "6.1-inch Super Retina XDR" },
+            { "id": "QSPE27", "title": "Storage", "description": "128 GB" },
+            { "id": "QSPE28", "title": "Camera", "description": "48 MP main, 12 MP ultra-wide" }
+        ],
+        "images": [
+            { "id": "IMG310154", "idProduct": "PRO100012303222", "url": "https://picsum.photos/seed/phone_1/300/300" },
+            { "id": "IMG310157", "idProduct": "PRO100012303222", "url": "https://picsum.photos/seed/phone_2/300/300" },
+            { "id": "IMG310160", "idProduct": "PRO100012303222", "url": "https://picsum.photos/seed/phone_3/300/300" }
+        ],
+        "reviews": [
+            { "id": "REV1130015", "idProduct": "PRO100012303222", "idUser": "USE1148",
+                "star": 5, "title": "Top-notch smartphone",
+                "review": "The iPhone 14 Pro has an amazing camera and sleek design. It's worth the price for Apple enthusiasts." },
+            { "id": "REV1130016", "idProduct": "PRO100012303222", "idUser": "USE1185",
+                "star": 3, "title": "Decent but overpriced",
+                "review": "While the features are good, I expected more for the price compared to competitors." }
+        ],
+      "onSale": false
+    },
+    {
+        "category":  {
+          "id": "CAT444",
+          "name": "Phone",
+          "description": "Flagship from the biggest company in the world."
+        },
+        "id": "PRO100012306510",
+        "brand": "Apple",
+        "name": "iPhone 15 Pro",
+        "description": "Latest Apple iPhone with powerful A17 chip, Pro camera system, and dynamic island.",
+        "sellPrice": 1099,
+        "costPrice": 999,
+        "specialPrice": 85,
+        "stock": 50,
+        "colors": ["black", "silver"],
+        "specificationDetails": [
+            { "id": "SPE57", "title": "Screen Size", "description": "6.1 inches" },
+            { "id": "SPE58", "title": "Processor", "description": "A17 Bionic Chip" },
+            { "id": "SPE59", "title": "Camera", "description": "48MP main, 12MP ultrawide" },
+            { "id": "SPE60", "title": "Storage Options", "description": "128GB, 256GB, 512GB" },
+            { "id": "SPE61", "title": "Battery", "description": "Up to 23 hours video playback" },
+            { "id": "SPE62", "title": "Operating System", "description": "iOS 17" },
+            { "id": "SPE63", "title": "Weight", "description": "204 g" },
+            { "id": "SPE64", "title": "5G", "description": "Yes" }
+        ],
+        "shortSpecifications": [
+            { "id": "QSPE29", "title": "Screen Size", "description": "6.1 inches" },
+            { "id": "QSPE30", "title": "Processor", "description": "A17 Bionic Chip" },
+            { "id": "QSPE31", "title": "Camera", "description": "48MP main, 12MP ultrawide" },
+            { "id": "QSPE32", "title": "Storage Options", "description": "128GB, 256GB, 512GB" }
+        ],
+        "images": [
+            { "id": "IMG310163", "idProduct": "PRO100012306510", "url": "https://picsum.photos/seed/phone_4/300/300" },
+            { "id": "IMG310166", "idProduct": "PRO100012306510", "url": "https://picsum.photos/seed/phone_5/300/300" },
+            { "id": "IMG310169", "idProduct": "PRO100012306510", "url": "https://picsum.photos/seed/phone_6/300/300" }
+        ],
+        "reviews": [
+            { "id": "REV1130017", "idProduct": "PRO100012306510", "idUser": "USE1222",
+                "star": 5, "title": "Best iPhone yet",
+                "review": "Dynamic island is a game changer. The A17 chip is incredibly fast, and the camera is unmatched." },
+            { "id": "REV1130018", "idProduct": "PRO100012306510", "idUser": "USE1259",
+                "star": 4, "title": "Impressive but heavy",
+                "review": "The phone is slightly heavier than expected, but it's packed with features and a solid build." },
+            { "id": "REV1130040", "idProduct": "PRO100012306510", "idUser": "USE1037",
+                "star": 5, "title": "Exceptional performance",
+                "review": "The iPhone 15 Pro is incredibly fast, with the A17 chip making every app run smoothly. The camera quality is outstanding." },
+            { "id": "REV1130041", "idProduct": "PRO100012306510", "idUser": "USE1074",
+                "star": 4, "title": "Great but pricey",
+                "review": "This iPhone is a masterpiece, but the price is hard to justify. Still, it's a top-tier smartphone." },
+            { "id": "REV1130042", "idProduct": "PRO100012306510", "idUser": "USE1111",
+                "star": 5, "title": "The best iPhone ever",
+                "review": "Dynamic Island is so useful, and the build quality is excellent. Totally worth upgrading from older models." }
+        ],
+      "onSale": false
+    },
+    {
+        "category":  {
+          "id": "CAT444",
+          "name": "Phone",
+          "description": "Flagship from the biggest company in the world."
+        },
+        "id": "PRO100012306800",
+        "brand": "Samsung",
+        "name": "Samsung Galaxy S23 Ultra",
+        "description": "Samsung's flagship smartphone with advanced camera and performance.",
+        "sellPrice": 1199,
+        "costPrice": 1100,
+        "specialPrice": 72,
+        "stock": 0,
+        "colors": ["black", "silver"],
+        "specificationDetails": [
+            { "id": "SPE65", "title": "Screen Size", "description": "6.8 inches" },
+            { "id": "SPE66", "title": "Processor", "description": "Snapdragon 8 Gen 2" },
+            { "id": "SPE67", "title": "Camera", "description": "200MP main, 12MP ultrawide, 10MP telephoto" },
+            { "id": "SPE68", "title": "Storage Options", "description": "256GB, 512GB, 1TB" },
+            { "id": "SPE69", "title": "Battery", "description": "5000mAh" },
+            { "id": "SPE70", "title": "Operating System", "description": "Android 13" },
+            { "id": "SPE71", "title": "Weight", "description": "228 g" },
+            { "id": "SPE72", "title": "5G", "description": "Yes" }
+        ],
+        "shortSpecifications": [
+            { "id": "QSPE33", "title": "Screen Size", "description": "6.8 inches" },
+            { "id": "QSPE34", "title": "Processor", "description": "Snapdragon 8 Gen 2" },
+            { "id": "QSPE35", "title": "Camera", "description": "200MP main, 12MP ultrawide, 10MP telephoto" },
+            { "id": "QSPE36", "title": "Storage Options", "description": "256GB, 512GB, 1TB" }
+        ],
+        "images": [
+            { "id": "IMG310172", "idProduct": "PRO100012306800", "url": "https://picsum.photos/seed/phone_7/300/300" },
+            { "id": "IMG310175", "idProduct": "PRO100012306800", "url": "https://picsum.photos/seed/phone_8/300/300" },
+            { "id": "IMG310178", "idProduct": "PRO100012306800", "url": "https://picsum.photos/seed/phone_9/300/300" }
+        ],
+        "reviews": [
+            { "id": "REV1130019", "idProduct": "PRO100012306800", "idUser": "USE1296",
+                "star": 4, "title": "Amazing display",
+                "review": "The Galaxy S23 Ultra's display is vibrant and smooth. However, the price is a bit steep." },
+            { "id": "REV1130020", "idProduct": "PRO100012306800", "idUser": "USE1333",
+                "star": 5, "title": "A complete package",
+                "review": "Excellent camera, battery life, and design. Samsung nailed it with this flagship." }
+        ],
+      "onSale": true
+    },
+    {
+        "category":  {
+          "id": "CAT555",
+          "name": "Monitor",
+          "description": "Monitor to suit all your needs. Gaming, creating, working, we have it."
+        },
+        "id": "PRO100012304125",
+        "brand": "Dell",
+        "name": "Dell UltraSharp U2723QE",
+        "description": "27-inch 4K monitor with precise color accuracy.",
+        "sellPrice": 799,
+        "costPrice": 700,
+        "specialPrice": 62,
+        "stock": 50,
+        "colors": ["black"],
+        "specificationDetails": [
+            { "id": "SPE73", "title": "Display Size", "description": "27-inch" },
+            { "id": "SPE74", "title": "Resolution", "description": "3840 x 2160 (4K)" },
+            { "id": "SPE75", "title": "Color Accuracy", "description": "99% sRGB" },
+            { "id": "SPE76", "title": "Ports", "description": "USB-C, HDMI, DisplayPort" },
+            { "id": "SPE77", "title": "Refresh Rate", "description": "60Hz" },
+            { "id": "SPE78", "title": "Brightness", "description": "400 nits" },
+            { "id": "SPE79", "title": "Weight", "description": "5.5 kg" },
+            { "id": "SPE80", "title": "Panel Type", "description": "IPS" }
+        ],
+        "shortSpecifications": [
+            { "id": "QSPE37", "title": "Display Size", "description": "27-inch" },
+            { "id": "QSPE38", "title": "Resolution", "description": "3840 x 2160 (4K)" },
+            { "id": "QSPE39", "title": "Color Accuracy", "description": "99% sRGB" },
+            { "id": "QSPE40", "title": "Refresh Rate", "description": "60Hz" }
+        ],
+        "images": [
+            { "id": "IMG310181", "idProduct": "PRO100012304125", "url": "https://picsum.photos/seed/monitor_1/300/300" },
+            { "id": "IMG310184", "idProduct": "PRO100012304125", "url": "https://picsum.photos/seed/monitor_2/300/300" },
+            { "id": "IMG310187", "idProduct": "PRO100012304125", "url": "https://picsum.photos/seed/monitor_3/300/300" }
+        ],
+        "reviews": [
+            { "id": "REV1130021", "idProduct": "PRO100012304125", "idUser": "USE1370",
+                "star": 5, "title": "Perfect for creators",
+                "review": "The Dell UltraSharp U2723QE is a fantastic monitor with exceptional color accuracy for video editing." },
+            { "id": "REV1130022", "idProduct": "PRO100012304125", "idUser": "USE1407",
+                "star": 4, "title": "Good but expensive",
+                "review": "It's a premium monitor with great features, but there are more affordable options with similar specs." },
+            { "id": "REV1130039", "idProduct": "PRO100012304125", "idUser": "USE1481",
+                "star": 4, "title": "Excellent monitor",
+                "review": "The Dell UltraSharp U2723QE is perfect for professional use. However, the price is a bit high compared to competitors." }
+        ],
+      "onSale": false
+    },
+    {
+        "category":  {
+          "id": "CAT555",
+          "name": "Monitor",
+          "description": "Monitor to suit all your needs. Gaming, creating, working, we have it."
+        },
+        "id": "PRO100012304875",
+        "brand": "Samsung",
+        "name": "Samsung Odyssey G7",
+        "description": "32-inch curved gaming monitor with high refresh rate.",
+        "sellPrice": 699,
+        "costPrice": 650,
+        "specialPrice": 50,
+        "stock": 50,
+        "colors": ["black"],
+        "specificationDetails": [
+            { "id": "SPE81", "title": "Display Size", "description": "32-inch" },
+            { "id": "SPE82", "title": "Resolution", "description": "2560 x 1440 (QHD)" },
+            { "id": "SPE83", "title": "Refresh Rate", "description": "240Hz" },
+            { "id": "SPE84", "title": "Curvature", "description": "1000R" },
+            { "id": "SPE85", "title": "Ports", "description": "HDMI, DisplayPort, USB" },
+            { "id": "SPE86", "title": "Brightness", "description": "600 nits" },
+            { "id": "SPE87", "title": "Weight", "description": "6.5 kg" },
+            { "id": "SPE88", "title": "Panel Type", "description": "VA" }
+        ],
+        "shortSpecifications": [
+            { "id": "QSPE41", "title": "Display Size", "description": "32-inch" },
+            { "id": "QSPE42", "title": "Resolution", "description": "2560 x 1440 (QHD)" },
+            { "id": "QSPE43", "title": "Refresh Rate", "description": "240Hz" },
+            { "id": "QSPE44", "title": "Curvature", "description": "1000R" }
+        ],
+        "images": [
+            { "id": "IMG310190", "idProduct": "PRO100012304875", "url": "https://picsum.photos/seed/monitor_4/300/300" },
+            { "id": "IMG310193", "idProduct": "PRO100012304875", "url": "https://picsum.photos/seed/monitor_5/300/300" },
+            { "id": "IMG310196", "idProduct": "PRO100012304875", "url": "https://picsum.photos/seed/monitor_6/300/300" }
+        ],
+        "reviews": [
+            { "id": "REV1130023", "idProduct": "PRO100012304875", "idUser": "USE1444",
+                "star": 5, "title": "Gaming paradise",
+                "review": "The Samsung Odyssey G7's curved design is immersive for gaming, and the high refresh rate is buttery smooth." },
+            { "id": "REV1130024", "idProduct": "PRO100012304875", "idUser": "USE1481",
+                "star": 4, "title": "Stunning visuals",
+                "review": "The monitor delivers sharp visuals, but I found the setup process slightly complex." }
+        ],
+      "onSale": false
+    },
+    {
+        "category":  {
+          "id": "CAT555",
+          "name": "Monitor",
+          "description": "Monitor to suit all your needs. Gaming, creating, working, we have it."
+        },
+        "id": "PRO100012305021",
+        "brand": "LG",
+        "name": "LG 34WN80C-B",
+        "description": "34-inch ultrawide monitor for productivity and content creation.",
+        "sellPrice": 499,
+        "costPrice": 450,
+        "specialPrice": 38,
+        "stock": 50,
+        "colors": ["black"],
+        "specificationDetails": [
+            { "id": "SPE89", "title": "Display Size", "description": "34-inch" },
+            { "id": "SPE90", "title": "Resolution", "description": "2560 x 1080 (Ultrawide)" },
+            { "id": "SPE91", "title": "Refresh Rate", "description": "60Hz" },
+            { "id": "SPE92", "title": "Ports", "description": "USB-C, HDMI, DisplayPort" },
+            { "id": "SPE93", "title": "Brightness", "description": "250 nits" },
+            { "id": "SPE94", "title": "Weight", "description": "5.5 kg" },
+            { "id": "SPE95", "title": "Panel Type", "description": "IPS" },
+            { "id": "SPE96", "title": "Aspect Ratio", "description": "21:9" }
+        ],
+        "shortSpecifications": [
+            { "id": "QSPE45", "title": "Display Size", "description": "34-inch" },
+            { "id": "QSPE46", "title": "Resolution", "description": "2560 x 1080 (Ultrawide)" },
+            { "id": "QSPE47", "title": "Refresh Rate", "description": "60Hz" },
+            { "id": "QSPE48", "title": "Aspect Ratio", "description": "21:9" }
+        ],
+        "images": [
+            { "id": "IMG310199", "idProduct": "PRO100012305021", "url": "https://picsum.photos/seed/monitor_7/300/300" },
+            { "id": "IMG310202", "idProduct": "PRO100012305021", "url": "https://picsum.photos/seed/monitor_8/300/300" },
+            { "id": "IMG310205", "idProduct": "PRO100012305021", "url": "https://picsum.photos/seed/monitor_9/300/300" }
+        ],
+        "reviews": [
+            { "id": "REV1130025", "idProduct": "PRO100012305021", "idUser": "USE1518",
+                "star": 5, "title": "Ultrawide for productivity",
+                "review": "The LG 34WN80C-B is great for multitasking, and the ultrawide screen enhances my workflow significantly." },
+            { "id": "REV1130026", "idProduct": "PRO100012305021", "idUser": "USE1000",
+                "star": 4, "title": "Good for the price",
+                "review": "This monitor is great for work but lacks higher refresh rates for gaming." }
+        ],
+      "onSale": false
+    },
+
+    {
+        "category": {
+          "id": "CAT666",
+          "name": "Headphone",
+          "description": "Classic headphones or in-ear for the best sound."
+        },
+        "id": "PRO100012305536",
+        "brand": "Sony",
+        "name": "Sony WH-1000XM5",
+        "description": "Premium noise-canceling wireless headphones.",
+        "sellPrice": 349,
+        "costPrice": 300,
+        "specialPrice": 92,
+        "stock": 50,
+        "colors": ["black"],
+        "specificationDetails": [
+            { "id": "SPE97", "title": "Type", "description": "Over-ear" },
+            { "id": "SPE98", "title": "Battery Life", "description": "30 hours" },
+            { "id": "SPE99", "title": "Noise Cancelling", "description": "Yes" },
+            { "id": "SPE100", "title": "Bluetooth", "description": "5.0" },
+            { "id": "SPE101", "title": "Weight", "description": "250 g" },
+            { "id": "SPE102", "title": "Connectivity", "description": "Wireless, USB-C" },
+            { "id": "SPE103", "title": "Microphone", "description": "Yes" },
+            { "id": "SPE104", "title": "Audio Quality", "description": "High-res audio" }
+        ],
+        "shortSpecifications": [
+            { "id": "QSPE49", "title": "Type", "description": "Over-ear" },
+            { "id": "QSPE50", "title": "Battery Life", "description": "30 hours" },
+            { "id": "QSPE51", "title": "Noise Cancelling", "description": "Yes" },
+            { "id": "QSPE52", "title": "Connectivity", "description": "Wireless, USB-C" }
+        ],
+        "images": [
+            { "id": "IMG310208", "idProduct": "PRO100012305536", "url": "https://picsum.photos/seed/headphone_1/300/300" },
+            { "id": "IMG310211", "idProduct": "PRO100012305536", "url": "https://picsum.photos/seed/headphone_2/300/300" },
+            { "id": "IMG310214", "idProduct": "PRO100012305536", "url": "https://picsum.photos/seed/headphone_3/300/300" }
+        ],
+        "reviews": [
+            { "id": "REV1130027", "idProduct": "PRO100012305536", "idUser": "USE1037",
+                "star": 5, "title": "Best noise canceling",
+                "review": "The Sony WH-1000XM5 has the best noise cancellation I've experienced and excellent sound quality." },
+            { "id": "REV1130028", "idProduct": "PRO100012305536", "idUser": "USE1074",
+                "star": 4, "title": "Comfortable and sleek",
+                "review": "These headphones are comfortable for long use but slightly pricey." },
+            { "id": "REV1130036", "idProduct": "PRO100012305536", "idUser": "USE1370",
+                "star": 5, "title": "Unmatched sound quality",
+                "review": "The Sony WH-1000XM5 headphones have phenomenal sound and active noise cancellation. Worth every penny!" },
+            { "id": "REV1130037", "idProduct": "PRO100012305536", "idUser": "USE1407",
+                "star": 4, "title": "Almost perfect",
+                "review": "These headphones are amazing for music lovers, but the touch controls are a bit tricky to use at first." },
+            { "id": "REV1130038", "idProduct": "PRO100012305536", "idUser": "USE1444",
+                "star": 5, "title": "Great for calls and music",
+                "review": "I use them for work and leisure, and they deliver great sound quality for both. Highly recommended!" }
+        ],
+      "onSale": false
+    },
+    {
+        "category":{
+          "id": "CAT666",
+          "name": "Headphone",
+          "description": "Classic headphones or in-ear for the best sound."
+        },
+        "id": "PRO100012306021",
+        "brand": "Bose",
+        "name": "Bose QuietComfort 45",
+        "description": "Comfortable noise-canceling headphones with superior sound.",
+        "sellPrice": 329,
+        "costPrice": 280,
+        "specialPrice": 68,
+        "stock": 50,
+        "colors": ["white"],
+        "specificationDetails": [
+            { "id": "SPE105", "title": "Type", "description": "Over-ear" },
+            { "id": "SPE106", "title": "Battery Life", "description": "24 hours" },
+            { "id": "SPE107", "title": "Noise Cancelling", "description": "Yes" },
+            { "id": "SPE108", "title": "Bluetooth", "description": "5.1" },
+            { "id": "SPE109", "title": "Weight", "description": "240 g" },
+            { "id": "SPE110", "title": "Connectivity", "description": "Wireless, USB-C" },
+            { "id": "SPE111", "title": "Microphone", "description": "Yes" },
+            { "id": "SPE112", "title": "Audio Quality", "description": "High-fidelity sound" }
+        ],
+        "shortSpecifications": [
+            { "id": "QSPE53", "title": "Type", "description": "Over-ear" },
+            { "id": "QSPE54", "title": "Battery Life", "description": "24 hours" },
+            { "id": "QSPE55", "title": "Noise Cancelling", "description": "Yes" },
+            { "id": "QSPE56", "title": "Connectivity", "description": "Wireless, USB-C" }
+        ],
+        "images": [
+            { "id": "IMG310217", "idProduct": "PRO100012306021", "url": "https://picsum.photos/seed/headphone_4/300/300" },
+            { "id": "IMG310220", "idProduct": "PRO100012306021", "url": "https://picsum.photos/seed/headphone_5/300/300" },
+            { "id": "IMG310223", "idProduct": "PRO100012306021", "url": "https://picsum.photos/seed/headphone_6/300/300" }
+        ],
+        "reviews": [
+            { "id": "REV1130029", "idProduct": "PRO100012306021", "idUser": "USE1111",
+                "star": 5, "title": "Incredible comfort",
+                "review": "The Bose QuietComfort 45 lives up to its name with unparalleled comfort and top-tier sound quality." },
+            { "id": "REV1130030", "idProduct": "PRO100012306021", "idUser": "USE1148",
+                "star": 4, "title": "Solid headphones",
+                "review": "Great for daily use, but the noise cancellation isn't as strong as competitors." },
+            { "id": "REV1130033", "idProduct": "PRO100012306021", "idUser": "USE1259",
+                "star": 4, "title": "Compact and functional",
+                "review": "The Bose QuietComfort 45 are lightweight and easy to carry. Noise cancellation is decent, but could be better in noisy environments." },
+            { "id": "REV1130034", "idProduct": "PRO100012306021", "idUser": "USE1296",
+                "star": 5, "title": "Perfect for travelers",
+                "review": "I use these headphones on flights, and they block out noise perfectly. The sound quality is also top-notch." },
+            { "id": "REV1130035", "idProduct": "PRO100012306021", "idUser": "USE1333",
+                "star": 4, "title": "Reliable performance",
+                "review": "Great battery life and comfort for long hours of work. The design is sleek and professional." }
+        ],
+      "onSale": false
+    },
+
+    {
+        "category": {
+          "id": "CAT666",
+          "name": "Headphone",
+          "description": "Classic headphones or in-ear for the best sound."
+        },
+        "id": "PRO100012306431",
+        "brand": "Sennheiser",
+        "name": "Sennheiser Momentum 4",
+        "description": "High-quality wireless headphones with great sound.",
+        "sellPrice": 379,
+        "costPrice": 320,
+        "specialPrice": 54,
+        "stock": 50,
+        "colors": ["black", "silver"],
+        "specificationDetails": [
+            { "id": "SPE113", "title": "Type", "description": "Over-ear" },
+            { "id": "SPE114", "title": "Battery Life", "description": "38 hours" },
+            { "id": "SPE115", "title": "Noise Cancelling", "description": "Yes" },
+            { "id": "SPE116", "title": "Bluetooth", "description": "5.0" },
+            { "id": "SPE117", "title": "Weight", "description": "300 g" },
+            { "id": "SPE118", "title": "Connectivity", "description": "Wireless, USB-C" },
+            { "id": "SPE119", "title": "Microphone", "description": "Yes" },
+            { "id": "SPE120", "title": "Audio Quality", "description": "High-fidelity sound" }
+        ],
+        "shortSpecifications": [
+            { "id": "QSPE57", "title": "Type", "description": "Over-ear" },
+            { "id": "QSPE58", "title": "Battery Life", "description": "38 hours" },
+            { "id": "QSPE59", "title": "Noise Cancelling", "description": "Yes" },
+            { "id": "QSPE60", "title": "Connectivity", "description": "Wireless, USB-C" }
+        ],
+        "images": [
+            { "id": "IMG310226", "idProduct": "PRO100012306431", "url": "https://picsum.photos/seed/headphone_7/300/300" },
+            { "id": "IMG310229", "idProduct": "PRO100012306431", "url": "https://picsum.photos/seed/headphone_8/300/300" },
+            { "id": "IMG310232", "idProduct": "PRO100012306431", "url": "https://picsum.photos/seed/headphone_9/300/300" }
+        ],
+        "reviews": [
+            { "id": "REV1130031", "idProduct": "PRO100012306431", "idUser": "USE1185",
+                "star": 5, "title": "Amazing battery life",
+                "review": "The Sennheiser Momentum 4 offers incredible battery life and high-quality sound. Highly recommend!" },
+            { "id": "REV1130032", "idProduct": "PRO100012306431", "idUser": "USE1222",
+                "star": 4, "title": "Great sound",
+                "review": "The audio quality is excellent, but the headphones feel a bit bulky." }
+        ],
+      "onSale": false
+    }
+]

@@ -1,0 +1,32 @@
+<div class="main-content-wrapper">
+  <div *ngIf="order" class="p-4 row flex-lg-row align-items-center g-5 py-5">
+    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Commande: {{order.id}}</h1>
+
+    <div class="col-lg-6">
+      <ul class="lead mx-5">
+        <li *ngFor="let detail of orderDetails">
+          <strong>{{detail.label}} :</strong>
+          <ng-container *ngIf="detail.label !== 'Produits'; else productTemplate">
+            {{detail.value}}
+          </ng-container>
+        </li>
+      </ul>
+      <ng-template #productTemplate>
+        <ul>
+          <li *ngFor="let item of order.orderItems">
+            <ng-container *ngIf="!item.product.onSale; else specialTemplate">
+              {{item.product.name}} - {{item.quantity}} x {{item.product.sellPrice}}$
+            </ng-container>
+           <ng-template #specialTemplate>
+             {{item.product.name}} - {{item.quantity}} x {{item.product.specialPrice}}$
+           </ng-template>
+          </li>
+        </ul>
+      </ng-template>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start mx-5 mt-5">
+        <button routerLink="/admin/orders" type="button" class="btn btn-primary btn-lg px-4 me-md-2">Retour</button>
+        <button routerLink="/admin/orders/modify/{{order.id}}" type="button" class="btn btn-info btn-lg px-4 me-md-2">Modifier</button>
+      </div>
+    </div>
+  </div>
+</div>

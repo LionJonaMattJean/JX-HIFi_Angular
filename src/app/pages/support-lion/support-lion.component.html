@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container-fluid p-0 m-0">
     <div class="row">
         <div class="col-xs-12">
-            <img src="/images/Support/customerS..png" class="support-image">
+            <img src="assets/images/support/support.jpg" class="support-image">
         </div>
     </div>
 </div>
@@ -10,7 +10,7 @@
 
 <div class="container">
     <div class="row gy-5"><!--Beginning of column 1-->
-        <div class="col-sm-2" style="border-radius: 15px;">
+        <div class="col-12 col-sm col-md col-lg-2">
             <div class="list-group" id="list-tab" role="tablist">
                 <a class="list-group-item list-group-item-action active" id="list-faq-list" data-bs-toggle="list"
                     href="#faq-section" role="tab" aria-controls="faq">FAQ</a>
@@ -22,6 +22,7 @@
                     href="#shipping-policy" role="tab" aria-controls="shipping">Shipping Policy</a>
             </div>
         </div> <!--End of column 1-->
+
 
         <div class="col-10"> <!--Begin col 2-->
             <div class="tab-content" id="nav-tabContent">
@@ -38,15 +39,11 @@
                             <div id="collapseOne" class="accordion-collapse collapse show"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <strong>This is the first item's accordion body.</strong> It is shown by default,
-                                    until the collapse
-                                    plugin adds the appropriate classes that we use to style each element. These classes
-                                    control the overall
-                                    appearance, as well as the showing and hiding via CSS transitions. You can modify
-                                    any of this with
-                                    custom CSS or overriding our default variables. It's also worth noting that just
-                                    about any HTML can go
-                                    within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    <strong>We are open during the holidays!</strong> We are happy to inform our customers
+                                    that we will be open during the holiday season, however, our hours will shift minimally to accodomate
+                                    family gatherings for our personnel. Our new schedule is the following. <br>
+                                    <strong>Mon-Fri : 09:00 - 15:00</strong><br>
+                                    <strong>Sat-Sun : 10:00 - 15:00</strong>
                                 </div>
                             </div>
                         </div>
@@ -60,15 +57,8 @@
                             <div id="collapseTwo" class="accordion-collapse collapse"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <strong>This is the second item's accordion body.</strong> It is hidden by default,
-                                    until the collapse
-                                    plugin adds the appropriate classes that we use to style each element. These classes
-                                    control the overall
-                                    appearance, as well as the showing and hiding via CSS transitions. You can modify
-                                    any of this with
-                                    custom CSS or overriding our default variables. It's also worth noting that just
-                                    about any HTML can go
-                                    within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    <strong>We can ship to any address you want within Canada</strong> We can 
+                                    ship to any address within Canada but there are additional surcharges for BC and Quebec shipping.
                                 </div>
                             </div>
                         </div>
@@ -82,15 +72,10 @@
                             <div id="collapseThree" class="accordion-collapse collapse"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <strong>This is the third item's accordion body.</strong> It is hidden by default,
-                                    until the collapse
-                                    plugin adds the appropriate classes that we use to style each element. These classes
-                                    control the overall
-                                    appearance, as well as the showing and hiding via CSS transitions. You can modify
-                                    any of this with
-                                    custom CSS or overriding our default variables. It's also worth noting that just
-                                    about any HTML can go
-                                    within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    <strong>You can speak to you local JX-HIFI customer specialist</strong> 
+                                    Our team of customer specialists are specifically trained to help you find what you want in our stores, wether they be
+                                    products or the services offer. You can speak to any of our staff and they will give you a detailed description of our
+                                    <strong>insurance packages</strong> so that you can make the best choice that fits your needs.
                                 </div>
                             </div>
                         </div>
@@ -101,40 +86,41 @@
 
                 <div class="tab-pane fade" id="contact-us" role="tabpanel" aria-labelledby="list-contact-list">
                     <!--Begin Contact Us form-->
-                    <form class="contact-form">
+                    <form [formGroup]="applyForm" (submit)="submitForm()" id="formContact" class="row g-3">
+
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6">
                                 <div class="mb-3"> <!--FIRST NAME-->
-                                    <label for="firstName" class="form-label">First Name</label>
-                                    <input type="" class="form-control" id="firstName" aria-describedby="">
+                                    <label for="firstName" class="form-label"><strong>First Name</strong> </label>
+                                    <input formControlName="firstName" type="text"  class="form-control" id="firstName" aria-describedby="">
                                 </div>
                             </div>
 
 
-                            <div class="col-6">
+                            <div class="col-12 col-md-6">
                                 <div class="mb-3"> <!--PACKAGE NUMBER-->
-                                    <label for="" class="form-label">Package Number (optional)</label>
-                                    <input type="" class="form-control" id="">
+                                    <label for="packageNumber" class="form-label"><strong>Package Number (optional)</strong></label>
+                                    <input formControlName="package" type="text"   class="form-control" id="packageNumber">
                                 </div>
 
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6">
                                 <div class="mb-3"> <!--LAST NAME-->
-                                    <label for="firstName" class="form-label">Last Name</label>
-                                    <input type="email" class="form-control" id="firstName"
-                                        aria-describedby="emailHelp">
+                                    <label for="lastName" class="form-label"><strong>Last Name</strong></label>
+                                    <input type="text" formControlName="lastName"  class="form-control" id="lastName"
+                                        aria-describedby="lastname">
 
                                 </div>
                             </div>
 
 
-                            <div class="col-6">
+                            <div class="col-12 col-md-6">
                                 <div class="mb-3"> <!--EMAIL-->
-                                    <label for="" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="">
+                                    <label for="email" class="form-label"><strong>Email</strong></label>
+                                    <input formControlName="email" type="email"   class="form-control" id="email">
                                     <div class="form-text">We'll never share your email with anyone else.</div>
                                 </div>
 
@@ -142,17 +128,38 @@
                         </div>
 
                         <div class="row-message">
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label for="firstName" class="form-label">Message</label>
-                                    <textarea rows="8" placeholder="Write your comments here : " class="form-control"
-                                        id="exampleFormControlTextarea1"></textarea>
+                            <div class="col-12 col-md-6">
+                                <div class="mb-3"> <!--MESSAGE-->
+                                    <label for="message" class="form-label"><strong>Message</strong></label>
+                                    <textarea rows="8" formControlName="message"  placeholder="Write your comments here : " class="form-control"
+                                        id="message"></textarea>
                                 </div>
                             </div>
-
-                            <div class="btn btn-primary send">Send</div>
                         </div>
 
+                        <button id="sendButton" type="submit" style="width: 200px;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalMessage">
+                            Send
+                        </button>
+                        
+                        <!-- MODAL TO INFORM USER OF MESSAGE SENT-->
+                        <div class="modal fade" id="modalMessage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Message Sent</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="testM"></div>
+                                        Your message has been sent and we will review it as soon as we can. We hope to get back to you in a timely manner
+                                        to fullfil your needs. Thank you and have a good day.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div> <!--End Contact us Form-->
 
@@ -198,7 +205,7 @@
                                     <h5>Email Us</h5>
                                 </div>
                                 <div class="col">
-                                    <label>billiechouinard&#64;gmail.com</label>
+                                    <label>amineF&#64;gmail.com</label>
                                 </div>
                             </div>
                         </div>
@@ -241,7 +248,7 @@
                                     <h5>Email Us</h5>
                                 </div>
                                 <div class="col">
-                                    <label>billieTech&#64;gmail.com</label>
+                                    <label>amineF&#64;gmail.com</label>
                                 </div>
                             </div>
 

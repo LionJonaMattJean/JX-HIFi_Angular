@@ -1,0 +1,27 @@
+<div class=" main-content-wrapper">
+  <div *ngIf="category" class=" p-4 row flex-lg-row align-items-center g-5 py-5">
+    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Ajout Catégorie</h1>
+
+    <div class="col-lg-6">
+      <form>
+        <div class="mb-3">
+          <label for="id" class="form-label">ID</label>
+          <input type="text" class="form-control" id="id" [(ngModel)]="category.id" name="id">
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Nom</label>
+          <input type="text" class="form-control" id="name" [(ngModel)]="category.name" name="name">
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Prix de vente</label>
+          <textarea type="text" class="form-control" id="description" [(ngModel)]="category.description" name="description"></textarea>
+        </div>
+      </form>
+
+      <div class="d-grid gap-2 d-md-flex justify-content-start mt-5">
+        <button routerLink="/admin/categories" type="button" class="btn btn-secondary btn-lg px-4 me-md-2">Retour</button>
+        <button type="button" class="btn btn-success btn-lg px-4 me-md-2" (click)="ajoutCategory()">Ajouter</button>
+      </div>
+    </div>
+  </div>
+</div>

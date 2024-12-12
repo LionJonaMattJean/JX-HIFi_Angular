@@ -1,0 +1,21 @@
+<table class="table table-sm small-table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th *ngFor="let column of displayColumns">{{columnNames[column]||column}}</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody id="table-body">
+  <tr *ngFor="let row of dataBinding">
+    <td *ngFor="let column of displayColumns">
+      {{getColumnValue(row, column)}}
+    </td>
+    <td>
+      <app-action-link-dashboard
+      [id]="row?.id"
+      [entityType]="entityType"
+      ></app-action-link-dashboard>
+    </td>
+  </tr>
+  </tbody>
+</table>

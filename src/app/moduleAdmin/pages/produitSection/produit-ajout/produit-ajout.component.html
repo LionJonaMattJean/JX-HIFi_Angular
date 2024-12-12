@@ -1,0 +1,149 @@
+<div class="main-content-wrapper">
+  <div class="p-4 row flex-lg-row align-items-center g-5 py-5">
+    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Ajouter un Produit</h1>
+
+    <div class="alert-wrapper col-lg-8  mx-auto">
+      <!-- Alert -->
+      <div *ngIf="alertMessage" [class]="'alert ' + alertType + ' d-flex justify-content-between align-items-center'" role="alert">
+        {{ alertMessage }}
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeAlert()"></button>
+      </div>
+    </div>
+    <div class="col-lg-8 mx-auto">
+
+      <!-- Form -->
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()" novalidate class="needs-validation">
+
+        <!-- Section: General Info -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="card-title">Informations générales</h5>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="name" class="form-label">Nom</label>
+              <input type="text" class="form-control" id="name" formControlName="name" />
+            </div>
+            <div class="mb-3">
+              <label for="brand" class="form-label">Marque</label>
+              <input type="text" class="form-control" id="brand" formControlName="brand" />
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea class="form-control" id="description" formControlName="description"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="category" class="form-label">Categorie</label>
+              <select class="form-select" id="category" formControlName="category">
+                <option value="" disabled selected>Choisir une option</option>
+                <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Pricing Info -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="card-title">Informations sur le prix</h5>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="sellPrice" class="form-label">Prix de Vente</label>
+              <input type="number" class="form-control" id="sellPrice" formControlName="sellPrice" />
+            </div>
+            <div class="mb-3">
+              <label for="costPrice" class="form-label">Prix Coûtant</label>
+              <input type="number" class="form-control" id="costPrice" formControlName="costPrice" />
+            </div>
+            <div class="form-check mb-3">
+              <label for="onSale" class="form-check-label">En Spécial</label>
+              <input type="checkbox" class="form-check-input mx-3" id="onSale" formControlName="onSale" />
+            </div>
+            <div class="mb-3">
+              <label for="specialPrice" class="form-label">Prix Spécial</label>
+              <input type="number" class="form-control" id="specialPrice" formControlName="specialPrice" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Inventory Info -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="card-title">Inventaire</h5>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="stock" class="form-label">Stock</label>
+              <input type="number" class="form-control" id="stock" formControlName="stock" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Couleurs</label>
+              <div formArrayName="colors" >
+                <div *ngFor="let color of getColorsControls(); let i = index" class="input-group mb-2">
+                <input type="text" class="form-control" placeholder="Couleur" [formControlName]="i" />
+                <button type="button" class="btn btn-danger" (click)="removeColor(i)">Enlever</button>
+              </div>
+              </div>
+              <br> <button type="button" class="btn btn-primary mt-3" (click)="addColor()">Ajouter une Couleur</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Images -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="card-title">Images</h5>
+          </div>
+          <div class="card-body">
+            <div formArrayName="images">
+              <div *ngFor="let image of getImagesControls(); let i = index" class="input-group mb-2" [formGroupName]="i">
+                <input type="text" class="form-control" placeholder="Url" formControlName="url" />
+                <button type="button" class="btn btn-danger" (click)="removeImage(i)">Enlever</button>
+              </div>
+            </div>
+           <button type="button" class="btn btn-primary mt-3" (click)="addImage()">Ajouter une Image</button>
+          </div>
+        </div>
+
+        <!-- Section: Specifications -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="card-title">Spécifications</h5>
+          </div>
+          <div class="card-body">
+            <div class="mb-4">
+              <label class="form-label">Spécifications Courtes</label>
+              <div formArrayName="shortSpecifications">
+                <div *ngFor="let detail of getShortSpecificationsControls(); let i = index" [formGroupName]="i" class="input-group mb-2">
+                  <input type="text" class="form-control" placeholder="Title" formControlName="title" />
+                  <input type="text" class="form-control" placeholder="Description" formControlName="description" />
+                  <button type="button" class="btn btn-danger" (click)="removeSpecificationShort(i)">Enlever</button>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary mt-3" (click)="addSpecificationShort()">Ajouter Spécification Courte</button>
+            </div>
+
+            <div>
+              <label class="form-label">Spécifications Détaillées</label>
+              <div formArrayName="specificationDetails">
+                <div *ngFor="let detail of getSpecificationDetailsControls(); let i = index" [formGroupName]="i" class="input-group mb-2">
+                  <input type="text" class="form-control" placeholder="Title" formControlName="title" />
+                  <input type="text" class="form-control" placeholder="Description" formControlName="description" />
+                  <button type="button" class="btn btn-danger" (click)="removeSpecificationDetail(i)">Enlever</button>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary mt-3" (click)="addSpecificationDetail()">Ajouter Spécification Détaillée</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="d-grid gap-2 d-md-flex justify-content-start mt-5">
+          <button routerLink="/admin/products" type="button" class="btn btn-secondary btn-lg px-4 me-md-2">Retour</button>
+          <button type="submit" class="btn btn-success btn-lg px-4 me-md-2">Ajouter</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
