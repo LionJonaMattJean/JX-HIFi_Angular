@@ -3,11 +3,8 @@
     <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Ajout Catégorie</h1>
 
     <div class="col-lg-6">
-      <form>
-        <div class="mb-3">
-          <label for="id" class="form-label">ID</label>
-          <input type="text" class="form-control" id="id" [(ngModel)]="category.id" name="id">
-        </div>
+      <form [formGroup]="categoryForm" (ngSubmit)="ajoutCategory()" class="form-group ">
+
         <div class="mb-3">
           <label for="name" class="form-label">Nom</label>
           <input type="text" class="form-control" id="name" [(ngModel)]="category.name" name="name">

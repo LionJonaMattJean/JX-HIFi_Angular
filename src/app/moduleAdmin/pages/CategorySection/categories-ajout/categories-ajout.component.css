@@ -1,3 +1,9 @@
 .main-content-wrapper{
   background: #F2F4FA;
 }
+.needs-validation:invalid {
+  border: 1px solid red;
+}
+.needs-validation:valid {
+  border: 1px solid green;
+}

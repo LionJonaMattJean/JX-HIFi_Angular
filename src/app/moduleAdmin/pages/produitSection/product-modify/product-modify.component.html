@@ -16,22 +16,49 @@
           <div class="card-body">
             <div class="mb-3">
               <label for="name" class="form-label">Nom</label>
-              <input type="text" class="form-control" id="name" formControlName="name" />
+              <input type="text" class="form-control" id="name" formControlName="name"
+                     [class.is-invalid]="productForm.get('name')?.invalid && productForm.get('name')?.touched"
+                     [class.is-valid]="productForm.get('name')?.valid && productForm.get('name')?.touched"
+              />
+              <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched" class="invalid-feedback">
+                Le nom est obligatoire et doit contenir au moins 3 caractères.
+              </div>
             </div>
             <div class="mb-3">
               <label for="brand" class="form-label">Marque</label>
-              <input type="text" class="form-control" id="brand" formControlName="brand" />
+              <input type="text" class="form-control" id="brand" formControlName="brand"
+                     [class.is-invalid]="productForm.get('brand')?.invalid && productForm.get('brand')?.touched"
+                     [class.is-valid]="productForm.get('brand')?.valid && productForm.get('brand')?.touched"
+              />
+              <div *ngIf="productForm.get('brand')?.invalid && productForm.get('brand')?.touched" class="invalid-feedback">
+                la marque est obligatoire et doit contenir au moins 3 caractères.
+              </div>
             </div>
             <div class="mb-3">
               <label for="description" class="form-label">Description</label>
-              <textarea class="form-control" id="description" formControlName="description"></textarea>
+              <textarea class="form-control" id="description" formControlName="description"
+                        [class.is-invalid]="productForm.get('description')?.invalid && productForm.get('description')?.touched"
+                        [class.is-valid]="productForm.get('description')?.valid && productForm.get('description')?.touched"
+              ></textarea>
+            </div>
+            <div *ngIf="productForm.get('description')?.invalid&&productForm.get('description')?.touched" class="invalid-feedback">
+              La description est obligatoire
             </div>
             <div class="mb-3">
               <label for="category" class="form-label">Categorie</label>
-              <select class="form-select" id="category" formControlName="category">
-                <option value="" disabled selected>Choisir une option</option>
+              <select
+                class="form-select"
+                id="category"
+                formControlName="category"
+                [class.is-invalid]="productForm.get('category')?.invalid && productForm.get('category')?.touched"
+                [class.is-valid]="productForm.get('category')?.valid && productForm.get('category')?.touched"
+              >
+                <option value="" disabled>Choisir une option</option>
                 <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
               </select>
+              <div *ngIf="productForm.get('category')?.invalid && productForm.get('category')?.touched" class="invalid-feedback">
+                Veuillez sélectionner une catégorie.
+              </div>
             </div>
           </div>
         </div>
@@ -44,11 +71,23 @@
           <div class="card-body">
             <div class="mb-3">
               <label for="sellPrice" class="form-label">Prix de Vente</label>
-              <input type="number" class="form-control" id="sellPrice" formControlName="sellPrice" />
+              <input type="number" class="form-control" id="sellPrice" formControlName="sellPrice"
+                     [class.is-invalid]="productForm.get('sellPrice')?.invalid && productForm.get('sellPrice')?.touched"
+                     [class.is-valid]="productForm.get('sellPrice')?.valid && productForm.get('sellPrice')?.touched"
+              />
+              <div *ngIf="productForm.get('sellPrice')?.invalid && productForm.get('sellPrice')?.touched" class="invalid-feedback">
+                Le prix de vente est obligatoire et doit etre un nombre positif.
+              </div>
             </div>
             <div class="mb-3">
               <label for="costPrice" class="form-label">Prix Coûtant</label>
-              <input type="number" class="form-control" id="costPrice" formControlName="costPrice" />
+              <input type="number" class="form-control" id="costPrice" formControlName="costPrice"
+                     [class.is-invalid]="productForm.get('costPrice')?.invalid && productForm.get('costPrice')?.touched"
+                     [class.is-valid]="productForm.get('costPrice')?.valid && productForm.get('costPrice')?.touched"
+              />
+              <div *ngIf="productForm.get('costPrice')?.invalid && productForm.get('costPrice')?.touched" class="invalid-feedback">
+                Le prix coutant est obligatoire et doit être un nombre positif.
+              </div>
             </div>
             <div class="form-check mb-3">
               <label for="onSale" class="form-check-label">En Spécial</label>
@@ -56,7 +95,13 @@
             </div>
             <div class="mb-3">
               <label for="specialPrice" class="form-label">Prix Spécial</label>
-              <input type="number" class="form-control" id="specialPrice" formControlName="specialPrice" />
+              <input type="number" class="form-control" id="specialPrice" formControlName="specialPrice"
+                     [class.is-invalid]="productForm.get('specialPrice')?.invalid && productForm.get('specialPrice')?.touched"
+                     [class.is-valid]="productForm.get('specialPrice')?.valid && productForm.get('specialPrice')?.touched"
+              />
+              <div *ngIf="productForm.get('specialPrice')?.invalid && productForm.get('specialPrice')?.touched" class="invalid-feedback">
+                Le prix special est obligatoire et doit être un nombre positif.
+              </div>
             </div>
           </div>
         </div>
@@ -69,15 +114,29 @@
           <div class="card-body">
             <div class="mb-3">
               <label for="stock" class="form-label">Stock</label>
-              <input type="number" class="form-control" id="stock" formControlName="stock" />
+              <input type="number" class="form-control" id="stock" formControlName="stock"
+                     [class.is-invalid]="productForm.get('stock')?.invalid && productForm.get('stock')?.touched"
+                     [class.is-valid]="productForm.get('stock')?.valid && productForm.get('stock')?.touched"
+              />
+              <div *ngIf="productForm.get('stock')?.invalid && productForm.get('stock')?.touched" class="invalid-feedback">
+                Le stock est obligatoire et doit être un nombre positif.
+              </div>
             </div>
             <div class="mb-3">
               <label class="form-label">Couleurs</label>
               <div formArrayName="colors" >
                 <div *ngFor="let color of getColorsControls(); let i = index" class="input-group mb-2">
-                  <input type="text" class="form-control" placeholder="Couleur" [formControlName]="i" />
+                  <input type="text" class="form-control" placeholder="Couleur" [formControlName]="i"
+                         [class.is-invalid]="getColorsControls().at(i)?.invalid && getColorsControls().at(i)?.touched"
+                         [class.is-valid]="getColorsControls().at(i)?.valid &&getColorsControls().at(i)?.touched"
+                  />
+
                   <button type="button" class="btn btn-danger" (click)="removeColor(i)">Enlever</button>
+                  <div *ngIf="getColorsControls().at(i)?.invalid&&getColorsControls().at(i)?.touched" class="invalid-feedback">
+                    La couleur est obligatoire.
+                  </div>
                 </div>
+
               </div>
               <br> <button type="button" class="btn btn-primary mt-3" (click)="addColor()">Ajouter une Couleur</button>
             </div>
@@ -92,8 +151,14 @@
           <div class="card-body">
             <div formArrayName="images">
               <div *ngFor="let image of getImagesControls(); let i = index" class="input-group mb-2" [formGroupName]="i">
-                <input type="text" class="form-control" placeholder="Url" formControlName="url" />
+                <input type="text" class="form-control" placeholder="Url" formControlName="url"
+                       [class.is-invalid]="getImagesControls().at(i)?.invalid &&getImagesControls().at(i)?.touched"
+                       [class.is-valid]="getImagesControls().at(i)?.valid && getImagesControls().at(i)?.touched"/>
+
                 <button type="button" class="btn btn-danger" (click)="removeImage(i)">Enlever</button>
+                <div *ngIf="getImagesControls().at(i)?.invalid&&getImagesControls().at(i)?.touched" class="invalid-feedback">
+                  L'url de l'image est obligatoire.
+                </div>
               </div>
             </div>
             <button type="button" class="btn btn-primary mt-3" (click)="addImage()">Ajouter une Image</button>
@@ -110,9 +175,20 @@
               <label class="form-label">Spécifications Courtes</label>
               <div formArrayName="shortSpecifications">
                 <div *ngFor="let detail of getShortSpecificationsControls(); let i = index" [formGroupName]="i" class="input-group mb-2">
-                  <input type="text" class="form-control" placeholder="Title" formControlName="title" />
-                  <input type="text" class="form-control" placeholder="Description" formControlName="description" />
+                  <input type="text" class="form-control" placeholder="Title" formControlName="title"
+                         [class.is-invalid]="getShortSpecificationsControls().at(i)?.get('title')?.invalid &&getShortSpecificationsControls().at(i)?.get('title')?.touched"
+                         [class.is-valid]="getShortSpecificationsControls().at(i)?.get('title')?.valid && getShortSpecificationsControls().at(i)?.get('title')?.touched"/>
+
+                  <input type="text" class="form-control" placeholder="Description" formControlName="description"
+                         [class.is-invalid]="getShortSpecificationsControls().at(i)?.get('description')?.invalid &&getShortSpecificationsControls().at(i)?.get('description')?.touched"
+                         [class.is-valid]="getShortSpecificationsControls().at(i)?.get('description')?.valid && getShortSpecificationsControls().at(i)?.get('description')?.touched"/>
+
                   <button type="button" class="btn btn-danger" (click)="removeSpecificationShort(i)">Enlever</button>
+                  <div *ngIf="(getShortSpecificationsControls().at(i)?.get('title')?.invalid && getShortSpecificationsControls().at(i)?.get('title')?.touched)||
+                  (getShortSpecificationsControls().at(i)?.get('description')?.invalid &&getShortSpecificationsControls().at(i)?.get('description')?.touched)" class="invalid-feedback">
+                    Le titre et la description sont obligatoires.
+                  </div>
+
                 </div>
               </div>
               <button type="button" class="btn btn-primary mt-3" (click)="addSpecificationShort()">Ajouter Spécification Courte</button>
@@ -122,28 +198,41 @@
               <label class="form-label">Spécifications Détaillées</label>
               <div formArrayName="specificationDetails">
                 <div *ngFor="let detail of getSpecificationDetailsControls(); let i = index" [formGroupName]="i" class="input-group mb-2">
-                  <input type="text" class="form-control" placeholder="Title" formControlName="title" />
-                  <input type="text" class="form-control" placeholder="Description" formControlName="description" />
+                  <input type="text" class="form-control" placeholder="Title" formControlName="title"
+                         [class.is-invalid]="getSpecificationDetailsControls().at(i)?.get('title')?.invalid &&getSpecificationDetailsControls().at(i)?.get('title')?.touched"
+                         [class.is-valid]="getSpecificationDetailsControls().at(i)?.get('title')?.valid && getSpecificationDetailsControls().at(i)?.get('title')?.touched"
+                  />
+                  <input type="text" class="form-control" placeholder="Description" formControlName="description"
+                         [class.is-invalid]="getSpecificationDetailsControls().at(i)?.get('description')?.invalid && getSpecificationDetailsControls().at(i)?.get('description')?.touched"
+                         [class.is-valid]="getSpecificationDetailsControls().at(i)?.get('description')?.valid && getSpecificationDetailsControls().at(i)?.get('description')?.touched"
+                  />
+
                   <button type="button" class="btn btn-danger" (click)="removeSpecificationDetail(i)">Enlever</button>
+                  <div *ngIf="(getSpecificationDetailsControls().at(i)?.get('title')?.invalid &&getSpecificationDetailsControls().at(i)?.get('title')?.touched)||
+                  (getSpecificationDetailsControls().at(i)?.get('description')?.invalid && getSpecificationDetailsControls().at(i)?.get('description')?.touched)" class="invalid-feedback">
+                    Le titre et la description sont obligatoires.
+                  </div>
                 </div>
               </div>
               <button type="button" class="btn btn-primary mt-3" (click)="addSpecificationDetail()">Ajouter Spécification Détaillée</button>
             </div>
           </div>
         </div>
-
-        <!-- Actions -->
-        <div class="d-grid gap-2 d-md-flex justify-content-start mt-5">
-          <button routerLink="/admin/products" type="button" class="btn btn-secondary btn-lg px-4 me-md-2">Retour</button>
-          <button type="submit" class="btn btn-success btn-lg px-4 me-md-2">Modifier</button>
-        </div>
-        <div class="alert-wrapper col-lg-8  mx-auto">
+        <div class="alert-wrapper col-lg-8  mx-auto mt-5">
           <!-- Alert -->
           <div *ngIf="alertMessage" [class]="'alert ' + alertType + ' d-flex justify-content-between align-items-center'" role="alert">
             {{ alertMessage }}
             <button type="button" class="btn-close" aria-label="Close" (click)="closeAlert()"></button>
           </div>
         </div>
+
+
+        <!-- Actions -->
+        <div class="d-grid gap-2 d-md-flex justify-content-start mt-5">
+          <button routerLink="/admin/products" type="button" class="btn btn-secondary btn-lg px-4 me-md-2">Retour</button>
+          <button type="submit" class="btn btn-success btn-lg px-4 me-md-2">Modifier</button>
+        </div>
+
       </form>
     </div>
   </div>

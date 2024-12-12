@@ -8,6 +8,7 @@ import {Category} from '../../../../models/Category';
 import {ProductsService} from '../../../../services/products.service';
 
 
+
 @Component({
   selector: 'app-produit-ajout',
   standalone: true,
@@ -17,7 +18,6 @@ import {ProductsService} from '../../../../services/products.service';
     ReactiveFormsModule,
     RouterLink,
     NgIf,
-
   ],
   templateUrl: './produit-ajout.component.html',
   styleUrl: './produit-ajout.component.css'
@@ -26,8 +26,9 @@ export class ProduitAjoutComponent implements OnInit {
   produit!:Product;
   categories?: Category[];
   productForm!: FormGroup;
-  alertMessage: string | null = null;
+  alertMessage: string ="";
   alertType: string = 'alert-success';
+  alertTitle: string="";
 
 
 
@@ -40,13 +41,13 @@ export class ProduitAjoutComponent implements OnInit {
     this.productForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       brand: ['', [Validators.required, Validators.minLength(3)]],
-      sellPrice: [null, Validators.min(0)],
-      costPrice: [null, Validators.min(0)],
+      sellPrice: [null,[Validators.required,Validators.min(0)]],
+      costPrice: [null,[Validators.required, Validators.min(0)]],
       onSale: [false],
-      specialPrice: [null, Validators.min(0)],
-      description: [''],
+      specialPrice: [null,[Validators.required,Validators.min(0)]],
+      description: ['',Validators.required],
       category: ['', Validators.required],
-      stock: [0, Validators.min(0)],
+      stock: [0,[Validators.required, Validators.min(0)]],
       images: this.fb.array([this.fb.group({url: ['', Validators.required]})]),
       colors: this.fb.array([this.fb.control('', Validators.required)]),
       shortSpecifications: this.fb.array([
@@ -139,6 +140,7 @@ export class ProduitAjoutComponent implements OnInit {
 
   onSubmit() {
     if (this.productForm.invalid) {
+      this.productForm.markAllAsTouched();
       this.alertMessage = "Formulaire Invalide, veuillez remplir tous les champs.";
       this.alertType = 'alert-warning';
       return;
@@ -179,6 +181,7 @@ export class ProduitAjoutComponent implements OnInit {
 
   }
   closeAlert(): void {
-    this.alertMessage = null;
+    this.alertMessage = "";
   }
+
 }

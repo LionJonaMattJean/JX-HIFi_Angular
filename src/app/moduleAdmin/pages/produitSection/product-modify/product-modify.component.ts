@@ -41,17 +41,17 @@ export class ProductModifyComponent implements OnInit {
     this.productForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       brand: ['', [Validators.required, Validators.minLength(3)]],
-      sellPrice: [null, Validators.min(0)],
-      costPrice: [null, Validators.min(0)],
+      sellPrice: [null,[Validators.required,Validators.min(0)]],
+      costPrice: [null,[Validators.required, Validators.min(0)]],
       onSale: [false],
-      specialPrice: [null, Validators.min(0)],
-      description: [''],
+      specialPrice: [null,[Validators.required,Validators.min(0)]],
+      description: ['',Validators.required],
       category: ['', Validators.required],
-      stock: [0, Validators.min(0)],
-      images: this.fb.array([]),
-      colors: this.fb.array([]),
-      shortSpecifications: this.fb.array([]),
-      specificationDetails: this.fb.array([]),
+      stock: ['',[Validators.required, Validators.min(0)]],
+      images: this.fb.array([],Validators.required),
+      colors: this.fb.array([],Validators.required),
+      shortSpecifications: this.fb.array([],Validators.required),
+      specificationDetails: this.fb.array([],Validators.required),
     });
     this.productService.getProductById(this.id).subscribe( {
       next:(product:Product | undefined)=>{
