@@ -52,7 +52,7 @@ export class TableDashboardComponent {
       return address.join(' , ');
     } else if (column === 'role') {
       const choix = row.role;
-      let name: string = '';
+      let name;
       switch (choix) {
         case 'administrator':
           name = 'Administrateur';
@@ -69,7 +69,7 @@ export class TableDashboardComponent {
       return name;
     } else if (column === 'status') {
       const choix = row.status;
-      let name: string = '';
+      let name ;
       switch (choix) {
         case 'Pending':
           name = 'En attente';
