@@ -13,7 +13,7 @@ export class UsersService {
   private static idNumber: number = 1000;
 
   constructor(private httpRequest: HttpClient) {
-    this.getUsers().subscribe(users=>{
+    this.getUsers().subscribe(users => {
       const temp=users[users.length-1].id;
       UsersService.idNumber=parseInt(temp.substring(3),10)+37;
     })

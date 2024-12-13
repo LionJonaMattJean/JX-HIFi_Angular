@@ -36,11 +36,9 @@ export class TableDashboardComponent {
    * @returns The value of the column, or a fallback/empty value if undefined
    */
   getColumnValue(row: any, column: string): any {
-    console.log(this.dataBinding);
     if (!row) {
       return ''; // Handle cases where the row itself is undefined or null
     }
-    console.log(row.sellPrice);
     if (column === 'category') {
       return row.categoryId|| 'N/A'; // Safely navigate 'category' and provide fallback
     } else if (column === 'address') {
@@ -94,7 +92,6 @@ export class TableDashboardComponent {
     } else if (column === 'totalItems') {
       return row.orderItems?.length || 0; // Ensure fallback for undefined 'orderItems'
     } else {
-      console.log(row);
       return row[column] || 'N/A'; // Fallback for any generic case
     }
   }
