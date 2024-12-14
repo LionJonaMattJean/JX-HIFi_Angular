@@ -59,7 +59,6 @@ export class MainCardComponent implements OnInit, OnDestroy {
     private usersService: UsersService,
     private storesService: StoresService,
     private orderService: OrderService,
-
     private customerService: CustomerService) { }
 
   ngOnInit() {

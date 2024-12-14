@@ -44,10 +44,12 @@ export class TableDashboardComponent {
     } else if (column === 'address') {
       const address: string[] = [
         row.address?.address,
+        row.address?.city,
         row.address?.postalCode,
         row.address?.province,
+        row.address?.country
       ].filter((addr) => addr); // Ignore undefined parts of the address
-      return address.join(' , ');
+      return address.join(', ');
     } else if (column === 'role') {
       const choix = row.role;
       let name;

@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {User} from '../../../../models/User';
 import {UsersService} from '../../../../services/users.service';
+import { CustomerService } from '../../../../services/customer.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -16,6 +17,7 @@ import {UsersService} from '../../../../services/users.service';
   styleUrl: './user-detail.component.css'
 })
 export class UserDetailComponent implements OnInit{
+  customerService = inject(CustomerService)
   id:string="";
   user?: User;
   userDetails: { label: string, value: any }[] = [];
@@ -24,7 +26,8 @@ export class UserDetailComponent implements OnInit{
 
   ngOnInit() {
     this.id=String(this.route.snapshot.paramMap.get('id'));
-    this.usersService.getUserById(this.id).subscribe(user=>{
+    // this.usersService.getUserById(this.id).subscribe(user=>{
+    this.customerService.getCustomerById(this.id).subscribe(user=>{
       this.user=user;
       this.userDetails=[
         {label: 'Nom', value: user?.lastName},
@@ -37,8 +40,8 @@ export class UserDetailComponent implements OnInit{
         {label: 'Province', value: user?.address.province},
         {label: 'Pays', value: user?.address.country},
         {label: 'Role', value:( user?.role==='customer')?'Client':(user?.role==='saleagent')?'Agent de vente':'Administrateur'},
-
       ];
+      console.table(this.userDetails);
     })
   }
 }

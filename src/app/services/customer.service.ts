@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Order } from '../models/Order';
 import { Customer } from '../models/Customer';
-
-import { map, Observable, of } from 'rxjs';
-import mockdata from '../../mockData/mock_json/customer.mock.json';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -17,15 +15,12 @@ export class CustomerService {
     return this.httpRequest.get<Customer[]>(this.url + "/customers");
   }
 
-
-
   getCustomerById(id: string): Observable<Customer> {
-    return this.getCustomers().pipe(
-      map(customers => customers.find(customer => customer.id === id)!)
-    );
+    return this.httpRequest.get<Customer>(this.url + "/customers/" + id);
   }
 
-  
+
+
   addOrder(order: Order): void {
 
   }
