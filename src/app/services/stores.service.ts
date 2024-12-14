@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import {map, Observable} from 'rxjs';
+import { Observable} from 'rxjs';
 import {Store} from '../models/Store';
 import {HttpClient} from '@angular/common/http';
 @Injectable({
@@ -18,9 +18,7 @@ export class StoresService {
   }
 
   getStoreById(id:string):Observable<Store>{
-    return this.getAllStores().pipe(
-      map(stores=>stores.find((store=>store.id===id))!)
-    )
+    return this.http.get<Store>(this.url+"/"+id);
   }
   updateStore(store:any,id:string):Observable<Store>{
     return this.http.put<Store>(this.url+"/update/"+id,store);
