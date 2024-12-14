@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {map, Observable, of} from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import { User } from '../models/User';
-import {Address} from '../models/Address';
-import mockdata from '../../mockData/mock_json/users.mock.json'
+import { Address } from '../models/Address';
+// import mockdata from '../../mockData/mock_json/users.mock.json'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,40 +15,41 @@ export class UsersService {
 
   constructor(private httpRequest: HttpClient) {
     this.getUsers().subscribe(users => {
-      const temp=users[users.length-1].id;
-      UsersService.idNumber=parseInt(temp.substring(3),10)+37;
+      const temp = users[users.length - 1].id;
+      UsersService.idNumber = parseInt(temp.substring(3), 10) + 37;
     })
   };
 
   getUsers(): Observable<User[]> {
-   // return this.httpRequest.get<User[]>(this.dataLink);
-    return of(mockdata)
+    // return this.httpRequest.get<User[]>(this.dataLink);
+    // return of(mockdata)
+    return of();
   }
 
   getUserById(id: string): Observable<User> {
     return this.getUsers().pipe(
       map(users => users.find(user => user.id === id)!)
     );
-  } 
-  getUserByEmail(email: string): Observable<User> {
-   return this.getUsers().pipe(
-     map(users=>users.find((user=>user.email===email))!)
-   )
   }
-  login(username:string, password:string): void {
+  getUserByEmail(email: string): Observable<User> {
+    return this.getUsers().pipe(
+      map(users => users.find((user => user.email === email))!)
+    )
+  }
+  login(username: string, password: string): void {
     // Implement login logic here
   }
 
-   logout(): void {
+  logout(): void {
     // Implement logout logic here
   }
 
   generateId(): string {
-    const id="USE"+UsersService.idNumber;
-    UsersService.idNumber+=37;
+    const id = "USE" + UsersService.idNumber;
+    UsersService.idNumber += 37;
     return id;
   }
- updateProfile(email: string, firstName: string, lastName: string, phone: string, address: Address): void {
+  updateProfile(email: string, firstName: string, lastName: string, phone: string, address: Address): void {
     /*todo Add logic changing this Address*/
 
     /*  this._email = email;
@@ -57,7 +59,7 @@ export class UsersService {
       this._address = address;*/
   }
   /*todo Add logic for the encryptage*/
-  changePassword(password:string): void {
+  changePassword(password: string): void {
     //logic for the encryptage
     // this._password = password;
   }
