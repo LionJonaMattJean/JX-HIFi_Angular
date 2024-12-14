@@ -9,9 +9,8 @@ import { PaginationDashboardComponent } from '../pagination-dashboard/pagination
 import { UsersService } from '../../../services/users.service';
 import { StoresService } from '../../../services/stores.service';
 import { OrderService } from '../../../services/order.service';
-import { privateDecrypt } from 'crypto';
 import { CustomerService } from '../../../services/customer.service';
-import { User } from '../../../models/User';
+
 
 
 @Component({
@@ -211,9 +210,10 @@ export class MainCardComponent implements OnInit, OnDestroy {
     this.ajout = "Ajouter un magasin";
     this.entityType = "stores";
     this.urlAjout = '/admin/stores/ajout';
-    this.displayColumns = ['id', 'address', 'telephone', 'email', 'manager'];
+    this.displayColumns = ['id','name' ,'address', 'telephone', 'email', 'manager'];
     this.columnNames = {
       id: 'ID',
+      name: 'Nom',
       address: 'Adresse',
       telephone: 'Téléphone',
       email: 'Email',

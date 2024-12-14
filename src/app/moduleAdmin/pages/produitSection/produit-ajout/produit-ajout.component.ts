@@ -162,6 +162,7 @@ export class ProduitAjoutComponent implements OnInit {
         console.error('Error creating product:', error);
         this.alertMessage = "Erreur lors de l'ajout du produit. Veuillez réessayer.";
         this.alertType = 'alert-danger';
+        return
       }
     });
     this.productForm.reset();
