@@ -66,7 +66,7 @@ storeForm!:FormGroup;
 
   onSummit() {
     if(this.storeForm.invalid) {
-      console.log("hello");
+
       this.storeForm.markAllAsTouched();
       this.alertMessage = "Formulaire Invalide, veuillez remplir tous les champs.";
       this.alertType = 'alert-warning';
@@ -109,16 +109,6 @@ storeForm!:FormGroup;
   }
   clearform(){
     this.storeForm.reset();
-    this.storeForm.patchValue({
-      name: '',
-      telephone: '',
-      email: '',
-      manager: '',
-    });
-
-    const addressDetailsArray = this.addressDetails;
-    for (let i = 0; i < addressDetailsArray.length; i++) {
-      addressDetailsArray.at(i).patchValue({ value: '' });
-    }
+    location.reload();
   }
 }

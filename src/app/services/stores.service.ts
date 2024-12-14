@@ -22,7 +22,9 @@ export class StoresService {
       map(stores=>stores.find((store=>store.id===id))!)
     )
   }
-
+  updateStore(store:any,id:string):Observable<Store>{
+    return this.http.put<Store>(this.url+"/update/"+id,store);
+  }
   deleteStore(id: string) {
     return this.http.delete(this.url + "/delete/" + id);
   }
