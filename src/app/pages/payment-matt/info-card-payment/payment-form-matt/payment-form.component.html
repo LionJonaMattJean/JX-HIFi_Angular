@@ -67,7 +67,7 @@
       <!-- Checkbox pour "même adresse de livraison" -->
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="sameAddress" (change)="toggleSameAddress()" >
-        <label class="form-check-label" for="sameAddress">adresse de livraison différente?</label>
+        <label class="form-check-label" for="sameAddress">Même adresse de livraison</label>
       </div>
       <!-- Section d'adresse de livraison (affichée uniquement si la checkbox n'est pas cochée) -->
       <div *ngIf="!sameAddress">
@@ -93,7 +93,7 @@
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary w-100">Confirmer</button>
+      <button type="button" class="btn btn-primary w-100" [routerLink]="['/confirmation']">Confirmer</button>
     </form>
   </div>
   

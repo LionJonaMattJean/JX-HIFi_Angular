@@ -61,7 +61,7 @@ export const routes: Routes = [
       //path shopping cart --> checkout
       { path: 'cart', component: PanierComponent },
       { path: 'formTransaction', component: PaymentFormComponent },
-      { path: 'infoConfirmation', component: ConfirmationComponent },
+      { path: 'confirmation', component: ConfirmationComponent },
       { path: 'login', component: LoginLionComponent },
       { path: 'create-account', component: CreateAccountComponent },
       { path: 'account-details', component: AccountDetailsComponent,

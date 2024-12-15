@@ -1,65 +1,57 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { OnInit } from '@angular/core';
-import { OrderService } from '../../../../services/order.service';
-
-import { InfoConfirmationComponent } from "../info-confirmation/info-confirmation.component";
-import { CoutTotalConfirmationComponent } from "../cout-total-confirmation/cout-total-confirmation.component";
-import { CartConfirmationComponent } from "../cart-confirmation/cart-confirmation.component";
+import { ActivatedRoute } from '@angular/router';
+import { CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-confirmation',
   standalone: true,
-  imports: [FormsModule,RouterLink, InfoConfirmationComponent, CoutTotalConfirmationComponent, CartConfirmationComponent],
+  imports: [FormsModule,CurrencyPipe,RouterLink,CommonModule],
   templateUrl: './confirmation.component.html',
   styleUrl: './confirmation.component.css'
 })
 
 export class ConfirmationComponent implements OnInit {
-  order: any;
-  useShippingAddress: boolean = false; 
+  userInfo: any = {};
+  
+  totalBeforeTax: number = 0; 
+  tps: number = 0;  
+  tvq: number = 0;  
+  totalTtc: number = 0; 
 
+  shoppingCart: any[] = [{name:'objet1', quantity:1, price: 20.00},
+                         {name:'objet2', quantity:2, price: 15.00}, ]
 
-  constructor(private orderService: OrderService) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.orderService.getOrders().subscribe(data => {
-      this.order = data[0];
-    });
+
+    const navigation = this.route.snapshot;
+
+    if (navigation && navigation.root && navigation.root.children[0]?.data?.['userInfo']) {
+      this.userInfo = navigation.root.children[0].data['userInfo'];
+    } else {
+    console.warn('Aucune donnée userInfo transmise via le routage.');
+    // Ajout de valeurs par défaut pour éviter les erreurs dans le HTML
+    this.userInfo = {
+      name: 'Nom par défaut',
+      address: 'Adresse par défaut',
+    };
+      console.log('Contenu de userInfo: ', this.userInfo)
+      console.log('Contenu de shoppingCart : ', this.shoppingCart);
+
+
+      this.totalTtc = this.totalBeforeTax + this.tps + this.tvq;
+
+      // Calculer le total, des taxes et du TTC
+      this.totalBeforeTax = this.shoppingCart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+      this.tps = this.totalBeforeTax * 0.07;
+      this.tvq = this.totalBeforeTax * 0.08;
+      this.totalTtc = this.totalBeforeTax + this.tps + this.tvq;
+    }
+
   }
-
-  //changer l'adresse de livraison si le check box est checked
-  toggleAddress(useShippingAddress: boolean) {
-    this.useShippingAddress = useShippingAddress;
-  }
-  /*
-    ajustement dans la logique pour aller chercher les items du shopping cart pour afficher dans le tableau
-
-  afficherPanier() {
-    const tbody = document.querySelector('#panier-table-body') as HTMLElement;
-    this.orderService.getOrderById(items => {
-      const tr = document.createElement('tr');
-
-      // Créer la cellule pour l'image
-      const tdImage = document.createElement('td');
-      const img = document.createElement('img');
-      img.src = items.image;
-      img.alt = items.description;
-      img.style.width = '100px'; 
-      tdImage.appendChild(img);
-
-      // Créer la cellule pour la description
-      const tdDescription = document.createElement('td');
-      tdDescription.textContent = items.description;
-
-      // Ajouter les cellules au tableau
-      tr.appendChild(tdImage);
-      tr.appendChild(tdDescription);
-      tbody.appendChild(tr);
-    });
-
-  }*/
-
 }
-
