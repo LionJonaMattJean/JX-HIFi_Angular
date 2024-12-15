@@ -22,13 +22,14 @@ export class HeaderComponent {
   categoryService: CategoryService = inject(CategoryService);
   
   shoppingCartServ: ShoppingCartService = inject(ShoppingCartService)
-  numberOfItems:number = ShoppingCartService.shopppingCart.cartItems.length
+  numberOfItems:string = '';
 
 
   listCategory: Category[] = [];
 
   constructor() {
     this.categoryService.getCategories().subscribe(x => this.listCategory = x);
+    this.numberOfItems = ShoppingCartService.shopppingCart.cartItems.length.toString();
 
   }
 
