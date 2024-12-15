@@ -12,7 +12,7 @@ import { stringify } from 'querystring';
 export class ShoppingCartService {
   private static instance: ShoppingCartService;
   public static shopppingCart: ShoppingCart;
-  private url: string = "http://localhost:8080/cart";
+  private url: string = "http://localhost:8080/api/cart";
 
   constructor(private http: HttpClient) {
     ShoppingCartService.shopppingCart = {
@@ -21,6 +21,10 @@ export class ShoppingCartService {
       cartItems: [],
       total: 0
     };
+  }
+
+  ngOnInit():void{
+    this.loadCart('');
   }
 
   /*public static getInstance(): ShoppingCartService {
@@ -36,19 +40,20 @@ export class ShoppingCartService {
     console.log(ShoppingCartService.shopppingCart.cartItems); // pour test
     
     this.calculateTotal(orderItem.subTotal);
-    this.saveCart(); // Automatically save cart after adding item
+    this.saveCart('USE1000'); 
+    alert("Item added Successfully to your Cart")
   }
 
 
-  public saveCart(): void {
-    this.http.post(this.url, ShoppingCartService.shopppingCart).subscribe(
+  public saveCart(id:string): void {
+    this.http.post(this.url+ "/api/cart" + id + '/add', ShoppingCartService.shopppingCart).subscribe(
       response => console.log('Cart saved successfully:', response),
       error => console.error('Error saving cart:', error)
     );
   }
 
   public loadCart(customerId: string): void {
-    this.http.get<ShoppingCart>(`${this.url}/${customerId}`).subscribe(
+    this.http.get<ShoppingCart>('USE1000').subscribe(
       cart => {
         ShoppingCartService.shopppingCart = cart;
         console.log('Cart loaded:', ShoppingCartService.shopppingCart);

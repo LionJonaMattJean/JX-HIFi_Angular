@@ -16,7 +16,7 @@ export class ItemInCartComponent {
   cartServ:ShoppingCartService = inject(ShoppingCartService);
 
   deleteItem(thisItemId:string){
-    this.cartServ.removeItem(thisItemId)
+    this.cartServ.removeItem;
   }
 
   updateQuantity(thisItemId:string, newQty: number){
