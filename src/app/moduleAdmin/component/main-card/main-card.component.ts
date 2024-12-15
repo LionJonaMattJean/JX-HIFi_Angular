@@ -391,7 +391,7 @@ export class MainCardComponent implements OnInit, OnDestroy {
         this.adminButton = "Voir Utilisateur";
         this.administratorService.getallAdminitrators().subscribe({
           next: (data) => {
-            this.data = data; // Assign fetched data to `data`
+            this.data = data.filter((data)=>!data.isDeleted); // Assign fetched data to `data`
             this.totalItems = this.data.length; // Update total items for pagination
             this.loadDataForPage(); // Load paginated data
             this.stopLoading(); // Stop loading indicator

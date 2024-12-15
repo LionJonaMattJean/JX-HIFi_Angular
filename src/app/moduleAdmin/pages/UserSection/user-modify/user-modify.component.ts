@@ -151,7 +151,7 @@ private loadClient() {
         isDeleted:[null,[Validators.required]]
       });
       if(this.user){
-        console.log(this.user);
+
         this.clientForm.patchValue({
           lastName: this.user.lastName,
           firstName: this.user.firstName,
@@ -185,7 +185,6 @@ private loadClient() {
         isDeleted:[null,[Validators.required]]
       });
       if(this.user){
-        console.log(this.user);
         this.clientForm.patchValue({
           lastName: this.user.lastName,
           firstName: this.user.firstName,

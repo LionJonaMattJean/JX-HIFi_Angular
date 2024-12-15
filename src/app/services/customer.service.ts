@@ -11,10 +11,9 @@ export class CustomerService {
   private url: string = "http://localhost:8080";
   constructor(private httpRequest: HttpClient) { };
 
-  //this is a function that I made to make sure the program doesn't bug,
-  //what is inside is useless
-  createCustomer(item: any):Observable<Customer>{
-    return this.httpRequest.get<Customer>(this.url + "/customers/newaccount");
+
+  createCustomer(newCustomer: any): Observable<Customer> {
+    return this.httpRequest.post<Customer>(this.url + "/customer/createnew", newCustomer);
   }
 
   getCustomers(): Observable<Customer[]> {
@@ -24,7 +23,16 @@ export class CustomerService {
   getCustomerById(id: string): Observable<Customer> {
     return this.httpRequest.get<Customer>(this.url + "/customers/" + id);
   }
+  updateCustomer(payload:any,id:string): Observable<Customer> {
+    return this.httpRequest.put<Customer>(this.url + "/customer/update/" + id, payload);
+  }
 
+  deactivate(id: string, user: any) {
+      return this.httpRequest.put<Customer>(this.url + "/customer/deactivate/" + id, user);
+  }
+  deleteCustomer(id: string) {
+      return this.httpRequest.delete(this.url + "/customer/delete/" + id);
+  }
   addOrder(order: Order): void {
 
   }
@@ -49,7 +57,6 @@ export class CustomerService {
     // Implement manage account logic here
   }
 
-  updateCustomer(payload:any,id:string): Observable<Customer> {
-    return this.httpRequest.put<Customer>(this.url + "/customer/update/" + id, payload);
-  }
+
+
 }

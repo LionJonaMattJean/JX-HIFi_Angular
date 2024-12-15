@@ -12,8 +12,7 @@ import { Administrator } from '../models/Administrator';
 })
 
 export class UsersService {
-  // private dataLink: string = "src/mockData/mock_json/users.mock.json";
-  // private static idNumber: number = 1000;
+
 
   private url: string = "http://localhost:8080";
 
@@ -23,16 +22,12 @@ export class UsersService {
     return this.httpRequest.post<Customer>(this.url + "/customer/newaccount", newCustomer);
   }
 
-  createNewCustomer(newCustomer: Customer): Observable<Customer> {
-    return this.httpRequest.post<Customer>(this.url + "/customer/createnew", newCustomer);
-  }
+
 
   createNewAdmin(newAdmin: Administrator): Observable<Administrator> {
     return this.httpRequest.post<Administrator>(this.url + "/admin/new", newAdmin);
   }
-  getAdminById(id: string): Observable<Administrator> {
-    return this.httpRequest.get<Administrator>(this.url + "/admin/" + id);
-  }
+
 
 
 

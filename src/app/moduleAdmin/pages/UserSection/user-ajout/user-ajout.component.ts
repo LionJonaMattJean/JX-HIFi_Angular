@@ -72,7 +72,7 @@ ngOnInit() {
       this.logFormControls();
       return;
     }
-    console.log('fuck')
+
     const formValue = this.clientForm.value;
     const payload = {
       id: "holder",

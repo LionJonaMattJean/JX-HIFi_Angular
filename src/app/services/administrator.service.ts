@@ -27,4 +27,8 @@ export class AdministratorService {
   createAdministrator(payload:any): Observable<Administrator> {
     return this.httpRequest.post<Administrator>(this.url + "/admin/new", payload);
   }
+
+  deactivate(id: string,payload:any) {
+    return this.httpRequest.put<Administrator>(this.url + "/admin/deactivate/" + id,payload);
+  }
 }
