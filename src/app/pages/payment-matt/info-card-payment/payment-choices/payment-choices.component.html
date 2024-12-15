@@ -1,6 +1,6 @@
 <div class="mb-3">
     <label for="modePaiement" class="labels">Mode de paiement</label>
-    <select class="form-select widthPaiement" id="modePaiement" required>
+    <select class="form-select widthPaiement" id="modePaiement" required [(ngModel)]="modePaiement"(ngModelChange)="onModePaiementChange()">
         <option value="" selected disabled>----</option>
         <option value="visa">Visa</option>
         <option value="mastercard">Mastercard</option>

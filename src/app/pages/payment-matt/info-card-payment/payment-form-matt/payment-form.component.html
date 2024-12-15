@@ -1,22 +1,99 @@
+<div class="container background my-5">
+    <form class="col-12 col-md-10 col-lg-8 mx-auto">
+      <app-images-payment></app-images-payment>
+  
+      <!-- Passer modePaiement du sous-composant -->
+      <app-payment-choices [(modePaiement)]="modePaiement"></app-payment-choices>
+  
+      <!-- Mode de paiement choisi -->
+      <div *ngIf="modePaiement === 'paypal'">
+        <div class="mb-3">
+          <label for="paypalEmail" class="form-label">Courriel lié au compte PayPal</label>
+          <input type="email" id="paypalEmail" name="paypalEmail" class="form-control" required>
+        </div>
+  
+        <div class="mb-3">
+          <label for="paypalUsername" class="form-label">Nom d'utilisateur PayPal</label>
+          <input type="text" id="paypalUsername" name="paypalUsername" class="form-control" required>
+        </div>
+      </div>
+  
+      <!-- Mode de paiement par carte -->
+      <div *ngIf="modePaiement !== 'paypal'">
+        <div class="mb-3">
+          <label for="numéroCarte" class="form-label">Numéro de la carte</label>
+          <input type="text" id="numéroCarte" name="numéroCarte" class="form-control" required>
+        </div>
+  
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="date" class="form-label">Date d'expiration</label>
+            <input type="text" id="date" name="date" class="form-control" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="cvc" class="form-label">CVC</label>
+            <input type="text" id="cvc" name="cvc" class="form-control" required>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="detenteur" class="form-label">Nom du détenteur de la carte</label>
+          <input type="text" id="detenteur" name="detenteur" class="form-control" required>
+        </div>
+      </div>
+  
+      <!-- Section Adresse principale (identique dans les deux cas) -->
+      <div class="mb-3">
+        <label for="adresse" class="form-label">Adresse</label>
+        <input type="text" id="adresse" name="adresse" class="form-control" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="ville" class="form-label">Ville</label>
+        <input type="text" id="ville" name="ville" class="form-control" required>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="province" class="form-label">Province</label>
+          <input type="text" id="province" name="province" class="form-control" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="pays" class="form-label">Pays</label>
+          <input type="text" id="pays" name="pays" class="form-control" required>
+        </div>
+      </div>
+  
+      <!-- Checkbox pour "même adresse de livraison" -->
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="sameAddress" (change)="toggleSameAddress()" >
+        <label class="form-check-label" for="sameAddress">adresse de livraison différente?</label>
+      </div>
+      <!-- Section d'adresse de livraison (affichée uniquement si la checkbox n'est pas cochée) -->
+      <div *ngIf="!sameAddress">
+        <div class="mb-3">
+          <label for="livraisonAdresse" class="form-label">Adresse de livraison</label>
+          <input type="text" id="livraisonAdresse" name="livraisonAdresse" class="form-control">
+        </div>
+  
+        <div class="mb-3">
+          <label for="livraisonVille" class="form-label">Ville de livraison</label>
+          <input type="text" id="livraisonVille" name="livraisonVille" class="form-control">
+        </div>
+  
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="livraisonProvince" class="form-label">Province de livraison</label>
+            <input type="text" id="livraisonProvince" name="livraisonProvince" class="form-control">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="livraisonPays" class="form-label">Pays de livraison</label>
+            <input type="text" id="livraisonPays" name="livraisonPays" class="form-control">
+          </div>
+        </div>
+      </div>
 
-<div class="background">
-    <div class="container">
-        <form class="form-design">
-            <app-images-payment></app-images-payment>
-            <app-payment-choices></app-payment-choices>
-
-            <div>
-                <app-payment-formulaire></app-payment-formulaire>
-                <label class="spliter">---------------------------------------------------</label>
-                <!-- section si adresse de livraison diffère de l'adresse du formulaire en haut-->
-                <app-payment-alternate-shipping></app-payment-alternate-shipping>
-                
-                <!-- Bouton de confirmation -->
-                 <a>
-                    <button type="button" class="labels" [routerLink] ="['/confirmation']">Confirmer transaction</button>
-                 </a>
-            </div>
-        </form>
-    </div>
-</div>
-
+      <button type="submit" class="btn btn-primary w-100">Confirmer</button>
+    </form>
+  </div>
+  
