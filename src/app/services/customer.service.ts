@@ -44,4 +44,8 @@ export class CustomerService {
   manageAccount(): void {
     // Implement manage account logic here
   }
+
+  updateCustomer(payload:any,id:string): Observable<Customer> {
+    return this.httpRequest.put<Customer>(this.url + "/customer/update/" + id, payload);
+  }
 }

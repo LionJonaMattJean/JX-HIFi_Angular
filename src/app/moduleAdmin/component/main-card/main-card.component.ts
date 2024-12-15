@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
-import { filter, Subject, takeUntil } from 'rxjs';
+import {filter, Subject, takeUntil} from 'rxjs';
 import { NgIf } from '@angular/common';
 import { TableDashboardComponent } from '../table-dashboard/table-dashboard.component';
 import { ProductsService } from '../../../services/products.service';
@@ -10,6 +10,7 @@ import { UsersService } from '../../../services/users.service';
 import { StoresService } from '../../../services/stores.service';
 import { OrderService } from '../../../services/order.service';
 import { CustomerService } from '../../../services/customer.service';
+import {Customer} from '../../../models/Customer';
 
 
 
@@ -51,6 +52,7 @@ export class MainCardComponent implements OnInit, OnDestroy {
   loadingMessage: string = "Chargement des données...";
 
   private destroy$ = new Subject<void>();
+  private allUsers: Customer[]=[];
 
   constructor(private router: Router,
     public productsService: ProductsService,
@@ -237,10 +239,10 @@ export class MainCardComponent implements OnInit, OnDestroy {
   viewDeactivatedUser() {
     this.showDeactivated = !this.showDeactivated;
     if (this.showDeactivated) {
-      this.data = this.data.filter((data) => data.isDeleted);
+      this.data = this.allUsers.filter((data) => data.isDeleted);
       this.toggle = "Voir Utilisateurs actifs";
     } else {
-      this.loadAllUser();
+      this.data = this.allUsers.filter((data) => !data.isDeleted);
       this.toggle = "Voir Utilisateur désactivés";
     }
 
@@ -290,40 +292,23 @@ export class MainCardComponent implements OnInit, OnDestroy {
   }
 
   loadAllUser() {
-
-    // METHODE Jonathan fetch les data LOCAL
-    // this.startLoading();
-    // this.usersService.getUsers()
-    //   .pipe(takeUntil(this.destroy$))
-    //   .subscribe({
-    //     next: (data) => {
-    //       this.data = data;
-    //       this.totalItems = data.length;
-    //       this.loadDataForPage();
-    //       this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
-    //       this.stopLoading();
-    //     },
-    //     error: (error) => {
-    //       console.error('Error loading users', error);
-    //       this.stopLoading();
-    //       this.loadingMessage = "Erreur de chargement des données";
-    //     }
-    //   });
-
-    // METHODE JEAN fetch les data from SPRING
     this.startLoading();
-    this.customerService.getCustomers()
+      this.customerService.getCustomers()
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data) => {
-          this.data = data;
-          this.totalItems = data.length;
+
+          this.allUsers = data
+          this.data = data.filter((data) => !data.isDeleted);
+          this.totalItems = this.data.length;
           this.loadDataForPage();
           this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+
           this.stopLoading();
         },
         error: (error) => {
-          console.error('Error loading customers', error);
+          console.error('Error loading users', error);
+
           this.stopLoading();
           this.loadingMessage = "Erreur de chargement des données";
         }

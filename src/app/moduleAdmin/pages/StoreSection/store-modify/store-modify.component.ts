@@ -5,6 +5,7 @@ import {ActivatedRoute, RouterLink} from '@angular/router';
 import {FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgForOf, NgIf} from '@angular/common';
 
+
 @Component({
   selector: 'app-store-modify',
   standalone: true,
@@ -26,39 +27,18 @@ export class StoreModifyComponent implements OnInit{
   alertType: string = "";
   storeForm!: FormGroup;
 
+
   constructor(private storesService:StoresService,
               private route:ActivatedRoute,private fb:FormBuilder) {
   }
 
   ngOnInit() {
     this.id=String(this.route.snapshot.paramMap.get('id'));
-    this.storesService.getStoreById(this.id).subscribe(store=>{
-      this.store=store;
-      this.addressDetail=[
-        {label:"Adresse",value:this.store.address.address},
-        {label:"Ville",value:this.store.address.city},
-        {label:"Code Postal",value:this.store.address.postalCode},
-        {label:"Province",value:this.store.address.province},
-        {label:"Pays",value:this.store.address.country}
-      ]
-      this.storeForm = this.fb.group({
-        name: ['', Validators.required],
-        addressDetails: this.fb.array(this.getAddressDetailControls()),
-        telephone: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        manager: ['', Validators.required]
-      });
-      if(this.store){
-        this.storeForm.patchValue({
-          name: this.store.name,
-          addressDetails: this.addressDetail,
-          telephone: this.store.telephone,
-          email: this.store.email,
-          manager: this.store.manager
-        });}
-    });
+
+      this.loadStore();
 
   }
+
 
   onSummit() {
     if(this.storeForm.invalid) {
@@ -89,7 +69,7 @@ export class StoreModifyComponent implements OnInit{
         console.log("Store modifié avec succes "+data);
         this.alertMessage="Magasin modifié avec Success !";
         this.alertType="alert-success";
-
+        this.loadStore();
       },
       error: (error: any) => {
         console.log(payload);
@@ -100,7 +80,7 @@ export class StoreModifyComponent implements OnInit{
       }
       }
     )
-
+      this.clearform();
   }
   private getAddressDetailControls() {
     const address = this.store?.address;
@@ -120,6 +100,39 @@ export class StoreModifyComponent implements OnInit{
   }
   clearform(){
     this.storeForm.reset();
-    location.reload();
+    this.loadStore();
+
+  }
+
+ loadStore(){
+
+      this.storesService.getStoreById(this.id)
+        .subscribe(store=>{
+        this.store=store;
+        this.addressDetail=[
+          {label:"Adresse",value:this.store.address.address},
+          {label:"Ville",value:this.store.address.city},
+          {label:"Code Postal",value:this.store.address.postalCode},
+          {label:"Province",value:this.store.address.province},
+          {label:"Pays",value:this.store.address.country}
+        ]
+        this.storeForm = this.fb.group({
+          name: ['', Validators.required],
+          addressDetails: this.fb.array(this.getAddressDetailControls()),
+          telephone: ['', Validators.required],
+          email: ['', [Validators.required, Validators.email]],
+          manager: ['', Validators.required]
+        });
+        if(this.store){
+          this.storeForm.patchValue({
+            name: this.store.name,
+            addressDetails: this.addressDetail,
+            telephone: this.store.telephone,
+            email: this.store.email,
+            manager: this.store.manager
+          });
+
+        }
+      });
   }
 }

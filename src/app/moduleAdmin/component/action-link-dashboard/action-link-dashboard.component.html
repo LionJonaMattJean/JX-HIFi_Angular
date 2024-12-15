@@ -1,3 +1,3 @@
-<a class="text-primary action-link" [routerLink]="['/admin', entityType, 'details', id]">Détails |</a>
-<a class="text-primary action-link" [routerLink]="['/admin', entityType, 'modify', id]"> Modifier |</a>
-<a class="text-primary action-link" [routerLink]="['/admin', entityType, 'delete', id]" > Supprimer</a>
+<a class="text-primary action-link" [routerLink]="['/admin', verififyEntity(entityType), 'details', id]">Détails |</a>
+<a class="text-primary action-link" [routerLink]="['/admin',verififyEntity(entityType), 'modify', id]"> Modifier |</a>
+<a class="text-primary action-link" [routerLink]="['/admin', verififyEntity(entityType), 'delete', id]" > Supprimer</a>
