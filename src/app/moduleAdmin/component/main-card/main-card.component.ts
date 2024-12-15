@@ -10,7 +10,9 @@ import { UsersService } from '../../../services/users.service';
 import { StoresService } from '../../../services/stores.service';
 import { OrderService } from '../../../services/order.service';
 import { CustomerService } from '../../../services/customer.service';
-import {Customer} from '../../../models/Customer';
+
+import {AdministratorService} from '../../../services/administrator.service';
+import {User} from '../../../models/User';
 
 
 
@@ -47,12 +49,14 @@ export class MainCardComponent implements OnInit, OnDestroy {
   isUser!: boolean;
   isOrder!: boolean;
   showDeactivated: boolean = false;
+  showAdmin: boolean = false;
 
   isLoading: boolean = false;
   loadingMessage: string = "Chargement des données...";
 
   private destroy$ = new Subject<void>();
-  private allUsers: Customer[]=[];
+  private allUsers: User[]=[];
+  adminButton: string="Voir Administrateur";
 
   constructor(private router: Router,
     public productsService: ProductsService,
@@ -60,7 +64,8 @@ export class MainCardComponent implements OnInit, OnDestroy {
     private usersService: UsersService,
     private storesService: StoresService,
     private orderService: OrderService,
-    private customerService: CustomerService) { }
+    private customerService: CustomerService,
+    private administratorService:AdministratorService) { }
 
   ngOnInit() {
     this.router.events.pipe(
@@ -377,5 +382,33 @@ export class MainCardComponent implements OnInit, OnDestroy {
 
         break;
     }
+  }
+
+  viewAdmin() {
+      this.showAdmin = !this.showAdmin;
+      if (this.showAdmin) {
+        this.startLoading();
+        this.adminButton = "Voir Utilisateur";
+        this.administratorService.getallAdminitrators().subscribe({
+          next: (data) => {
+            this.data = data; // Assign fetched data to `data`
+            this.totalItems = this.data.length; // Update total items for pagination
+            this.loadDataForPage(); // Load paginated data
+            this.stopLoading(); // Stop loading indicator
+          },
+          error: (error) => {
+            console.error("Error fetching administrators:", error);
+            this.loadingMessage = "Erreur lors du chargement des administrateurs.";
+            this.stopLoading(); // Stop loading indicator on error
+          },
+        });
+        this.entityType = "admins";
+      } else {
+        this.adminButton = "Voir Administrateur";
+        this.data = this.allUsers;
+        this.entityType = "users";
+      }
+    this.totalItems = this.data.length;
+    this.loadDataForPage();
   }
 }

@@ -93,6 +93,10 @@ export const routes: Routes = [
       { path: 'users/delete/:id', component: UserDeleteComponent },
       { path: 'users/ajout', component: UserAjoutComponent },
 
+      { path: 'admins/details/:id', component: UserDetailComponent },
+      { path: 'admins/modify/:id', component: UserModifyComponent },
+      { path: 'admins/delete/:id', component: UserDeleteComponent },
+
       { path: 'products', component: ProductsDashboardComponent },
       { path: 'products/details/:id', component: ProduitsDetailComponent },
       { path: 'products/modify/:id', component: ProductModifyComponent },

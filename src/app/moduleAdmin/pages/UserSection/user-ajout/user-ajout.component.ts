@@ -1,11 +1,12 @@
-import { Component, inject } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import { NgForOf, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { User } from '../../../../models/User';
 import { UsersService } from '../../../../services/users.service';
 import { Customer } from '../../../../models/Customer';
 import { Administrator } from '../../../../models/Administrator';
+import {CustomerService} from '../../../../services/customer.service';
 
 @Component({
   selector: 'app-user-ajout',
@@ -20,39 +21,51 @@ import { Administrator } from '../../../../models/Administrator';
   templateUrl: './user-ajout.component.html',
   styleUrl: './user-ajout.component.css'
 })
-export class UserAjoutComponent {
-  userService = inject(UsersService);
-  user?: User;
-  addressDetail?: { label: string, value: string }[] = []
-  constructor() {
-    this.user = {
+export class UserAjoutComponent implements OnInit {
+  id: string = "";
+  user!:User;
+  addressDetail?:{label:string,value:string}[]=[]
+  clientForm!:FormGroup;
+  alertMessage: string | null = null;
+  alertType: string = 'alert-success';
+
+  constructor(private fb:FormBuilder,
+              private customerService:CustomerService,
+              private userService: UsersService,) {}
+ngOnInit() {
+  this.user = {
+    id: '',
+    email: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+    phone: '',
+    address: {
       id: '',
-      email: '',
-      password: '',
-      firstName: '',
-      lastName: '',
-      phone: '',
-      address: {
-        id: '',
-        address: '',
-        city: '',
-        postalCode: '',
-        province: '',
-        country: ''
-      },
-      role: '',
-      isDeleted: false
-    };
-
-    this.addressDetail! = [
-      { label: "Adresse", value: this.user.address.address },
-      { label: "Ville", value: this.user.address.city },
-      { label: "Code Postal", value: this.user.address.postalCode },
-      { label: "Province", value: this.user.address.province },
-      { label: "Pays", value: this.user.address.country }
-    ]
+      address: '',
+      city: '',
+      postalCode: '',
+      province: '',
+      country: ''
+    },
+    role: '',
+    isDeleted: false
+  };
+  this.loadClient();
+}
+  private getAddressDetailControls() {
+    const address = this.user?.address;
+    return [
+      this.fb.group({label: 'Adresse', value: [address?.address, Validators.required]}),
+      this.fb.group({label: 'Ville', value: [address?.city, Validators.required]}),
+      this.fb.group({label: 'Code Postal', value: [address?.postalCode, Validators.required]}),
+      this.fb.group({label: 'Province', value: [address?.province, Validators.required]}),
+      this.fb.group({label: 'Pays', value: [address?.country, Validators.required]})
+    ];
   }
-
+  get addressDetails() {
+    return this.clientForm.get('addressDetails') as FormArray;
+  }
   addUser() {
     if (!this.user?.role) {
       alert("Veuillez sélectionner un rôle pour l'utilisateur.");
@@ -94,5 +107,33 @@ export class UserAjoutComponent {
       alert('Rôle non pris en charge.');
     }
   }
+  closeAlert(): void {
+    this.alertMessage = null;
+  }
+  clearform(){
+    this.clientForm.reset();
 
+    this.loadClient();
+
+  }
+  private loadClient() {
+      this.addressDetail=[
+        {label:"Adresse",value:this.user.address.address},
+        {label:"Ville",value:this.user.address.city},
+        {label:"Code Postal",value:this.user.address.postalCode},
+        {label:"Province",value:this.user.address.province},
+        {label:"Pays",value:this.user.address.country}
+      ]
+      this.clientForm = this.fb.group({
+        lastName: ['', Validators.required],
+        firstName: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        phone: ['', Validators.required],
+        addressDetails: this.fb.array(this.getAddressDetailControls()),
+        role: ['', Validators.required],
+        isDeleted:[null,[Validators.required]]
+      });
+
+
+  }
 }

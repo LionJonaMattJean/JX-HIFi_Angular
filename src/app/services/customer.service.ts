@@ -48,4 +48,7 @@ export class CustomerService {
   updateCustomer(payload:any,id:string): Observable<Customer> {
     return this.httpRequest.put<Customer>(this.url + "/customer/update/" + id, payload);
   }
+  createCustomer(payload:any): Observable<Customer> {
+    return this.httpRequest.post<Customer>(this.url + "/customer/createnew", payload);
+  }
 }

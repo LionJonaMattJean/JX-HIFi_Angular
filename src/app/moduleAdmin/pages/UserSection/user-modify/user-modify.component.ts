@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgForOf, NgIf} from '@angular/common';
-import {ActivatedRoute, RouterLink} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 
 import {CustomerService} from '../../../../services/customer.service';
-import {Customer} from '../../../../models/Customer';
+
+import {AdministratorService} from '../../../../services/administrator.service';
+import {User} from '../../../../models/User';
 
 @Component({
   selector: 'app-user-modify',
@@ -21,18 +23,21 @@ import {Customer} from '../../../../models/Customer';
 })
 export class UserModifyComponent implements OnInit {
   id: string = "";
-  user?:Customer;
+  user?:User;
   addressDetail?:{label:string,value:string}[]=[]
   clientForm!:FormGroup;
   alertMessage: string | null = null;
   alertType: string = 'alert-success';
-
+  currentRoute!:string ;
   constructor(private fb:FormBuilder,
               private customerService:CustomerService,
-              private route:ActivatedRoute) {}
+              private adminService:AdministratorService,
+              private route:ActivatedRoute,
+              private router:Router,) {}
 
   ngOnInit() {
     this.id=String(this.route.snapshot.paramMap.get('id'));
+    this.currentRoute = this.router.url.split('/')[2];
     this.loadClient();
   }
   private getAddressDetailControls() {
@@ -72,19 +77,36 @@ export class UserModifyComponent implements OnInit {
         country:this.clientForm.get('addressDetails')?.get('4')?.get('value')?.value
       }
     }
-    this.customerService.updateCustomer(payload,this.id).subscribe({
-      next:()=>{
-        this.alertMessage="Le client a été modifier avec Success !";
-        this.alertType="alert-success";
-        this.loadClient();
-      },
-      error:(error:any)=>{
-      console.error('Error creating Magasin:', error);
-      this.alertMessage = "Erreur lors de la modification du Magasin. Veuillez réessayer.";
-      this.alertType = 'alert-danger';
-      return;
+    if(this.currentRoute === 'admins'){
+      this.adminService.updateAdministrator(payload,this.id).subscribe({
+        next:()=>{
+          this.alertMessage="L'administrateur a été modifier avec Success !";
+          this.alertType="alert-success";
+          this.loadClient();
+        },
+        error:(error:any)=>{
+          console.error('Error creating Magasin:', error);
+          this.alertMessage = "Erreur lors de la modification de l'utilisateur. Veuillez réessayer.";
+          this.alertType = 'alert-danger';
+          return;
+        }
+      })
+    }else{
+      this.customerService.updateCustomer(payload,this.id).subscribe({
+        next:()=>{
+          this.alertMessage="Le client a été modifier avec Success !";
+          this.alertType="alert-success";
+          this.loadClient();
+        },
+        error:(error:any)=>{
+          console.error('Error creating Magasin:', error);
+          this.alertMessage = "Erreur lors de la modification de l'utilisateur. Veuillez réessayer.";
+          this.alertType = 'alert-danger';
+          return;
+        }
+      })
     }
-    })
+
     this.clearform();
   }
   closeAlert(): void {
@@ -98,35 +120,70 @@ export class UserModifyComponent implements OnInit {
   }
 
 private loadClient() {
-  this.customerService.getCustomerById(this.id).subscribe(user=>{
-    this.user=user;
-    this.addressDetail=[
-      {label:"Adresse",value:this.user.address.address},
-      {label:"Ville",value:this.user.address.city},
-      {label:"Code Postal",value:this.user.address.postalCode},
-      {label:"Province",value:this.user.address.province},
-      {label:"Pays",value:this.user.address.country}
-    ]
-    this.clientForm = this.fb.group({
-      lastName: ['', Validators.required],
-      firstName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
-      addressDetails: this.fb.array(this.getAddressDetailControls()),
-    //  role: ['', Validators.required],
-      isDeleted:[null,[Validators.required]]
-    });
-    if(this.user){
-      console.log(this.user);
-      this.clientForm.patchValue({
-        lastName: this.user.lastName,
-        firstName: this.user.firstName,
-        email: this.user.email,
-        phone: this.user.phone,
-        addressDetails: this.addressDetail,
-        isDeleted:this.user.isDeleted
+
+  if(this.currentRoute === 'admins'){
+    this.adminService.getAdministratorById(this.id).subscribe(user=>{
+      this.user=user;
+      this.addressDetail=[
+        {label:"Adresse",value:this.user.address.address},
+        {label:"Ville",value:this.user.address.city},
+        {label:"Code Postal",value:this.user.address.postalCode},
+        {label:"Province",value:this.user.address.province},
+        {label:"Pays",value:this.user.address.country}
+      ]
+      this.clientForm = this.fb.group({
+        lastName: ['', Validators.required],
+        firstName: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        phone: ['', Validators.required],
+        addressDetails: this.fb.array(this.getAddressDetailControls()),
+        //  role: ['', Validators.required],
+        isDeleted:[null,[Validators.required]]
       });
-    }
-  })
+      if(this.user){
+        console.log(this.user);
+        this.clientForm.patchValue({
+          lastName: this.user.lastName,
+          firstName: this.user.firstName,
+          email: this.user.email,
+          phone: this.user.phone,
+          addressDetails: this.addressDetail,
+          isDeleted:this.user.isDeleted
+        });
+      }
+    })
+  }else{
+    this.customerService.getCustomerById(this.id).subscribe(user=>{
+      this.user=user;
+      this.addressDetail=[
+        {label:"Adresse",value:this.user.address.address},
+        {label:"Ville",value:this.user.address.city},
+        {label:"Code Postal",value:this.user.address.postalCode},
+        {label:"Province",value:this.user.address.province},
+        {label:"Pays",value:this.user.address.country}
+      ]
+      this.clientForm = this.fb.group({
+        lastName: ['', Validators.required],
+        firstName: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        phone: ['', Validators.required],
+        addressDetails: this.fb.array(this.getAddressDetailControls()),
+        //  role: ['', Validators.required],
+        isDeleted:[null,[Validators.required]]
+      });
+      if(this.user){
+        console.log(this.user);
+        this.clientForm.patchValue({
+          lastName: this.user.lastName,
+          firstName: this.user.firstName,
+          email: this.user.email,
+          phone: this.user.phone,
+          addressDetails: this.addressDetail,
+          isDeleted:this.user.isDeleted
+        });
+      }
+    })
+  }
+
   }
 }

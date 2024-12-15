@@ -1,28 +1,30 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Administrator} from '../models/Administrator';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdministratorService {
 
-  constructor() { }
-  manageProducts(): void {
-    // Implementation to manage products
+  private url: string = "http://localhost:8080";
+  constructor(private httpRequest: HttpClient) { };
+
+  getallAdminitrators():Observable<Administrator[]>{
+    return this.httpRequest.get<Administrator[]>(this.url + "/admin");
+  }
+  getAdministratorById(id: string): Observable<Administrator> {
+    return this.httpRequest.get<Administrator>(this.url + "/admin/" + id);
   }
 
-  manageCategories(): void {
-    // Implementation to manage categories
+  updateAdministrator(payload:any, id: string): Observable<Administrator> {
+    return this.httpRequest.put<Administrator>(this.url + "/admin/update/" + id, payload);
   }
-
-  manageUsers(): void {
-    // Implementation to manage users
+  deleteAdministrator(id: string) {
+    return this.httpRequest.delete(this.url + "/admin/delete/" + id);
   }
-
-  manageOrders(): void {
-    // Implementation to manage orders
-  }
-
-  manageStores(): void {
-    // Implementation to manage stores
+  createAdministrator(payload:any): Observable<Administrator> {
+    return this.httpRequest.post<Administrator>(this.url + "/admin/new", payload);
   }
 }

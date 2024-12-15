@@ -4,7 +4,8 @@
   </div>
   <div class="card p-4">
     <button *ngIf="isNotIndex" type="button" routerLink="{{urlAjout}}" class="btn btn-primary mb-3 mt-2 ms-auto btn-add">{{ajout}}</button>
-    <button *ngIf="isUser" class="btn btn-outline-info mb-5 mt-2 ms-auto btn-add" (click)="viewDeactivatedUser()">{{toggle}}</button>
+    <button *ngIf="isUser" class="btn btn-outline-info  mt-2 ms-auto btn-add" (click)="viewDeactivatedUser()">{{toggle}}</button>
+    <button *ngIf="isUser" class="btn btn-outline-secondary mb-5 mt-2 ms-auto btn-add" (click)="viewAdmin()">{{adminButton}}</button>
     <div *ngIf="isLoading" class="text-center my-4">
       <div class="spinner-border text-primary" role="status">
         <span class="visually-hidden">Chargement...</span>
