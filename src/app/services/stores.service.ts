@@ -7,6 +7,7 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class StoresService {
+
   url = 'http://localhost:8080/api/stores';
   constructor(private http:HttpClient) { }
 
@@ -26,4 +27,5 @@ export class StoresService {
   deleteStore(id: string) {
     return this.http.delete(this.url + "/delete/" + id);
   }
+
 }

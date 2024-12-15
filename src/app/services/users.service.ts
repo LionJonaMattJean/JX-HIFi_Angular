@@ -22,13 +22,16 @@ export class UsersService {
   createNewCustomerAccount(newCustomer: Customer): Observable<Customer> {
     return this.httpRequest.post<Customer>(this.url + "/customer/newaccount", newCustomer);
   }
-  
+
   createNewCustomer(newCustomer: Customer): Observable<Customer> {
     return this.httpRequest.post<Customer>(this.url + "/customer/createnew", newCustomer);
   }
-  
+
   createNewAdmin(newAdmin: Administrator): Observable<Administrator> {
     return this.httpRequest.post<Administrator>(this.url + "/admin/new", newAdmin);
+  }
+  getAdminById(id: string): Observable<Administrator> {
+    return this.httpRequest.get<Administrator>(this.url + "/admin/" + id);
   }
 
 
@@ -38,7 +41,10 @@ export class UsersService {
 
 
 
-  // ANCIENNE METHODE 
+
+
+
+  // ANCIENNE METHODE
   // TODO trier et supprimer les methodes inutiles
   getUsers(): Observable<User[]> {
     // return this.httpRequest.get<User[]>(this.dataLink);

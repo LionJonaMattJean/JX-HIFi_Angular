@@ -3,34 +3,89 @@
     <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">{{user.firstName}} {{user.lastName}}</h1>
 
     <div class="col-lg-6">
-      <form>
+      <form [formGroup]="clientForm" (ngSubmit)="modifyUser()" novalidate class="needs-validation">
         <div class="mb-3">
           <label for="lastName" class="form-label">Nom</label>
-          <input type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName" name="lastName">
+          <input type="text" class="form-control" id="lastName" formControlName="lastName"
+            [class.is-invalid]="clientForm.get('lastName')?.invalid && clientForm.get('lastName')?.touched"
+           [class.is-valid]="clientForm.get('lastName')?.valid && clientForm.get('lastName')?.touched"
+          >
+          <div *ngIf="clientForm.get('lastName')?.invalid && clientForm.get('lastName')?.touched" class="invalid-feedback">
+            Le nom est obligatoire
+          </div>
         </div>
         <div class="mb-3">
           <label for="firstName" class="form-label">Prénom</label>
-          <input type="text" class="form-control" id="firstName" [(ngModel)]="user.firstName" name="firstName">
+          <input type="text" class="form-control" id="firstName"  formControlName="firstName"
+          [class.is-invalid]="clientForm.get('firstName')?.invalid && clientForm.get('firstName')?.touched"
+           [class.is-valid]="clientForm.get('firstName')?.valid && clientForm.get('firstName')?.touched"
+          >
+          <div *ngIf="clientForm.get('firstname')?.invalid && clientForm.get('firstName')?.touched" class="invalid-feedback">
+            le prénom est obligatoire
+          </div>
         </div>
+
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
-          <input type="text" class="form-control" id="email" [(ngModel)]="user.email" name="email">
+          <input type="email" class="form-control" id="email"  formControlName="email"
+              [class.is-invalid]="clientForm.get('email')?.invalid && clientForm.get('email')?.touched"
+              [class.is-valid]="clientForm.get('email')?.valid && clientForm.get('email')?.touched"
+          >
+          <div *ngIf="clientForm.get('email')?.invalid && clientForm.get('email')?.touched" class="invalid-feedback">
+            L'email est obligatoire
+          </div>
         </div>
         <div class="mb-3">
           <label for="phone" class="form-label">Téléphone</label>
-          <input type="text" class="form-control" id="phone" [(ngModel)]="user.phone" name="phone">
+          <input type="text" class="form-control" id="phone"  formControlName="phone"
+                [class.is-invalid]="clientForm.get('phone')?.invalid && clientForm.get('phone')?.touched"
+                [class.is-valid]="clientForm.get('phone')?.valid && clientForm.get('phone')?.touched"
+          >
+          <div *ngIf="clientForm.get('phone')?.invalid && clientForm.get('phone')?.touched" class="invalid-feedback">
+            Le téléphone est obligatoire
+          </div>
         </div>
-        <div *ngFor="let detail of addressDetail" class="mb-3">
-          <label for="{{detail.label}}" class="form-label">{{detail.label}}</label>
-          <input type="text" class="form-control" id="address" [(ngModel)]="detail.value" name="{{detail.label}}">
+        <div formArrayName="addressDetails">
+          <div *ngFor="let detail of addressDetails.controls; let i =index" [formGroupName]="i" class="mb-3">
+            <label [for]="'address-' + i"  class="form-label">
+              {{detail.get('label')?.value}}</label>
+            <input type="text" class="form-control" [id]="'address-' + i"   formControlName="value"
+                   [class.is-invalid]="detail.get('value')?.invalid && detail.get('value')?.touched"
+                   [class.is-valid]="detail.get('value')?.valid && detail.get('value')?.touched"
+            >
+            <div *ngIf="detail.get('value')?.invalid && detail.get('value')?.touched" class="invalid-feedback">
+              {{detail.get('label')?.value}} est obligatoire
+            </div>
+          </div>
         </div>
-
+        <div class="mb-3">
+          <label for="isDeleted" class="form-label">État</label>
+          <select class="form-select" id="isDeleted"  formControlName="isDeleted"
+          [class.is-invalid]="clientForm.get('isDeleted')?.invalid && clientForm.get('isDeleted')?.touched"
+          [class.is-valid]="clientForm.get('isDeleted')?.valid && clientForm.get('isDeleted')?.touched"
+          >
+            <option disabled selected>Choisir un état</option>
+            <option [value]=true>Déactivé</option>
+            <option [value]=false>Actif</option>
+          </select>
+          <div *ngIf="clientForm.get('isDeleted')?.invalid && clientForm.get('isDeleted')?.touched" class="invalid-feedback">
+            Veuiller choisir une option
+          </div>
+        </div>
+        <div class="alert-wrapper col-lg-8  mx-auto mt-5">
+          <!-- Alert -->
+          <div *ngIf="alertMessage" [class]="'alert ' + alertType + ' d-flex justify-content-between align-items-center'" role="alert">
+            {{ alertMessage }}
+            <button type="button" class="btn-close" aria-label="Close" (click)="closeAlert()"></button>
+          </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-start mt-5">
+          <button routerLink="/admin/users" type="button" class="btn btn-secondary btn-lg px-4 me-md-2">Retour</button>
+          <button type="reset" class="btn btn-outline-secondary btn-lg px-4 me-md-2" (click)="clearform()">Annuler</button>
+          <button type="button" class="btn btn-success btn-lg px-4 me-md-2" (click)="modifyUser()">Modifier</button>
+        </div>
       </form>
 
-      <div class="d-grid gap-2 d-md-flex justify-content-start mt-5">
-        <button routerLink="/admin/users" type="button" class="btn btn-secondary btn-lg px-4 me-md-2">Retour</button>
-        <button type="button" class="btn btn-success btn-lg px-4 me-md-2" (click)="modifyUser()">Modifier</button>
-      </div>
     </div>
   </div>
 </div>

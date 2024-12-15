@@ -25,28 +25,7 @@ storeForm!:FormGroup;
    alertType:string ="";
 
   constructor(private fb:FormBuilder,private storeService:StoresService) {
-    this.store = {
-      id: '',
-      name: '',
-      address: {
-        id:'',
-        address: '',
-        city: '',
-        postalCode: '',
-        province: '',
-        country: ''
-      },
-      telephone: '',
-      email: '',
-      manager: ''
-    };
-    this.storeForm = this.fb.group({
-      name: ['', Validators.required],
-      addressDetails: this.fb.array(this.getAddressDetailControls()),
-      telephone: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      manager: ['', Validators.required]
-    });
+  this.loadStore();
 
   }
   private getAddressDetailControls() {
@@ -110,5 +89,29 @@ storeForm!:FormGroup;
   clearform(){
     this.storeForm.reset();
     location.reload();
+  }
+  loadStore(){
+    this.store = {
+      id: '',
+      name: '',
+      address: {
+        id:'',
+        address: '',
+        city: '',
+        postalCode: '',
+        province: '',
+        country: ''
+      },
+      telephone: '',
+      email: '',
+      manager: ''
+    };
+    this.storeForm = this.fb.group({
+      name: ['', Validators.required],
+      addressDetails: this.fb.array(this.getAddressDetailControls()),
+      telephone: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      manager: ['', Validators.required]
+    });
   }
 }
