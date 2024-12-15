@@ -38,7 +38,6 @@ export class ConfirmationComponent implements OnInit {
       if(customerId){
         this.customerService.getCustomerById(customerId).subscribe((customer)=>{
           this.userInfo = customer;
-
           this.loadShoppingCart(customerId);
         });
       }else{
@@ -48,10 +47,10 @@ export class ConfirmationComponent implements OnInit {
   }
 
   private loadShoppingCart(customerId: string): void{
-    this.orderService.getOrders().subscribe((orders)=>{
+    this.orderService.getOrders().subscribe((orders) => {
       const cartItems = orders
-      .filter((order)=>order.idCustomer === customerId)
-      .flatMap((order)=> order.orderItems);
+      .filter((order) => order.idCustomer === customerId)
+      .flatMap((order) => order.orderItems);
 
       this.shoppingCart = {
         instance:{} as ShoppingCart,
@@ -72,13 +71,9 @@ export class ConfirmationComponent implements OnInit {
       (acc, item) => acc + item.subTotal,
       0
     );
-    //calcul de la TPS
+    //taxes et total
     this.tps = this.totalBeforeTax * 0.07;
-
-    // Calcul de la TVQ
     this.tvq = this.totalBeforeTax * 0.08;
-
-    // Calcul du total TTC
     this.totalTtc = this.totalBeforeTax + this.tps + this.tvq;
   }
 }
