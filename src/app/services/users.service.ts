@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { map, Observable, of } from 'rxjs';
 import { User } from '../models/User';
 import { Address } from '../models/Address';
+import { Customer } from '../models/Customer';
+import { Administrator } from '../models/Administrator';
 // import mockdata from '../../mockData/mock_json/users.mock.json'
 
 @Injectable({
@@ -10,16 +12,34 @@ import { Address } from '../models/Address';
 })
 
 export class UsersService {
-  private dataLink: string = "src/mockData/mock_json/users.mock.json";
-  private static idNumber: number = 1000;
+  // private dataLink: string = "src/mockData/mock_json/users.mock.json";
+  // private static idNumber: number = 1000;
 
-  constructor(private httpRequest: HttpClient) {
-    this.getUsers().subscribe(users => {
-      const temp = users[users.length - 1].id;
-      UsersService.idNumber = parseInt(temp.substring(3), 10) + 37;
-    })
-  };
+  private url: string = "http://localhost:8080";
 
+  constructor(private httpRequest: HttpClient) { };
+
+  createNewCustomerAccount(newCustomer: Customer): Observable<Customer> {
+    return this.httpRequest.post<Customer>(this.url + "/customer/newaccount", newCustomer);
+  }
+  
+  createNewCustomer(newCustomer: Customer): Observable<Customer> {
+    return this.httpRequest.post<Customer>(this.url + "/customer/createnew", newCustomer);
+  }
+  
+  createNewAdmin(newAdmin: Administrator): Observable<Administrator> {
+    return this.httpRequest.post<Administrator>(this.url + "/admin/new", newAdmin);
+  }
+
+
+
+
+
+
+
+
+  // ANCIENNE METHODE 
+  // TODO trier et supprimer les methodes inutiles
   getUsers(): Observable<User[]> {
     // return this.httpRequest.get<User[]>(this.dataLink);
     // return of(mockdata)
@@ -44,11 +64,11 @@ export class UsersService {
     // Implement logout logic here
   }
 
-  generateId(): string {
-    const id = "USE" + UsersService.idNumber;
-    UsersService.idNumber += 37;
-    return id;
-  }
+  // generateId(): string {
+  //   const id = "USE" + UsersService.idNumber;
+  //   UsersService.idNumber += 37;
+  //   return id;
+  // }
   updateProfile(email: string, firstName: string, lastName: string, phone: string, address: Address): void {
     /*todo Add logic changing this Address*/
 

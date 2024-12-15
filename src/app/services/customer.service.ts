@@ -19,10 +19,6 @@ export class CustomerService {
     return this.httpRequest.get<Customer>(this.url + "/customers/" + id);
   }
 
-  createNewCustomerAccount(newCustomer: Customer): Observable<Customer> {
-    return this.httpRequest.post<Customer>(this.url + "/customer/new", newCustomer);
-  }
-
 
 
   addOrder(order: Order): void {

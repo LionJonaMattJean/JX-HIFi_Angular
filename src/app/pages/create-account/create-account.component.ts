@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Customer } from '../../models/Customer';
-import { CustomerService } from '../../services/customer.service';
+import { UsersService } from '../../services/users.service';
 import { LoginService } from '../../services/login.service';
 import { login } from '../../models/LogIn';
 
@@ -23,7 +23,7 @@ interface CreateForm {
 export class CreateAccountComponent {
   // loginService = inject(LoginService);
   // loginObject: login | undefined;
-  customerService = inject(CustomerService);
+  userService= inject(UsersService);
   customer: Customer;
 
   createForm: FormGroup<CreateForm> = new FormGroup({
@@ -32,6 +32,7 @@ export class CreateAccountComponent {
     createPassword: new FormControl<string | null>(null),
     confirmPassword: new FormControl<string | null>(null),
   });
+
 
   constructor() {
     this.customer = {
@@ -62,7 +63,7 @@ export class CreateAccountComponent {
       this.customer.email = this.createForm.get('enterEmail')?.value || '';
       this.customer.password = this.createForm.get('confirmPassword')?.value || '';
 
-      this.customerService.createNewCustomerAccount(this.customer).subscribe({
+      this.userService.createNewCustomerAccount(this.customer).subscribe({
         next: (data: any) => {
           alert("Account succesfully created.");
         },

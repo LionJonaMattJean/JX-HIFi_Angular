@@ -6,27 +6,27 @@
       <form>
         <div class="mb-3">
           <label for="lastName" class="form-label">Nom</label>
-          <input type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName" name="lastName">
+          <input required type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName" name="lastName">
         </div>
         <div class="mb-3">
           <label for="firstName" class="form-label">Prénom</label>
-          <input type="text" class="form-control" id="firstName" [(ngModel)]="user.firstName" name="firstName">
+          <input required type="text" class="form-control" id="firstName" [(ngModel)]="user.firstName" name="firstName">
         </div>
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
-          <input type="text" class="form-control" id="email" [(ngModel)]="user.email" name="email">
+          <input required type="text" class="form-control" id="email" [(ngModel)]="user.email" name="email">
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Mot de passe</label>
-          <input type="password" class="form-control" id="password" [(ngModel)]="user.password" name="password">
+          <input required type="password" class="form-control" id="password" [(ngModel)]="user.password" name="password">
         </div>
         <div class="mb-3">
           <label for="phone" class="form-label">Téléphone</label>
-          <input type="text" class="form-control" id="phone" [(ngModel)]="user.phone" name="phone">
+          <input required type="text" class="form-control" id="phone" [(ngModel)]="user.phone" name="phone">
         </div>
         <div *ngFor="let detail of addressDetail" class="mb-3">
           <label for="{{detail.label}}" class="form-label">{{detail.label}}</label>
-          <input type="text" class="form-control" id="{{detail.label}}" [(ngModel)]="detail.value" name="{{detail.label}}">
+          <input required type="text" class="form-control" id="{{detail.label}}" [(ngModel)]="detail.value" name="{{detail.label}}">
         </div>
         <div class="mb-3">
           <label for="role" class="form-label">Role</label>
