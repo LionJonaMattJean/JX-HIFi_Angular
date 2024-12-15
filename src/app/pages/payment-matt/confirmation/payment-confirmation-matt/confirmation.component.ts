@@ -22,6 +22,8 @@ import { ShoppingCart } from '../../../../models/ShoppingCart';
 export class ConfirmationComponent implements OnInit {
   userInfo: Customer | null = null;
   shoppingCart: ShoppingCart | null = null;
+  orderConfirmationNumber: string = '';
+
   totalBeforeTax: number = 0; 
   tps: number = 0;  
   tvq: number = 0;  
@@ -34,33 +36,49 @@ export class ConfirmationComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.generateOrderConfirmationNumber();
+    this.loadCustomerData();
+  }
+
+  private generateOrderConfirmationNumber() : void{
+
     this.loginService.getCustomerId().subscribe((customerId)=>{
       if(customerId){
-        this.customerService.getCustomerById(customerId).subscribe((customer)=>{
+        this.customerService.getCustomerById(customerId).subscribe((customer) =>{
+          if(customer && customer.address){
+            const addressPrefix = customer.address.address.substring(0,4);
+            const today = new Date();
+            const dateString = today.toISOString().split('T')[0];
+
+            this.orderConfirmationNumber = `${customerId}${addressPrefix}${dateString}`;
+          }
+        });
+      }
+    });
+  }
+  
+  private loadCustomerData(): void{
+    this.loginService.getCustomerId().subscribe((customerId) => {
+      if(customerId){
+        this.customerService.getCustomerById(customerId).subscribe((customer) => {
           this.userInfo = customer;
           this.loadShoppingCart(customerId);
         });
-      }else{
-        console.warn('Aucun utilisateur connecté');
       }
     });
   }
 
-  private loadShoppingCart(customerId: string): void{
+  private loadShoppingCart(customerId: string): void {
     this.orderService.getOrders().subscribe((orders) => {
-      const cartItems = orders
-      .filter((order) => order.idCustomer === customerId)
-      .flatMap((order) => order.orderItems);
-
+      const cartItems = orders.flatMap((order) => order.orderItems);
       this.shoppingCart = {
-        instance:{} as ShoppingCart,
+        instance: {} as ShoppingCart,
         customer: this.userInfo!,
         cartItems,
-        total: cartItems.reduce((acc, item)=> acc + item.subTotal, 0),
+        total: orders.reduce((acc, order) => acc + order.totalAmount, 0),
       };
-
       this.calculateTotals();
-    })
+    });
   }
 
     private calculateTotals(): void {
@@ -77,5 +95,6 @@ export class ConfirmationComponent implements OnInit {
     this.totalTtc = this.totalBeforeTax + this.tps + this.tvq;
   }
 }
+    
 
     

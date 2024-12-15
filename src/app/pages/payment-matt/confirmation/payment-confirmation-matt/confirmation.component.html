@@ -7,7 +7,7 @@
         <!-- Affichage du numéro de confirmation de commande -->
         <div class="mb-3">
           <label for="NumConfirmation" class="form-label">Voici le numéro de confirmation de votre achat :</label>
-          <input type="text" id="NumConfirmation" class="form-control" readonly value="12345ABC"/>
+          <input type="text" id="NumConfirmation" class="form-control" readonly [value]="orderConfirmationNumber" />
         </div>
 
         <!-- Affichage du nom du client -->
@@ -69,30 +69,30 @@
         </div>
 
         <!-- Totaux -->
-        <div class="mb-3">
-          <label for="totalBeforeTax" class="form-label">Total des articles (avant taxe) :</label>
+        <div class="mb-3 d-flex justify-content-end">
+          <label for="totalBeforeTax" class="form-label totals-section label ">Total des articles (avant taxe) </label>
           <input
             type="text"
             id="totalBeforeTax"
-            class="form-control"
+            class="form-control totals-input "
             [value]="totalBeforeTax | currency"
             readonly
           />
         </div>
 
-        <div class="mb-3">
-          <label for="tps" class="form-label">TPS :</label>
-          <input type="text" id="tps" class="form-control" [value]="tps | currency" readonly />
+        <div class="mb-3 d-flex justify-content-end">
+          <label for="tps" class="form-label totals-section label">TPS </label>
+          <input type="text" id="tps" class="form-control totals-input " [value]="tps | currency" readonly />
         </div>
 
-        <div class="mb-3">
-          <label for="tvq" class="form-label">TVQ :</label>
-          <input type="text" id="tvq" class="form-control" [value]="tvq | currency" readonly />
+        <div class="mb-3 d-flex justify-content-end">
+          <label for="tvq" class="form-label totals-section label">TVQ </label>
+          <input type="text" id="tvq" class="form-control totals-input " [value]="tvq | currency" readonly />
         </div>
 
-        <div class="mb-3">
-          <label for="totalTtc" class="form-label">Total TTC :</label>
-          <input type="text" id="totalTtc" class="form-control" [value]="totalTtc | currency" readonly />
+        <div class="mb-3 d-flex justify-content-end">
+          <label for="totalTtc" class="form-label totals-section label">Total TTC </label>
+          <input type="text" id="totalTtc" class="form-control totals-input " [value]="totalTtc | currency" readonly />
         </div>
 
         <!-- Bouton de retour à la page d'accueil -->
