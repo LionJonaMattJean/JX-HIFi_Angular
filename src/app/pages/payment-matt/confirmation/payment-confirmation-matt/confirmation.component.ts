@@ -5,12 +5,11 @@ import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 //services imports
 import { CustomerService } from '../../../../services/customer.service';
-import { ShoppingCartService } from '../../../../services/shopping-cart.service';
+import { LoginService } from '../../../../services/login.service';
 import { OrderService } from '../../../../services/order.service';
 //modeles imports
 import { Customer } from '../../../../models/Customer';
 import { ShoppingCart } from '../../../../models/ShoppingCart';
-import { OrderItem } from '../../../../models/OrderItem';
 
 @Component({
   selector: 'app-confirmation',
@@ -23,6 +22,8 @@ import { OrderItem } from '../../../../models/OrderItem';
 export class ConfirmationComponent implements OnInit {
   userInfo: Customer | null = null;
   shoppingCart: ShoppingCart | null = null;
+  orderConfirmationNumber: string = '';
+
   totalBeforeTax: number = 0; 
   tps: number = 0;  
   tvq: number = 0;  
@@ -30,29 +31,54 @@ export class ConfirmationComponent implements OnInit {
 
   constructor(
     private customerService:CustomerService,
+    private loginService: LoginService,
     private orderService: OrderService) {}
 
   ngOnInit(): void {
 
-    this.customerService.getCustomerById('123')
-      .subscribe((customer)=>{
-      this.userInfo = customer;
-      console.log('User Info:', this.userInfo);
-    })
+    this.generateOrderConfirmationNumber();
+    this.loadCustomerData();
+  }
 
-    this.orderService.getOrders()
-      .subscribe((orders)=>{
-        const cartItems = orders.flatMap((order)=> order.orderItems);
+  private generateOrderConfirmationNumber() : void{
+
+    this.loginService.getCustomerId().subscribe((customerId)=>{
+      if(customerId){
+        this.customerService.getCustomerById(customerId).subscribe((customer) =>{
+          if(customer && customer.address){
+            const addressPrefix = customer.address.address.substring(0,4);
+            const today = new Date();
+            const dateString = today.toISOString().split('T')[0];
+
+            this.orderConfirmationNumber = `${customerId}${addressPrefix}${dateString}`;
+          }
+        });
+      }
+    });
+  }
+  
+  private loadCustomerData(): void{
+    this.loginService.getCustomerId().subscribe((customerId) => {
+      if(customerId){
+        this.customerService.getCustomerById(customerId).subscribe((customer) => {
+          this.userInfo = customer;
+          this.loadShoppingCart(customerId);
+        });
+      }
+    });
+  }
+
+  private loadShoppingCart(customerId: string): void {
+    this.orderService.getOrders().subscribe((orders) => {
+      const cartItems = orders.flatMap((order) => order.orderItems);
       this.shoppingCart = {
-        instance:{} as ShoppingCart,
+        instance: {} as ShoppingCart,
         customer: this.userInfo!,
         cartItems,
-        total: orders.reduce((acc, order)=> acc + order.totalAmount, 0),
+        total: orders.reduce((acc, order) => acc + order.totalAmount, 0),
       };
-
-      console.log('Shopping Cart: ', this.shoppingCart);
       this.calculateTotals();
-    }); 
+    });
   }
 
     private calculateTotals(): void {
@@ -63,15 +89,12 @@ export class ConfirmationComponent implements OnInit {
       (acc, item) => acc + item.subTotal,
       0
     );
-    //calcul de la TPS
+    //taxes et total
     this.tps = this.totalBeforeTax * 0.07;
-
-    // Calcul de la TVQ
     this.tvq = this.totalBeforeTax * 0.08;
-
-    // Calcul du total TTC
     this.totalTtc = this.totalBeforeTax + this.tps + this.tvq;
   }
 }
+    
 
     

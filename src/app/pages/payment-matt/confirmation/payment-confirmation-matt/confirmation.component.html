@@ -4,74 +4,95 @@
       <form class="form-design">
         <h3 class="text-center mb-4">Merci pour votre confiance !</h3>
 
-        <!-- Informations utilisateur -->
-        <div class="mb-3" *ngIf="userInfo">
+        <!-- Affichage du numéro de confirmation de commande -->
+        <div class="mb-3">
+          <label for="NumConfirmation" class="form-label">Voici le numéro de confirmation de votre achat :</label>
+          <input type="text" id="NumConfirmation" class="form-control" readonly [value]="orderConfirmationNumber" />
+        </div>
+
+        <!-- Affichage du nom du client -->
+        <div class="mb-3">
           <label for="Nom" class="form-label">Nom :</label>
           <input
             type="text"
             id="Nom"
             class="form-control"
+            value="{{ userInfo?.firstName + ' ' + userInfo?.lastName }}"
             readonly
-            [value]="userInfo.firstName + ' ' + userInfo.lastName"
           />
         </div>
-        <div class="mb-3" *ngIf="userInfo">
+
+        <!-- Affichage de l'adresse de livraison du client -->
+        <div class="mb-3">
           <label for="shippingAddress" class="form-label">Adresse de livraison :</label>
           <input
             type="text"
             id="shippingAddress"
             class="form-control"
+            value="{{ userInfo?.address?.address + 
+            ', ' + userInfo?.address?.city +
+            ', ' + userInfo?.address?.province +
+             ' ' + userInfo?.address?.postalCode }}"
             readonly
-            [value]="userInfo.address.address"
           />
         </div>
 
-               <!-- Détails du panier -->
-               <h5>Détails de votre commande</h5>
-               <div *ngIf="shoppingCart && shoppingCart.cartItems.length > 0; else emptyCart" class="table-responsive">
-                 <table class="table">
-                   <thead>
-                     <tr>
-                       <th>Produit</th>
-                       <th>Quantité</th>
-                       <th>Sous-total</th>
-                     </tr>
-                   </thead>
-                   <tbody>
-                     <tr *ngFor="let item of shoppingCart.cartItems">
-                       <td>{{ item.product.name }}</td>
-                       <td>{{ item.quantity }}</td>
-                       <td>{{ item.subTotal | currency }}</td>
-                     </tr>
-                   </tbody>
-                 </table>
-               </div>
-       
-               <ng-template #emptyCart>
-                 <p>Votre panier est vide.</p>
-               </ng-template>
+        <!-- Détails de la commande et informations supplémentaires -->
+        <h5>Quand...</h5>
+        <table class="table">
+          <tr>
+            <td>Livraison CoD</td>
+          </tr>
+          <tr>
+            <td>Temps de livraison : 5 à 10 jours ouvrables</td>
+          </tr>
+        </table>
 
-        <!-- Totaux alignés à droite -->
-        <div class="d-flex flex-column align-items-end totals-section">
-          <div class="mb-2">
-            <label for="totalBeforeTax" class="form-label me-2">Total (avant taxe) :</label>
-            <input type="text" id="totalBeforeTax" class="form-control form-control-sm d-inline-block totals-input" [value]="totalBeforeTax | currency" readonly />
-          </div>
+        <h5>Détails de votre commande</h5>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Article</th>
+                <th>Quantité</th>
+                <th>Coût avant taxe</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of shoppingCart?.cartItems">
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ (item.subTotal) | currency }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-          <div class="mb-2">
-            <label for="tps" class="form-label me-2">TPS :</label>
-            <input type="text" id="tps" class="form-control form-control-sm d-inline-block totals-input" [value]="tps | currency" readonly />
-          </div>
+        <!-- Totaux -->
+        <div class="mb-3 d-flex justify-content-end">
+          <label for="totalBeforeTax" class="form-label totals-section label ">Total des articles (avant taxe) </label>
+          <input
+            type="text"
+            id="totalBeforeTax"
+            class="form-control totals-input "
+            [value]="totalBeforeTax | currency"
+            readonly
+          />
+        </div>
 
-          <div class="mb-2">
-            <label for="tvq" class="form-label me-2">TVQ :</label>
-            <input type="text" id="tvq" class="form-control form-control-sm d-inline-block totals-input" [value]="tvq | currency" readonly />
-          </div>
+        <div class="mb-3 d-flex justify-content-end">
+          <label for="tps" class="form-label totals-section label">TPS </label>
+          <input type="text" id="tps" class="form-control totals-input " [value]="tps | currency" readonly />
+        </div>
 
-          <div class="mb-2">
-            <label for="totalTtc" class="form-label me-2">Total TTC :</label>
-            <input type="text" id="totalTtc" class="form-control form-control-sm d-inline-block totals-input" [value]="totalTtc | currency" readonly />
-          </div>
+        <div class="mb-3 d-flex justify-content-end">
+          <label for="tvq" class="form-label totals-section label">TVQ </label>
+          <input type="text" id="tvq" class="form-control totals-input " [value]="tvq | currency" readonly />
+        </div>
+
+        <div class="mb-3 d-flex justify-content-end">
+          <label for="totalTtc" class="form-label totals-section label">Total TTC </label>
+          <input type="text" id="totalTtc" class="form-control totals-input " [value]="totalTtc | currency" readonly />
         </div>
 
         <!-- Bouton de retour à la page d'accueil -->
