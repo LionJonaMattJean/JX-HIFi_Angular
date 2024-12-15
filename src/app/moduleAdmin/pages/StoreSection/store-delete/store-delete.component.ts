@@ -27,8 +27,8 @@ export class StoreDeleteComponent {
     });
   }
   deleteStore(){
-   // this.storeService.deleteUser(this.id).subscribe(() => {
+    this.storeService.deleteStore(this.id).subscribe(() => {
     this.isDelete = true;
-    //});
+    });
   }
 }

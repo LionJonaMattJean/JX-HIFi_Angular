@@ -3,7 +3,7 @@
     <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Ajout Catégorie</h1>
 
     <div class="col-lg-6">
-      <form [formGroup]="categoryForm" (ngSubmit)="ajoutCategory()" class="form-group ">
+      <form [formGroup]="categoryForm" (ngSubmit)="ajoutCategory()" novalidate class="form-group needs-validation ">
 
         <div class="mb-3">
           <label for="name" class="form-label">Nom</label>

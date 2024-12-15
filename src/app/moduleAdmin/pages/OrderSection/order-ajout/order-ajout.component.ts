@@ -57,6 +57,7 @@ constructor(private productService: ProductsService,private usersService:UsersSe
     status: "",
     orderDate: {day:0,month:0,year:0},
     shippingAddress:{
+      id:"",
       address: "",
       city: "",
       postalCode: "",
@@ -74,6 +75,7 @@ constructor(private productService: ProductsService,private usersService:UsersSe
     role: "",
     isDeleted: false,
     address:{
+      id:"",
       address: "",
       city: "",
       postalCode: "",
@@ -167,6 +169,7 @@ constructor(private productService: ProductsService,private usersService:UsersSe
       role: "",
       isDeleted: false,
       address: {
+        id:"",
         address: "",
         city: "",
         postalCode: "",
