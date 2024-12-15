@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+//services imports
+import { CustomerService } from '../../../../services/customer.service';
+import { ShoppingCartService } from '../../../../services/shopping-cart.service';
+import { OrderService } from '../../../../services/order.service';
+//modeles imports
+import { Customer } from '../../../../models/Customer';
+import { ShoppingCart } from '../../../../models/ShoppingCart';
+import { OrderItem } from '../../../../models/OrderItem';
 
 @Component({
   selector: 'app-confirmation',
@@ -15,43 +21,57 @@ import { CommonModule } from '@angular/common';
 })
 
 export class ConfirmationComponent implements OnInit {
-  userInfo: any = {};
-  
+  userInfo: Customer | null = null;
+  shoppingCart: ShoppingCart | null = null;
   totalBeforeTax: number = 0; 
   tps: number = 0;  
   tvq: number = 0;  
   totalTtc: number = 0; 
 
-  shoppingCart: any[] = [{name:'objet1', quantity:1, price: 20.00},
-                         {name:'objet2', quantity:2, price: 15.00}, ]
-
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private customerService:CustomerService,
+    private orderService: OrderService) {}
 
   ngOnInit(): void {
 
-    const navigation = this.route.snapshot;
+    this.customerService.getCustomerById('123')
+      .subscribe((customer)=>{
+      this.userInfo = customer;
+      console.log('User Info:', this.userInfo);
+    })
 
-    if (navigation && navigation.root && navigation.root.children[0]?.data?.['userInfo']) {
-      this.userInfo = navigation.root.children[0].data['userInfo'];
-    } else {
-    console.warn('Aucune donnée userInfo transmise via le routage.');
-    // Ajout de valeurs par défaut pour éviter les erreurs dans le HTML
-    this.userInfo = {
-      name: 'Nom par défaut',
-      address: 'Adresse par défaut',
-    };
-      console.log('Contenu de userInfo: ', this.userInfo)
-      console.log('Contenu de shoppingCart : ', this.shoppingCart);
+    this.orderService.getOrders()
+      .subscribe((orders)=>{
+        const cartItems = orders.flatMap((order)=> order.orderItems);
+      this.shoppingCart = {
+        instance:{} as ShoppingCart,
+        customer: this.userInfo!,
+        cartItems,
+        total: orders.reduce((acc, order)=> acc + order.totalAmount, 0),
+      };
 
+      console.log('Shopping Cart: ', this.shoppingCart);
+      this.calculateTotals();
+    }); 
+  }
 
-      this.totalTtc = this.totalBeforeTax + this.tps + this.tvq;
+    private calculateTotals(): void {
 
-      // Calculer le total, des taxes et du TTC
-      this.totalBeforeTax = this.shoppingCart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-      this.tps = this.totalBeforeTax * 0.07;
-      this.tvq = this.totalBeforeTax * 0.08;
-      this.totalTtc = this.totalBeforeTax + this.tps + this.tvq;
-    }
+    if(!this.shoppingCart) return;
+    //total avant taxe
+    this.totalBeforeTax = this.shoppingCart.cartItems.reduce(
+      (acc, item) => acc + item.subTotal,
+      0
+    );
+    //calcul de la TPS
+    this.tps = this.totalBeforeTax * 0.07;
 
+    // Calcul de la TVQ
+    this.tvq = this.totalBeforeTax * 0.08;
+
+    // Calcul du total TTC
+    this.totalTtc = this.totalBeforeTax + this.tps + this.tvq;
   }
 }
+
+    

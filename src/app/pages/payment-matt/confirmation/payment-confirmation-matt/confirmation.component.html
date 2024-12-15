@@ -4,56 +4,52 @@
       <form class="form-design">
         <h3 class="text-center mb-4">Merci pour votre confiance !</h3>
 
-        <div class="mb-3">
-          <label for="NumConfirmation" class="form-label">Voici le numéro de confirmation de votre achat :</label>
-          <input type="text" id="NumConfirmation" class="form-control" readonly value="12345ABC" />
+        <!-- Informations utilisateur -->
+        <div class="mb-3" *ngIf="userInfo">
+          <label for="Nom" class="form-label">Nom :</label>
+          <input
+            type="text"
+            id="Nom"
+            class="form-control"
+            readonly
+            [value]="userInfo.firstName + ' ' + userInfo.lastName"
+          />
+        </div>
+        <div class="mb-3" *ngIf="userInfo">
+          <label for="shippingAddress" class="form-label">Adresse de livraison :</label>
+          <input
+            type="text"
+            id="shippingAddress"
+            class="form-control"
+            readonly
+            [value]="userInfo.address.address"
+          />
         </div>
 
-        <div *ngIf="userInfo">
-          <div class="mb-3">
-            <label for="Nom" class="form-label">Nom :</label>
-            <input type="text" id="Nom" class="form-control" [value]="userInfo.name" readonly />
-          </div>
-        
-          <div class="mb-3">
-            <label for="shippingAddress" class="form-label">Adresse de livraison :</label>
-            <input type="text" id="shippingAddress" class="form-control" [value]="userInfo.address" readonly />
-          </div>
-        </div>
-
-        <h5>Quand...</h5>
-        <table class="table">
-          <tr>
-            <td>Livraison CoD</td>
-          </tr>
-          <tr>
-            <td>Temps de livraison : 5 à 10 jours ouvrables</td>
-          </tr>
-        </table>
-
-        <h5>Détails de votre commande</h5>
-          <div *ngIf="shoppingCart.length > 0; else emptyCart" class="table-responsive">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Article</th>
-                  <th>Quantité</th>
-                  <th>Coût avant taxe</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let item of shoppingCart">
-                  <td>{{ item.name }}</td>
-                  <td>{{ item.quantity }}</td>
-                  <td>{{ (item.price * item.quantity) | currency }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <ng-template #emptyCart>
-            <p>Votre panier est vide.</p>
-          </ng-template>
+               <!-- Détails du panier -->
+               <h5>Détails de votre commande</h5>
+               <div *ngIf="shoppingCart && shoppingCart.cartItems.length > 0; else emptyCart" class="table-responsive">
+                 <table class="table">
+                   <thead>
+                     <tr>
+                       <th>Produit</th>
+                       <th>Quantité</th>
+                       <th>Sous-total</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr *ngFor="let item of shoppingCart.cartItems">
+                       <td>{{ item.product.name }}</td>
+                       <td>{{ item.quantity }}</td>
+                       <td>{{ item.subTotal | currency }}</td>
+                     </tr>
+                   </tbody>
+                 </table>
+               </div>
+       
+               <ng-template #emptyCart>
+                 <p>Votre panier est vide.</p>
+               </ng-template>
 
         <!-- Totaux alignés à droite -->
         <div class="d-flex flex-column align-items-end totals-section">
