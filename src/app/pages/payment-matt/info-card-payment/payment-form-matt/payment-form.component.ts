@@ -2,19 +2,32 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ImagesPaymentComponent } from "../images-payment/images-payment.component";
 import { PaymentChoicesComponent } from "../payment-choices/payment-choices.component";
-import { PaymentFormulaireComponent } from "../payment-formulaire/payment-formulaire.component";
-import { PaymentAlternateShippingComponent } from "../payment-alternate-shipping/payment-alternate-shipping.component";
-import { RouterLink } from '@angular/router';
+import { NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
+
+
 
 @Component({
   selector: 'app-payment-form',
   standalone: true,
-  imports: [FormsModule,RouterLink, ImagesPaymentComponent, PaymentChoicesComponent, PaymentFormulaireComponent, PaymentAlternateShippingComponent],
+  imports: [ FormsModule,NgIf,CommonModule,
+    ImagesPaymentComponent,
+    PaymentChoicesComponent],
   templateUrl: './payment-form.component.html',
-  styleUrl: './payment-form.component.css'
-})
-export class PaymentFormComponent {
-  
+  styleUrl: './payment-form.component.css',
 
+})
+
+
+export class PaymentFormComponent {
+
+  sameAddress: boolean = false;
+  modePaiement: string = '----';
+  
+  constructor(){}
+  
+  toggleSameAddress() {
+    this.sameAddress = !this.sameAddress;
+  }
 
 }
