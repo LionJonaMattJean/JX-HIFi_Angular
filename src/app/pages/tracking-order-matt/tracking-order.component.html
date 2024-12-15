@@ -1,76 +1,70 @@
-<div class="background">
-    <div class="container">
-        <form class="form-design">
-            <h1>Merci pour votre confiance!</h1>
-            <div>
-                <p>Si vous désirer obtenir des
-                    mises-à-jour concernant votre livraison, veuillez entrer les informations
-                    suivantes:</p>
-            </div>
-            <table>
-                <tr>
-                    <td>
-                        <label for="suivi" class="form-label ">Entrez votre numéro de confirmation:</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="text" class="form-control width" id="NumConfirmation"
-                        class="narrow-input" required>
-                    </td>
-                </tr>
-            </table>
-            <h5 for="suivi">(Le numéro de commande vous a été remis
-                            lors de la confirmation de paiement.)</h5>
-            <table>
-                <tr>
-                    <td>
-                        <label for="suivi">Entrer votre courriel:</label>
-                    </td>    
-                </tr>
-                <tr>
-                    <td>
-                        <input type="text" class="form-control" id="Courriel" class="wide-input" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img class="form img" src="assets/images/logo/Logo JX-HIFI.png">                   
-                    </td>
-                </tr>
-            </table>
-            <div>
-                <div>
-                    <p class="p-text">Un courriel vous sera acheminé
-                                                à chaques étapes clées de la livraison.</p>
-                </div>
-            </div>
-            <table>
-                <tr>
-                    <td>
-                        <p class="p-text">Veuillez noter que nous ne sommes pas responsable
-                            dans le cas où la livraison dépasse les délais prévus si vous habitez dans
-                            une région éloignée ou que le service de livraison dans votre localité ne
-                            fait pas parti de notre réseau de distribution.</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p  class="p-text">Important de noter que votre courriel ne sera pas
-                            utiliser à des fins de publicité et que vous allez recevoir uniquement
-                            des courriels pour suivre l'évolution de votre commande.</p>
-                    </td>
-                </tr>
-                </table>
-            <table>
-                <tr>
-                    <td>
-                        <label class="form-label">Merci encore de votre confiance en JX-HiFi!</label>
-                    </td>
-                </tr>
-                
-            </table>
-            <button type="submit" class="btn btn-primary width">Confirmer le suivi</button>
-        </form>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12 col-md-8 mx-auto">
+      <form class="form-design">
+        <h3 class="text-center mb-4">Merci pour votre confiance !</h3>
+
+        <div class="mb-3">
+          <label for="NumConfirmation" class="form-label">Votre numéro de confirmation:</label>
+          <input
+            type="text"
+            id="NumConfirmation"
+            class="form-control"
+            [(ngModel)]="NumConfirmation"
+            name="NumConfirmation"
+            class="form-control"
+            readonly
+          />
+        </div>
+        <div class="mb-3">
+          <label for="Courriel" class="form-label">Entrer votre courriel:</label>
+          <input
+            type="email"
+            id="Courriel"
+            class="form-control"
+            [(ngModel)]="email"
+            name="email"
+            required
+          />
+        </div>
+
+        <div>
+          <p class="p-text">
+            Un courriel vous sera acheminé à chaque étape clé de la livraison.
+          </p>
+        </div>
+
+        <table class="table">
+          <tr>
+            <td>
+              <p class="p-text">
+                Veuillez noter que nous ne sommes pas responsables dans le cas où la livraison
+                dépasse les délais prévus si vous habitez dans une région éloignée ou que le
+                service de livraison dans votre localité ne fait pas partie de notre réseau de
+                distribution.
+              </p>
+            </td>
+          </tr>
+          <!-- Logo -->
+          <div class="text-center mb-4 ">
+            <img src="assets/images/logo/Logo JX-HIFI.png" alt="Logo JX-Hifi" class="img-fluid" style="max-width: 200px; height: auto; display: block; margin: 0 auto;" />
+
+          </div>
+          <tr>
+            <td>
+              <p class="p-text">
+                Important de noter que votre courriel ne sera pas utilisé à des fins de publicité
+                et que vous allez recevoir uniquement des courriels pour suivre l'évolution de
+                votre commande.
+              </p>
+            </td>
+          </tr>
+        </table>
+
+        <div class="d-flex justify-content-center mt-4">
+          <button type="submit" class="btn btn-primary">Confirmer le suivi</button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>

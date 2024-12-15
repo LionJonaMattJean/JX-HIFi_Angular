@@ -42,6 +42,7 @@ import { CreateAccountComponent } from './pages/create-account/create-account.co
 import { AccountDetailsComponent } from './pages/account-details/account-details.component';
 import { PersonalInfoComponent } from './pages/account-details/personal-info/personal-info.component';
 import { OrdersComponent } from './pages/account-details/orders/orders.component';
+import { TrackingOrderComponent } from './pages/tracking-order-matt/tracking-order.component';
 
 
 
@@ -62,6 +63,7 @@ export const routes: Routes = [
       { path: 'cart', component: PanierComponent },
       { path: 'formTransaction', component: PaymentFormComponent },
       { path: 'confirmation', component: ConfirmationComponent },
+      { path: 'tracking-order', component: TrackingOrderComponent },
       { path: 'login', component: LoginLionComponent },
       { path: 'create-account', component: CreateAccountComponent },
       { path: 'account-details', component: AccountDetailsComponent,

@@ -95,6 +95,11 @@
           <input type="text" id="totalTtc" class="form-control totals-input " [value]="totalTtc | currency" readonly />
         </div>
 
+        <!-- Bouton pour suivre la commande -->
+        <div class="d-flex justify-content-center">
+          <a [routerLink]="['/tracking-order']" (click)="redirectToTracking()" class="btn btn-secondary mt-4">Suivre ma commande</a>
+        </div>
+
         <!-- Bouton de retour à la page d'accueil -->
         <div class="d-flex justify-content-center">
           <a [routerLink]="['/home']" class="btn btn-secondary mt-4">Fermer cette fenêtre</a>

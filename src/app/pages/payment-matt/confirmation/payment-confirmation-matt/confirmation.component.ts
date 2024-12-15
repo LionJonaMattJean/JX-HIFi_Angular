@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 //services imports
 import { CustomerService } from '../../../../services/customer.service';
@@ -32,7 +32,12 @@ export class ConfirmationComponent implements OnInit {
   constructor(
     private customerService:CustomerService,
     private loginService: LoginService,
-    private orderService: OrderService) {}
+    private orderService: OrderService,
+    private router: Router) {}
+
+    redirectToTracking(){
+      this.router.navigate(['tracking-order'],{queryParams:{orderNumber: this.orderConfirmationNumber}});
+    }
 
   ngOnInit(): void {
 
@@ -94,6 +99,9 @@ export class ConfirmationComponent implements OnInit {
     this.tvq = this.totalBeforeTax * 0.08;
     this.totalTtc = this.totalBeforeTax + this.tps + this.tvq;
   }
+
+
+
 }
     
 
