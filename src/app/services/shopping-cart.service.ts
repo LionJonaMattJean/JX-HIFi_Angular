@@ -62,11 +62,10 @@ export class ShoppingCartService {
     );
   }
 
-
-
   public removeItem(orderItemId: string) {
     /*  this._cartItems = this._cartItems.filter(item => item.id !== orderItemId);
       this.calculateTotal();*/
+    this.http.delete(this.url + "/api/cart" + "USE1000/remove")
   }
 
   public updateItemQuantity(orderItemId: string, newQuantity: number) {
@@ -74,6 +73,16 @@ export class ShoppingCartService {
       if(!item) return; //todo throw error or log, item not found in user interface
       item.quantity = newQuantity;
       this.calculateTotal();*/
+      const item = ShoppingCartService.shopppingCart.cartItems.find(i => i.id === orderItemId);
+      if (item) {
+        item.quantity = newQuantity;
+        // Optionally, recalculate the total price
+        this.calculateTotal(item.product.costPrice);
+        // Persist the updated cart to the backend
+        this.saveCart(ShoppingCartService.shopppingCart.customer.id);
+      } else {
+        console.error(`Item with id ${orderItemId} not found.`);
+      }
   }
 
   public calculateTotal(priceItemAdded: number) {
