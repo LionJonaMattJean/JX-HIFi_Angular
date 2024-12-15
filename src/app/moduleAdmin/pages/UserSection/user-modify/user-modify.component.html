@@ -20,7 +20,7 @@
           [class.is-invalid]="clientForm.get('firstName')?.invalid && clientForm.get('firstName')?.touched"
            [class.is-valid]="clientForm.get('firstName')?.valid && clientForm.get('firstName')?.touched"
           >
-          <div *ngIf="clientForm.get('firstname')?.invalid && clientForm.get('firstName')?.touched" class="invalid-feedback">
+          <div *ngIf="clientForm.get('firstName')?.invalid && clientForm.get('firstName')?.touched" class="invalid-feedback">
             le prénom est obligatoire
           </div>
         </div>
@@ -33,6 +33,16 @@
           >
           <div *ngIf="clientForm.get('email')?.invalid && clientForm.get('email')?.touched" class="invalid-feedback">
             L'email est obligatoire
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Mot de passe</label>
+          <input type="password" class="form-control" id="password" placeholder="seulement si le mot de passe est a changer"  formControlName="password"
+                 [class.is-invalid]="clientForm.get('password')?.invalid && clientForm.get('password')?.touched"
+                 [class.is-valid]="clientForm.get('password')?.valid && clientForm.get('password')?.touched"
+          >
+          <div *ngIf="clientForm.get('password')?.invalid && clientForm.get('password')?.touched" class="invalid-feedback">
+            Le mot de passe est obligatoire et 8 charactere minimum
           </div>
         </div>
         <div class="mb-3">

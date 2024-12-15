@@ -20,7 +20,7 @@
                  [class.is-invalid]="clientForm.get('firstName')?.invalid && clientForm.get('firstName')?.touched"
                  [class.is-valid]="clientForm.get('firstName')?.valid && clientForm.get('firstName')?.touched"
           >
-          <div *ngIf="clientForm.get('firstname')?.invalid && clientForm.get('firstName')?.touched" class="invalid-feedback">
+          <div *ngIf="clientForm.get('firstName')?.invalid && clientForm.get('firstName')?.touched" class="invalid-feedback">
             le prénom est obligatoire
           </div>
         </div>
@@ -33,6 +33,16 @@
           >
           <div *ngIf="clientForm.get('email')?.invalid && clientForm.get('email')?.touched" class="invalid-feedback">
             L'email est obligatoire
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Mot de passe</label>
+          <input type="password" class="form-control" id="password"  formControlName="password"
+                 [class.is-invalid]="clientForm.get('password')?.invalid && clientForm.get('password')?.touched"
+                 [class.is-valid]="clientForm.get('password')?.valid && clientForm.get('password')?.touched"
+          >
+          <div *ngIf="clientForm.get('password')?.invalid && clientForm.get('password')?.touched" class="invalid-feedback">
+            Le mot de passe est obligatoire et 8 charactere minimum
           </div>
         </div>
         <div class="mb-3">
@@ -58,27 +68,14 @@
             </div>
           </div>
         </div>
-        <div class="mb-3">
-          <label for="isDeleted" class="form-label">État</label>
-          <select class="form-select" id="isDeleted"  formControlName="isDeleted"
-                  [class.is-invalid]="clientForm.get('isDeleted')?.invalid && clientForm.get('isDeleted')?.touched"
-                  [class.is-valid]="clientForm.get('isDeleted')?.valid && clientForm.get('isDeleted')?.touched"
-          >
-            <option disabled selected>Choisir un état</option>
-            <option [value]=true>Déactivé</option>
-            <option [value]=false>Actif</option>
-          </select>
-          <div *ngIf="clientForm.get('isDeleted')?.invalid && clientForm.get('isDeleted')?.touched" class="invalid-feedback">
-            Veuiller choisir une option
-          </div>
-        </div>
+
         <div class="mb-3">
           <label for="role" class="form-label">Role</label>
           <select class="form-select" id="role"  formControlName="role"
                   [class.is-invalid]="clientForm.get('role')?.invalid && clientForm.get('role')?.touched"
                   [class.is-valid]="clientForm.get('role')?.valid && clientForm.get('role')?.touched"
           >
-            <option disabled selected>Choisir un role</option>
+            <option  value="" disabled selected>Choisir un role</option>
             <option [value]="'administrator'">Administrateur</option>
             <option [value]="'customer'">Client</option>
           </select>
@@ -97,7 +94,7 @@
         <div class="d-grid gap-2 d-md-flex justify-content-start mt-5">
           <button routerLink="/admin/users" type="button" class="btn btn-secondary btn-lg px-4 me-md-2">Retour</button>
           <button type="button" class="btn btn-outline-secondary btn-lg px-4 me-md-2" (click)="clearform()" >Annuler</button>
-          <button type="button" class="btn btn-success btn-lg px-4 me-md-2">Ajouter</button>
+          <button type="submit" class="btn btn-success btn-lg px-4 me-md-2">Ajouter</button>
         </div>
       </form>
 

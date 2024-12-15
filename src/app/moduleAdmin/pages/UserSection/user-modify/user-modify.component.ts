@@ -61,22 +61,31 @@ export class UserModifyComponent implements OnInit {
       return;
     }
     const formValue = this.clientForm.value;
-    const payload = {
-      id: this.user?.id,
-      lastName: formValue.lastName,
-      firstName: formValue.firstName,
-      email: formValue.email,
-      phone: formValue.phone,
-      isDeleted:formValue.isDeleted,
-      address: {
-        id:this.user?.address?.id,
-        address:this.clientForm.get('addressDetails')?.get('0')?.get('value')?.value,
-        city:this.clientForm.get('addressDetails')?.get('1')?.get('value')?.value,
-        postalCode:this.clientForm.get('addressDetails')?.get('2')?.get('value')?.value,
-        province:this.clientForm.get('addressDetails')?.get('3')?.get('value')?.value,
-        country:this.clientForm.get('addressDetails')?.get('4')?.get('value')?.value
+
+      const payload = {
+        id: this.user?.id,
+        lastName: formValue.lastName,
+        firstName: formValue.firstName,
+        email: formValue.email,
+        phone: formValue.phone,
+        isDeleted:formValue.isDeleted,
+        role:this.user?.role,
+        password:null,
+        address: {
+          id:this.user?.address?.id,
+          address:this.clientForm.get('addressDetails')?.get('0')?.get('value')?.value,
+          city:this.clientForm.get('addressDetails')?.get('1')?.get('value')?.value,
+          postalCode:this.clientForm.get('addressDetails')?.get('2')?.get('value')?.value,
+          province:this.clientForm.get('addressDetails')?.get('3')?.get('value')?.value,
+          country:this.clientForm.get('addressDetails')?.get('4')?.get('value')?.value
+        }
       }
-    }
+      if (formValue.password && formValue.password.trim() !== '') {
+        payload.password = formValue.password;
+      }
+
+
+
     if(this.currentRoute === 'admins'){
       this.adminService.updateAdministrator(payload,this.id).subscribe({
         next:()=>{
@@ -134,6 +143,7 @@ private loadClient() {
       this.clientForm = this.fb.group({
         lastName: ['', Validators.required],
         firstName: ['', Validators.required],
+        password: ['', [ Validators.minLength(8)]],
         email: ['', [Validators.required, Validators.email]],
         phone: ['', Validators.required],
         addressDetails: this.fb.array(this.getAddressDetailControls()),
@@ -145,6 +155,7 @@ private loadClient() {
         this.clientForm.patchValue({
           lastName: this.user.lastName,
           firstName: this.user.firstName,
+          password:this.user.password,
           email: this.user.email,
           phone: this.user.phone,
           addressDetails: this.addressDetail,
@@ -165,9 +176,11 @@ private loadClient() {
       this.clientForm = this.fb.group({
         lastName: ['', Validators.required],
         firstName: ['', Validators.required],
+        password: ['', [Validators.minLength(8)]],
         email: ['', [Validators.required, Validators.email]],
         phone: ['', Validators.required],
         addressDetails: this.fb.array(this.getAddressDetailControls()),
+
         //  role: ['', Validators.required],
         isDeleted:[null,[Validators.required]]
       });
@@ -176,6 +189,7 @@ private loadClient() {
         this.clientForm.patchValue({
           lastName: this.user.lastName,
           firstName: this.user.firstName,
+          password:this.user.password,
           email: this.user.email,
           phone: this.user.phone,
           addressDetails: this.addressDetail,

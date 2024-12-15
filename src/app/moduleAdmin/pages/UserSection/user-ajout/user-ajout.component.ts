@@ -3,10 +3,8 @@ import {FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Val
 import { NgForOf, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { User } from '../../../../models/User';
-import { UsersService } from '../../../../services/users.service';
-import { Customer } from '../../../../models/Customer';
-import { Administrator } from '../../../../models/Administrator';
 import {CustomerService} from '../../../../services/customer.service';
+import {AdministratorService} from '../../../../services/administrator.service';
 
 @Component({
   selector: 'app-user-ajout',
@@ -31,7 +29,7 @@ export class UserAjoutComponent implements OnInit {
 
   constructor(private fb:FormBuilder,
               private customerService:CustomerService,
-              private userService: UsersService,) {}
+              private adminService: AdministratorService,) {}
 ngOnInit() {
   this.user = {
     id: '',
@@ -67,45 +65,64 @@ ngOnInit() {
     return this.clientForm.get('addressDetails') as FormArray;
   }
   addUser() {
-    if (!this.user?.role) {
-      alert("Veuillez sélectionner un rôle pour l'utilisateur.");
+    if(this.clientForm.invalid) {
+      this.clientForm.markAllAsTouched();
+      this.alertMessage = "Formulaire Invalide, veuillez remplir tous les champs.";
+      this.alertType = 'alert-warning';
+      this.logFormControls();
       return;
     }
-
-    this.user.address = {
-      address: this.addressDetail!.find(a => a.label === 'Adresse')?.value || '',
-      city: this.addressDetail!.find(a => a.label === 'Ville')?.value || '',
-      postalCode: this.addressDetail!.find(a => a.label === 'Code Postal')?.value || '',
-      province: this.addressDetail!.find(a => a.label === 'Province')?.value || '',
-      country: this.addressDetail!.find(a => a.label === 'Pays')?.value || '',
-      id: ''
-    };
-
-    if (this.user.role === 'customer') {
-      this.userService.createNewCustomer(this.user as Customer).subscribe({
-        next: response => {
-          console.log('Customer created successfully:', response);
-          alert('Client ajouté avec succès.');
-        },
-        error: err => {
-          console.error('Error creating customer:', err);
-          alert('Une erreur est survenue lors de l’ajout du client.');
-        }
-      });
-    } else if (this.user.role === 'administrator') {
-      this.userService.createNewAdmin(this.user as Administrator).subscribe({
-        next: response => {
-          console.log('Admin created successfully:', response);
-          alert('Administrateur ajouté avec succès.');
-        },
-        error: err => {
-          console.error('Error creating admin:', err);
-          alert("Une erreur est survenue lors de l'ajout de l'administrateur.");
-        }
-      });
-    } else {
-      alert('Rôle non pris en charge.');
+    console.log('fuck')
+    const formValue = this.clientForm.value;
+    const payload = {
+      id: "holder",
+      lastName: formValue.lastName,
+      firstName: formValue.firstName,
+      password: formValue.password,
+      email: formValue.email,
+      phone: formValue.phone,
+      isDeleted:false,
+      role:formValue.role,
+      address: {
+        id:"holder",
+        address:this.clientForm.get('addressDetails')?.get('0')?.get('value')?.value,
+        city:this.clientForm.get('addressDetails')?.get('1')?.get('value')?.value,
+        postalCode:this.clientForm.get('addressDetails')?.get('2')?.get('value')?.value,
+        province:this.clientForm.get('addressDetails')?.get('3')?.get('value')?.value,
+        country:this.clientForm.get('addressDetails')?.get('4')?.get('value')?.value
+      }
     }
+
+    if(formValue.role==="customer"){
+      this.customerService.createCustomer(payload).subscribe({
+        next:()=>{
+          this.alertMessage="Le client a été créé avec Success !";
+          this.alertType="alert-success";
+          this.loadClient();
+        },
+        error:(error:any)=>{
+          console.error('Error creating Magasin:', error);
+          this.alertMessage = "Erreur lors de la création de l'utilisateur. Veuillez réessayer.";
+          this.alertType = 'alert-danger';
+          return;
+        }
+      })
+    }else {
+      this.adminService.createAdministrator(payload).subscribe({
+        next:()=>{
+          this.alertMessage="Le l'administrateur a ete creer avec Success !";
+          this.alertType="alert-success";
+          this.loadClient();
+        },
+        error:(error:any)=>{
+          console.error('Error creating Magasin:', error);
+          this.alertMessage = "Erreur lors de la creation administrateur. Veuillez réessayer.";
+          this.alertType = 'alert-danger';
+          return;
+        }
+      })
+    }
+    this.clearform();
   }
   closeAlert(): void {
     this.alertMessage = null;
@@ -127,13 +144,34 @@ ngOnInit() {
       this.clientForm = this.fb.group({
         lastName: ['', Validators.required],
         firstName: ['', Validators.required],
+        password: ['', [Validators.required, Validators.minLength(8)]],
         email: ['', [Validators.required, Validators.email]],
         phone: ['', Validators.required],
         addressDetails: this.fb.array(this.getAddressDetailControls()),
         role: ['', Validators.required],
-        isDeleted:[null,[Validators.required]]
+        //isDeleted:[null,[Validators.required]]
       });
+    console.log(this.addressDetails.controls);
 
+  }
 
+  private logFormControls() {
+    // Log invalid state for main form controls
+    console.log('Main Form Controls:');
+    Object.keys(this.clientForm.controls).forEach(key => {
+      const control = this.clientForm.get(key);
+      console.log(`${key} is invalid:`, control?.invalid, ', errors:', control?.errors);
+    });
+
+    // Log invalid state for AddressDetails FormArray
+    console.log('AddressDetails Controls:');
+    const addressDetails = this.clientForm.get('addressDetails') as FormArray;
+    addressDetails.controls.forEach((group, index) => {
+      console.log(`AddressDetails[${index}]`);
+      Object.keys((group as FormGroup).controls).forEach(innerKey => {
+        const innerControl = group.get(innerKey);
+        console.log(` - ${innerKey} is invalid:`, innerControl?.invalid, ', errors:', innerControl?.errors);
+      });
+    });
   }
 }
