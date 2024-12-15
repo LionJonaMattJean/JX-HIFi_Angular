@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { OrderItem } from '../models/OrderItem';
 import { ShoppingCart } from '../models/ShoppingCart';
 import { Customer } from '../models/Customer';
+import { HttpClient } from '@angular/common/http';
+import { stringify } from 'querystring';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +12,9 @@ import { Customer } from '../models/Customer';
 export class ShoppingCartService {
   private static instance: ShoppingCartService;
   public static shopppingCart: ShoppingCart;
+  private url: string = "http://localhost:8080/cart";
 
-  constructor() {
+  constructor(private http: HttpClient) {
     ShoppingCartService.shopppingCart = {
       instance: {} as ShoppingCart,
       customer: {} as Customer,
@@ -19,20 +23,41 @@ export class ShoppingCartService {
     };
   }
 
-  public static getInstance(): ShoppingCartService {
+  /*public static getInstance(): ShoppingCartService {
     if (!ShoppingCartService.instance) {
-      ShoppingCartService.instance = new ShoppingCartService();
+      ShoppingCartService.instance = new ShoppingCartService(new HttpClient());
     }
     return ShoppingCartService.instance;
-  }
+  }*/
+
 
   public addItem(orderItem: OrderItem) {
     ShoppingCartService.shopppingCart.cartItems.push(orderItem);
     console.log(ShoppingCartService.shopppingCart.cartItems); // pour test
-    alert("OrderItem added successfully to shopping cart")
-
+    
     this.calculateTotal(orderItem.subTotal);
+    this.saveCart(); // Automatically save cart after adding item
   }
+
+
+  public saveCart(): void {
+    this.http.post(this.url, ShoppingCartService.shopppingCart).subscribe(
+      response => console.log('Cart saved successfully:', response),
+      error => console.error('Error saving cart:', error)
+    );
+  }
+
+  public loadCart(customerId: string): void {
+    this.http.get<ShoppingCart>(`${this.url}/${customerId}`).subscribe(
+      cart => {
+        ShoppingCartService.shopppingCart = cart;
+        console.log('Cart loaded:', ShoppingCartService.shopppingCart);
+      },
+      error => console.error('Error loading cart:', error)
+    );
+  }
+
+
 
   public removeItem(orderItemId: string) {
     /*  this._cartItems = this._cartItems.filter(item => item.id !== orderItemId);
