@@ -4,6 +4,7 @@ import {NgForOf, NgIf} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
 import {UsersService} from '../../../services/users.service';
 import { User } from '../../../models/User';
+import { CustomerService } from '../../../services/customer.service';
 
 @Component({
   selector: 'app-personal-info',
@@ -16,12 +17,12 @@ export class PersonalInfoComponent {
  id: string = "";
   user?:User;
   addressDetail?:{label:string,value:string}[]=[];
-  constructor(private usersService:UsersService,private route:ActivatedRoute) {}
+  constructor(private customerService: CustomerService,private route:ActivatedRoute) {}
 
    ngOnInit(){
    // this.id=String(this.route.snapshot.paramMap.get('idAdmin'));
     this.id="USE1000";
-    this.usersService.getUserById(this.id).subscribe(user=>{
+    this.customerService.getCustomerById(this.id).subscribe(user=>{
       this.user=user;
       this.addressDetail=[
         {label:"Adresse",value:this.user.address.address},

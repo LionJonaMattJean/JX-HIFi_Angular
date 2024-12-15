@@ -19,8 +19,6 @@ export class CustomerService {
     return this.httpRequest.get<Customer>(this.url + "/customers/" + id);
   }
 
-
-
   addOrder(order: Order): void {
 
   }
