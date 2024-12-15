@@ -5,12 +5,11 @@ import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 //services imports
 import { CustomerService } from '../../../../services/customer.service';
-import { ShoppingCartService } from '../../../../services/shopping-cart.service';
+import { LoginService } from '../../../../services/login.service';
 import { OrderService } from '../../../../services/order.service';
 //modeles imports
 import { Customer } from '../../../../models/Customer';
 import { ShoppingCart } from '../../../../models/ShoppingCart';
-import { OrderItem } from '../../../../models/OrderItem';
 
 @Component({
   selector: 'app-confirmation',
@@ -30,29 +29,39 @@ export class ConfirmationComponent implements OnInit {
 
   constructor(
     private customerService:CustomerService,
+    private loginService: LoginService,
     private orderService: OrderService) {}
 
   ngOnInit(): void {
 
-    this.customerService.getCustomerById('123')
-      .subscribe((customer)=>{
-      this.userInfo = customer;
-      console.log('User Info:', this.userInfo);
-    })
+    this.loginService.getCustomerId().subscribe((customerId)=>{
+      if(customerId){
+        this.customerService.getCustomerById(customerId).subscribe((customer)=>{
+          this.userInfo = customer;
 
-    this.orderService.getOrders()
-      .subscribe((orders)=>{
-        const cartItems = orders.flatMap((order)=> order.orderItems);
+          this.loadShoppingCart(customerId);
+        });
+      }else{
+        console.warn('Aucun utilisateur connecté');
+      }
+    });
+  }
+
+  private loadShoppingCart(customerId: string): void{
+    this.orderService.getOrders().subscribe((orders)=>{
+      const cartItems = orders
+      .filter((order)=>order.idCustomer === customerId)
+      .flatMap((order)=> order.orderItems);
+
       this.shoppingCart = {
         instance:{} as ShoppingCart,
         customer: this.userInfo!,
         cartItems,
-        total: orders.reduce((acc, order)=> acc + order.totalAmount, 0),
+        total: cartItems.reduce((acc, item)=> acc + item.subTotal, 0),
       };
 
-      console.log('Shopping Cart: ', this.shoppingCart);
       this.calculateTotals();
-    }); 
+    })
   }
 
     private calculateTotals(): void {
