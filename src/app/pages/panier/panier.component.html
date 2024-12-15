@@ -9,8 +9,11 @@
     <br>
     <div class="row">
             <div class="col-8">
-                <app-item-in-cart></app-item-in-cart>
-                <!--THIS IS THE NGFOR FOR THE ITEMS-->
+                <app-item-in-cart
+                *ngFor="let i of orderitem"
+                [item]="i"
+                ></app-item-in-cart>
+                
             </div>
             
             <div class="col-4">

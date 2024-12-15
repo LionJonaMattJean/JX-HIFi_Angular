@@ -29,6 +29,7 @@ export class ShoppingCartService {
   public addItem(orderItem: OrderItem) {
     ShoppingCartService.shopppingCart.cartItems.push(orderItem);
     console.log(ShoppingCartService.shopppingCart.cartItems); // pour test
+    alert("OrderItem added successfully to shopping cart")
 
     this.calculateTotal(orderItem.subTotal);
   }

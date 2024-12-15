@@ -18,6 +18,10 @@
 
 .btnIcon {
     padding-top: 2%;
+    position: relative;
+        /* Make the anchor element a positioning context */
+        display: inline-block;
+    
 }
 
 .btnIcon svg{
@@ -77,5 +81,20 @@
 }
 .categoryNavOffCanvas {
     background-color: rgb(178, 200, 255);
-    /* overflow-y: scroll; */
+    
+}
+
+span{
+    position: absolute;
+    top: -8px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

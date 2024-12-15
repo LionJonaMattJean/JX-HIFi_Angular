@@ -21,6 +21,7 @@ export class QuantityAndCartBtnJeanComponent {
   addToCart() {
     if (this.product) {
       this.orderItem_service.createOrderItem(this.product, this.txtQty);
+    
     }
     else {
       alert("Undefined product !")

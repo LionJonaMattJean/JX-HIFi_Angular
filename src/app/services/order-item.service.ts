@@ -19,6 +19,7 @@ export class OrderItemService {
       subTotal: this.calculateSubTotal(productAdded, qtyAdded)
     }
     this.shoppingCart_service.addItem(orderItem);
+   
   }
 
   calculateSubTotal(productAdded: Product, qty: number): number {

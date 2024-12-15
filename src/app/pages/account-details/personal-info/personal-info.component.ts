@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {NgForOf, NgIf} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
@@ -13,7 +13,7 @@ import { CustomerService } from '../../../services/customer.service';
   templateUrl: './personal-info.component.html',
   styleUrl: './personal-info.component.css'
 })
-export class PersonalInfoComponent {
+export class PersonalInfoComponent implements OnInit {
  id: string = "";
   user?:User;
   addressDetail?:{label:string,value:string}[]=[];
