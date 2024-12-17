@@ -1,11 +1,13 @@
 import { Component, Input, inject } from '@angular/core';
 import { OrderItem } from '../../../models/OrderItem';
 import { ShoppingCartService } from '../../../services/shopping-cart.service';
+import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-item-in-cart',
   standalone: true,
-  imports: [],
+  imports: [NgFor, FormsModule],
   templateUrl: './item-in-cart.component.html',
   styleUrl: './item-in-cart.component.css'
 })
@@ -16,11 +18,18 @@ export class ItemInCartComponent {
   cartServ:ShoppingCartService = inject(ShoppingCartService);
 
   deleteItem(thisItemId:string){
-    this.cartServ.removeItem(thisItemId)
+    this.cartServ.removeItem;
   }
 
   updateQuantity(thisItemId:string, newQty: number){
-    this.cartServ.updateItemQuantity(thisItemId, newQty);
+    if(newQty === 0){
+      this.deleteItem(thisItemId)
+    }
+    else{
+      this.cartServ.updateItemQuantity(thisItemId, newQty);
+      console.log("update item ${thisItemId} to quantity ${newQty}")
+    }
+    
   }
 
   shareItem(thisItemUrl: string){
