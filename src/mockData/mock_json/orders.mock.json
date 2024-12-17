@@ -1,91 +1,164 @@
-[{
-  "id": "order001",
-  "idCustomer": "USE1000",
-  "email":"alice_s@gmail.com",
-  "card": {
-    "id": "CAR123",
-    "cardNumber": 4111111111111111,
-    "experieringDate": {
-      "day": 0,
-      "month": 12,
-      "year": 2023
-    },
-    "paiementMethod": "Visa",
-    "cvc": 123,
-    "nameHolder": "John Doe"
-  },
-  "orderItems": [
-    {
-      "id": "item001",
-      "product":{
-        "category": {
-          "id": "CAT666",
-          "name": "Headphone",
-          "description": "Classic headphones or in-ear for the best sound."
-        },
-        "id": "PRO100012306431",
-        "brand": "Sennheiser",
-        "name": "Sennheiser Momentum 4",
-        "description": "High-quality wireless headphones with great sound.",
-        "sellPrice": 379,
-        "costPrice": 320,
-        "specialPrice": 54,
-        "stock": 50,
-        "colors": ["black", "silver"],
-        "specificationDetails": [
-          { "id": "SPE113", "title": "Type", "description": "Over-ear" },
-          { "id": "SPE114", "title": "Battery Life", "description": "38 hours" },
-          { "id": "SPE115", "title": "Noise Cancelling", "description": "Yes" },
-          { "id": "SPE116", "title": "Bluetooth", "description": "5.0" },
-          { "id": "SPE117", "title": "Weight", "description": "300 g" },
-          { "id": "SPE118", "title": "Connectivity", "description": "Wireless, USB-C" },
-          { "id": "SPE119", "title": "Microphone", "description": "Yes" },
-          { "id": "SPE120", "title": "Audio Quality", "description": "High-fidelity sound" }
-        ],
-        "shortSpecifications": [
-          { "id": "QSPE57", "title": "Type", "description": "Over-ear" },
-          { "id": "QSPE58", "title": "Battery Life", "description": "38 hours" },
-          { "id": "QSPE59", "title": "Noise Cancelling", "description": "Yes" },
-          { "id": "QSPE60", "title": "Connectivity", "description": "Wireless, USB-C" }
-        ],
-        "images": [
-          { "id": "IMG310226", "idProduct": "PRO100012306431", "url": "https://picsum.photos/seed/headphone_7/300/300" },
-          { "id": "IMG310229", "idProduct": "PRO100012306431", "url": "https://picsum.photos/seed/headphone_8/300/300" },
-          { "id": "IMG310232", "idProduct": "PRO100012306431", "url": "https://picsum.photos/seed/headphone_9/300/300" }
-        ],
-        "reviews": [
-          { "id": "REV1130031", "idProduct": "PRO100012306431", "idUser": "USE1185",
-            "star": 5, "title": "Amazing battery life",
-            "review": "The Sennheiser Momentum 4 offers incredible battery life and high-quality sound. Highly recommend!" },
-          { "id": "REV1130032", "idProduct": "PRO100012306431", "idUser": "USE1222",
-            "star": 4, "title": "Great sound",
-            "review": "The audio quality is excellent, but the headphones feel a bit bulky." }
-        ],
-        "onSale": false
+[
+  {
+    "id": "order001",
+    "idCustomer": "USE1000",
+    "email": "alice_s@gmail.com",
+    "card": {
+      "id": "CAR123",
+      "cardNumber": 4111111111111111,
+      "experieringDate": {
+        "day": 0,
+        "month": 12,
+        "year": 2023
       },
-      "quantity": 2,
-      "price": 379.0,
-      "subTotal": 758.0
+      "paiementMethod": "Visa",
+      "cvc": 123,
+      "nameHolder": "John Doe"
+    },
+    "orderItems": [
+      {
+        "id": "item001",
+        "product": {
+          "category": {
+            "id": "CAT666",
+            "name": "Headphone",
+            "description": "Classic headphones or in-ear for the best sound."
+          },
+          "id": "PRO100012306431",
+          "brand": "Sennheiser",
+          "name": "Sennheiser Momentum 4",
+          "description": "High-quality wireless headphones with great sound.",
+          "sellPrice": 379,
+          "costPrice": 320,
+          "specialPrice": 54,
+          "stock": 50,
+          "colors": [
+            "black",
+            "silver"
+          ],
+          "specificationDetails": [
+            {
+              "id": "SPE113",
+              "title": "Type",
+              "description": "Over-ear"
+            },
+            {
+              "id": "SPE114",
+              "title": "Battery Life",
+              "description": "38 hours"
+            },
+            {
+              "id": "SPE115",
+              "title": "Noise Cancelling",
+              "description": "Yes"
+            },
+            {
+              "id": "SPE116",
+              "title": "Bluetooth",
+              "description": "5.0"
+            },
+            {
+              "id": "SPE117",
+              "title": "Weight",
+              "description": "300 g"
+            },
+            {
+              "id": "SPE118",
+              "title": "Connectivity",
+              "description": "Wireless, USB-C"
+            },
+            {
+              "id": "SPE119",
+              "title": "Microphone",
+              "description": "Yes"
+            },
+            {
+              "id": "SPE120",
+              "title": "Audio Quality",
+              "description": "High-fidelity sound"
+            }
+          ],
+          "shortSpecifications": [
+            {
+              "id": "QSPE57",
+              "title": "Type",
+              "description": "Over-ear"
+            },
+            {
+              "id": "QSPE58",
+              "title": "Battery Life",
+              "description": "38 hours"
+            },
+            {
+              "id": "QSPE59",
+              "title": "Noise Cancelling",
+              "description": "Yes"
+            },
+            {
+              "id": "QSPE60",
+              "title": "Connectivity",
+              "description": "Wireless, USB-C"
+            }
+          ],
+          "images": [
+            {
+              "id": "IMG310226",
+              "idProduct": "PRO100012306431",
+              "url": "https://picsum.photos/seed/headphone_7/300/300"
+            },
+            {
+              "id": "IMG310229",
+              "idProduct": "PRO100012306431",
+              "url": "https://picsum.photos/seed/headphone_8/300/300"
+            },
+            {
+              "id": "IMG310232",
+              "idProduct": "PRO100012306431",
+              "url": "https://picsum.photos/seed/headphone_9/300/300"
+            }
+          ],
+          "reviews": [
+            {
+              "id": "REV1130031",
+              "idProduct": "PRO100012306431",
+              "idUser": "USE1185",
+              "star": 5,
+              "title": "Amazing battery life",
+              "review": "The Sennheiser Momentum 4 offers incredible battery life and high-quality sound. Highly recommend!"
+            },
+            {
+              "id": "REV1130032",
+              "idProduct": "PRO100012306431",
+              "idUser": "USE1222",
+              "star": 4,
+              "title": "Great sound",
+              "review": "The audio quality is excellent, but the headphones feel a bit bulky."
+            }
+          ],
+          "onSale": false
+        },
+        "quantity": 2,
+        "price": 379.0,
+        "subTotal": 758.0
+      }
+    ],
+    "totalAmount": 864.12,
+    "TPS": 8.75,
+    "TaxeState": 5.25,
+    "TTC": 106.12,
+    "status": "Pending",
+    "orderDate": {
+      "day": 1,
+      "month": 1,
+      "year": 2021
+    },
+    "shippingAddress": {
+      "id": "ADR1",
+      "address": "123 Main St",
+      "city": "Anytown",
+      "province": "Anystate",
+      "postalCode": "12345",
+      "country": "USA"
     }
-  ],
-  "totalAmount": 864.12,
-  "TPS": 8.75,
-  "TaxeState": 5.25,
-  "TTC": 106.12,
-  "status": "Pending",
-  "orderDate": {
-    "day": 1,
-    "month": 1,
-    "year": 2021
-  },
-  "shippingAddress": {
-    "id": "ADR1",
-    "address": "123 Main St",
-    "city": "Anytown",
-    "province": "Anystate",
-    "postalCode": "12345",
-    "country": "USA"
   }
-
-}
 ]
