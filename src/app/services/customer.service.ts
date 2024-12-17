@@ -23,18 +23,23 @@ export class CustomerService {
   getCustomerById(id: string): Observable<Customer> {
     return this.httpRequest.get<Customer>(this.url + "/customers/" + id);
   }
-  updateCustomer(payload:any,id:string): Observable<Customer> {
+
+  updateCustomer(payload: any, id: string): Observable<Customer> {
     return this.httpRequest.put<Customer>(this.url + "/customer/update/" + id, payload);
   }
 
   deactivate(id: string, user: any) {
-      return this.httpRequest.put<Customer>(this.url + "/customer/deactivate/" + id, user);
+    return this.httpRequest.put<Customer>(this.url + "/customer/deactivate/" + id, user);
   }
-  deleteCustomer(id: string) {
-      return this.httpRequest.delete(this.url + "/customer/delete/" + id);
-  }
-  addOrder(order: Order): void {
 
+  deleteCustomer(id: string) {
+    return this.httpRequest.delete(this.url + "/customer/delete/" + id);
+  }
+
+
+
+
+  addOrder(order: Order): void {
   }
 
   viewOrderHistory(): Order[] {
