@@ -5,6 +5,7 @@ import { Product } from '../models/Product';
 import mockData from '../../mockData/mock_json/products.mock.json';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -30,7 +31,9 @@ export class ProductsService {
       })
     );
   }
-
+  getProductsForAutoComplete(): Observable<Product[]> {
+    return this.httpRequest.get<Product[]>(this.url+"/products-search");
+  }
   getAllProduct(): Observable<Product[]> {
     return this.httpRequest.get<Product[]>(this.url+"/products");
   }
