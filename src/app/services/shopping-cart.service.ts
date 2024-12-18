@@ -4,6 +4,7 @@ import { ShoppingCart } from '../models/ShoppingCart';
 import { Customer } from '../models/Customer';
 import { HttpClient } from '@angular/common/http';
 import { stringify } from 'querystring';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -13,6 +14,9 @@ export class ShoppingCartService {
   private static instance: ShoppingCartService;
   public static shopppingCart: ShoppingCart;
   private url: string = "http://localhost:8080/api/cart";
+
+  private cartItemsSubject = new BehaviorSubject<number>(0);
+  cartItems$ = this.cartItemsSubject.asObservable();
 
   constructor(private http: HttpClient) {
     ShoppingCartService.shopppingCart = {
@@ -41,7 +45,13 @@ export class ShoppingCartService {
     
     this.calculateTotal(orderItem.subTotal);
     this.saveCart('USE1000'); 
+    this.updateCartItemCount();
     alert("Item added Successfully to your Cart")
+  }
+
+  private updateCartItemCount(){
+    const totalItems = ShoppingCartService.shopppingCart.cartItems.reduce((total, item) => total + item.quantity, 0);
+    this.cartItemsSubject.next(totalItems);
   }
 
 
