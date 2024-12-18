@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {NgForOf} from '@angular/common';
-import {ActionLinkDashboardComponent} from '../action-link-dashboard/action-link-dashboard.component';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgForOf } from '@angular/common';
+import { ActionLinkDashboardComponent } from '../action-link-dashboard/action-link-dashboard.component';
 
 
 @Component({
@@ -14,14 +14,14 @@ import {ActionLinkDashboardComponent} from '../action-link-dashboard/action-link
   styleUrl: '../../style-admin.css'
 })
 export class TableDashboardComponent {
-@Input() dataBinding: any[]=[];
-@Input() displayColumns: string[]=[];
-@Input() id!:string;
-@Input() columnNames: { [key: string]: string } = {};
-@Input() entityType!: string;
-@Output() editEvent=new EventEmitter<string>();
-@Output() deleteEvent=new EventEmitter<string>();
-@Output() detailsEvent=new EventEmitter<string>();
+  @Input() dataBinding: any[] = [];
+  @Input() displayColumns: string[] = [];
+  @Input() id!: string;
+  @Input() columnNames: { [key: string]: string } = {};
+  @Input() entityType!: string;
+  @Output() editEvent = new EventEmitter<string>();
+  @Output() deleteEvent = new EventEmitter<string>();
+  @Output() detailsEvent = new EventEmitter<string>();
 
 
 
@@ -40,7 +40,7 @@ export class TableDashboardComponent {
       return ''; // Handle cases where the row itself is undefined or null
     }
     if (column === 'category') {
-      return row.categoryId|| 'N/A'; // Safely navigate 'category' and provide fallback
+      return row.categoryId || 'N/A'; // Safely navigate 'category' and provide fallback
     } else if (column === 'address') {
       const address: string[] = [
         row.address?.address,
@@ -69,7 +69,8 @@ export class TableDashboardComponent {
       return name;
     } else if (column === 'status') {
       const choix = row.status;
-      let name ;
+      let name;
+      //TODO Adapté les valeur de status pour fitter avec les status determiner par Matt
       switch (choix) {
         case 'Pending':
           name = 'En attente';
@@ -127,6 +128,4 @@ export class TableDashboardComponent {
     const row = this.dataBinding.find((item) => item?.id === id);
     this.deleteEvent.emit(row);
   }
-
-
 }
