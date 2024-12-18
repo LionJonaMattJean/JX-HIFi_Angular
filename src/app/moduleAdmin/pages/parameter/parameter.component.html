@@ -3,38 +3,101 @@
     <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">{{user.firstName}} {{user.lastName}}</h1>
 
     <div class="col-lg-6">
-      <form>
+      <form [formGroup]="paraForm" (ngSubmit)="modifyPara()" novalidate class="needs-validation">
         <div class="mb-3">
           <label for="lastName" class="form-label">Nom</label>
-          <input type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName" name="lastName">
+          <input type="text" class="form-control" id="lastName" formControlName="lastName"
+                 [class.is-invalid]="paraForm.get('lastName')?.invalid && paraForm.get('lastName')?.touched"
+                 [class.is-valid]="paraForm.get('lastName')?.valid && paraForm.get('lastName')?.touched"
+          >
+          <div *ngIf="paraForm.get('lastName')?.invalid && paraForm.get('lastName')?.touched" class="invalid-feedback">
+            Le nom est obligatoire
+          </div>
         </div>
         <div class="mb-3">
           <label for="firstName" class="form-label">Prénom</label>
-          <input type="text" class="form-control" id="firstName" [(ngModel)]="user.firstName" name="firstName">
+          <input type="text" class="form-control" id="firstName"  formControlName="firstName"
+                 [class.is-invalid]="paraForm.get('firstName')?.invalid && paraForm.get('firstName')?.touched"
+                 [class.is-valid]="paraForm.get('firstName')?.valid && paraForm.get('firstName')?.touched"
+          >
+          <div *ngIf="paraForm.get('firstName')?.invalid && paraForm.get('firstName')?.touched" class="invalid-feedback">
+            le prénom est obligatoire
+          </div>
         </div>
+
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
-          <input type="text" class="form-control" id="email" [(ngModel)]="user.email" name="email">
+          <input type="email" class="form-control" id="email"  formControlName="email"
+                 [class.is-invalid]="paraForm.get('email')?.invalid && paraForm.get('email')?.touched"
+                 [class.is-valid]="paraForm.get('email')?.valid && paraForm.get('email')?.touched"
+          >
+          <div *ngIf="paraForm.get('email')?.invalid && paraForm.get('email')?.touched" class="invalid-feedback">
+            L'email est obligatoire
+          </div>
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Mot de passe</label>
-          <input type="password" class="form-control" id="password" [(ngModel)]="user.password" name="password">
+          <input type="password" class="form-control" id="password" placeholder="seulement si le mot de passe est a changer"  formControlName="password"
+                 [class.is-invalid]="paraForm.get('password')?.invalid && paraForm.get('password')?.touched"
+                 [class.is-valid]="paraForm.get('password')?.valid && paraForm.get('password')?.touched"
+          >
+          <div *ngIf="paraForm.get('password')?.invalid && paraForm.get('password')?.touched" class="invalid-feedback">
+            Le mot de passe est obligatoire et 8 charactere minimum
+          </div>
         </div>
         <div class="mb-3">
           <label for="phone" class="form-label">Téléphone</label>
-          <input type="text" class="form-control" id="phone" [(ngModel)]="user.phone" name="phone">
+          <input type="text" class="form-control" id="phone"  formControlName="phone"
+                 [class.is-invalid]="paraForm.get('phone')?.invalid && paraForm.get('phone')?.touched"
+                 [class.is-valid]="paraForm.get('phone')?.valid && paraForm.get('phone')?.touched"
+          >
+          <div *ngIf="paraForm.get('phone')?.invalid && paraForm.get('phone')?.touched" class="invalid-feedback">
+            Le téléphone est obligatoire
+          </div>
         </div>
-        <div *ngFor="let detail of addressDetail" class="mb-3">
-          <label for="{{detail.label}}" class="form-label">{{detail.label}}</label>
-          <input type="text" class="form-control" id="address" [(ngModel)]="detail.value" name="{{detail.label}}">
+        <div formArrayName="addressDetails">
+          <div *ngFor="let detail of addressDetails.controls; let i =index" [formGroupName]="i" class="mb-3">
+            <label [for]="'address-' + i"  class="form-label">
+              {{detail.get('label')?.value}}</label>
+            <input type="text" class="form-control" [id]="'address-' + i"   formControlName="value"
+                   [class.is-invalid]="detail.get('value')?.invalid && detail.get('value')?.touched"
+                   [class.is-valid]="detail.get('value')?.valid && detail.get('value')?.touched"
+            >
+            <div *ngIf="detail.get('value')?.invalid && detail.get('value')?.touched" class="invalid-feedback">
+              {{detail.get('label')?.value}} est obligatoire
+            </div>
+          </div>
         </div>
-
+        <div class="mb-3">
+          <label for="isDeleted" class="form-label">État</label>
+          <select class="form-select" id="isDeleted"  formControlName="isDeleted"
+                  [class.is-invalid]="paraForm.get('isDeleted')?.invalid && paraForm.get('isDeleted')?.touched"
+                  [class.is-valid]="paraForm.get('isDeleted')?.valid && paraForm.get('isDeleted')?.touched"
+          >
+            <option disabled selected>Choisir un état</option>
+            <option [value]=true>Déactivé</option>
+            <option [value]=false>Actif</option>
+          </select>
+          <div *ngIf="paraForm.get('isDeleted')?.invalid && paraForm.get('isDeleted')?.touched" class="invalid-feedback">
+            Veuiller choisir une option
+          </div>
+        </div>
+        <div class="alert-wrapper col-lg-8  mx-auto mt-5">
+          <!-- Alert -->
+          <div *ngIf="alertMessage" [class]="'alert ' + alertType + ' d-flex justify-content-between align-items-center'" role="alert">
+            {{ alertMessage }}
+            <button type="button" class="btn-close" aria-label="Close" (click)="closeAlert()"></button>
+          </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-start mt-5">
+          <button routerLink="/admin/users" type="button" class="btn btn-secondary btn-lg px-4 me-md-2">Retour</button>
+          <button type="button" class="btn btn-outline-secondary btn-lg px-4 me-md-2" (click)="clearform()" >Annuler</button>
+          <button type="button" class="btn btn-success btn-lg px-4 me-md-2" (click)="modifyPara()">Modifier</button>
+        </div>
       </form>
 
-      <div class="d-grid gap-2 d-md-flex justify-content-start mt-5">
-        <button routerLink="/admin/users" type="button" class="btn btn-secondary btn-lg px-4 me-md-2">Retour</button>
-        <button type="button" class="btn btn-success btn-lg px-4 me-md-2" (click)="modifyAdministrator()">Modifier</button>
-      </div>
     </div>
   </div>
 </div>
+
+
