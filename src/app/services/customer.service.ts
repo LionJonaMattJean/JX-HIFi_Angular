@@ -21,7 +21,7 @@ export class CustomerService {
   }
 
   getCustomerById(id: string): Observable<Customer> {
-    return this.httpRequest.get<Customer>(this.url + "/customers/" + id);
+    return this.httpRequest.get<Customer>(this.url + "/customer/" + id);
   }
 
   updateCustomer(payload: any, id: string): Observable<Customer> {

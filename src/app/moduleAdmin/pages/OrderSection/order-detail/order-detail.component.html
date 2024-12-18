@@ -14,12 +14,13 @@
       <ng-template #productTemplate>
         <ul>
           <li *ngFor="let item of order.orderItems">
-            <ng-container *ngIf="!item.product.onSale; else specialTemplate">
+            {{item.productName}} x {{item.quantity}} ${{item.sousTotal}}
+            <!-- <ng-container *ngIf="!item.product.onSale; else specialTemplate">
               {{item.product.name}} - {{item.quantity}} x {{item.product.sellPrice}}$
             </ng-container>
            <ng-template #specialTemplate>
              {{item.product.name}} - {{item.quantity}} x {{item.product.specialPrice}}$
-           </ng-template>
+           </ng-template> -->
           </li>
         </ul>
       </ng-template>

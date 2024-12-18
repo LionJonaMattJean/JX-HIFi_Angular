@@ -41,9 +41,10 @@ export class OrderModifyComponent implements OnInit{
     this.id = String(this.route.snapshot.paramMap.get('id'));
     this.orderService.getOrderById(this.id).subscribe(order => {
       this.order = order;
-      this.userService.getUserById(this.order.idCustomer).subscribe(user => {
-        this.user = user;
-      });
+      //TODO a adapter pour la suite du CRUD de ORDER
+      // this.userService.getUserById(this.order.idCustomer).subscribe(user => {
+      //   this.user = user;
+      // });
     });
     this.productService.getAllProduct().subscribe(productList=>{
       this.productList=productList;

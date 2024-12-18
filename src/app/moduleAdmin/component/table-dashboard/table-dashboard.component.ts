@@ -90,10 +90,8 @@ export class TableDashboardComponent {
       return name;
     } else if (column === 'orderDate') {
       const date = row.orderDate;
-      if (!date) return 'N/A'; // Handle cases where date is undefined
-      return [date.day, date.month, date.year].filter((d) => d).join('/');
-    } else if (column === 'totalItems') {
-      return row.orderItems?.length || 0; // Ensure fallback for undefined 'orderItems'
+      if (!date || !Array.isArray(date)) return 'N/A'; // Handle cases where date is undefined
+      return `${date[2]}/${date[1]}/${date[0]}`;
     } else {
       return row[column] || 'N/A'; // Fallback for any generic case
     }

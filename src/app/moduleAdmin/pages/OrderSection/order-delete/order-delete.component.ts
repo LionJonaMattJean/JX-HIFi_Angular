@@ -31,9 +31,10 @@ export class OrderDeleteComponent {
     this.orderService.getOrderById(this.id).subscribe(order => {
       this.order = order;
     });
-    this.usersService.getUserById(this.order.idCustomer).subscribe(user => {
-      this.user = user;
-    })
+    //TODO a adapter pour la suite du CRUD de ORDER
+    // this.usersService.getUserById(this.order.idCustomer).subscribe(user => {
+    //   this.user = user;
+    // })
   }
   deactivateOrders() {
     this.isDeactivate = true;

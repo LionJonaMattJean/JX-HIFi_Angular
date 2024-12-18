@@ -14,6 +14,16 @@ export class OrderService {
     return this.httpRequest.get<Order[]>(this.url + "/orders");
   }
   
+  getOrderByIdForDashboardDetail(id: string): Observable<Order> {
+    return this.httpRequest.get<Order>(this.url + "/order-detail_dshb/" + id);
+  }
+
+  getOrderById(id: string): Observable<Order> {
+    return this.getOrders().pipe(
+      map(orders=>orders.find(order=>order.id===id)!)
+    );
+  }
+  
   calculateTotal(){
     /*
     const tax =this._totalAmount*(Order.TPS+Order.TaxeState);
@@ -23,9 +33,4 @@ export class OrderService {
     //  this.status = newStatus;
   }
   
-  getOrderById(id: string): Observable<Order> {
-    return this.getOrders().pipe(
-      map(orders=>orders.find(order=>order.id===id)!)
-    );
-  }
 }

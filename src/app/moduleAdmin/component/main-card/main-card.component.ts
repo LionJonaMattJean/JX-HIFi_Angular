@@ -176,15 +176,15 @@ export class MainCardComponent implements OnInit, OnDestroy {
     this.ajout = "Ajouter une commande";
     this.entityType = "orders";
     this.urlAjout = '/admin/orders/ajout';
-    this.displayColumns = ['id', 'orderDate', 'totalItems', 'totalAmount', 'status', 'idCustomer', 'email'];
+    this.displayColumns = ['id', 'orderDate', 'nbrProducts', 'total', 'status', 'customerId', 'customerMail'];
     this.columnNames = {
       id: 'ID',
       orderDate: 'Date de commande',
-      totalItems: 'Nombre de produits',
-      totalAmount: 'Total',
+      nbrProducts: 'Nombre de produits',
+      total: 'Total (CAD)',
       status: 'Statut',
-      idCustomer: 'ID Client',
-      email: 'Email'
+      customerId: 'ID Client',
+      customerMail: 'Email'
     };
 
     this.loadAllOrder();
