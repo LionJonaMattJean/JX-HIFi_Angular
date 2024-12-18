@@ -15,6 +15,7 @@
         <ul>
           <li *ngFor="let item of order.orderItems">
             {{item.productName}} x {{item.quantity}} ${{item.sousTotal}}
+            <!-- TODO ajuster la methode si le clascul du prix est géré en back -->
             <!-- <ng-container *ngIf="!item.product.onSale; else specialTemplate">
               {{item.product.name}} - {{item.quantity}} x {{item.product.sellPrice}}$
             </ng-container>
