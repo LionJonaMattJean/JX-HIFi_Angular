@@ -6,6 +6,7 @@ import { NgIf } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { RouterModule,Router} from '@angular/router';
 import { PaymentService } from '../../../../services/payment.service';
+import { firstValueFrom } from 'rxjs';
 
 
 Component({
@@ -59,7 +60,7 @@ export class PaymentFormComponent {
     }
   }
 
-  confirmPayment() {
+  async confirmPayment() {
     if (!this.validateCardInput()) {
       alert('Informations de paiement invalides. Veuillez vérifier votre saisie.');
       return;
@@ -67,13 +68,14 @@ export class PaymentFormComponent {
 
     this.userInfo.paymentMode = this.modePaiement;
 
-    this.paymentService.savePaymentDetails(this.userInfo).subscribe(
-      () => this.router.navigate(['/confirmation'],{state: {userInfo:this.userInfo} }),
-    (error) =>{
-      alert('Erreur lors de l enregistrement des informations de paiement');
+    try {
+      console.log('Navigation vers /confirmation avec state :', this.userInfo);
+      await firstValueFrom(this.paymentService.savePaymentDetails(this.userInfo));
+      this.router.navigate(['/confirmation'], { state: { userInfo: this.userInfo } });
+    } catch (error) {
+      alert('Erreur lors de l’enregistrement des informations de paiement.');
       console.error(error);
     }
-  );
 }
 
 }
