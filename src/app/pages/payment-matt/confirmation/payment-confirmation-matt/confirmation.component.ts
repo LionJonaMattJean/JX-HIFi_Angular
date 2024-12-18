@@ -33,13 +33,23 @@ export class ConfirmationComponent implements OnInit {
     private customerService:CustomerService,
     private loginService: LoginService,
     private orderService: OrderService,
-    private router: Router) {}
+    private router: Router) {
+      const navigation = this.router.getCurrentNavigation();
+      const state = navigation?.extras.state as {userInfo: Customer};
+      this.userInfo = state?.userInfo || null;
+    }
 
     redirectToTracking(){
       this.router.navigate(['tracking-order'],{queryParams:{orderNumber: this.orderConfirmationNumber}});
     }
 
   ngOnInit(): void {
+
+    if(!this.userInfo){
+      alert('Erreur de chargement, redirection en cours');
+      this.router.navigate(['/home']);
+      return;
+    }
 
     this.generateOrderConfirmationNumber();
     this.loadCustomerData();
