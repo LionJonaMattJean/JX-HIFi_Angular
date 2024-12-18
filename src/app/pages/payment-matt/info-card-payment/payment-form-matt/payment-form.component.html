@@ -22,8 +22,14 @@
       <div *ngIf="modePaiement !== 'paypal'">
         <div class="mb-3">
           <label for="numéroCarte" class="form-label">Numéro de la carte</label>
-          <input type="text" id="numéroCarte" name="numéroCarte" class="form-control" (keyup)="validateCardInput()"
-          [class.is-invalid]="!validateCardInput() && cardNumber.length > 0" required>
+          <input
+           type="text"
+            id="numéroCarte"
+             name="numéroCarte"
+              class="form-control"
+               (keyup)="validateCardInput()"
+                  [class.is-invalid]="!validateCardInput() && cardNumber.length > 0"
+                    required>
           <div class="invalid-feedback">
             Numéro de carte invalide pour {{ modePaiement | titlecase }}.
           </div>
