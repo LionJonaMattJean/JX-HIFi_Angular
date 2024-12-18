@@ -46,7 +46,7 @@ export class ShoppingCartService {
 
 
   public saveCart(id:string): void {
-    this.http.post(this.url + id + '/add', ShoppingCartService.shopppingCart).subscribe(
+    this.http.post(this.url + '/' + id + '/add', ShoppingCartService.shopppingCart).subscribe(
       response => console.log('Cart saved successfully:', response),
       error => console.error('Error saving cart:', error)
     );
@@ -65,7 +65,7 @@ export class ShoppingCartService {
   public removeItem(orderItemId: string) {
     /*  this._cartItems = this._cartItems.filter(item => item.id !== orderItemId);
       this.calculateTotal();*/
-    this.http.delete(this.url + "/api/cart" + "USE1000/remove")
+    this.http.delete(this.url + "/USE1000/remove")
   }
 
   public updateItemQuantity(orderItemId: string, newQuantity: number) {
@@ -91,8 +91,9 @@ export class ShoppingCartService {
   }
 
   public clearCart() {
-    /*   this._cartItems = [];
-       this.calculateTotal();*/
+       ShoppingCartService.shopppingCart.cartItems = [];
+       this.loadCart;
+       
   }
   public checkout() {
     //todo implement checkout logic

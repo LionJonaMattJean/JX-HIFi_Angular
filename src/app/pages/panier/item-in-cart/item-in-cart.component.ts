@@ -36,4 +36,9 @@ export class ItemInCartComponent {
     //copy this product's url to the clipboard
   }
 
+  copyToClipBoard(id:string):string{
+    var oItem: string = 'http://localhost:4200/detail_product/' + id; 
+    return oItem
+  }
+
 }
