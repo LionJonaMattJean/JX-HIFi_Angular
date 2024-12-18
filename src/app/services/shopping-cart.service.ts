@@ -46,7 +46,7 @@ export class ShoppingCartService {
 
 
   public saveCart(id:string): void {
-    this.http.post(this.url+ "/api/cart" + id + '/add', ShoppingCartService.shopppingCart).subscribe(
+    this.http.post(this.url + id + '/add', ShoppingCartService.shopppingCart).subscribe(
       response => console.log('Cart saved successfully:', response),
       error => console.error('Error saving cart:', error)
     );

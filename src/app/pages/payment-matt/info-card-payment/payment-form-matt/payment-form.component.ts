@@ -5,9 +5,10 @@ import { PaymentChoicesComponent } from "../payment-choices/payment-choices.comp
 import { NgIf } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { RouterModule,Router} from '@angular/router';
+import { PaymentService } from '../../../../services/payment.service';
 
 
-@Component({
+Component({
   selector: 'app-payment-form',
   standalone: true,
   imports: [ FormsModule,NgIf,CommonModule,RouterModule,
@@ -18,11 +19,14 @@ import { RouterModule,Router} from '@angular/router';
 
 })
 
+type PaymentType = 'visa'|'mastercard'|'paypal'|'interact';
 
 export class PaymentFormComponent {
 
   sameAddress: boolean = false;
-  modePaiement: string = '----';
+  modePaiement: PaymentType = 'visa';
+  cardNumber: string = '';
+
   userInfo: any = {
     name: '',
     address: '',
@@ -30,19 +34,46 @@ export class PaymentFormComponent {
     username: '',
     paymentMode: ''
   };
+
+  cardRegex: Record<PaymentType, RegExp | null> = {
+    visa: /^4[0-9]{12}(?:[0-9]{3})?$/,
+    mastercard: /^(?:5[1-5][0-9]{14}|2[2-7][0-9]{14})$/,
+    paypal: /^\S+@\S+\.\S+$/,
+    interact: /.*/
+  };
+
   
-  constructor(private router: Router){}
+  constructor(private router: Router, private paymentService: PaymentService){}
   
   toggleSameAddress() {
     this.sameAddress = !this.sameAddress;
   }
-  confirmPayment() {
-    // Collecte des informations du formulaire dans un objet (userInfo)
-    this.userInfo.paymentMode = this.modePaiement;
-    // Naviguer vers la page de confirmation en passant les données via 'state'
-    this.router.navigate(['/confirmation'], { state: { userInfo: this.userInfo } });
+
+  validateCardInput(): boolean {
+    if (this.modePaiement === 'paypal') {
+      const regex = this.cardRegex.paypal;
+      return regex ? regex.test(this.userInfo.email) : false;
+    } else {
+      const regex = this.cardRegex[this.modePaiement];
+      return regex ? regex.test(this.cardNumber) : false;
+    }
   }
 
+  confirmPayment() {
+    if (!this.validateCardInput()) {
+      alert('Informations de paiement invalides. Veuillez vérifier votre saisie.');
+      return;
+    }
 
+    this.userInfo.paymentMode = this.modePaiement;
+
+    this.paymentService.savePaymentDetails(this.userInfo).subscribe(
+      () => this.router.navigate(['/confirmation'],{state: {userInfo:this.userInfo} }),
+    (error) =>{
+      alert('Erreur lors de l enregistrement des informations de paiement');
+      console.error(error);
+    }
+  );
+}
 
 }
