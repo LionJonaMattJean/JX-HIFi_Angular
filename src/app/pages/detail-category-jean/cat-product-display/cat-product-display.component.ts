@@ -1,6 +1,6 @@
 /*
     Auteur: Jean Couturier
-    derniere MaJ (YY/MM/DD) par 
+    derniere MaJ (YY/MM/DD) par
                   24/11/20
                   24/11/21  par Jean
                   24/11/30  par Jean
