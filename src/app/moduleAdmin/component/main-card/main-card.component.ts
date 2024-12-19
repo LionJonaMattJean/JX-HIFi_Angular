@@ -61,7 +61,6 @@ export class MainCardComponent implements OnInit, OnDestroy {
   constructor(private router: Router,
     public productsService: ProductsService,
     private categoriesService: CategoryService,
-    private usersService: UsersService,
     private storesService: StoresService,
     private orderService: OrderService,
     private customerService: CustomerService,

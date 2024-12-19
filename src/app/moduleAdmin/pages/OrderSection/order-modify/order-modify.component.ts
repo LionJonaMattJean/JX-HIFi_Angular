@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import {NgClass, NgForOf, NgIf} from '@angular/common';
+import { NgClass, NgForOf, NgIf } from '@angular/common';
 import { OrderService } from '../../../../services/order.service';
 import { OrderItem } from '../../../../models/OrderItem';
 import { Product } from '../../../../models/Product';
@@ -69,14 +69,12 @@ export class OrderModifyComponent implements OnInit {
     return [year, month, 1];
   }
   /**
-   * est trigger quand l'utilisateru change la date
+   * est trigger quand l'utilisateur change la date
    * @param newDate
    */
   onExpiryDateChange(newDate: string): void {
     this.order.card.expiryDate = this.frontToBack(newDate);
   }
-
-
 
   filterProducts(query: string, index: number) {
     this.activeIndex = index;
@@ -87,11 +85,11 @@ export class OrderModifyComponent implements OnInit {
 
   selectProduct(orderItem: OrderItem, selectedProduct: Product) {
     orderItem.product = { ...selectedProduct };
-    orderItem.quantity=1;// Copy product details
-    if(orderItem.product.onSale){
+    orderItem.quantity = 1;// Copy product details
+    if (orderItem.product.onSale) {
       orderItem.subTotal = selectedProduct.specialPrice * orderItem.quantity;
     }
-    else{
+    else {
       orderItem.subTotal = selectedProduct.sellPrice * orderItem.quantity;
     }
     console.log(
@@ -106,7 +104,6 @@ export class OrderModifyComponent implements OnInit {
   }
 
   addProduct() {
-    //
     const newOrderItem: OrderItem = {
       id: '',
       product: {
@@ -136,13 +133,13 @@ export class OrderModifyComponent implements OnInit {
   modifyOrder() {
     this.orderService.updateOrder(this.order, this.order.id).subscribe({
       next: (data: Order) => {
-        this.alertMessage="La commande a été modifier avec succès";
+        this.alertMessage = "La commande a été modifier avec succès";
 
       },
       error: (error: any) => {
         console.error('Error modify product:', error);
-        this.alertMessage="Erreur lors de la modification";
-        this.alertType="alert-danger";
+        this.alertMessage = "Erreur lors de la modification";
+        this.alertType = "alert-danger";
       }
     });
 

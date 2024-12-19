@@ -25,6 +25,10 @@ export class OrderService {
     return this.httpRequest.put<Order>(this.url + "/order/modify/" + id, object);
   }
 
+  createNewOrder(order: any) {
+    return this.httpRequest.post<Order>(this.url + "/order/new/", order);
+  }
+
   calculateTotal() {
     /*
     const tax =this._totalAmount*(Order.TPS+Order.TaxeState);

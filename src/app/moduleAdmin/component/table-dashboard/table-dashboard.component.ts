@@ -72,14 +72,17 @@ export class TableDashboardComponent {
       let name;
       //TODO Adapté les valeur de status pour fitter avec les status determiner par Matt
       switch (choix) {
-        case 'Pending':
-          name = 'En attente';
+        case 'Received':
+          name = 'Recu';
           break;
-        case 'Processing':
-          name = 'En cours de traitement';
+        case 'Shipped':
+          name = 'Envoyé';
           break;
-        case 'Completed':
-          name = 'Terminé';
+        case 'OutForDelivery':
+          name = 'Livraison en cour';
+          break;
+        case 'Delivered':
+          name = 'Livré';
           break;
         case 'Canceled':
           name = 'Annulé';

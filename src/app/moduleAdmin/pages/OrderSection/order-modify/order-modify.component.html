@@ -9,55 +9,25 @@
         <h4 class="mb-3">Informations du Client</h4>
         <div class="mb-3">
           <label for="prenom">Prénom</label>
-          <input
-            type="text"
-            id="prenom"
-            name="prenom"
-            class="form-control"
-            [(ngModel)]="order.customer.firstName"
-            readonly
-          />
+          <input type="text" id="prenom" name="prenom" class="form-control" [(ngModel)]="order.customer.firstName"
+            readonly />
         </div>
         <div class="mb-3">
           <label for="nom">Nom</label>
-          <input
-            type="text"
-            id="nom"
-            name="nom"
-            class="form-control"
-            [(ngModel)]="order.customer.lastName"
-            readonly
-          />
+          <input type="text" id="nom" name="nom" class="form-control" [(ngModel)]="order.customer.lastName" readonly />
         </div>
         <div class="mb-3">
           <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            class="form-control"
-            [(ngModel)]="order.customer.email"
-            required
-            email
-            #emailField="ngModel"
-            [ngClass]="{ 'is-invalid': emailField.invalid && emailField.touched }"
-          />
+          <input type="email" id="email" name="email" class="form-control" [(ngModel)]="order.customer.email" required
+            email #emailField="ngModel" [ngClass]="{ 'is-invalid': emailField.invalid && emailField.touched }" />
           <div class="invalid-feedback" *ngIf="emailField.errors?.['required']">Email obligatoire.</div>
           <div class="invalid-feedback" *ngIf="emailField.errors?.['email']">Format du email invalide.</div>
         </div>
         <div class="mb-3">
           <label for="telephone">Téléphone</label>
-          <input
-            type="tel"
-            id="telephone"
-            name="telephone"
-            class="form-control"
-            [(ngModel)]="order.customer.phone"
-            required
-            pattern="^\+?\d{10,20}$"
-            #phoneField="ngModel"
-            [ngClass]="{ 'is-invalid': phoneField.invalid && phoneField.touched }"
-          />
+          <input type="tel" id="telephone" name="telephone" class="form-control" [(ngModel)]="order.customer.phone"
+            required pattern="^\+?\d{10,20}$" #phoneField="ngModel"
+            [ngClass]="{ 'is-invalid': phoneField.invalid && phoneField.touched }" />
           <div class="invalid-feedback" *ngIf="phoneField.errors?.['required']">Numéros de téléphone obligatoire.</div>
           <div class="invalid-feedback" *ngIf="phoneField.errors?.['pattern']">Format du téléphone invalide.</div>
         </div>
@@ -66,75 +36,38 @@
         <h4 class="mb-3">Informations de l'adresse de livraison</h4>
         <div class="mb-3">
           <label for="adresse">Adresse</label>
-          <input
-            type="text"
-            id="adresse"
-            name="adresse"
-            class="form-control"
-            [(ngModel)]="order.shippingAddress.address"
-            required
-            #adresseField="ngModel"
-            [ngClass]="{ 'is-invalid': adresseField.invalid && adresseField.touched }"
-          />
+          <input type="text" id="adresse" name="adresse" class="form-control"
+            [(ngModel)]="order.shippingAddress.address" required #adresseField="ngModel"
+            [ngClass]="{ 'is-invalid': adresseField.invalid && adresseField.touched }" />
           <div class="invalid-feedback" *ngIf="adresseField.errors?.['required']">Adresse obligatoire.</div>
         </div>
         <div class="mb-3">
           <label for="ville">Ville</label>
-          <input
-            type="text"
-            id="ville"
-            name="ville"
-            class="form-control"
-            [(ngModel)]="order.shippingAddress.city"
-            required
-            #cityField="ngModel"
-            [ngClass]="{ 'is-invalid': cityField.invalid && cityField.touched }"
-          />
+          <input type="text" id="ville" name="ville" class="form-control" [(ngModel)]="order.shippingAddress.city"
+            required #cityField="ngModel" [ngClass]="{ 'is-invalid': cityField.invalid && cityField.touched }" />
           <div class="invalid-feedback" *ngIf="cityField.errors?.['required']">Ville est obligatoire.</div>
         </div>
         <div class="mb-3">
           <label for="province">État</label>
-          <input
-            type="text"
-            id="province"
-            name="province"
-            class="form-control"
-            [(ngModel)]="order.shippingAddress.province"
-            required
-            #provinceField="ngModel"
-            [ngClass]="{ 'is-invalid': provinceField.invalid && provinceField.touched }"
-          />
+          <input type="text" id="province" name="province" class="form-control"
+            [(ngModel)]="order.shippingAddress.province" required #provinceField="ngModel"
+            [ngClass]="{ 'is-invalid': provinceField.invalid && provinceField.touched }" />
           <div class="invalid-feedback" *ngIf="provinceField.errors?.['required']">Province obligatoire.</div>
         </div>
         <div class="mb-3">
           <label for="codePostal">Code Postal</label>
-          <input
-            type="text"
-            id="codePostal"
-            name="codePostal"
-            class="form-control"
-            placeholder="A1A 1A1"
-            [(ngModel)]="order.shippingAddress.postalCode"
-            required
-            pattern="^[A-Za-z]\d[A-Za-z](?: ?\d[A-Za-z]\d)?$"
-            #postalField="ngModel"
-            [ngClass]="{ 'is-invalid': postalField.invalid && postalField.touched }"
-          />
+          <input type="text" id="codePostal" name="codePostal" class="form-control" placeholder="A1A 1A1"
+            [(ngModel)]="order.shippingAddress.postalCode" required pattern="^[A-Za-z]\d[A-Za-z](?: ?\d[A-Za-z]\d)?$"
+            #postalField="ngModel" [ngClass]="{ 'is-invalid': postalField.invalid && postalField.touched }" />
           <div class="invalid-feedback" *ngIf="postalField.errors?.['required']">Code postal obligatoire.</div>
-          <div class="invalid-feedback" *ngIf="postalField.errors?.['pattern']">Format du code postal invalide. Doit être "A1A 1A1</div>
+          <div class="invalid-feedback" *ngIf="postalField.errors?.['pattern']">Format du code postal invalide. Doit
+            être "A1B 2C3</div>
         </div>
         <div class="mb-3">
           <label for="pays">Pays</label>
-          <input
-            type="text"
-            id="pays"
-            name="pays"
-            class="form-control"
-            [(ngModel)]="order.shippingAddress.country"
-            required
-            #countryField="ngModel"
-            [ngClass]="{ 'is-invalid': countryField.invalid && countryField.touched }"
-          />
+          <input type="text" id="pays" name="pays" class="form-control" [(ngModel)]="order.shippingAddress.country"
+            required #countryField="ngModel"
+            [ngClass]="{ 'is-invalid': countryField.invalid && countryField.touched }" />
           <div class="invalid-feedback" *ngIf="countryField.errors?.['required']">Pays obligatoire.</div>
         </div>
 
@@ -142,15 +75,15 @@
         <h4 class="mb-3">Produits</h4>
         <table class="table">
           <thead>
-          <tr>
-            <th>Produit</th>
-            <th>Quantité</th>
-            <th>Prix unitaire</th>
-            <th>Action</th>
-          </tr>
+            <tr>
+              <th>Produit</th>
+              <th>Quantité</th>
+              <th>Prix unitaire</th>
+              <th>Action</th>
+            </tr>
           </thead>
           <tbody>
-       <!--   <tr *ngFor="let product of order.orderItems; let i = index">
+            <!--   <tr *ngFor="let product of order.orderItems; let i = index">
             <td>
               <input
                 type="text"
@@ -192,62 +125,63 @@
               <button type="button" class="btn btn-danger" (click)="removeProduct(i)">Supprimer</button>
             </td>
           </tr>-->
-       <tr *ngFor="let product of order.orderItems; let i = index">
-         <td>
-           <input type="text"
-                  placeholder="Enter product name or ID"
-                  class="form-control"
-                  [(ngModel)]="product.product.name"
-                  name="produit-{{i}}" required
-                  #productField="ngModel"
+            <tr *ngFor="let product of order.orderItems; let i = index">
+              <td>
+                <input type="text" placeholder="Enter product name or ID" class="form-control"
+                  [(ngModel)]="product.product.name" name="produit-{{i}}" required #productField="ngModel"
                   [ngClass]="{ 'is-invalid': productField.invalid && productField.touched }"
                   (input)="filterProducts(product.product.name,i)">
-           <div class="invalid-feedback" *ngIf="productField.errors?.['required']">Le nom du produit est obligatoire.</div>
-           <ul class="autocomplete-dropdown" *ngIf="filteredProducts.length > 0&&activeIndex === i">
-             <li *ngFor="let p of filteredProducts" (click)="selectProduct(product, p)">
-               {{ p.name }} (ID: {{ p.id }})
-             </li>
-           </ul>
-         </td>
-         <td>
-           <input type="number" class="form-control" [(ngModel)]="product.quantity" name="quantité-{{i}}"  required
-                  min="1"
-                  max="100"
-                  #quantityField="ngModel"
-                  [ngClass]="{ 'is-invalid': quantityField.invalid && quantityField.touched }"
-           >
-           <div class="invalid-feedback" *ngIf="quantityField.errors?.['required']">Quantité est obligatoire.</div>
-           <div class="invalid-feedback" *ngIf="quantityField.errors?.['min']">Quantité minimum est  1.</div>
-           <div class="invalid-feedback" *ngIf="quantityField.errors?.['max']">Quantité maximum est 100.</div>
-         </td>
-         <td>
-           <input type="text" *ngIf="product.product.onSale; else sellPriceTpl" class="form-control" [(ngModel)]="product.product.specialPrice" name="prix-{{i}}" readonly>
-           <ng-template #sellPriceTpl>
-             <input type="text" class="form-control" [(ngModel)]="product.product.sellPrice" name="prix-{{i}}" readonly>
-           </ng-template>
-         </td>
-         <td>
-           <button type="button" class="btn btn-danger" (click)="removeProduct(i)">Supprimer</button>
-         </td>
-       </tr>
-
-
+                <div class="invalid-feedback" *ngIf="productField.errors?.['required']">Le nom du produit est
+                  obligatoire.</div>
+                <ul class="autocomplete-dropdown" *ngIf="filteredProducts.length > 0&&activeIndex === i">
+                  <li *ngFor="let p of filteredProducts" (click)="selectProduct(product, p)">
+                    {{ p.name }} (ID: {{ p.id }})
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <input type="number" class="form-control" [(ngModel)]="product.quantity" name="quantité-{{i}}" required
+                  min="1" max="5" #quantityField="ngModel"
+                  [ngClass]="{ 'is-invalid': quantityField.invalid && quantityField.touched }">
+                <div class="invalid-feedback" *ngIf="quantityField.errors?.['required']">Quantité est obligatoire.</div>
+                <div class="invalid-feedback" *ngIf="quantityField.errors?.['min']">Quantité minimum est 1.</div>
+                <div class="invalid-feedback" *ngIf="quantityField.errors?.['max']">Quantité maximum est 5.</div>
+              </td>
+              <td>
+                <input type="text" *ngIf="product.product.onSale; else sellPriceTpl" class="form-control"
+                  [(ngModel)]="product.product.specialPrice" name="prix-{{i}}" readonly>
+                <ng-template #sellPriceTpl>
+                  <input type="text" class="form-control" [(ngModel)]="product.product.sellPrice" name="prix-{{i}}"
+                    readonly>
+                </ng-template>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger" (click)="removeProduct(i)">Supprimer</button>
+              </td>
+            </tr>
           </tbody>
         </table>
         <button type="button" class="btn btn-primary mb-3" (click)="addProduct()">Ajouter Produit</button>
+
+        <h4 class="mb-3">Status de la commande</h4>
+        <div class="mb-3">
+          <label for="status">Statut</label>
+          <select class="form-control" id="status" [(ngModel)]="order.status" name="status" required>
+            <option value="Received">Recu</option>
+            <option value="Shipped">Envoyé</option>
+            <option value="OutForDelivery">Livraison en cour</option>
+            <option value="Delivered">Livré</option>
+            <option value="Canceled">Annulé</option>
+          </select>
+        </div>
+
         <h4 class="mb-3">Paiement</h4>
         <div class="mb-3">
           <!-- Payment Method -->
           <label for="listMethode">Méthode de Paiement</label>
-          <select
-            class="mb-3 form-control"
-            id="listMethode"
-            [(ngModel)]="order.card.paymentMethod"
-            name="listMethode"
-            required
-            #paymentMethodField="ngModel"
-            [ngClass]="{ 'is-invalid': paymentMethodField.invalid && paymentMethodField.touched }"
-          >
+          <select class="mb-3 form-control" id="listMethode" [(ngModel)]="order.card.paymentMethod" name="listMethode"
+            required #paymentMethodField="ngModel"
+            [ngClass]="{ 'is-invalid': paymentMethodField.invalid && paymentMethodField.touched }">
             <option value="">Sélectionnez une méthode de paiement</option>
             <option value="Visa">Visa</option>
             <option value="MasterCard">Mastercard</option>
@@ -258,23 +192,14 @@
 
           <!-- Card Number -->
           <label for="addMethodePaiement">Numéro de Carte de Paiement</label>
-          <input
-            type="text"
-            class="form-control"
-            id="addMethodePaiement"
-            [(ngModel)]="order.card.cardNumber"
-            name="addMethodePaiement"
-            required
-            pattern="^\d{16}$"
-            maxlength="16"
-            #cardNumberField="ngModel"
-            [ngClass]="{ 'is-invalid': cardNumberField.invalid && cardNumberField.touched }"
-          />
+          <input type="text" class="form-control" id="addMethodePaiement" [(ngModel)]="order.card.cardNumber"
+            name="addMethodePaiement" required pattern="^\d{16}$" maxlength="16" #cardNumberField="ngModel"
+            [ngClass]="{ 'is-invalid': cardNumberField.invalid && cardNumberField.touched }" />
           <div class="invalid-feedback" *ngIf="cardNumberField.errors && cardNumberField.touched">
             <span *ngIf="cardNumberField.errors['required']">Numéro de carte requis.</span>
             <span *ngIf="cardNumberField.errors['pattern']">
-      Le numéro de carte doit contenir exactement 16 chiffres.
-    </span>
+              Le numéro de carte doit contenir exactement 16 chiffres.
+            </span>
           </div>
 
           <!-- CVC and Expiry Date -->
@@ -285,37 +210,20 @@
             </div>
             <div class="mt-1 gap-3 d-flex justify-content-around">
               <!-- CVC -->
-              <input
-                type="text"
-                class="form-control"
-                id="cvcCard"
-                [(ngModel)]="order.card.cvc"
-                name="cvcCard"
-                required
-                pattern="^\d{3}$"
-                maxlength="3"
-                #cvcField="ngModel"
-                [ngClass]="{ 'is-invalid': cvcField.invalid && cvcField.touched }"
-              />
+              <input type="text" class="form-control" id="cvcCard" [(ngModel)]="order.card.cvc" name="cvcCard" required
+                pattern="^\d{3}$" maxlength="3" #cvcField="ngModel"
+                [ngClass]="{ 'is-invalid': cvcField.invalid && cvcField.touched }" />
               <div class="invalid-feedback" *ngIf="cvcField.errors && cvcField.touched">
                 <span *ngIf="cvcField.errors['required']">CVC requis.</span>
                 <span *ngIf="cvcField.errors['pattern']">
-          Le code CVC doit contenir exactement 3 chiffres.
-        </span>
+                  Le code CVC doit contenir exactement 3 chiffres.
+                </span>
               </div>
 
               <!-- Expiry Date -->
-              <input
-                type="month"
-                class="form-control"
-                id="expiryDate"
-                [(ngModel)]="formatedDate"
-                (ngModelChange)="onExpiryDateChange($event)"
-                name="expiryDate"
-                required
-                #expiryDateField="ngModel"
-                [ngClass]="{ 'is-invalid': expiryDateField.invalid && expiryDateField.touched }"
-              />
+              <input type="month" class="form-control" id="expiryDate" [(ngModel)]="formatedDate"
+                (ngModelChange)="onExpiryDateChange($event)" name="expiryDate" required #expiryDateField="ngModel"
+                [ngClass]="{ 'is-invalid': expiryDateField.invalid && expiryDateField.touched }" />
               <div class="invalid-feedback" *ngIf="expiryDateField.errors && expiryDateField.touched">
                 <span *ngIf="expiryDateField.errors['required']">La date d'expiration est requise.</span>
               </div>
@@ -324,7 +232,8 @@
         </div>
         <div class="alert-wrapper col-lg-8  mx-auto mt-5">
           <!-- Alert -->
-          <div *ngIf="alertMessage" [class]="'alert ' + alertType + ' d-flex justify-content-between align-items-center'" role="alert">
+          <div *ngIf="alertMessage"
+            [class]="'alert ' + alertType + ' d-flex justify-content-between align-items-center'" role="alert">
             {{ alertMessage }}
             <button type="button" class="btn-close" aria-label="Close" (click)="closeAlert()"></button>
           </div>
@@ -332,11 +241,7 @@
         <!-- Submit -->
         <div class="d-grid gap-2 d-md-flex justify-content-start mt-5">
           <button routerLink="/admin/orders" type="button" class="btn btn-secondary btn-lg px-4 me-md-2">Retour</button>
-          <button
-            type="submit"
-            class="btn btn-success btn-lg px-4 me-md-2"
-            [disabled]="orderForm.invalid"
-          >
+          <button type="submit" class="btn btn-success btn-lg px-4 me-md-2" [disabled]="orderForm.invalid">
             Modifier Commande
           </button>
         </div>

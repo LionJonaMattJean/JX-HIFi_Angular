@@ -39,6 +39,10 @@ export class CustomerService {
     return this.httpRequest.get<Customer>(this.url + "/customer/" + id);
   }
 
+  getCustomerByMail(mail: string): Observable<Customer> {
+    return this.httpRequest.get<Customer>(this.url + "/customer/get-by-mail/" + mail);
+  }
+
   updateCustomer(payload: any, id: string): Observable<Customer> {
     return this.httpRequest.put<Customer>(this.url + "/customer/update/" + id, payload);
   }
