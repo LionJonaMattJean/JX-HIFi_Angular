@@ -96,9 +96,9 @@ export class OrderModifyComponent implements OnInit {
       'orderItem.product.sellPrice',
       orderItem.subTotal
     )
-
     this.filteredProducts = []; // Clear the dropdown
   }
+  
   removeProduct(i: number) {
     this.order.orderItems.splice(i, 1);
   }

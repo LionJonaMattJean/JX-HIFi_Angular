@@ -25,8 +25,10 @@ import { Order } from '../../../../models/Order';
   styleUrl: './order-ajout.component.css'
 })
 export class OrderAjoutComponent {
+  orderService = inject(OrderService);
   order!: any;
   user!: any;
+  usePersonalAddress: boolean = false;
   formatedDate!: string;
   productList!: Product[];
   filteredProducts: Product[] = [];
@@ -35,9 +37,6 @@ export class OrderAjoutComponent {
   findUserClicked: boolean = false;
   alertMessage: string | null = null;
   alertType: string = 'alert-success';
-  orderService = inject(OrderService);
-  // userForm: FormGroup;
-
 
   constructor(private productService: ProductsService, private customerService: CustomerService) {
     this.order = {
@@ -98,8 +97,72 @@ export class OrderAjoutComponent {
       this.productList = productList;
     })
   }
+
+  fillShippingAddress() {
+    if (this.usePersonalAddress) {
+      this.order.shippingAddress.address = this.order.customer.address.address;
+      this.order.shippingAddress.city = this.order.customer.address.city;
+      this.order.shippingAddress.province = this.order.customer.address.province;
+      this.order.shippingAddress.postalCode = this.order.customer.address.postalCode;
+      this.order.shippingAddress.country = this.order.customer.address.country;
+    } else {
+      this.order.shippingAddress = {
+        address: '',
+        city: '',
+        province: '',
+        postalCode: '',
+        country: ''
+      };
+    }
+  }
+
+  //************************************* Recherche et ajout de Customer **********************************************
+
+  triggerFindUser(email: string) {
+    this.userFound = false;
+    this.findUserClicked = false;
+    if (email) {
+      this.customerService.getCustomerByMail(email).subscribe(user => {
+        this.order.customer = user;
+        this.userFound = true;
+        this.findUserClicked = true;
+      },
+        (error) => {
+          this.userFound = false;
+          this.findUserClicked = true;
+          console.error('User not found', error);
+        })
+    } else {
+      this.userFound = false;
+    }
+  }
+
+  //************************************* Recherche et ajout de produit **********************************************
+  filterProducts(query: string, index: number) {
+    this.activeIndex = index;
+    this.filteredProducts = this.productList.filter(product =>
+      product.name.toLowerCase().includes(query.toLowerCase()) || product.id.toString().includes(query)
+    );
+  }
+
+  selectProduct(orderItem: OrderItem, selectedProduct: Product) {
+    orderItem.product = { ...selectedProduct };
+    orderItem.quantity = 1;// Copy product details
+    if (orderItem.product.onSale) {
+      orderItem.subTotal = selectedProduct.specialPrice * orderItem.quantity;
+    }
+    else {
+      orderItem.subTotal = selectedProduct.sellPrice * orderItem.quantity;
+    }
+    console.log(
+      'orderItem.product.sellPrice',
+      orderItem.subTotal
+    )
+    this.filteredProducts = []; // Clear the dropdown
+  }
+
   removeProduct(i: number) {
-    // this.order.orderItems.splice(i, 1);
+    this.order.orderItems.splice(i, 1);
   }
 
   addProduct() {
@@ -126,38 +189,9 @@ export class OrderAjoutComponent {
       subTotal: 0
     };
     this.order.orderItems.push(newOrderItem);
-
   }
 
-  triggerFindUser(email: string) {
-    this.userFound = false;
-    this.findUserClicked = false;
-    if (email) {
-      this.customerService.getCustomerByMail(email).subscribe(user => {
-        this.order.customer = user;
-        this.userFound = true;
-        this.findUserClicked = true;
-      },
-        (error) => {
-          this.userFound = false;
-          this.findUserClicked = true;
-          console.error('User not found', error);
-        })
-    } else {
-      this.userFound = false;
-    }
-  }
-
-  filterProducts(query: string, index: number) {
-    this.activeIndex = index;
-    this.filteredProducts = this.productList.filter(product =>
-      product.name.toLowerCase().includes(query.toLowerCase()) || product.id.toString().includes(query)
-    );
-  }
-  selectProduct(orderItem: any, selectedProduct: any) {
-    orderItem.product = { ...selectedProduct }; // Copy product details
-    this.filteredProducts = []; // Clear the dropdown
-  }
+  //**************************************** Creation du Order *************************************************
 
   createOrder() {
     this.orderService.createNewOrder(this.order).subscribe({
@@ -173,6 +207,8 @@ export class OrderAjoutComponent {
     });
   }
 
+  //************************************* Convertion de la Date **********************************************
+
   frontToBack(dateString: string): number[] {
     if (!dateString) return [];
     const [year, month] = dateString.split('-').map(Number);
@@ -185,6 +221,8 @@ export class OrderAjoutComponent {
   onExpiryDateChange(newDate: string): void {
     this.order.card.expiryDate = this.frontToBack(newDate);
   }
+
+
 
   closeAlert(): void {
     this.alertMessage = null;
