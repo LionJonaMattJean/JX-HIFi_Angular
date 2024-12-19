@@ -99,7 +99,7 @@
           <select class="mb-3 form-control" id="listMethode" [(ngModel)]="order.card.paymentMethod" name="listMethode"
             required>
             <option value="Visa">Visa</option>
-            <option value="Mastercard">Mastercard</option>
+            <option value="MasterCard">Mastercard</option>
           </select>
           <label for="addMethodePaiement">Numeros carte de Paiement</label>
           <input type="text" class="form-control" id="addMethodePaiement" [(ngModel)]="order.card.cardNumber"
@@ -120,6 +120,7 @@
         <div class="mb-3">
           <label for="status">Statut</label>
           <select class="form-control" id="status" [(ngModel)]="order.status" name="status" required>
+            <!-- TODO ajuster les valeurs avec ce qu'a prevu Matt. Garder Cancelled -->
             <option value="Pending">Pending</option>
             <option value="Shipped">Shipped</option>
             <option value="Completed">Completed</option>
