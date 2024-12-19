@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Router } from 'express';
+import { CustomerService } from '../../../services/customer.service';
+import { Customer } from '../../../models/Customer';
+
 
 @Component({
   selector: 'app-sub-total',
@@ -10,5 +14,17 @@ import { RouterLink } from '@angular/router';
 })
 export class SubTotalComponent {
 
+  constructor(private router: Router,private customerService: CustomerService){}
+  
+  onProceedToPayment(): void {
+    this.customerService.getCustomerById('customerId').subscribe((customerData: Customer) => {
+      if (customerData) {
+        this.customerService.setUserInfo(customerData); 
+        this.router.navigate(['/confirmation'], {
+          state: { userInfo: customerData } 
+        });
+      }
+    });
+  }
 
 }

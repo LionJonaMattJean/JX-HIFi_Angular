@@ -3,13 +3,28 @@ import { Order } from '../models/Order';
 import { Customer } from '../models/Customer';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
+  private userInfoSubject = new BehaviorSubject<Customer | null>(null);
+
   private url: string = "http://localhost:8080";
   constructor(private httpRequest: HttpClient) { };
+
+  setUserInfo(userInfo: Customer): void {
+    this.userInfoSubject.next(userInfo);
+  }
+
+  getUserInfo(): Observable<Customer | null> {
+    return this.userInfoSubject.asObservable();
+  }
+
+  getUserInfoValue(): Customer | null {
+    return this.userInfoSubject.getValue();
+  }
 
 
   createCustomer(newCustomer: any): Observable<Customer> {
@@ -35,30 +50,5 @@ export class CustomerService {
   deleteCustomer(id: string) {
     return this.httpRequest.delete(this.url + "/customer/delete/" + id);
   }
-
-  addOrder(order: Order): void {
-  }
-
-  viewOrderHistory(): Order[] {
-    // Implement view order history logic here
-    return [];
-
-  }
-
-  trackOrder(orderId: string): Order | undefined {
-    // Implement track order logic here
-    return undefined;
-  }
-
-  cancelOrder(orderId: string): void {
-    // Implement cancel order logic here
-
-  }
-
-  manageAccount(): void {
-    // Implement manage account logic here
-  }
-
-
 
 }

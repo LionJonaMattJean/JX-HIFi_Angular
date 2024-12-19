@@ -1,8 +1,11 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnDestroy,OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+//gestion des objets
+import { Subject, switchMap } from 'rxjs';
+import { takeUntil } from 'rxjs';
 //services imports
 import { CustomerService } from '../../../../services/customer.service';
 import { LoginService } from '../../../../services/login.service';
@@ -19,7 +22,14 @@ import { ShoppingCart } from '../../../../models/ShoppingCart';
   styleUrl: './confirmation.component.css'
 })
 
-export class ConfirmationComponent implements OnInit {
+export class ConfirmationComponent implements OnInit,OnDestroy {
+  private destroy$ = new Subject<void>();
+
+  ngOnDestroy(): void{
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   userInfo: Customer | null = null;
   shoppingCart: ShoppingCart | null = null;
   orderConfirmationNumber: string = '';
@@ -39,38 +49,40 @@ export class ConfirmationComponent implements OnInit {
       this.userInfo = state?.userInfo || null;
     }
 
-    redirectToTracking(){
-      this.router.navigate(['tracking-order'],{queryParams:{orderNumber: this.orderConfirmationNumber}});
-    }
+  redirectToTracking(){
+    this.router.navigate(['tracking-order'],{queryParams:{orderNumber: this.orderConfirmationNumber}});
+  }
 
   ngOnInit(): void {
 
-    if(!this.userInfo){
-      alert('Erreur de chargement, redirection en cours');
-      this.router.navigate(['/home']);
-      return;
-    }
-
-    this.generateOrderConfirmationNumber();
-    this.loadCustomerData();
+    if (!this.userInfo) {
+      this.router.navigate(['/home'], { replaceUrl: true });
+    }else{
+      this.generateOrderConfirmationNumber();
+      this.loadCustomerData();
+    }   
   }
 
-  private generateOrderConfirmationNumber() : void{
-
-    this.loginService.getCustomerId().subscribe((customerId)=>{
-      if(customerId){
-        this.customerService.getCustomerById(customerId).subscribe((customer) =>{
-          if(customer && customer.address){
-            const addressPrefix = customer.address.address.substring(0,4);
-            const today = new Date();
-            const dateString = today.toISOString().split('T')[0];
-
-            this.orderConfirmationNumber = `${customerId}${addressPrefix}${dateString}`;
-          }
-        });
-      }
-    });
+  private generateOrderConfirmationNumber(): void {
+    this.loginService.getCustomerId()
+      .pipe(
+        takeUntil(this.destroy$),
+        switchMap((customerId) =>
+          customerId
+            ? this.customerService.getCustomerById(customerId)
+            : []
+        )
+      )
+      .subscribe((customer) => {
+        if (customer?.address) {
+          const addressPrefix = customer.address.address.substring(0, 4);
+          const today = new Date();
+          const dateString = today.toISOString().split('T')[0];
+          this.orderConfirmationNumber = `${customer.id}${addressPrefix}${dateString}`;
+        }
+      });
   }
+  
   
   private loadCustomerData(): void{
     this.loginService.getCustomerId().subscribe((customerId) => {
@@ -84,15 +96,26 @@ export class ConfirmationComponent implements OnInit {
   }
 
   private loadShoppingCart(customerId: string): void {
+
     this.orderService.getOrders().subscribe((orders) => {
       const cartItems = orders.flatMap((order) => order.orderItems);
-      this.shoppingCart = {
-        instance: {} as ShoppingCart,
-        customer: this.userInfo!,
-        cartItems,
-        total: orders.reduce((acc, order) => acc + order.totalAmount, 0),
-      };
-      this.calculateTotals();
+      if(!orders || orders.length === 0){
+        this.shoppingCart = {
+          instance: {} as ShoppingCart,
+          customer: this.userInfo!,
+          cartItems: [],
+          total: 0,
+        };
+        return;
+      }else{
+        this.shoppingCart = {
+          instance: {} as ShoppingCart,
+          customer: this.userInfo!,
+          cartItems: [],
+          total: orders.reduce((acc, order) => acc + order.totalAmount, 0),
+        };
+        this.calculateTotals();
+      }
     });
   }
 
