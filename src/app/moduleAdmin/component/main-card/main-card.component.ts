@@ -322,7 +322,7 @@ export class MainCardComponent implements OnInit, OnDestroy {
 
   loadAllOrder() {
     this.startLoading();
-    this.orderService.getOrders()
+    this.orderService.getAllOrderTable()
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data) => {

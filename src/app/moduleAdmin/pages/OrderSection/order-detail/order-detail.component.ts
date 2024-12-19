@@ -21,17 +21,17 @@ export class OrderDetailComponent implements OnInit {
   order?: any;
   orderDetails: { label: string, value: any }[] = [];
 
-  constructor(private customerService: CustomerService, private orderService: OrderService, private route: ActivatedRoute) { }
+  constructor(private orderService: OrderService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.id = String(this.route.snapshot.paramMap.get('id'));
-    this.orderService.getOrderByIdForDashboardDetail(this.id).subscribe(order => {
+    this.orderService.getOrderById(this.id).subscribe(order => {
       this.order = order;
       this.orderDetails = [
-        { label: 'Prénom', value: order.customerFirstName },
-        { label: 'Nom', value: order.customerLastName },
-        { label: 'Email', value: order.customerEmail },
-        { label: 'Telephone', value: order.customerPhone },
+        { label: 'Prénom', value: order.customer.firstName },
+        { label: 'Nom', value: order.customer.lastName },
+        { label: 'Email', value: order.customer.email },
+        { label: 'Telephone', value: order.customer.phone },
         {
           label: 'Date de commande',
           value: `${order.orderDate[2].toString().padStart(2, '0')}/${order.orderDate[1].toString().padStart(2, '0')}/${order.orderDate[0]}`

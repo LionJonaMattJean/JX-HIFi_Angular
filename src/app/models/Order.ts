@@ -5,14 +5,11 @@ import { Card } from './Card';
 
 export interface Order {
   id: string;
-  customerFirstName: string;
-  customerLastName: string;
-  customerEmail: string;
-  customerPhone: string;
+  customer: Customer;
   orderItems: OrderItem[];
   totalAmount: number;
   TPS: number;
-  TaxeState: number;
+  stateTax: number;
   TTC: number;
   status: string;
   orderDate: number[];
