@@ -29,18 +29,25 @@ export class LoginLionComponent {
     const email = this.logForm.value.logEmail ?? '';
     const password = this.logForm.value.logPassword ?? '';
   
-    this.loginService.logIntoAccount(email, password).subscribe(
-      (response: any) => {
+    console.log('Données envoyées :', { email, password });
+  
+    this.loginService.logIntoAccount(email, password).subscribe({
+      next: (response: any) => {
         console.log('Connexion réussie', response);
         alert('Connexion réussie !');
         this.router.navigate(['/home']);
       },
-      (error: any) => {
-        console.error('Échec de la connexion', error);
-        alert('Échec de la connexion : email ou mot de passe incorrect.');
-      }
-    );
+      error: (error: any) => {
+        console.error('Erreur de connexion :', error);
+        if (error.status === 401) {
+          alert('Échec de la connexion : email ou mot de passe incorrect.');
+        } else {
+          alert('Une erreur est survenue. Veuillez réessayer plus tard.');
+        }
+      },
+    });
   }
+  
   
 
 
