@@ -1,13 +1,11 @@
 import { OrderItem } from './OrderItem';
 import { Address } from './Address';
 import { Card } from './Card';
+import { Customer } from './Customer';
 
 export interface Order {
   id: string;
-  customerFirstName: string;
-  customerLastName: string;
-  customerEmail: string;
-  customerPhone: string;
+  customer: Customer;
   orderItems: OrderItem[];
   totalAmount: number;
   TPS: number;

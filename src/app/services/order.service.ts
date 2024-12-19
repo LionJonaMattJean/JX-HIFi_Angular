@@ -13,11 +13,9 @@ export class OrderService {
   getOrders(): Observable<Order[]> {
     return this.httpRequest.get<Order[]>(this.url + "/orders");
   }
-
-  //TODO a supprimer si la version OrderDTO uniquement et suffisante.
-  // getOrderByIdForDashboardDetail(id: string): Observable<Order> {
-  //   return this.httpRequest.get<Order>(this.url + "/order-detail_dshb/" + id);
-  // }
+  getAllOrderTable(): Observable<Order[]> {
+    return this.httpRequest.get<Order[]>(this.url + "/table/orders");
+  }
 
   getOrderById(id: string): Observable<Order> {
     return this.httpRequest.get<Order>(this.url + "/order/" + id);

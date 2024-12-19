@@ -2,14 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NgForOf, NgIf } from '@angular/common';
-import { User } from '../../../../models/User';
-import { UsersService } from '../../../../services/users.service';
 import { OrderService } from '../../../../services/order.service';
 import { OrderItem } from '../../../../models/OrderItem';
 import { Product } from '../../../../models/Product';
 import { ProductsService } from '../../../../services/products.service';
 import { Order } from '../../../../models/Order';
-
 
 @Component({
   selector: 'app-order-modify',
@@ -28,15 +25,11 @@ export class OrderModifyComponent implements OnInit {
   order!: any;
   formatedDate!: string;
   id!: string;
-  user!: User;
   orderModified: boolean = false;
   productList!: Product[];
   filteredProducts: Product[] = [];
   activeIndex: number | null = null;
-  constructor(private orderService: OrderService,
-    private userService: UsersService,
-    private route: ActivatedRoute,
-    private productService: ProductsService) { }
+  constructor(private orderService: OrderService, private route: ActivatedRoute, private productService: ProductsService) { }
 
   ngOnInit() {
     this.id = String(this.route.snapshot.paramMap.get('id'));
@@ -46,7 +39,6 @@ export class OrderModifyComponent implements OnInit {
         this.formatedDate = this.backToFront(this.order.card.expiryDate);
       }
     });
-
     this.productService.getAllProduct().subscribe(productList => {
       this.productList = productList;
     })
@@ -80,19 +72,6 @@ export class OrderModifyComponent implements OnInit {
   onExpiryDateChange(newDate: string): void {
     this.order.card.expiryDate = this.frontToBack(newDate);
   }
-
-  // onQtyChange($event: any, index: number) {
-  //   const product = this.order.orderItems[index];
-
-  //   if (newQty >= 1) {
-  //     // Recalculer le sous-total
-  //     product.sousTotal = newQty * product.unitPrice;
-  //   } else {
-  //     // Remettre la quantité minimale à 1 pour éviter des erreurs
-  //     product.quantity = 1;
-  //     product.sousTotal = product.unitPrice;
-  //   }
-  // }
 
 
 

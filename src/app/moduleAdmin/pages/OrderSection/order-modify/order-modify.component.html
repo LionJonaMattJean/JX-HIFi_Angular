@@ -55,36 +55,35 @@
         <table class="table">
           <thead>
             <tr>
-              <th>Nom Produit</th>
+              <th>Produit</th>
               <th>Quantité</th>
-              <th>Prix</th>
+              <th>Prix unitaire</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let product of order.orderItems; let i = index">
               <td>
-                <input type="text" placeholder="Enter product name or ID" [(ngModel)]="product.productName"
+                <input type="text" placeholder="Enter product name or ID" [(ngModel)]="product.product.name"
                   name="produit-{{i}}" required (input)="filterProducts(product.product.name,i)">
-                <!-- <ul class="autocomplete-dropdown" *ngIf="filteredProducts.length > 0 && activeIndex === i">
+                <ul class="autocomplete-dropdown" *ngIf="filteredProducts.length > 0 && activeIndex === i">
                   <li *ngFor="let p of filteredProducts" (click)="selectProduct(product, p)">
                     {{ p.name }} (ID: {{ p.id }})
                   </li>
-                </ul> -->
+                </ul>
               </td>
               <td>
-                <input type="number" class="form-control" [(ngModel)]="product.quantity" name="quantité-{{i}}" min="1" max="5"
-                (ngModelChange)="onQtyChange($event, i)" required>
+                <input type="number" class="form-control" [(ngModel)]="product.quantity" name="quantité-{{i}}" min="1"
+                  max="5" required>
               </td>
               <td>
                 <!-- TODO gérer le prix d'un orderItem au moment de l'ajout dans le cart si on sales mettre le prix reduit. -->
-                <!-- <input type="text" *ngIf="product.product.onSale; else sellPriceTpl" class="form-control"
+                <input type="text" *ngIf="product.product.onSale; else sellPriceTpl" class="form-control"
                   [(ngModel)]="product.product.specialPrice" name="prix-{{i}}" readonly>
                 <ng-template #sellPriceTpl>
                   <input type="text" class="form-control" [(ngModel)]="product.product.sellPrice" name="prix-{{i}}"
                     readonly>
-                </ng-template> -->
-                <input type="text" class="form-control" [(ngModel)]="product.sousTotal" name="prix-{{i}}" readonly>
+                </ng-template>
               </td>
               <td>
                 <button type="button" class="btn btn-danger" (click)="removeProduct(i)">Supprimer</button>
@@ -92,7 +91,7 @@
             </tr>
           </tbody>
         </table>
-        <!-- <button type="button" class="btn btn-primary mb-3" (click)="addProduct()">Ajouter Produit</button> -->
+        <button type="button" class="btn btn-primary mb-3" (click)="addProduct()">Ajouter Produit</button>
 
         <h4 class="mb-3">Paiement</h4>
         <div class="mb-3">
