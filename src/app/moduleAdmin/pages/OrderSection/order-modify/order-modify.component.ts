@@ -121,7 +121,7 @@ export class OrderModifyComponent implements OnInit {
   modifyOrder() {
     this.orderService.updateOrder(this.order, this.order.id).subscribe({
       next: (data: Order) => {
-        console.log('Product modify successfully:', data);
+        console.log('Order modify successfully:', data);
         this.orderModified = true;
       },
       error: (error: any) => {
