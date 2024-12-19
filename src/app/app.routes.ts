@@ -61,7 +61,7 @@ export const routes: Routes = [
 
       //path shopping cart --> checkout
       { path: 'cart', component: PanierComponent },
-      { path: 'formTransaction', component: PaymentFormComponent },
+      { path: 'payment-form', component: PaymentFormComponent },
       { path: 'confirmation', component: ConfirmationComponent },
       { path: 'tracking-order', component: TrackingOrderComponent },
 

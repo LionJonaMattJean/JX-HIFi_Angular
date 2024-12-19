@@ -8,19 +8,16 @@ import { RouterModule,Router} from '@angular/router';
 import { PaymentService } from '../../../../services/payment.service';
 import { firstValueFrom } from 'rxjs';
 
+type PaymentType = 'visa'|'mastercard'|'paypal'|'interact';
 
-Component({
+@Component({
   selector: 'app-payment-form',
   standalone: true,
-  imports: [ FormsModule,NgIf,CommonModule,RouterModule,
-             ImagesPaymentComponent,
-             PaymentChoicesComponent],
+  imports: [ FormsModule,NgIf,CommonModule,RouterModule,ImagesPaymentComponent,PaymentChoicesComponent],
   templateUrl: './payment-form.component.html',
   styleUrl: './payment-form.component.css',
 
 })
-
-type PaymentType = 'visa'|'mastercard'|'paypal'|'interact';
 
 export class PaymentFormComponent {
 
