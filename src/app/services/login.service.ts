@@ -1,27 +1,49 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject,Observable } from 'rxjs';
+import { BehaviorSubject,Observable, tap } from 'rxjs';
 import { CustomerService } from './customer.service';
 import { HttpClient } from '@angular/common/http';
+
+interface LoginResponse {
+  customerId: string;
+
+  token?: string;
+}
+
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class LoginService {
 
   private apiUrl = 'http://localhost:8080/auth/login';
 
-  //sert à stocké le customerId pour aller le rechercher dans la confirmation de transaction
-  private customerId = new BehaviorSubject<string | null>(null);
+  private customerId = new BehaviorSubject<string|null>(null);
 
-  constructor(private customerService: CustomerService, private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
+
+  setCustomerId(id: string) {
+    this.customerId.next(id);
+  }
+  getCustomerId(): Observable<string | null>{
+    return this.customerId.asObservable();
+  }
 
   logIntoAccount(email: string, password: string): Observable<any> {
     const payload = { email, password };
-    return this.http.post(this.apiUrl, payload);
-  }
 
-  getCustomerId(): Observable<string | null>{
-    return this.customerId.asObservable();
+    return this.http.post<any>(this.apiUrl, payload).pipe(
+      tap(response => {
+        console.log('Réponse brute du serveur:', response); 
+
+        if (response && response.customerId) {
+          this.setCustomerId(response.customerId);
+        } else {
+          console.error('ID client non trouvé dans la réponse');
+        }
+      })
+    );
   }
 
   createAccount(name:string, email:string, pass:string){

@@ -36,9 +36,6 @@ export class CustomerService {
     return this.httpRequest.delete(this.url + "/customer/delete/" + id);
   }
 
-
-
-
   addOrder(order: Order): void {
   }
 
