@@ -4,7 +4,16 @@
             <img [src]="selectedProduct?.images?.at(0)?.url" class="card-img-top" alt="{{selectedProduct?.images?.at(0)?.id}}">
             <div class="card-body">
                 <h6 class="card-title">{{selectedProduct?.name}}</h6>
-                <p class="card-text fw-bold text-end">{{selectedProduct?.sellPrice}}$</p>
+                <p class="card-text fw-bold text-end" *ngIf="!selectedProduct?.onSale">{{selectedProduct?.sellPrice}}$</p>
+                 <p class="card-text fw-bold text-end" *ngIf="selectedProduct?.onSale">
+                    <span class="text-decoration-line-through text-secondary me-2">
+                      {{selectedProduct?.sellPrice}}$
+                    </span>
+
+                    <span class="card-text text-end text-danger fw-bold">
+                    {{selectedProduct?.specialPrice}}$
+                    </span>
+              </p>
             </div>
         </div>
     </a>
