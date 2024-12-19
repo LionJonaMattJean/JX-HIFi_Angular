@@ -4,7 +4,7 @@ import { ShoppingCart } from '../models/ShoppingCart';
 import { Customer } from '../models/Customer';
 import { HttpClient } from '@angular/common/http';
 import { stringify } from 'querystring';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 
 @Injectable({
@@ -17,6 +17,9 @@ export class ShoppingCartService {
 
   private cartItemsSubject = new BehaviorSubject<number>(0);
   cartItems$ = this.cartItemsSubject.asObservable();
+
+  private itemsUpdateSubject = new Subject<void>();
+  itemsUpdated$ = this.itemsUpdateSubject.asObservable();
 
   constructor(private http: HttpClient) {
     ShoppingCartService.shopppingCart = {
@@ -75,7 +78,13 @@ export class ShoppingCartService {
   public removeItem(orderItemId: string) {
     /*  this._cartItems = this._cartItems.filter(item => item.id !== orderItemId);
       this.calculateTotal();*/
-    this.http.delete(this.url + "/USE1000/remove")
+    this.http.delete(this.url + "/" + "USE1000" + "/remove")
+    this.updateCartItemCount();
+    this.triggerItemsReload();
+  }
+
+  private triggerItemsReload() {
+    this.itemsUpdateSubject.next(); // Notify subscribers about the update
   }
 
   public updateItemQuantity(orderItemId: string, newQuantity: number) {
