@@ -1,11 +1,37 @@
 <div class="container">
     <div class="row gx-5">
-        <div class="col-4">
+
+        
+        <div class="col-4 d-none d-md-block">
             <app-account-sidebar></app-account-sidebar>
         </div>
+
+        <div class="d-md-none">
+            
+            <button class="btn mt-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar"
+                aria-controls="offcanvasSidebar" id="offcanvasButton">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2.5 12.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm0-5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm0-5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11z" />
+                </svg>
+            </button>
         
-        <div class="col-8 p-0">
+           
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasSidebarLabel">Menu</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <app-account-sidebar></app-account-sidebar>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-8 p-0">
             <router-outlet></router-outlet>
         </div>
     </div>
 </div>
+
+

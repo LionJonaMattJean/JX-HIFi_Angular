@@ -3,4 +3,10 @@
 
 
 }
-
+.offcanvas-top {
+    height: 50vh;
+    
+}
+#offcanvasButton{
+    border-radius: 3px;
+}
