@@ -95,9 +95,9 @@ export class ShoppingCartService {
       const item = ShoppingCartService.shopppingCart.cartItems.find(i => i.id === orderItemId);
       if (item) {
         item.quantity = newQuantity;
-        // Optionally, recalculate the total price
+        
         this.calculateTotal(item.product.costPrice);
-        // Persist the updated cart to the backend
+
         this.saveCart(ShoppingCartService.shopppingCart.customer.id);
       } else {
         console.error(`Item with id ${orderItemId} not found.`);
