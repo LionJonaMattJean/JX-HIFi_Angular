@@ -25,7 +25,7 @@ export class OrderDetailComponent implements OnInit {
 
   ngOnInit() {
     this.id = String(this.route.snapshot.paramMap.get('id'));
-    this.orderService.getOrderByIdForDashboardDetail(this.id).subscribe(order => {
+    this.orderService.getOrderById(this.id).subscribe(order => {
       this.order = order;
       this.orderDetails = [
         { label: 'Prénom', value: order.customerFirstName },

@@ -1,114 +1,145 @@
 <div class="main-content-wrapper">
   <div *ngIf="order" class=" p-4 row flex-lg-row align-items-center g-5 py-5">
-
-        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3" >Modifier Commande</h1>
+    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Modifier Commande</h1>
     <div class="col-lg-6">
 
+      <form>
+        <h4 class="mb-3">Informations du Client</h4>
+        <div class="mb-3">
+          <label for="prenom">Prénom</label>
+          <input type="text" class="form-control" id="prenom" [(ngModel)]="order.customer.firstName" name="prenom"
+            readonly>
+        </div>
+        <div class="mb-3">
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control" id="nom" [(ngModel)]="order.customer.lastName" name="nom" readonly>
+        </div>
+        <div class=" mb-3">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" [(ngModel)]="order.customer.email" name="email" required>
+        </div>
+        <div class=" mb-3">
+          <label for="telephone">Téléphone</label>
+          <input type="tel" class="form-control" id="telephone" [(ngModel)]="order.customer.phone" name="telephone"
+            required>
+        </div>
 
-        <form>
-          <h4 class="mb-3">Informations du Client</h4>
-          <div class="mb-3">
-            <label for="prenom">Prénom</label>
-            <input type="text" class="form-control" id="prenom" [(ngModel)]="user.firstName" name="prenom" required>
-          </div>
-          <div class="mb-3">
-            <label for="nom">Nom</label>
-            <input type="text" class="form-control" id="nom" [(ngModel)]="user.lastName" name="nom" required>
-          </div>
-          <div class=" mb-3">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email" required>
-          </div>
-          <div class=" mb-3">
-            <label for="telephone">Téléphone</label>
-            <input type="tel" class="form-control" id="telephone" [(ngModel)]="user.phone" name="telephone" required>
-          </div>
-          <div class=" mb-3">
-            <label for="adresse">Adresse</label>
-            <input type="text" class="form-control" id="adresse" [(ngModel)]="user.address.address" name="adresse" required>
-          </div>
-          <div class=" mb-3">
-            <label for="ville">Ville</label>
-            <input type="text" class="form-control" id="ville" [(ngModel)]="user.address.city" name="ville" required>
-          </div>
-          <div class=" mb-3">
-            <label for="province">État</label>
-            <input type="text" class="form-control" id="province" [(ngModel)]="user.address.province" name="province" required>
-          </div>
-          <div class=" mb-3">
-            <label for="codePostal">Code Postal</label>
-            <input type="text" class="form-control" id="codePostal" [(ngModel)]="user.address.postalCode" name="codePostal" required>
-          </div>
-          <div class=" mb-3">
-            <label for="pays">Pays</label>
-            <input type="text" class="form-control" id="pays" [(ngModel)]="user.address.country" name="pays" required>
-          </div>
+        <h4 class="mb-3">Informations de l'adresse de livraison</h4>
+        <div class=" mb-3">
+          <label for="adresse">Adresse</label>
+          <input type="text" class="form-control" id="adresse" [(ngModel)]="order.shippingAddress.address"
+            name="adresse" required>
+        </div>
+        <div class=" mb-3">
+          <label for="ville">Ville</label>
+          <input type="text" class="form-control" id="ville" [(ngModel)]="order.shippingAddress.city" name="ville"
+            required>
+        </div>
+        <div class=" mb-3">
+          <label for="province">État</label>
+          <input type="text" class="form-control" id="province" [(ngModel)]="order.shippingAddress.province"
+            name="province" required>
+        </div>
+        <div class=" mb-3">
+          <label for="codePostal">Code Postal</label>
+          <input type="text" class="form-control" id="codePostal" [(ngModel)]="order.shippingAddress.postalCode"
+            name="codePostal" required>
+        </div>
+        <div class=" mb-3">
+          <label for="pays">Pays</label>
+          <input type="text" class="form-control" id="pays" [(ngModel)]="order.shippingAddress.country" name="pays"
+            required>
+        </div>
 
-          <h4 class="mb-3">Produits</h4>
-          <table class="table">
-            <thead>
+        <h4 class="mb-3">Produits</h4>
+        <table class="table">
+          <thead>
             <tr>
               <th>Nom Produit</th>
               <th>Quantité</th>
               <th>Prix</th>
               <th>Action</th>
             </tr>
-            </thead>
-           <tbody>
+          </thead>
+          <tbody>
             <tr *ngFor="let product of order.orderItems; let i = index">
               <td>
-                <input type="text"
-                       placeholder="Enter product name or ID"
-                       [(ngModel)]="product.product.name"
-                       name="produit-{{i}}" required
-                       (input)="filterProducts(product.product.name,i)"
-                >
-                <ul class="autocomplete-dropdown" *ngIf="filteredProducts.length > 0&&activeIndex === i">
+                <input type="text" placeholder="Enter product name or ID" [(ngModel)]="product.productName"
+                  name="produit-{{i}}" required (input)="filterProducts(product.product.name,i)">
+                <!-- <ul class="autocomplete-dropdown" *ngIf="filteredProducts.length > 0 && activeIndex === i">
                   <li *ngFor="let p of filteredProducts" (click)="selectProduct(product, p)">
                     {{ p.name }} (ID: {{ p.id }})
                   </li>
-                </ul>
+                </ul> -->
               </td>
               <td>
-                <input type="number" class="form-control" [(ngModel)]="product.quantity" name="quantité-{{i}}" min="1" required>
+                <input type="number" class="form-control" [(ngModel)]="product.quantity" name="quantité-{{i}}" min="1" max="5"
+                (ngModelChange)="onQtyChange($event, i)" required>
               </td>
               <td>
-                <input type="text" *ngIf="product.product.onSale; else sellPriceTpl" class="form-control" [(ngModel)]="product.product.specialPrice" name="prix-{{i}}" readonly>
+                <!-- TODO gérer le prix d'un orderItem au moment de l'ajout dans le cart si on sales mettre le prix reduit. -->
+                <!-- <input type="text" *ngIf="product.product.onSale; else sellPriceTpl" class="form-control"
+                  [(ngModel)]="product.product.specialPrice" name="prix-{{i}}" readonly>
                 <ng-template #sellPriceTpl>
-                  <input type="text" class="form-control" [(ngModel)]="product.product.sellPrice" name="prix-{{i}}" readonly>
-                </ng-template>
+                  <input type="text" class="form-control" [(ngModel)]="product.product.sellPrice" name="prix-{{i}}"
+                    readonly>
+                </ng-template> -->
+                <input type="text" class="form-control" [(ngModel)]="product.sousTotal" name="prix-{{i}}" readonly>
               </td>
               <td>
                 <button type="button" class="btn btn-danger" (click)="removeProduct(i)">Supprimer</button>
               </td>
             </tr>
-            </tbody>
-          </table>
-          <button type="button" class="btn btn-primary mb-3" (click)="addProduct()">Ajouter Produit</button>
+          </tbody>
+        </table>
+        <!-- <button type="button" class="btn btn-primary mb-3" (click)="addProduct()">Ajouter Produit</button> -->
 
-          <h4 class="mb-3">Paiement</h4>
-          <div class="mb-3">
-            <label for="listMethode">Méthode de Paiement</label>
-            <select class="form-control" id="listMethode" [(ngModel)]="order.card.paiementMethod" name="listMethode" required>
-              <option value="Visa">Visa</option>
-              <option value="Mastercard">Mastercard</option>
-            </select>
-            <label for="addMethodePaiement">Numeros carte de Paiement</label>
-            <input type="text" class="form-control" id="addMethodePaiement" [(ngModel)]="order.card.cardNumber" name="addMethodePaiement">
-          </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-start mt-5">
-            <button routerLink="/admin/orders" type="button" class="btn btn-secondary btn-lg px-4 me-md-2">Retour</button>
-            <button type="submit" class="btn btn-success btn-lg px-4 me-md-2" (click)="modifyOrder()">Modifier Commande</button>
-          </div>
-
-        </form>
-
-
-        <div class="container mt-5">
-          <div class="alert alert-success" role="alert" *ngIf="orderModified">
-            La Commande a ete modifier avec succès
+        <h4 class="mb-3">Paiement</h4>
+        <div class="mb-3">
+          <label for="listMethode">Méthode de Paiement</label>
+          <select class="mb-3 form-control" id="listMethode" [(ngModel)]="order.card.paymentMethod" name="listMethode"
+            required>
+            <option value="Visa">Visa</option>
+            <option value="Mastercard">Mastercard</option>
+          </select>
+          <label for="addMethodePaiement">Numeros carte de Paiement</label>
+          <input type="text" class="form-control" id="addMethodePaiement" [(ngModel)]="order.card.cardNumber"
+            name="addMethodePaiement">
+          <div class="my-3">
+            <div class="d-flex justify-content-between">
+              <label for="cvcCard">CVC</label>
+              <label for="expiryDate">Date d'expiration</label>
+            </div>
+            <div class="mt-1 gap-3 d-flex justify-content-around">
+              <input type="text" class="form-control" id="cvcCard" [(ngModel)]="order.card.cvc" name="cvcCard">
+              <input type="month" class="form-control" id="expiryDate" [(ngModel)]="formatedDate"
+                (ngModelChange)="onExpiryDateChange($event)" name="expiryDate">
+            </div>
           </div>
         </div>
+        <h4 class="mb-3">Status de la commande</h4>
+        <div class="mb-3">
+          <label for="status">Statut</label>
+          <select class="form-control" id="status" [(ngModel)]="order.status" name="status" required>
+            <option value="Pending">Pending</option>
+            <option value="Shipped">Shipped</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-start mt-5">
+          <button routerLink="/admin/orders" type="button" class="btn btn-secondary btn-lg px-4 me-md-2">Retour</button>
+          <button type="submit" class="btn btn-success btn-lg px-4 me-md-2" (click)="modifyOrder()">Modifier
+            Commande</button>
+        </div>
+
+      </form>
+
+      <div class="container mt-5">
+        <div class="alert alert-success" role="alert" *ngIf="orderModified">
+          La Commande a ete modifier avec succès
+        </div>
+      </div>
 
     </div>
   </div>

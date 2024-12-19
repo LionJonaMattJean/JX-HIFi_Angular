@@ -4,7 +4,7 @@ export interface Card {
     id: string;
     cardNumber: number;
     experieringDate: Dates;
-    paiementMethod: string;
+    paymentMethod: string;
     cvc: number;
     nameHolder: string;
 }
