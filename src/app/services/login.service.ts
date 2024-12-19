@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject,Observable, tap } from 'rxjs';
-import { CustomerService } from './customer.service';
 import { HttpClient } from '@angular/common/http';
 
 interface LoginResponse {
