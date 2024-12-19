@@ -1,4 +1,4 @@
-import {Component, inject, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {ChangeDetectorRef, Component, inject, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import { QuantityAndCartBtnJeanComponent } from '../quantity-and-cart-btn-jean/quantity-and-cart-btn-jean.component';
 import { ProductsService } from '../../../../services/products.service';
 import { Product } from '../../../../models/Product';
@@ -21,7 +21,8 @@ export class QuickDescriptionProductJeanComponent implements OnInit, OnChanges{
   mainImgSource: string | undefined;
 
   globalProductStars: string | undefined;
-
+constructor(private cdr: ChangeDetectorRef) {
+}
   ngOnInit(): void {
    this.initializeImageAndRating();
   }
@@ -38,6 +39,7 @@ export class QuickDescriptionProductJeanComponent implements OnInit, OnChanges{
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['product'] && this.product) {
       this.initializeImageAndRating();
+      this.cdr.detectChanges();
     }
   }
 
@@ -49,12 +51,18 @@ export class QuickDescriptionProductJeanComponent implements OnInit, OnChanges{
   }
 
   //gestion du rating
-  globalProductRating(productId: string): string {
+/*  globalProductRating(productId: string): string {
     const nbrFullStars = Math.round(this.produitService.calculateMoyenneStarReview(productId))
     const nbrEmptyStars = 5 - nbrFullStars;
     return '★'.repeat(nbrFullStars) + '☆'.repeat(nbrEmptyStars);
+  }*/
+  globalProductRating(productId: string): void {
+    this.produitService.calculateMoyenneStarReview(productId).subscribe((moyenne) => {
+      const nbrFullStars = Math.round(moyenne);
+      const nbrEmptyStars = 5 - nbrFullStars;
+      this.globalProductStars = '★'.repeat(nbrFullStars) + '☆'.repeat(nbrEmptyStars);
+    });
   }
-
   /**
    * Initializes the image source and alt text along with the product's global rating.
    * Retrieves the first image of the product for display. If the product or its
@@ -64,7 +72,7 @@ export class QuickDescriptionProductJeanComponent implements OnInit, OnChanges{
    */
   private initializeImageAndRating(): void {
     if (this.product) {
-      this.globalProductStars = this.globalProductRating(this.product.id);
+      this.globalProductRating(this.product.id);
       this.mainImgAlt = this.product.images.at(0)?.id || 'default-alt';
       this.mainImgSource = this.product.images.at(0)?.url || 'path-to-default-image.jpg';
     }

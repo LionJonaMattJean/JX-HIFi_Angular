@@ -25,7 +25,7 @@
     <div class="reviewSection tab-pane" id="reviews" role="tabpanel">
         <ul>
             <li *ngFor="let review of product?.reviews">
-                <p><span class="stars text-warning h4">{{reviewRating(review)}}</span>from {{review.idUser}}</p>
+                <p><span class="stars text-warning h4">{{reviewRating(review)}}</span>from {{review.customer_firstName}}</p>
                 <h4>{{review.title}}</h4>
                 <p>{{review.review}}</p>
             </li>
