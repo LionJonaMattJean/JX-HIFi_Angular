@@ -1,7 +1,7 @@
 import { Component, Input, inject } from '@angular/core';
 import { OrderItem } from '../../../models/OrderItem';
 import { ShoppingCartService } from '../../../services/shopping-cart.service';
-import { NgFor } from '@angular/common';
+import {NgFor, NgOptimizedImage} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -17,6 +17,11 @@ export class ItemInCartComponent {
   @Input() item!:OrderItem;
   cartServ:ShoppingCartService = inject(ShoppingCartService);
 
+  constructor() {
+    if(this.item){
+      console.log(this.item);
+    }
+  }
   deleteItem(thisItemId:string){
     this.cartServ.removeItem;
   }
@@ -29,7 +34,7 @@ export class ItemInCartComponent {
       this.cartServ.updateItemQuantity(thisItemId, newQty);
       console.log("update item ${thisItemId} to quantity ${newQty}")
     }
-    
+
   }
 
   shareItem(thisItemUrl: string){
@@ -37,7 +42,7 @@ export class ItemInCartComponent {
   }
 
   copyToClipBoard(id:string):string{
-    var oItem: string = 'http://localhost:4200/detail_product/' + id; 
+    var oItem: string = 'http://localhost:4200/detail_product/' + id;
     return oItem
   }
 
