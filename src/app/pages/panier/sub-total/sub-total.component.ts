@@ -3,6 +3,8 @@ import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { CustomerService } from '../../../services/customer.service';
 import { Customer } from '../../../models/Customer';
+import { LoginService } from '../../../services/login.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -14,10 +16,16 @@ import { Customer } from '../../../models/Customer';
 })
 export class SubTotalComponent {
 
-  constructor(private router: Router,private customerService: CustomerService){}
+  constructor(private router: Router,
+    private customerService: CustomerService,
+    private loginService: LoginService,
+    private activatedRoute:ActivatedRoute){}
   
   onProceedToPayment(): void {
-    this.customerService.getCustomerById('customerId').subscribe((customerData: Customer) => {
+  const customerId: any = this.customerService.getCustomers(); 
+  console.log('Customer ID:', customerId);
+    this.customerService.getCustomerById(customerId).subscribe(
+      (customerData: Customer) => {
       if (customerData) {
         this.customerService.setUserInfo(customerData); 
         this.router.navigate(['/confirmation'], {
