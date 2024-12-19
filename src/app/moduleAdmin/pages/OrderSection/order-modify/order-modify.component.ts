@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { NgForOf, NgIf } from '@angular/common';
+import {NgClass, NgForOf, NgIf} from '@angular/common';
 import { OrderService } from '../../../../services/order.service';
 import { OrderItem } from '../../../../models/OrderItem';
 import { Product } from '../../../../models/Product';
@@ -16,7 +16,8 @@ import { Order } from '../../../../models/Order';
     RouterLink,
     NgIf,
     NgForOf,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgClass
   ],
   templateUrl: './order-modify.component.html',
   styleUrl: './order-modify.component.css'
@@ -29,6 +30,8 @@ export class OrderModifyComponent implements OnInit {
   productList!: Product[];
   filteredProducts: Product[] = [];
   activeIndex: number | null = null;
+  alertMessage: string | null = null;
+  alertType: string = 'alert-success';
   constructor(private orderService: OrderService, private route: ActivatedRoute, private productService: ProductsService) { }
 
   ngOnInit() {
@@ -46,7 +49,7 @@ export class OrderModifyComponent implements OnInit {
 
   /**
    * Transforme [yyyy, mm, jj] en "yyyy-MM" pour l'input
-   * @param date 
+   * @param date
    * @returns "yyyy-MM": string
    */
   backToFront(date: number[]): string {
@@ -57,7 +60,7 @@ export class OrderModifyComponent implements OnInit {
 
   /**
    * Transforme la valeur de l'input "yyyy-MM-dd" en [année, mois, jour] pour le json
-   * @param dateString 
+   * @param dateString
    * @returns [yyyy, mm, jj]
    */
   frontToBack(dateString: string): number[] {
@@ -67,7 +70,7 @@ export class OrderModifyComponent implements OnInit {
   }
   /**
    * est trigger quand l'utilisateru change la date
-   * @param newDate 
+   * @param newDate
    */
   onExpiryDateChange(newDate: string): void {
     this.order.card.expiryDate = this.frontToBack(newDate);
@@ -82,8 +85,20 @@ export class OrderModifyComponent implements OnInit {
     );
   }
 
-  selectProduct(orderItem: any, selectedProduct: any) {
-    orderItem.product = { ...selectedProduct }; // Copy product details
+  selectProduct(orderItem: OrderItem, selectedProduct: Product) {
+    orderItem.product = { ...selectedProduct };
+    orderItem.quantity=1;// Copy product details
+    if(orderItem.product.onSale){
+      orderItem.subTotal = selectedProduct.specialPrice * orderItem.quantity;
+    }
+    else{
+      orderItem.subTotal = selectedProduct.sellPrice * orderItem.quantity;
+    }
+    console.log(
+      'orderItem.product.sellPrice',
+      orderItem.subTotal
+    )
+
     this.filteredProducts = []; // Clear the dropdown
   }
   removeProduct(i: number) {
@@ -121,14 +136,18 @@ export class OrderModifyComponent implements OnInit {
   modifyOrder() {
     this.orderService.updateOrder(this.order, this.order.id).subscribe({
       next: (data: Order) => {
-        console.log('Order modify successfully:', data);
-        this.orderModified = true;
+        this.alertMessage="La commande a été modifier avec succès";
+
       },
       error: (error: any) => {
         console.error('Error modify product:', error);
-        this.orderModified = false;
+        this.alertMessage="Erreur lors de la modification";
+        this.alertType="alert-danger";
       }
     });
-    this.orderModified = false;
+
+  }
+  closeAlert(): void {
+    this.alertMessage = null;
   }
 }
