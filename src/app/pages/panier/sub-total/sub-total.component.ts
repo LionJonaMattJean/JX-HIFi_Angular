@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { CustomerService } from '../../../services/customer.service';
 import { Customer } from '../../../models/Customer';
 import { LoginService } from '../../../services/login.service';
 import { ActivatedRoute } from '@angular/router';
+import { OnInit } from '@angular/core';
+import { ShoppingCartService } from '../../../services/shopping-cart.service';
 
 
 @Component({
@@ -20,7 +22,7 @@ export class SubTotalComponent {
     private customerService: CustomerService,
     private loginService: LoginService,
     private activatedRoute:ActivatedRoute){}
-  
+    
   onProceedToPayment(): void {
   const customerId: any = this.customerService.getCustomers(); 
   console.log('Customer ID:', customerId);
@@ -33,6 +35,10 @@ export class SubTotalComponent {
         });
       }
     });
+  }
+
+  ngOnInit():void{
+   
   }
 
 }
