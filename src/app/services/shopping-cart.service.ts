@@ -4,6 +4,7 @@ import { ShoppingCart } from '../models/ShoppingCart';
 import { Customer } from '../models/Customer';
 import { HttpClient } from '@angular/common/http';
 import { stringify } from 'querystring';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 
 @Injectable({
@@ -13,6 +14,12 @@ export class ShoppingCartService {
   private static instance: ShoppingCartService;
   public static shopppingCart: ShoppingCart;
   private url: string = "http://localhost:8080/api/cart";
+
+  private cartItemsSubject = new BehaviorSubject<number>(0);
+  cartItems$ = this.cartItemsSubject.asObservable();
+
+  private itemsUpdateSubject = new Subject<void>();
+  itemsUpdated$ = this.itemsUpdateSubject.asObservable();
 
   constructor(private http: HttpClient) {
     ShoppingCartService.shopppingCart = {
@@ -41,12 +48,18 @@ export class ShoppingCartService {
     
     this.calculateTotal(orderItem.subTotal);
     this.saveCart('USE1000'); 
+    this.updateCartItemCount();
     alert("Item added Successfully to your Cart")
+  }
+
+  private updateCartItemCount(){
+    const totalItems = ShoppingCartService.shopppingCart.cartItems.reduce((total, item) => total + item.quantity, 0);
+    this.cartItemsSubject.next(totalItems);
   }
 
 
   public saveCart(id:string): void {
-    this.http.post(this.url + id + '/add', ShoppingCartService.shopppingCart).subscribe(
+    this.http.post(this.url + '/' + id + '/add', ShoppingCartService.shopppingCart).subscribe(
       response => console.log('Cart saved successfully:', response),
       error => console.error('Error saving cart:', error)
     );
@@ -65,7 +78,13 @@ export class ShoppingCartService {
   public removeItem(orderItemId: string) {
     /*  this._cartItems = this._cartItems.filter(item => item.id !== orderItemId);
       this.calculateTotal();*/
-    this.http.delete(this.url + "/api/cart" + "USE1000/remove")
+    this.http.delete(this.url + "/" + "USE1000" + "/remove")
+    this.updateCartItemCount();
+    this.triggerItemsReload();
+  }
+
+  private triggerItemsReload() {
+    this.itemsUpdateSubject.next(); // Notify subscribers about the update
   }
 
   public updateItemQuantity(orderItemId: string, newQuantity: number) {
@@ -91,8 +110,9 @@ export class ShoppingCartService {
   }
 
   public clearCart() {
-    /*   this._cartItems = [];
-       this.calculateTotal();*/
+       ShoppingCartService.shopppingCart.cartItems = [];
+       this.loadCart;
+       
   }
   public checkout() {
     //todo implement checkout logic

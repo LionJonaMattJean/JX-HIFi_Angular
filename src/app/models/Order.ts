@@ -1,7 +1,7 @@
 import { OrderItem } from './OrderItem';
 import { Address } from './Address';
+import { Dates } from './dates';
 import { Card } from './Card';
-import { Customer } from './Customer';
 
 export interface Order {
   id: string;
@@ -14,5 +14,5 @@ export interface Order {
   status: string;
   orderDate: number[];
   shippingAddress: Address;
-  card: Card
+  card: Card;
 }

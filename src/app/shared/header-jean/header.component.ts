@@ -5,6 +5,7 @@ import { CategoryService } from '../../services/category.service';
 import { Category } from '../../models/Category';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { ShoppingCart } from '../../models/ShoppingCart';
+import { OnInit } from '@angular/core';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { ShoppingCart } from '../../models/ShoppingCart';
   standalone: true,
   imports: [
     RouterModule,
-    NgFor, NgIf
+    NgFor, NgIf,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
@@ -22,14 +23,15 @@ export class HeaderComponent {
   categoryService: CategoryService = inject(CategoryService);
   
   shoppingCartServ: ShoppingCartService = inject(ShoppingCartService)
-  numberOfItems:string = '';
+  
+   numberOfItems: number = 0;
 
 
   listCategory: Category[] = [];
 
   constructor() {
     this.categoryService.getCategories().subscribe(x => this.listCategory = x);
-    this.numberOfItems = ShoppingCartService.shopppingCart.cartItems.length.toString();
+    
 
   }
 
@@ -37,4 +39,10 @@ export class HeaderComponent {
     if (keyword && keyword.length > 0)
       this.route.navigate(['/search', keyword.toLowerCase()]);
     }
+
+    ngOnInit(): void {
+    this.shoppingCartServ.cartItems$.subscribe(count => {
+      this.numberOfItems = count;
+    });
+  }
 }

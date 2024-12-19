@@ -29,6 +29,8 @@ export class PanierComponent implements OnInit {
 
   deleteAll(){
     this.cartServ.clearCart();
+    this.cartServ.loadCart;
+    window.location.reload();
   }
 
 

@@ -4,6 +4,7 @@ import { ShoppingCartService } from '../../../services/shopping-cart.service';
 import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+
 @Component({
   selector: 'app-item-in-cart',
   standalone: true,
@@ -17,6 +18,7 @@ export class ItemInCartComponent {
   @Input() item!:OrderItem;
   cartServ:ShoppingCartService = inject(ShoppingCartService);
 
+
   deleteItem(thisItemId:string){
     this.cartServ.removeItem;
   }
@@ -29,11 +31,20 @@ export class ItemInCartComponent {
       this.cartServ.updateItemQuantity(thisItemId, newQty);
       console.log("update item ${thisItemId} to quantity ${newQty}")
     }
-    
+
   }
 
   shareItem(thisItemUrl: string){
     //copy this product's url to the clipboard
+  }
+
+  copyToClipBoard(id:string):void{
+    var oItem: string = 'http://localhost:4200/detail_product/' + id;
+    var copy = navigator.clipboard.writeText(oItem);
+    if(copy != null){
+      alert("copied url succesfully");
+    }
+
   }
 
 }
