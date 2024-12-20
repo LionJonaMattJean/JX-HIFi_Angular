@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {NgForOf, NgIf} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
-import {UsersService} from '../../../services/users.service';
 import { User } from '../../../models/User';
 import { Order } from '../../../models/Order';
 import { OrderService } from '../../../services/order.service';

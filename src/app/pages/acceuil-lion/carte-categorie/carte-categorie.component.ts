@@ -13,6 +13,7 @@ import { inject } from '@angular/core';
   styleUrl: './carte-categorie.component.css'
 })
 export class CarteCategorieComponent {
+  //using Input to inject each category into a card
   @Input() acceuilCarteInput!: AcceuilCarteCategorie;
 
   categoryService: CategoryService = inject(CategoryService);

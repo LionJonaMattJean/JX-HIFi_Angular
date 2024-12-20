@@ -18,6 +18,7 @@ export class AcceuilLionComponent {
 
   acceuilCarteService: AcceuilCarteCategorieService = inject(AcceuilCarteCategorieService)
 
+  //retrieves categories as a list to display it
   constructor(){
     this.acceuilCarteList = this.acceuilCarteService.getAllCartesCategories();
   }
