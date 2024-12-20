@@ -1,13 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
-import { CustomerService } from '../../../services/customer.service';
-import { Customer } from '../../../models/Customer';
 import { LoginService } from '../../../services/login.service';
-import { ActivatedRoute } from '@angular/router';
-import { OnInit } from '@angular/core';
+import { firstValueFrom } from 'rxjs/internal/firstValueFrom';
 import { ShoppingCartService } from '../../../services/shopping-cart.service';
-
 
 @Component({
   selector: 'app-sub-total',
@@ -18,27 +14,19 @@ import { ShoppingCartService } from '../../../services/shopping-cart.service';
 })
 export class SubTotalComponent {
 
-  constructor(private router: Router,
-    private customerService: CustomerService,
-    private loginService: LoginService,
-    private activatedRoute:ActivatedRoute){}
+  constructor(private router: Router,              
+              private loginService: LoginService,
+              private shoppingCartService: ShoppingCartService
+              ){}
     
-  onProceedToPayment(): void {
-  const customerId: any = this.customerService.getCustomers(); 
-  console.log('Customer ID:', customerId);
-    this.customerService.getCustomerById(customerId).subscribe(
-      (customerData: Customer) => {
-      if (customerData) {
-        this.customerService.setUserInfo(customerData); 
-        this.router.navigate(['/confirmation'], {
-          state: { userInfo: customerData } 
-        });
-      }
-    });
-  }
+  async onProceedToPayment(): Promise<void> {
+    const customerId = await firstValueFrom(this.loginService.getCustomerId());
+    if (!customerId) {
+      console.error('Customer ID is null or undefined');
+      return;
+    }
 
-  ngOnInit():void{
-   
+    this.shoppingCartService.loadCart();
+    this.router.navigate(['/confirmation'], { state: { customerId } });
   }
-
 }

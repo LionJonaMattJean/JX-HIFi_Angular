@@ -29,13 +29,4 @@ export class OrderService {
     return this.httpRequest.post<Order>(this.url + "/order/new/", order);
   }
 
-  calculateTotal() {
-    /*
-    const tax =this._totalAmount*(Order.TPS+Order.TaxeState);
-    return this._totalAmount+tax;*/
-  }
-  updateStatus(newStatus: string): void {
-    //  this.status = newStatus;
-  }
-
 }

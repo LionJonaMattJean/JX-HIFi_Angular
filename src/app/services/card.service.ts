@@ -13,15 +13,8 @@ export class CardService {
     // Add validation logic here
   }
 
-  getCards():Observable<Card[]>{
-    return of(mockdata);
-  }
 
-  getCardById(id:string):Observable<Card>{
-    return this.getCards().pipe(
-    map(card => card.find(card => card.id === id)!)
-   )
-  }
+
 
    save(): void {
     // Add save logic here
