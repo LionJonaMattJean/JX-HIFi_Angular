@@ -65,7 +65,7 @@ export class OrderAjoutComponent {
       stateTax: 10,
       totalAmount: 0,
       status: "Received",
-      orderDate: [0, 0, 0], // Année, mois, jour
+      orderDate: [new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate()],
       shippingAddress: {
         address: "",
         city: "",
@@ -96,6 +96,8 @@ export class OrderAjoutComponent {
     this.productService.getAllProduct().subscribe(productList => {
       this.productList = productList;
     })
+
+    console.log(this.order.orderDate);
   }
 
   fillShippingAddress() {
@@ -194,13 +196,14 @@ export class OrderAjoutComponent {
   //**************************************** Creation du Order *************************************************
 
   createOrder() {
+    console.log(this.order.orderDate);
+    console.log('Order data sent to backend:', this.order);
     this.orderService.createNewOrder(this.order).subscribe({
       next: (data: Order) => {
         this.alertMessage = "La commande a été créer avec succès";
-
       },
       error: (error: any) => {
-        console.error('Error modify product:', error);
+        console.error('Error creation product:', error);
         this.alertMessage = "Erreur lors de la création";
         this.alertType = "alert-danger";
       }
@@ -221,8 +224,6 @@ export class OrderAjoutComponent {
   onExpiryDateChange(newDate: string): void {
     this.order.card.expiryDate = this.frontToBack(newDate);
   }
-
-
 
   closeAlert(): void {
     this.alertMessage = null;
